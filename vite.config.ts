@@ -1,17 +1,48 @@
 // Plugins
-import vue from '@vitejs/plugin-vue'
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import ViteFonts from 'unplugin-fonts/vite'
+import vue from '@vitejs/plugin-vue';
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify';
+import ViteFonts from 'unplugin-fonts/vite';
 
 // Utilities
-import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite';
+import { fileURLToPath, URL } from 'node:url';
+
+import AutoImport from 'unplugin-auto-import/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    AutoImport({
+      // targets to transform
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
+      imports: [
+        {
+          pinia: ['defineStore'],
+          vue: [
+            'ref',
+            'reactive',
+            'computed',
+            'watch',
+            'watchEffect',
+            'onMounted',
+          ],
+        },
+      ],
+      // Enable auto import by filename for default module exports under directories
+      defaultExportByFilename: false,
+      dts: './src/auto-imports.d.ts',
+
+      // Auto import inside Vue template
+      // see https://github.com/unjs/unimport/pull/15 and https://github.com/unjs/unimport/pull/72
+      vueTemplate: false,
+    }),
     vue({
-      template: { transformAssetUrls }
+      template: { transformAssetUrls },
     }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
     vuetify({
@@ -19,29 +50,23 @@ export default defineConfig({
     }),
     ViteFonts({
       google: {
-        families: [{
-          name: 'Roboto',
-          styles: 'wght@100;300;400;500;700;900',
-        }],
+        families: [
+          {
+            name: 'Roboto',
+            styles: 'wght@100;300;400;500;700;900',
+          },
+        ],
       },
     }),
   ],
   define: { 'process.env': {} },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-    extensions: [
-      '.js',
-      '.json',
-      '.jsx',
-      '.mjs',
-      '.ts',
-      '.tsx',
-      '.vue',
-    ],
+    extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
   server: {
     port: 3000,
   },
-})
+});

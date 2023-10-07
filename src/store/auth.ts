@@ -1,21 +1,18 @@
-import { defineStore } from "pinia";
-import { UserLogin } from "../types/auth";
-import { reactive } from "vue";
-import router from "@/router";
+import { UserLogin } from '../types/auth';
+import router from '@/router';
 
-export const useAuthStore = defineStore("auth", () => {
+export const useAuthStore = defineStore('auth', () => {
   const state = reactive({ loading: false });
-  const user_login = "user_login";
-
+  const user_login = 'user_login';
   async function logIn(username: string, password: string) {
     state.loading = true;
 
-    await fetch("https://dummyjson.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+    await fetch('https://dummyjson.com/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: "kminchelle",
-        password: "0lelplR",
+        username: 'kminchelle',
+        password: '0lelplR',
         // expiresInMins: 60, // optional
       }),
     })
@@ -24,9 +21,8 @@ export const useAuthStore = defineStore("auth", () => {
         sessionStorage.setItem(user_login, JSON.stringify(data));
       });
 
-    debugger;
     state.loading = false;
-    router.replace("/");
+    router.replace('/');
   }
 
   async function logOut(): Promise<void> {
@@ -35,7 +31,7 @@ export const useAuthStore = defineStore("auth", () => {
       clearTimeout(timeout);
     }, 200);
 
-    router.replace("/login");
+    router.replace('/login');
   }
 
   function _getUserInfo(): UserLogin | null {

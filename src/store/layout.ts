@@ -1,9 +1,6 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
-
-export const useLayoutStore = defineStore("layout", () => {
+export const useLayoutStore = defineStore('layout', () => {
   const isRail = ref(true);
-  const title = ref("Nuxi");
+  const title = ref('vite vue3 vuetify ts');
 
   function toggleDrawer() {
     isRail.value = !isRail.value;

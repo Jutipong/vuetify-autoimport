@@ -9,6 +9,6 @@
 </template>
 
 <script lang="ts" setup>
-import LayoutHeader from "@/components/layout/Header.vue";
-import LayoutNavigation from "@/components/layout/Navigation.vue";
+import LayoutHeader from '@/components/layouts/header.vue';
+import LayoutNavigation from '@/components/layouts/navigation.vue';
 </script>

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { useAuthStore } from "@/store/auth";
-import { onMounted, ref } from "vue";
+import { useAuthStore } from '@/store/auth';
 
 const { state, isLogin, logIn, logOut } = useAuthStore();
 
@@ -11,8 +10,8 @@ onMounted(() => {
 });
 
 const user = ref({
-  username: "admin",
-  password: "sdkjslfjaldjkl;flslsjfljslkkd",
+  username: 'admin',
+  password: 'sdkjslfjaldjkl;flslsjfljslkkd',
   visible: false,
 });
 </script>
@@ -25,22 +24,19 @@ const user = ref({
           class="mx-auto pa-12 pb-8"
           elevation="8"
           max-width="450"
-          rounded="lg"
-        >
+          rounded="lg">
           <v-form @submit.prevent="logIn(user.username, user.password)">
             <v-img
               class="mx-auto ma-16"
               max-width="250"
-              src="https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-v3-slim-text-light.svg"
-            ></v-img>
+              src="https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-v3-slim-text-light.svg"></v-img>
 
             <v-text-field
               class="mb-2"
               placeholder="User Name"
               prepend-inner-icon="carbon:user"
               variant="outlined"
-              v-model="user.username"
-            >
+              v-model="user.username">
             </v-text-field>
 
             <v-text-field
@@ -51,8 +47,7 @@ const user = ref({
               prepend-inner-icon="mdi-lock-outline"
               variant="outlined"
               @click:append-inner="user.visible = !user.visible"
-              v-model="user.password"
-            >
+              v-model="user.password">
             </v-text-field>
 
             <v-btn
@@ -62,8 +57,7 @@ const user = ref({
               color="blue"
               size="large"
               variant="tonal"
-              :loading="state.loading"
-            >
+              :loading="state.loading">
               Log In
             </v-btn>
           </v-form>

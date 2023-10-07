@@ -1,7 +1,5 @@
-import { defineStore } from 'pinia';
 import { Product } from '../types/product';
 import { Option, Result } from '../types/v-table';
-import { reactive } from 'vue';
 
 export const useProductStore = defineStore('product', () => {
   const state = reactive({

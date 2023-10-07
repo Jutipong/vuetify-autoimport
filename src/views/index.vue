@@ -25,7 +25,8 @@
     </v-timeline>
   </v-container>
 </template>
-<script setup>
+
+<script setup lang="ts">
 const items = [
   {
     color: 'red-lighten-2',
