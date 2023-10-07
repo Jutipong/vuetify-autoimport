@@ -2,6 +2,25 @@
   "recommendations": [
     "antfu.goto-alias",
     "vue.volar",
-    "streetsidesoftware.code-spell-checker"
+    "streetsidesoftware.code-spell-checker",
+    "formulahendry.auto-rename-tag",
+    "naumovs.color-highlight",
+    "dracula-theme.theme-dracula",
+    "antfu.goto-alias",
+    "chrisbibby.hide-node-modules",
+    "akamud.vscode-javascript-snippet-pack",
+    "lukas-tr.materialdesignicons-intellisense",
+    "idered.npm",
+    "quicktype.quicktype",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "shardulm94.trailing-spaces",
+    "Vue.vscode-typescript-vue-plugin",
+    "MarkosTh09.color-picker",
+    "exer7um.vue-3-vscode-snippets",
+    "Vue.volar",
+    "vuetifyjs.vuetify-vscode",
+    "Nuxtr.nuxtr-vscode",
+    "formulahendry.auto-rename-tag"
   ]
 }
