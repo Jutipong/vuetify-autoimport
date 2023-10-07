@@ -3,7 +3,7 @@ const cards = ['Today', 'Yesterday'];
 </script>
 
 <template>
-  <div>
+  <v-container>
     <!-- <Demo01Card />
   <Demo01Card2 /> -->
     <v-row>
@@ -31,5 +31,5 @@ const cards = ['Today', 'Yesterday'];
         </v-card>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>

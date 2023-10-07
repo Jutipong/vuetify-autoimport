@@ -33,13 +33,7 @@ export default defineConfig({
           ],
         },
       ],
-      // Enable auto import by filename for default module exports under directories
-      defaultExportByFilename: false,
       dts: './src/auto-imports.d.ts',
-
-      // Auto import inside Vue template
-      // see https://github.com/unjs/unimport/pull/15 and https://github.com/unjs/unimport/pull/72
-      vueTemplate: false,
     }),
     vue({
       template: { transformAssetUrls },
