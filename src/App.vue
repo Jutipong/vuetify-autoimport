@@ -1,11 +1,12 @@
 <template>
   <v-app>
-    <v-main>
+    <!-- <v-main>
       <HelloWorld />
-    </v-main>
+    </v-main> -->
+    <router-view />
   </v-app>
 </template>
 
 <script setup lang="ts">
-  import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
 </script>
