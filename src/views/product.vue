@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { useProductStore } from "@/store/product";
-import { Product } from "../types/product";
-import { Header, Option } from "../types/v-table";
-import { ref } from "vue";
+import { Product } from '../types/product';
+import { Header, Option } from '../types/v-table';
+
 const productStore = useProductStore();
 const search = ref<string | undefined>();
 
@@ -11,12 +10,12 @@ const total = ref(0);
 const perPage = ref(10);
 
 const headers = ref<Header[]>([
-  { title: "ID", key: "id", align: "center" },
-  { title: "Title", key: "title" },
-  { title: "PRICE", key: "price", align: "end" },
-  { title: "RATING", key: "rating", align: "end" },
-  { title: "STOCK", key: "stock", align: "end" },
-  { title: "BRAND", key: "brand", align: "end" },
+  { title: 'ID', key: 'id', align: 'center' },
+  { title: 'Title', key: 'title' },
+  { title: 'PRICE', key: 'price', align: 'end' },
+  { title: 'RATING', key: 'rating', align: 'end' },
+  { title: 'STOCK', key: 'stock', align: 'end' },
+  { title: 'BRAND', key: 'brand', align: 'end' },
 ]);
 
 async function loadItems(option: Option) {
@@ -78,8 +77,7 @@ async function loadItems(option: Option) {
           :items-length="total"
           :items="serverItems"
           :loading="productStore.state.loading"
-          @update:options="loadItems"
-        >
+          @update:options="loadItems">
         </v-data-table-server>
       </v-card-text>
     </v-card>

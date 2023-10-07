@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-import { useAuthStore } from '@/store/auth';
-import { useLayoutStore } from '@/store/layout';
-
 const authStore = useAuthStore();
 const layoutStore = useLayoutStore();
 const open = ref(['Users']);

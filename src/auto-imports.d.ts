@@ -10,6 +10,10 @@ declare global {
   const onMounted: typeof import('vue')['onMounted']
   const reactive: typeof import('vue')['reactive']
   const ref: typeof import('vue')['ref']
+  const store: typeof import('./store/index')['default']
+  const useAuthStore: typeof import('./store/auth')['useAuthStore']
+  const useLayoutStore: typeof import('./store/layout')['useLayoutStore']
+  const useProductStore: typeof import('./store/product')['useProductStore']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
 }

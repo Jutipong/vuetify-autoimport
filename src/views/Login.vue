@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { useAuthStore } from '@/store/auth';
-
 const { state, isLogin, logIn, logOut } = useAuthStore();
 
 onMounted(() => {

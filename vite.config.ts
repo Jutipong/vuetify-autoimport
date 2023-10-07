@@ -33,6 +33,7 @@ export default defineConfig({
           ],
         },
       ],
+      dirs: ['src/store'],
       dts: './src/auto-imports.d.ts',
     }),
     vue({
