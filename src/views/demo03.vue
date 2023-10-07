@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <SharedCounter />
+  <h1>demo 03</h1>
 </template>

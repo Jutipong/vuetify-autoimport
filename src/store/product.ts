@@ -1,9 +1,9 @@
-import { defineStore } from "pinia";
-import { Product } from "../types/product";
-import { Option, Result } from "../types/v-table";
-import { reactive } from "vue";
+import { defineStore } from 'pinia';
+import { Product } from '../types/product';
+import { Option, Result } from '../types/v-table';
+import { reactive } from 'vue';
 
-export const useProductStore = defineStore("product", () => {
+export const useProductStore = defineStore('product', () => {
   const state = reactive({
     loading: false,
     products: [] as Product[],
@@ -11,15 +11,16 @@ export const useProductStore = defineStore("product", () => {
 
   async function getProducts(option: Option) {
     let result = {} as Result<Product>;
+
     state.loading = true;
-    console.log("option", option);
+
     await fetch(
       `https://dummyjson.com/products?limit=${option.itemsPerPage}&skip=${
         option.page - 1
       }`,
       {
-        method: "get",
-        headers: { "Content-Type": "application/json" },
+        method: 'get',
+        headers: { 'Content-Type': 'application/json' },
       }
     )
       .then((response) => response.json())
