@@ -23,6 +23,10 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/:catchAll(.*)*",
+    component: () => import("@/views/error.vue"),
+  },
 ];
 
 const router = createRouter({
