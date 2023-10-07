@@ -8,6 +8,7 @@ import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 
 import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +36,12 @@ export default defineConfig({
       ],
       dirs: ['src/store'],
       dts: './src/auto-imports.d.ts',
+    }),
+    Components({
+      dirs: ['src/components'],
+      dts: 'src/components.d.ts',
+      deep: true,
+      directoryAsNamespace: true,
     }),
     vue({
       template: { transformAssetUrls },
