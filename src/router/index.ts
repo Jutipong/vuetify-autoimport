@@ -5,7 +5,7 @@ const routes = [
   {
     path: '/login',
 
-    component: () => import('@/layouts/Empty.vue'),
+    component: () => import('@/layouts/empty.vue'),
     children: [
       {
         path: '',
@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: '/',
-    component: () => import('@/layouts/Default.vue'),
+    component: () => import('@/layouts/default.vue'),
     children: [
       {
         path: '',
