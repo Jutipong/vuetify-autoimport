@@ -4,7 +4,7 @@ const productStore = useProductStore();
 
 <template>
   <div>
-    <v-card class="mb-2">
+    <v-card>
       <v-card-title>
         <v-chip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
           Search

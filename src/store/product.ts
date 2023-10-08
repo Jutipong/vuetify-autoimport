@@ -16,7 +16,7 @@ export const useProductStore = defineStore('product', () => {
       ] as Header[],
       options: {
         page: 1,
-        itemsPerPage: 50,
+        itemsPerPage: 10,
       } as Option,
       result: {} as Result<Product>,
     } as vTable<string | null, Product>,
@@ -32,7 +32,7 @@ export const useProductStore = defineStore('product', () => {
         : (state.table.options.page - 1) * state.table.options.itemsPerPage;
 
     await fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/search?q=${state.table.search}&limit=${
+      `${import.meta.env.VITE_API_BASE_URL}/search?q=${state.table.search ?? ''}&limit=${
         state.table.options.itemsPerPage
       }&skip=${page}`,
       {
