@@ -23,7 +23,7 @@ export type Result<TDatas> = {
 
 export type vTable<TSearch, TDatas> = {
   header: Header[];
-  search: TSearch | null | undefined;
+  search: TSearch;
   options: Option;
   result: Result<TDatas>;
 };
