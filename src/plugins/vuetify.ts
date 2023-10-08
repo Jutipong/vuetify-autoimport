@@ -55,6 +55,7 @@ export default createVuetify({
       },
     },
     VTextField: {
+      clearable: true,
       hideDetails: 'auto',
       density: 'compact',
       dirty: true,

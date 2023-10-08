@@ -67,8 +67,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to: any, from: any, next: any) => {
-  console.log('to: ', to);
-  console.log('from: ', from);
   next();
   // to and from are both route objects. must call `next`.
   // appStore.inprogress = true;
@@ -103,7 +101,7 @@ router.beforeEach((to: any, from: any, next: any) => {
 
 router.afterEach(() => {
   // appStore.inprogress = false;
-  console.log('afterEach');
+  // console.log('afterEach');
 });
 
 export default router;

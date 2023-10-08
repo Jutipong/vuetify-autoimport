@@ -16,7 +16,14 @@ export type Header = {
   key: string;
 };
 
-export type Result<T> = {
-  datas: T[];
+export type Result<TDatas> = {
+  datas: TDatas[];
   total: number;
+};
+
+export type vTable<TSearch, TDatas> = {
+  header: Header[];
+  search: TSearch | null | undefined;
+  options: Option;
+  result: Result<TDatas>;
 };

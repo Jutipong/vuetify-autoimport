@@ -1,21 +1,39 @@
 import { Product } from '../types/product';
-import { Option, Result } from '../types/v-table';
+import { Header, Option, Result, vTable } from '../types/v-table';
 
 export const useProductStore = defineStore('product', () => {
   const state = reactive({
     loading: false,
-    products: [] as Product[],
+    table: {
+      search: '',
+      header: [
+        { title: 'ID', key: 'id', align: 'center' },
+        { title: 'Title', key: 'title' },
+        { title: 'PRICE', key: 'price', align: 'end' },
+        { title: 'RATING', key: 'rating', align: 'end' },
+        { title: 'STOCK', key: 'stock', align: 'end' },
+        { title: 'BRAND', key: 'brand', align: 'end' },
+      ] as Header[],
+      options: {
+        page: 1,
+        itemsPerPage: 50,
+      } as Option,
+      result: {} as Result<Product>,
+    } as vTable<string | null, Product>,
   });
 
-  async function getProducts(option: Option) {
-    let result = {} as Result<Product>;
-
+  async function getProducts(option: Option | null = null) {
     state.loading = true;
 
+    state.table.options = option ? option : state.table.options;
+
+    const page =
+      state.table.options.page === 1
+        ? 0
+        : (state.table.options.page - 1) * state.table.options.itemsPerPage;
+
     await fetch(
-      `https://dummyjson.com/products?limit=${option.itemsPerPage}&skip=${
-        option.page - 1
-      }`,
+      `https://dummyjson.com/products/search?q=${state.table.search}&limit=${state.table.options.itemsPerPage}&skip=${page}`,
       {
         method: 'get',
         headers: { 'Content-Type': 'application/json' },
@@ -23,24 +41,21 @@ export const useProductStore = defineStore('product', () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        result = {
-          datas: data?.products ?? [],
-          total: data?.total ?? 0,
-        } as Result<Product>;
+        state.table.result.datas = data?.products ?? [];
+        state.table.result.total = data?.total ?? 10;
       });
 
     state.loading = false;
+  }
 
-    // const result = {
-    //   datas: data.value?.products ?? [],
-    //   total: data.value?.total ?? 0,
-    // } as Result<Product>;
-
-    return result;
+  async function onClean() {
+    state.table.search = null;
+    await getProducts();
   }
 
   return {
     state,
     getProducts,
+    onClean,
   };
 });

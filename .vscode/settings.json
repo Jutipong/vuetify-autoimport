@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "antfu",
+    "datas",
     "demi",
     "iconify",
     "intlify",
@@ -17,7 +18,6 @@
     "vueuse",
     "wght"
   ],
-  "editor.formatOnSave": false,
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
