@@ -4,12 +4,17 @@ const authStore = useAuthStore();
 </script>
 
 <template>
-  <v-app-bar absolute floating color="primary" density="compact">
-    <v-app-bar-nav-icon variant="text" @click="layoutStore.toggleDrawer"></v-app-bar-nav-icon>
-    <v-app-bar-title>{{ layoutStore.title }} </v-app-bar-title>
+  <div>
+    <!-- <v-system-bar> -->
+    <!-- <v-progress-linear :active="true" indeterminate color="success" /> -->
+    <!-- </v-system-bar> -->
+    <v-app-bar color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
+      <v-app-bar-nav-icon variant="text" @click="layoutStore.toggleDrawer"></v-app-bar-nav-icon>
+      <v-app-bar-title>{{ layoutStore.title }} </v-app-bar-title>
 
-    <template v-slot:append>
-      <v-btn color="error" prepend-icon="mdi-logout" @click="authStore.logOut()"> Logout </v-btn>
-    </template>
-  </v-app-bar>
+      <template v-slot:append>
+        <v-btn color="error" prepend-icon="mdi-logout" @click="authStore.logOut()"> Logout </v-btn>
+      </template>
+    </v-app-bar>
+  </div>
 </template>
