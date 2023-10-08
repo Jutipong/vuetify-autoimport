@@ -7,9 +7,15 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Header: typeof import('./components/layouts/header.vue')['default']
     LayoutsHeader: typeof import('./components/layouts/header.vue')['default']
     LayoutsNavigation: typeof import('./components/layouts/navigation.vue')['default']
+    Navigation: typeof import('./components/layouts/navigation.vue')['default']
+    ProductSearch: typeof import('./components/product/search.vue')['default']
+    ProductTable: typeof import('./components/product/table.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Search: typeof import('./components/product/search.vue')['default']
+    Table: typeof import('./components/product/table.vue')['default']
   }
 }

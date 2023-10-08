@@ -6,11 +6,7 @@ const productStore = useProductStore();
   <div>
     <v-card class="mb-2">
       <v-card-title>
-        <v-chip
-          variant="outlined"
-          color="primary"
-          prepend-icon="mdi-magnify"
-          label>
+        <v-chip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
           Search
         </v-chip>
       </v-card-title>
@@ -61,8 +57,7 @@ const productStore = useProductStore();
             >
           </v-col>
           <v-col class="text-right" md="6">
-            <v-btn color="success" prepend-icon="mdi-plus" text="Search">
-            </v-btn>
+            <v-btn color="success" prepend-icon="mdi-plus" text="Search"> </v-btn>
           </v-col>
         </v-row>
         <v-data-table-server

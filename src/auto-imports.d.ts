@@ -17,33 +17,3 @@ declare global {
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
 }
-// for vue template auto import
-import { UnwrapRef } from 'vue'
-declare module 'vue' {
-  interface ComponentCustomProperties {
-    readonly computed: UnwrapRef<typeof import('vue')['computed']>
-    readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
-    readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
-    readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
-    readonly ref: UnwrapRef<typeof import('vue')['ref']>
-    readonly useAuthStore: UnwrapRef<typeof import('./store/auth')['useAuthStore']>
-    readonly useLayoutStore: UnwrapRef<typeof import('./store/layout')['useLayoutStore']>
-    readonly useProductStore: UnwrapRef<typeof import('./store/product')['useProductStore']>
-    readonly watch: UnwrapRef<typeof import('vue')['watch']>
-    readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
-  }
-}
-declare module '@vue/runtime-core' {
-  interface ComponentCustomProperties {
-    readonly computed: UnwrapRef<typeof import('vue')['computed']>
-    readonly defineStore: UnwrapRef<typeof import('pinia')['defineStore']>
-    readonly onMounted: UnwrapRef<typeof import('vue')['onMounted']>
-    readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
-    readonly ref: UnwrapRef<typeof import('vue')['ref']>
-    readonly useAuthStore: UnwrapRef<typeof import('./store/auth')['useAuthStore']>
-    readonly useLayoutStore: UnwrapRef<typeof import('./store/layout')['useLayoutStore']>
-    readonly useProductStore: UnwrapRef<typeof import('./store/product')['useProductStore']>
-    readonly watch: UnwrapRef<typeof import('vue')['watch']>
-    readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
-  }
-}
