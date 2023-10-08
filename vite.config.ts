@@ -24,18 +24,12 @@ export default defineConfig({
       imports: [
         {
           pinia: ['defineStore'],
-          vue: [
-            'ref',
-            'reactive',
-            'computed',
-            'watch',
-            'watchEffect',
-            'onMounted',
-          ],
+          vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted'],
         },
       ],
       dirs: ['src/store'],
       dts: './src/auto-imports.d.ts',
+      vueTemplate: true,
     }),
     Components({
       dirs: ['src/components'],
@@ -69,6 +63,6 @@ export default defineConfig({
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
   server: {
-    port: 3000,
+    port: Number(process.env.VITE_PORT || 3000),
   },
 });

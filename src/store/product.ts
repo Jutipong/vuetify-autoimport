@@ -24,7 +24,6 @@ export const useProductStore = defineStore('product', () => {
 
   async function getProducts(option: Option | null = null) {
     state.loading = true;
-
     state.table.options = option ? option : state.table.options;
 
     const page =
@@ -33,7 +32,9 @@ export const useProductStore = defineStore('product', () => {
         : (state.table.options.page - 1) * state.table.options.itemsPerPage;
 
     await fetch(
-      `https://dummyjson.com/products/search?q=${state.table.search}&limit=${state.table.options.itemsPerPage}&skip=${page}`,
+      `${import.meta.env.VITE_API_BASE_URL}/search?q=${state.table.search}&limit=${
+        state.table.options.itemsPerPage
+      }&skip=${page}`,
       {
         method: 'get',
         headers: { 'Content-Type': 'application/json' },

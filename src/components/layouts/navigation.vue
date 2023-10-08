@@ -29,18 +29,11 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
       nav
       :lines="false"
       v-model:opened="open">
-      <v-list-item
-        prepend-icon="mdi-home"
-        title="Home"
-        value="/"
-        to="/"></v-list-item>
+      <v-list-item prepend-icon="mdi-home" title="Home" value="/" to="/"></v-list-item>
 
       <v-list-group value="Users">
         <template v-slot:activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-test-tube"
-            title="Menu 1"></v-list-item>
+          <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 1"></v-list-item>
         </template>
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
@@ -55,10 +48,7 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
 
       <v-list-group value="Users2">
         <template v-slot:activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-test-tube"
-            title="Menu 2"></v-list-item>
+          <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 2"></v-list-item>
         </template>
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
