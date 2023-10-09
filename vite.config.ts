@@ -10,7 +10,9 @@ import { fileURLToPath, URL } from 'node:url';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 
+import Layouts from 'vite-plugin-vue-layouts';
 import VueRouter from 'unplugin-vue-router/vite';
+import { VueRouterAutoImports } from 'unplugin-vue-router';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,6 +26,7 @@ export default defineConfig({
         /\.md$/, // .md
       ],
       imports: [
+        VueRouterAutoImports,
         {
           pinia: ['defineStore'],
           vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted'],
@@ -37,6 +40,10 @@ export default defineConfig({
       dts: 'src/components.d.ts',
       deep: true,
       directoryAsNamespace: true,
+    }),
+    Layouts({
+      layoutsDirs: 'src/layouts',
+      defaultLayout: 'default',
     }),
     VueRouter({
       routesFolder: 'src/views',
@@ -61,6 +68,13 @@ export default defineConfig({
     }),
   ],
   define: { 'process.env': {} },
+  build: {
+    chunkSizeWarningLimit: 5000,
+  },
+  optimizeDeps: {
+    exclude: ['vuetify'],
+    entries: ['./src/**/*.vue'],
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

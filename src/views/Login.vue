@@ -18,11 +18,7 @@ const user = ref({
   <div fluid class="d-flex fill-height align-center justify-center">
     <v-row>
       <v-col>
-        <v-card
-          class="mx-auto pa-12 pb-8"
-          elevation="8"
-          max-width="450"
-          rounded="lg">
+        <v-card class="mx-auto pa-12 pb-8" elevation="8" max-width="450" rounded="lg">
           <v-form @submit.prevent="logIn(user.username, user.password)">
             <v-img
               class="mx-auto ma-16"
@@ -64,3 +60,8 @@ const user = ref({
     </v-row>
   </div>
 </template>
+
+<route lang="yaml">
+meta:
+  layout: empty
+</route>
