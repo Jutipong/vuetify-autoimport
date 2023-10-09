@@ -1,3 +1,4 @@
+import { KeyObject } from 'crypto';
 import { Product } from '../types/product';
 import { Header, Option, Result, vTable } from '../types/v-table';
 
@@ -16,7 +17,7 @@ export const useProductStore = defineStore('product', () => {
       ] as Header[],
       options: {
         page: 1,
-        itemsPerPage: 10,
+        itemsPerPage: 25,
       } as Option,
       result: {} as Result<Product>,
     } as vTable<string | null, Product>,
