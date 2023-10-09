@@ -6,13 +6,19 @@
 export {}
 declare global {
   const computed: typeof import('vue')['computed']
+  const defineLoader: typeof import('vue-router/auto')['defineLoader']
+  const definePage: typeof import('unplugin-vue-router/runtime')['_definePage']
   const defineStore: typeof import('pinia')['defineStore']
+  const onBeforeRouteLeave: typeof import('vue-router/auto')['onBeforeRouteLeave']
+  const onBeforeRouteUpdate: typeof import('vue-router/auto')['onBeforeRouteUpdate']
   const onMounted: typeof import('vue')['onMounted']
   const reactive: typeof import('vue')['reactive']
   const ref: typeof import('vue')['ref']
   const useAuthStore: typeof import('./store/auth')['useAuthStore']
   const useLayoutStore: typeof import('./store/layout')['useLayoutStore']
   const useProductStore: typeof import('./store/product')['useProductStore']
+  const useRoute: typeof import('vue-router/auto')['useRoute']
+  const useRouter: typeof import('vue-router/auto')['useRouter']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
 }

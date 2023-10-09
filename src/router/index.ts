@@ -1,69 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router';
-
-const routes = [
-  {
-    path: '/login',
-
-    component: () => import('@/layouts/empty.vue'),
-    children: [
-      {
-        path: '',
-        name: 'login',
-        component: () => import('@/views/login.vue'),
-      },
-    ],
-  },
-  {
-    path: '/',
-    component: () => import('@/layouts/default.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Index',
-        component: () => import('@/views/index.vue'),
-      },
-      {
-        path: 'demo01',
-        name: 'demo01',
-        component: () => import('@/views/demo01.vue'),
-      },
-      {
-        path: 'demo02',
-        name: 'demo02',
-        component: () => import('@/views/demo02.vue'),
-      },
-      {
-        path: 'demo03',
-        name: 'demo03',
-        component: () => import('@/views/demo03.vue'),
-      },
-      {
-        path: 'product',
-        name: 'product',
-        component: () => import('@/views/product.vue'),
-      },
-    ],
-  },
-  // {
-  //   path: '/logout',
-  //   component: {
-  //     beforeRouteEnter(to, from, next) {
-  //       const appStore = useAppStore();
-  //       appStore.SignOut();
-
-  //       next('/login');
-  //     },
-  //   },
-  // },
-  {
-    path: '/:catchAll(.*)*',
-    component: () => import('@/views/error.vue'),
-  },
-];
+import { createRouter, createWebHistory } from 'vue-router/auto';
+import { setupLayouts } from 'virtual:generated-layouts';
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
+  // history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
+  extendRoutes: (routes) => setupLayouts(routes),
   scrollBehavior() {
     return { top: 0 };
   },
@@ -104,7 +45,6 @@ router.beforeEach((to: any, from: any, next: any) => {
 
 router.afterEach(() => {
   // appStore.inprogress = false;
-  // console.log('afterEach');
 });
 
 export default router;
