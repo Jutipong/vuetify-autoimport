@@ -10,6 +10,8 @@ import { fileURLToPath, URL } from 'node:url';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 
+import VueRouter from 'unplugin-vue-router/vite';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -35,6 +37,10 @@ export default defineConfig({
       dts: 'src/components.d.ts',
       deep: true,
       directoryAsNamespace: true,
+    }),
+    VueRouter({
+      routesFolder: 'src/views',
+      dts: 'src/typed-router.d.ts',
     }),
     vue({
       template: { transformAssetUrls },

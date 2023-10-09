@@ -1,69 +1,69 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router/auto';
 
-const routes = [
-  {
-    path: '/login',
+// const routes = [
+//   {
+//     path: '/login',
 
-    component: () => import('@/layouts/empty.vue'),
-    children: [
-      {
-        path: '',
-        name: 'login',
-        component: () => import('@/views/login.vue'),
-      },
-    ],
-  },
-  {
-    path: '/',
-    component: () => import('@/layouts/default.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Index',
-        component: () => import('@/views/index.vue'),
-      },
-      {
-        path: 'demo01',
-        name: 'demo01',
-        component: () => import('@/views/demo01.vue'),
-      },
-      {
-        path: 'demo02',
-        name: 'demo02',
-        component: () => import('@/views/demo02.vue'),
-      },
-      {
-        path: 'demo03',
-        name: 'demo03',
-        component: () => import('@/views/demo03.vue'),
-      },
-      {
-        path: 'product',
-        name: 'product',
-        component: () => import('@/views/product.vue'),
-      },
-    ],
-  },
-  // {
-  //   path: '/logout',
-  //   component: {
-  //     beforeRouteEnter(to, from, next) {
-  //       const appStore = useAppStore();
-  //       appStore.SignOut();
+//     component: () => import('@/layouts/empty.vue'),
+//     children: [
+//       {
+//         path: '',
+//         name: 'login',
+//         component: () => import('@/views/login.vue'),
+//       },
+//     ],
+//   },
+//   {
+//     path: '/',
+//     component: () => import('@/layouts/default.vue'),
+//     children: [
+//       {
+//         path: '',
+//         name: 'Index',
+//         component: () => import('@/views/index.vue'),
+//       },
+//       {
+//         path: 'demo01',
+//         name: 'demo01',
+//         component: () => import('@/views/demo01.vue'),
+//       },
+//       {
+//         path: 'demo02',
+//         name: 'demo02',
+//         component: () => import('@/views/demo02.vue'),
+//       },
+//       {
+//         path: 'demo03',
+//         name: 'demo03',
+//         component: () => import('@/views/demo03.vue'),
+//       },
+//       {
+//         path: 'product',
+//         name: 'product',
+//         component: () => import('@/views/product.vue'),
+//       },
+//     ],
+//   },
+// {
+//   path: '/logout',
+//   component: {
+//     beforeRouteEnter(to, from, next) {
+//       const appStore = useAppStore();
+//       appStore.SignOut();
 
-  //       next('/login');
-  //     },
-  //   },
-  // },
-  {
-    path: '/:catchAll(.*)*',
-    component: () => import('@/views/error.vue'),
-  },
-];
+//       next('/login');
+//     },
+//   },
+// },
+//   {
+//     path: '/:catchAll(.*)*',
+//     component: () => import('@/views/error.vue'),
+//   },
+// ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  // routes,
   scrollBehavior() {
     return { top: 0 };
   },
