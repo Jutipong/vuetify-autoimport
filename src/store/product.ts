@@ -1,4 +1,3 @@
-import { KeyObject } from 'crypto';
 import { Product } from '../types/product';
 import { Header, Option, Result, vTable } from '../types/v-table';
 
