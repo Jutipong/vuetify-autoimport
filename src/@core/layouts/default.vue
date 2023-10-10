@@ -3,11 +3,9 @@
     <LayoutsHeader />
     <LayoutsNavigation />
     <v-main>
-      <perfect-scrollbar>
-        <v-container>
-          <router-view />
-        </v-container>
-      </perfect-scrollbar>
+      <v-container>
+        <router-view />
+      </v-container>
     </v-main>
   </v-app>
 </template>
