@@ -1,14 +1,15 @@
 export const useLayoutStore = defineStore('layout', () => {
-  const isRail = ref(true);
   const title = ref('vite vue3 vuetify ts');
 
+  const drawer = ref(true);
+
   function toggleDrawer() {
-    isRail.value = !isRail.value;
+    drawer.value = !drawer.value;
   }
 
   return {
-    isRail,
     title,
+    drawer,
     toggleDrawer,
   };
 });

@@ -14,6 +14,7 @@ declare global {
   const onMounted: typeof import('vue')['onMounted']
   const reactive: typeof import('vue')['reactive']
   const ref: typeof import('vue')['ref']
+  const toRefs: typeof import('vue')['toRefs']
   const useAuthStore: typeof import('./store/auth')['useAuthStore']
   const useLayoutStore: typeof import('./store/layout')['useLayoutStore']
   const useProductStore: typeof import('./store/product')['useProductStore']

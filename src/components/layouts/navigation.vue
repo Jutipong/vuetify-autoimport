@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-const authStore = useAuthStore();
 const layoutStore = useLayoutStore();
-const open = ref(['Users']);
 
+const open = ref(['Users']);
 const cruds = [
   ['Demo1', 'mdi-chevron-right', '/demo01'],
   ['Demo2', 'mdi-chevron-right', '/demo02'],
@@ -12,7 +11,11 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
 </script>
 
 <template>
-  <v-navigation-drawer elevation="2" expand-on-hover :rail="layoutStore.isRail">
+  <v-navigation-drawer
+    elevation="2"
+    expand-on-hover
+    :rail="!$vuetify.display.mobile"
+    v-model="layoutStore.drawer">
     <v-list density="compact">
       <v-list-item
         prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg"

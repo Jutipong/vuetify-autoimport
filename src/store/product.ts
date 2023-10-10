@@ -1,5 +1,5 @@
 import { Product } from '../types/product';
-import { Header, Option, Result, vTable } from '../types/v-table';
+import { Header, Option, Result, vTable } from '../types/table';
 
 export const useProductStore = defineStore('product', () => {
   const state = reactive({

@@ -29,7 +29,7 @@ export default defineConfig({
         VueRouterAutoImports,
         {
           pinia: ['defineStore'],
-          vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted'],
+          vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
         },
       ],
       dirs: ['src/store'],
