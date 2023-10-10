@@ -11,7 +11,7 @@ const { app } = useConst;
     <!-- </v-system-bar> -->
     <v-app-bar color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
       <v-app-bar-nav-icon
-        :icon="layoutStore.state.drawer ? 'mdi-menu-close' : 'mdi-menu-open'"
+        :icon="layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'"
         variant="text"
         @click="layoutStore.toggleDrawer"></v-app-bar-nav-icon>
       <v-app-bar-title>{{ app.appNam }} </v-app-bar-title>
