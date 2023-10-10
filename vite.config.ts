@@ -42,11 +42,11 @@ export default defineConfig({
       directoryAsNamespace: true,
     }),
     Layouts({
-      layoutsDirs: 'src/layouts',
+      layoutsDirs: 'src/components/layouts',
       defaultLayout: 'default',
     }),
     VueRouter({
-      routesFolder: 'src/views',
+      routesFolder: 'src/pages',
       dts: 'src/typed-router.d.ts',
     }),
     vue({
