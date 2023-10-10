@@ -1,12 +1,5 @@
 <script lang="ts" setup>
-const { state, isLogin, logIn, logOut } = useAuthStore();
-
-onMounted(() => {
-  if (isLogin()) {
-    logOut();
-  }
-});
-
+const { state, logIn } = useAuthStore();
 const user = ref({
   username: 'admin',
   password: 'sdkjslfjaldjkl;flslsjfljslkkd',

@@ -14,4 +14,6 @@ export const consts = {
     save: 'save',
     view: 'view',
   },
+  tokenKey: 'efa32@fskf%4dsf',
+  userInfKey: 'userInfo',
 };

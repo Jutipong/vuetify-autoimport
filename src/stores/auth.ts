@@ -1,52 +1,51 @@
 import { UserLogin } from '../types/auth';
 import router from '@/@core/plugins/router';
-const { url } = consts;
 
 export const useAuthStore = defineStore('auth', () => {
-  const state = reactive({ loading: false });
-  const user_login = 'user_login';
+  const state = reactive({
+    loading: false,
+  });
 
-  async function logIn(username: string, password: string): Promise<void> {
+  async function logIn(username: string, password: string) {
     state.loading = true;
 
-    await fetch(`${url.api}/auth/login`, {
+    await fetch(`${consts.url.api}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         username: 'kminchelle',
         password: '0lelplR',
-        // expiresInMins: 60, // optional
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        sessionStorage.setItem(user_login, JSON.stringify(data));
+        useLocalStorages.setToken(data.token);
+        useLocalStorages.setUserInfo(data);
       });
 
     state.loading = false;
-    router.replace('/');
+
+    router.push('/');
   }
 
-  async function logOut(): Promise<void> {
-    const timeout = setTimeout(() => {
-      sessionStorage.removeItem(user_login);
-      clearTimeout(timeout);
-    }, 200);
-
-    router.replace('/login');
+  async function logOut() {
+    router.push('/login');
   }
 
-  function _getUserInfo(): UserLogin | null {
-    const userLoin = sessionStorage.getItem(user_login);
-    if (!userLoin) return null;
+  function _getUserInfo() {
+    const val = useLocalStorages.getUserInfo();
+    if (!val) {
+      router.push('/login');
+      return null;
+    }
 
-    const user: UserLogin = JSON.parse(userLoin);
-    return user;
+    const userInfo: UserLogin = val;
+    return userInfo;
   }
 
-  function isLogin(): boolean {
+  function isLogin() {
     let userInfo = _getUserInfo();
-    return userInfo ? true : false;
+    return _isEmpty(userInfo) ? false : true;
   }
 
   function getUserInfo(): UserLogin {
@@ -54,11 +53,9 @@ export const useAuthStore = defineStore('auth', () => {
     return userInfo;
   }
 
-  function getToken(): string | null {
-    const userInfo = _getUserInfo();
-    if (!userInfo) return null;
-
-    return userInfo.token;
+  function getToken() {
+    const token = useLocalStorages.getToken();
+    return token;
   }
 
   return {
