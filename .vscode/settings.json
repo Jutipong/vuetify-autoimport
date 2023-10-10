@@ -46,6 +46,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
+    ".browserslistrc": true,
     ".gitignore": true,
     "index.html": true,
     "tsconfig.node.json": true,
