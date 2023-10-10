@@ -7,9 +7,9 @@ import ViteFonts from 'unplugin-fonts/vite';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 
+// Auto imports
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-
 import Layouts from 'vite-plugin-vue-layouts';
 import VueRouter from 'unplugin-vue-router/vite';
 import { VueRouterAutoImports } from 'unplugin-vue-router';
@@ -32,7 +32,7 @@ export default defineConfig({
           vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
         },
       ],
-      dirs: ['src/store'],
+      dirs: ['src/stores'],
       dts: './src/auto-imports.d.ts',
     }),
     Components({

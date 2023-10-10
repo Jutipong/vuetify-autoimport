@@ -8,8 +8,8 @@
 
 import App from './App.vue';
 
-import vuetify from '@/plugins/vuetify';
-import router from '@/plugins/router';
+import vuetify from '@/@core/plugins/vuetify';
+import router from '@/@core/plugins/router';
 
 import PerfectScrollbar from 'vue3-perfect-scrollbar';
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css';

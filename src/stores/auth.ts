@@ -1,9 +1,10 @@
 import { UserLogin } from '../types/auth';
-import router from '@/plugins/router';
+import router from '@/@core/plugins/router';
 
 export const useAuthStore = defineStore('auth', () => {
   const state = reactive({ loading: false });
   const user_login = 'user_login';
+
   async function logIn(username: string, password: string) {
     state.loading = true;
 
