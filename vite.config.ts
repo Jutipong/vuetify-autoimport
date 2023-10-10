@@ -32,7 +32,7 @@ export default defineConfig({
           vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
         },
       ],
-      dirs: ['src/stores'],
+      dirs: ['src/@core/utils', 'src/stores'],
       dts: './src/auto-imports.d.ts',
     }),
     Components({

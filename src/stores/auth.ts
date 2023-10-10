@@ -5,7 +5,7 @@ export const useAuthStore = defineStore('auth', () => {
   const state = reactive({ loading: false });
   const user_login = 'user_login';
 
-  async function logIn(username: string, password: string) {
+  async function logIn(username: string, password: string): Promise<void> {
     state.loading = true;
 
     await fetch('https://dummyjson.com/auth/login', {
