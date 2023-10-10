@@ -45,6 +45,11 @@
     "**/CVS": true,
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
-    "**/node_modules": true
+    "**/node_modules": true,
+    ".gitignore": true,
+    "index.html": true,
+    "tsconfig.node.json": true,
+    "src/vite-env.d.ts": true,
+    "yarn.lock": true
   }
 }
