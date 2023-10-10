@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router/auto';
 import { setupLayouts } from 'virtual:generated-layouts';
-const { userInfKey } = consts;
+
 const { getToken, clearToken, clearUserInfo } = useLocalStorages;
 
 const router = createRouter({

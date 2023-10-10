@@ -21,7 +21,7 @@ export type Result<TDatas> = {
   total: number;
 };
 
-export type vTable<TSearch, TDatas> = {
+export type Table<TSearch, TDatas> = {
   header: Header[];
   search: TSearch;
   options: Option;

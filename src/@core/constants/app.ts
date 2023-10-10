@@ -1,4 +1,4 @@
-export const consts = {
+export const useConst = {
   app: {
     appNam: import.meta.env.VITE_APP_NAME,
   },

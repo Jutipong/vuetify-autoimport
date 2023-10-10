@@ -1,11 +1,12 @@
 import { Product } from '../types/product';
-import { Header, Option, Result, vTable } from '../types/table';
+import { Option, Table } from '../types/table';
+const { pageSize } = useTableConfig;
 
 export const useProductStore = defineStore('product', () => {
   const state = reactive({
     loading: false,
     table: {
-      search: '',
+      search: null,
       header: [
         { title: 'ID', key: 'id', align: 'center' },
         { title: 'Title', key: 'title' },
@@ -13,13 +14,17 @@ export const useProductStore = defineStore('product', () => {
         { title: 'RATING', key: 'rating', align: 'end' },
         { title: 'STOCK', key: 'stock', align: 'end' },
         { title: 'BRAND', key: 'brand', align: 'end' },
-      ] as Header[],
+      ],
       options: {
         page: 1,
-        itemsPerPage: 25,
-      } as Option,
-      result: {} as Result<Product>,
-    } as vTable<string | null, Product>,
+        itemsPerPage: pageSize,
+        sortBy: [],
+      },
+      result: {
+        datas: [],
+        total: 0,
+      },
+    } as Table<string | null, Product>,
   });
 
   async function getProducts(option: Option | null = null) {
@@ -32,7 +37,7 @@ export const useProductStore = defineStore('product', () => {
         : (state.table.options.page - 1) * state.table.options.itemsPerPage;
 
     await fetch(
-      `${consts.url.api}/products/search?q=${state.table.search ?? ''}&limit=${
+      `${useConst.url.api}/products/search?q=${state.table.search ?? ''}&limit=${
         state.table.options.itemsPerPage
       }&skip=${page}`,
       {

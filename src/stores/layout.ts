@@ -1,12 +1,12 @@
 export const useLayoutStore = defineStore('layout', () => {
-  const drawer = ref(true);
+  const state = reactive({ drawer: true });
 
   function toggleDrawer() {
-    drawer.value = !drawer.value;
+    state.drawer = !state.drawer;
   }
 
   return {
-    drawer,
+    state,
     toggleDrawer,
   };
 });
