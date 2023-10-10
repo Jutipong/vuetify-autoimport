@@ -42,7 +42,7 @@ export default defineConfig({
       directoryAsNamespace: true,
     }),
     Layouts({
-      layoutsDirs: 'src/components/layouts',
+      layoutsDirs: 'src/@core/layouts',
       defaultLayout: 'default',
     }),
     VueRouter({
