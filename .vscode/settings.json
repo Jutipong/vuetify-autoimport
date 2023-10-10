@@ -19,6 +19,13 @@
     "vueuse",
     "wght"
   ],
+  "editor.formatOnSave": true,
+  "editor.fontLigatures": true,
+  "editor.smoothScrolling": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.cursorBlinking": "expand",
+  "editor.semanticHighlighting.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "on",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
