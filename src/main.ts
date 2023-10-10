@@ -4,17 +4,22 @@
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
 
-// Components
-import App from './App.vue'
+// import '@/scss/style.scss';
 
-// Composables
-import { createApp } from 'vue'
+import App from './App.vue';
 
-// Plugins
-import { registerPlugins } from '@/plugins'
+import vuetify from '@/plugins/vuetify';
+import router from '@/plugins/router';
 
-const app = createApp(App)
+import PerfectScrollbar from 'vue3-perfect-scrollbar';
+import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css';
 
-registerPlugins(app)
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-app.mount('#app')
+const app = createApp(App);
+app.use(PerfectScrollbar);
+app.use(vuetify);
+app.use(router);
+app.use(createPinia());
+app.mount('#app');

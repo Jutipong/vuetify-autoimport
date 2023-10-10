@@ -24,47 +24,47 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
     </v-list>
 
     <v-divider />
+    <perfect-scrollbar>
+      <v-list
+        color="primary"
+        density="compact"
+        variant="plain"
+        nav
+        :lines="false"
+        v-model:opened="open">
+        <v-list-item prepend-icon="mdi-home" title="Home" value="/" to="/"></v-list-item>
 
-    <v-list
-      color="primary"
-      density="compact"
-      variant="plain"
-      nav
-      :lines="false"
-      v-model:opened="open">
-      <v-list-item prepend-icon="mdi-home" title="Home" value="/" to="/"></v-list-item>
+        <v-list-group value="Users">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 1"></v-list-item>
+          </template>
+          <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
-      <v-list-group value="Users">
-        <template v-slot:activator="{ props }">
-          <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 1"></v-list-item>
-        </template>
-        <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
+          <v-list-item
+            v-for="([title, icon, to], i) in cruds"
+            :key="i"
+            :value="to"
+            :to="to"
+            :title="title">
+          </v-list-item>
+        </v-list-group>
 
-        <v-list-item
-          v-for="([title, icon, to], i) in cruds"
-          :key="i"
-          :value="to"
-          :to="to"
-          :title="title">
-        </v-list-item>
-      </v-list-group>
+        <v-list-group value="Users2">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 2"></v-list-item>
+          </template>
+          <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
-      <v-list-group value="Users2">
-        <template v-slot:activator="{ props }">
-          <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 2"></v-list-item>
-        </template>
-        <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
-
-        <v-list-item
-          v-for="([title, icon, to], i) in cruds2"
-          :key="i"
-          :value="to"
-          :to="to"
-          :title="title">
-        </v-list-item>
-      </v-list-group>
-    </v-list>
-
+          <v-list-item
+            v-for="([title, icon, to], i) in cruds2"
+            :key="i"
+            :value="to"
+            :to="to"
+            :title="title">
+          </v-list-item>
+        </v-list-group>
+      </v-list>
+    </perfect-scrollbar>
     <!-- <template v-slot:append>
       <div class="pa-2">
         <v-btn block color="red" @click="authStore.logOut()">
