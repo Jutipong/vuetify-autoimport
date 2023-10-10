@@ -1,5 +1,5 @@
 import { UserLogin } from '../types/auth';
-import router from '@/router';
+import router from '@/plugins/router';
 
 export const useAuthStore = defineStore('auth', () => {
   const state = reactive({ loading: false });

@@ -10,7 +10,7 @@ const productStore = useProductStore();
           Search
         </v-chip>
       </v-card-title>
-      <v-divider></v-divider>
+      <v-divider />
       <v-card-text>
         <v-row class="">
           <v-col cols="12" md="4">
@@ -28,7 +28,7 @@ const productStore = useProductStore();
           </v-col>
         </v-row>
       </v-card-text>
-      <v-divider></v-divider>
+      <v-divider />
       <v-card-actions class="justify-end">
         <v-btn
           color="warning"
@@ -45,8 +45,8 @@ const productStore = useProductStore();
     </v-card>
 
     <v-card>
-      <v-card-text>
-        <v-row class="mb-1">
+      <v-card-title>
+        <v-row>
           <v-col md="6">
             <v-chip
               variant="outlined"
@@ -57,9 +57,12 @@ const productStore = useProductStore();
             >
           </v-col>
           <v-col class="text-right" md="6">
-            <v-btn color="success" prepend-icon="mdi-plus" text="Search"> </v-btn>
+            <v-btn color="success" prepend-icon="mdi-plus" text="Add"> </v-btn>
           </v-col>
         </v-row>
+      </v-card-title>
+      <v-divider />
+      <v-card-text>
         <v-data-table-server
           v-model:items-per-page="productStore.state.table.options.itemsPerPage"
           :headers="productStore.state.table.header"

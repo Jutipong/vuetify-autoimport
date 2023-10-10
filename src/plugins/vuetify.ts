@@ -49,14 +49,12 @@ export default createVuetify({
         variant: 'flat',
       },
     },
-    VCardTitle: {
-      class: 'mx-1',
-    },
+    VCardTitle: {},
     VCardText: {
-      class: 'mx-1',
+      class: 'ma-1',
     },
     VCardActions: {
-      class: 'mx-1',
+      class: 'mt-1 mr-2 ml-2',
       VBtn: {
         variant: 'flat',
       },
