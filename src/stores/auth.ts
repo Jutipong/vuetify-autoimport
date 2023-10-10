@@ -1,5 +1,6 @@
 import { UserLogin } from '../types/auth';
 import router from '@/@core/plugins/router';
+const { url } = consts;
 
 export const useAuthStore = defineStore('auth', () => {
   const state = reactive({ loading: false });
@@ -8,7 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function logIn(username: string, password: string): Promise<void> {
     state.loading = true;
 
-    await fetch('https://dummyjson.com/auth/login', {
+    await fetch(`${url.api}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

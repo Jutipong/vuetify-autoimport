@@ -32,7 +32,7 @@ export const useProductStore = defineStore('product', () => {
         : (state.table.options.page - 1) * state.table.options.itemsPerPage;
 
     await fetch(
-      `${import.meta.env.VITE_API_BASE_URL}/search?q=${state.table.search ?? ''}&limit=${
+      `${consts.url.api}/products/search?q=${state.table.search ?? ''}&limit=${
         state.table.options.itemsPerPage
       }&skip=${page}`,
       {
