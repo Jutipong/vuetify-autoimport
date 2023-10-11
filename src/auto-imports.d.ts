@@ -16,6 +16,7 @@ declare global {
   const defineLoader: typeof import('vue-router/auto')['defineLoader']
   const definePage: typeof import('unplugin-vue-router/runtime')['_definePage']
   const defineStore: typeof import('pinia')['defineStore']
+  const notify: typeof import('./@core/utils/notify')['notify']
   const onBeforeRouteLeave: typeof import('vue-router/auto')['onBeforeRouteLeave']
   const onBeforeRouteUpdate: typeof import('vue-router/auto')['onBeforeRouteUpdate']
   const onMounted: typeof import('vue')['onMounted']

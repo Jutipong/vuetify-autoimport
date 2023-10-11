@@ -1,5 +1,4 @@
 import axios from 'axios';
-const { logOut } = useAuthStore();
 const { getToken } = useLocalStorages;
 
 // create axios
@@ -10,6 +9,7 @@ const api = axios.create({
 });
 
 const err = (error: any) => {
+  const { logOut } = useAuthStore();
   debugger;
   const { status, data } = error.response;
 

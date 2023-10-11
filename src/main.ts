@@ -14,8 +14,17 @@ import router from '@/@core/plugins/router';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
+import Toast, { PluginOptions } from 'vue-toastification';
+import 'vue-toastification/dist/index.css';
+
 const app = createApp(App);
 app.use(vuetify);
 app.use(router);
 app.use(createPinia());
+app.use(Toast, {
+  transition: 'Vue-Toastification__bounce',
+  timeout: 5000,
+  maxToasts: 1,
+  newestOnTop: true,
+} as PluginOptions);
 app.mount('#app');
