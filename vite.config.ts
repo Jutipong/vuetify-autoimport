@@ -7,6 +7,8 @@ import ViteFonts from 'unplugin-fonts/vite';
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url';
 
+import VueDevTools from 'vite-plugin-vue-devtools';
+
 // Auto imports
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -49,6 +51,7 @@ export default defineConfig({
       routesFolder: 'src/pages',
       dts: 'src/typed-router.d.ts',
     }),
+    VueDevTools(),
     vue({
       template: { transformAssetUrls },
     }),
