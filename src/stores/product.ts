@@ -37,7 +37,7 @@ export const useProductStore = defineStore('product', () => {
         : (state.table.options.page - 1) * state.table.options.itemsPerPage;
 
     await fetch(
-      `${useConst.url.api}/products/search?q=${state.table.search ?? ''}&limit=${
+      `${appConfig.url.api}/products/search?q=${state.table.search ?? ''}&limit=${
         state.table.options.itemsPerPage
       }&skip=${page}`,
       {

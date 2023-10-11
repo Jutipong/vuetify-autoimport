@@ -1,59 +1,92 @@
-// import axios from 'axios';
-// import store from '@/store';
-// // create axios
-// const service = axios.create({
-//   baseURL: process.env.VUE_APP_BASE_API, // api base_url
-//   timeout: 50000, // timeout,
-//   headers: { 'Access-Control-Allow-Origin': '*' },
-// });
+import axios from 'axios';
+const { logOut } = useAuthStore();
+const { getToken } = useLocalStorages;
 
-// const err = (error) => {
-//   const { status, data } = error.response;
-//   const { errors } = data;
-//   let message = [];
-//   for (let field in errors) {
-//     message.push(errors[field]);
-//   }
-//   console.log(data);
-//   switch (status) {
-//     case 400:
-//       store.commit('SHOW_SNACKBAR', { text: data.message, color: 'error' });
-//       break;
-//     case 422:
-//       store.commit('SHOW_SNACKBAR', { text: message, color: 'error' });
-//       break;
-//     case 401:
-//       store.commit('SHOW_SNACKBAR', { text: data.message, color: 'error' });
-//       break;
-//     case 403:
-//       store.commit('SHOW_SNACKBAR', { text: message, color: 'error' });
-//       break;
-//     case 500:
-//       store.commit('SHOW_SNACKBAR', { text: 'server error', color: 'error' });
-//       break;
-//     default:
-//       break;
-//   }
-//   return Promise.reject(error);
-// };
+// create axios
+const api = axios.create({
+  baseURL: appConfig.url.api,
+  timeout: 5000,
+  headers: { 'Access-Control-Allow-Origin': '*' },
+});
 
-// // request interceptor
-// service.interceptors.request.use((config: any) => {
-//   config.headers['Access-Control-Allow-Origin'] = '*';
-//   config.headers['Content-Type'] = 'application/json';
-//   config.headers['Authorization'] = 'Bearer ' + store.getters.getAccessToken;
+const err = (error: any) => {
+  debugger;
+  const { status, data } = error.response;
 
-//   return config;
-// }, err);
+  // const { errors } = data;
+  // let message = [];
+  // for (let field in errors) {
+  //   message.push(errors[field]);
+  // }
 
-// // response interceptor
+  console.log(data);
 
-// service.interceptors.response.use(({ data: any, config: any }) => {
-//   if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta) {
-//     store.commit('SHOW_SNACKBAR', { text: data.meta.message, color: 'success' });
-//   }
+  switch (status) {
+    case 401:
+      //   defaultNotify.message = '';
+      //   Notify.create(defaultNotify);
+      logOut();
+      break;
+    case 403:
+      //   defaultNotify.message = 'การเข้าถึงถูกปฏิเสธ (403)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 404:
+      //   defaultNotify.message = 'ไม่พบบริการ (404)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 408:
+      //   defaultNotify.message = 'คำขอหมดเวลา (408)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 500:
+      //   defaultNotify.message = 'ข้อผิดพลาดของเซิร์ฟเวอร์ (500)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 501:
+      //   defaultNotify.message = 'ไม่ได้ใช้บริการ (501)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 502:
+      //   defaultNotify.message = 'ข้อผิดพลาดของเครือข่าย (502)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 503:
+      //   defaultNotify.message = 'ไม่สามารถให้บริการได้ (503)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 504:
+      //   defaultNotify.message = 'เครือข่ายหมดเวลา (504)';
+      //   Notify.create(defaultNotify);
+      break;
+    case 505:
+      //   defaultNotify.message = 'ไม่รองรับเวอร์ชัน HTTP (505)';
+      //   Notify.create(defaultNotify);
+      break;
+    default:
+      //   Notify.create(defaultNotify);
+      break;
+  }
+  return Promise.reject(error);
+};
 
-//   return data;
-// }, err);
+// request interceptor
+api.interceptors.request.use((config: any) => {
+  config.headers['Access-Control-Allow-Origin'] = '*';
+  config.headers['Content-Type'] = 'application/json';
+  config.headers['Authorization'] = 'Bearer ' + getToken();
 
-// export default service;
+  return config;
+}, err);
+
+// response interceptor
+
+api.interceptors.response.use(({ data, config }: any) => {
+  // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta) {
+  //   store.commit('SHOW_SNACKBAR', { text: data.meta.message, color: 'success' });
+  // }
+
+  return data;
+}, err);
+
+export default api;

@@ -9,19 +9,15 @@ export const useAuthStore = defineStore('auth', () => {
   async function logIn(username: string, password: string) {
     state.loading = true;
 
-    await fetch(`${useConst.url.api}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: 'kminchelle',
-        password: '0lelplR',
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        useLocalStorages.setToken(data.token);
-        useLocalStorages.setUserInfo(data);
-      });
+    const req = {
+      username: 'kminchelle',
+      password: '0lelplR',
+    };
+
+    const res: UserLogin = await api.post('/auth/login', req);
+
+    useLocalStorages.setToken(res.token);
+    useLocalStorages.setUserInfo(res);
 
     state.loading = false;
 

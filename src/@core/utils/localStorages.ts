@@ -5,23 +5,23 @@ export const useLocalStorages = {
   // token //
   ///////////
   setToken: (token: string) => {
-    sessionStorage.setItem(useConst.tokenKey, token);
+    sessionStorage.setItem(appConfig.tokenKey, token);
   },
   getToken: (): string | null => {
-    const token = sessionStorage.getItem(useConst.tokenKey);
+    const token = sessionStorage.getItem(appConfig.tokenKey);
     return token;
   },
-  clearToken: () => sessionStorage.removeItem(useConst.tokenKey),
+  clearToken: () => sessionStorage.removeItem(appConfig.tokenKey),
 
   /////////////
   //user info//
   /////////////
   setUserInfo: (userInfo: UserLogin) => {
-    sessionStorage.setItem(useConst.userInfKey, JSON.stringify(userInfo));
+    sessionStorage.setItem(appConfig.userInfKey, JSON.stringify(userInfo));
   },
   getUserInfo: (): UserLogin | null => {
-    const userInfo = sessionStorage.getItem(useConst.userInfKey);
+    const userInfo = sessionStorage.getItem(appConfig.userInfKey);
     return userInfo ? JSON.parse(userInfo) : null;
   },
-  clearUserInfo: () => sessionStorage.removeItem(useConst.userInfKey),
+  clearUserInfo: () => sessionStorage.removeItem(appConfig.userInfKey),
 };
