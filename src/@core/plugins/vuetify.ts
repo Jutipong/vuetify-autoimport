@@ -52,6 +52,16 @@ export default createVuetify({
     VCardTitle: {},
     VCardText: {
       class: 'ma-1',
+      VSelect: {
+        clearable: true,
+        variant: 'outlined',
+        density: 'compact',
+        color: 'primary',
+        hideDetails: 'auto',
+        dirty: true,
+        itemTitle: 'text',
+        itemValue: 'id',
+      },
     },
     VCardActions: {
       class: 'mt-1 mr-2 ml-2',
@@ -97,31 +107,32 @@ export default createVuetify({
     },
     VDataTableServer: {
       color: 'primary',
-      density: 'comfortable',
+      density: 'compact',
       hover: true,
+      VSelect: {
+        clearable: false,
+        variant: 'outlined',
+        density: 'compact',
+        itemTitle: 'title',
+        itemValue: 'value',
+      },
     },
     // VPagination: {
     //   activeColor: 'error',
-    //   density: 'comfortable',
+    //   density: 'compact',
     // },
     VCheckbox: {
       color: 'primary',
-      density: 'comfortable',
+      density: 'compact',
       hideDetails: 'auto',
     },
     VRadioGroup: {
       color: 'primary',
-      density: 'comfortable',
+      density: 'compact',
       hideDetails: 'auto',
     },
     VRadio: {
-      density: 'comfortable',
-      hideDetails: 'auto',
-    },
-    VSelect: {
-      variant: 'outlined',
-      density: 'comfortable',
-      color: 'primary',
+      density: 'compact',
       hideDetails: 'auto',
     },
     VTabs: {

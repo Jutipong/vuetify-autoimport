@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-const productStore = useProductStore();
+const { getProducts, onClean } = useProductStore();
+const { state } = toRefs(useProductStore());
 </script>
 
 <template>
@@ -14,9 +15,7 @@ const productStore = useProductStore();
       <v-card-text>
         <v-row class="">
           <v-col cols="12" md="4">
-            <v-text-field
-              label="First name"
-              v-model="productStore.state.table.search"></v-text-field>
+            <v-text-field label="First name" v-model="state.table.search"></v-text-field>
           </v-col>
 
           <v-col cols="12" md="4">
@@ -24,22 +23,18 @@ const productStore = useProductStore();
           </v-col>
 
           <v-col cols="12" md="4">
-            <v-text-field label="E-mail"></v-text-field>
+            <v-select
+              label="Status"
+              :dirty="true"
+              :items="state.status.options"
+              v-model="state.status.value"></v-select>
           </v-col>
         </v-row>
       </v-card-text>
       <v-divider />
       <v-card-actions class="justify-end">
-        <v-btn
-          color="warning"
-          prepend-icon="mdi-refresh"
-          text="Clear"
-          @click="productStore.onClean()"></v-btn>
-        <v-btn
-          color="primary"
-          prepend-icon="mdi-magnify"
-          text="Search"
-          @click="productStore.getProducts()">
+        <v-btn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="onClean()"></v-btn>
+        <v-btn color="primary" prepend-icon="mdi-magnify" text="Search" @click="getProducts()">
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -64,12 +59,12 @@ const productStore = useProductStore();
       <v-divider />
       <v-card-text>
         <v-data-table-server
-          v-model:items-per-page="productStore.state.table.options.itemsPerPage"
-          :headers="productStore.state.table.header"
-          :items-length="productStore.state.table.result.total ?? 10"
-          :items="productStore.state.table.result.datas"
-          :loading="productStore.state.loading"
-          @update:options="productStore.getProducts">
+          :items-per-page="state.table.options.itemsPerPage"
+          :headers="state.table.header"
+          :items-length="state.table.result.total"
+          :items="state.table.result.datas"
+          :loading="state.loading"
+          @update:options="getProducts">
         </v-data-table-server>
       </v-card-text>
     </v-card>

@@ -1,5 +1,7 @@
 import { Product } from '../types/product';
-import { Option, Table } from '../types/table';
+import { Option, Table } from '../types/common/table';
+import { Select } from '@/types/common/select';
+
 const { pageSize } = useTableConfig;
 
 export const useProductStore = defineStore('product', () => {
@@ -25,6 +27,13 @@ export const useProductStore = defineStore('product', () => {
         total: 0,
       },
     } as Table<string | null, Product>,
+    status: {
+      value: null,
+      options: ref<Select<boolean>[]>([
+        { id: true, text: 'Active' },
+        { id: false, text: 'InActive' },
+      ]),
+    },
   });
 
   async function getProducts(option: Option | null = null) {
