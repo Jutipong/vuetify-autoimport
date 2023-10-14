@@ -11,3 +11,8 @@ export type Product = {
   thumbnail: string;
   images: string[];
 };
+
+export interface ModalProps {
+  active: boolean;
+  data?: Product;
+}

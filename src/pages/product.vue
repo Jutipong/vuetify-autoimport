@@ -1,10 +1,20 @@
 <script lang="ts" setup>
+import { ModalProps } from '@/types/product';
+
 const { getProducts, onClean } = useProductStore();
 const { state } = toRefs(useProductStore());
+
+const active = ref(false);
+
+function onModalOpen() {
+  active.value = true;
+}
 </script>
 
 <template>
   <div>
+    <product-add-modal v-model="active"></product-add-modal>
+
     <v-card>
       <v-card-title>
         <v-chip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
@@ -33,8 +43,16 @@ const { state } = toRefs(useProductStore());
       </v-card-text>
       <v-divider />
       <v-card-actions class="justify-end">
-        <v-btn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="onClean()"></v-btn>
-        <v-btn color="primary" prepend-icon="mdi-magnify" text="Search" @click="getProducts()">
+        <v-btn
+          color="warning"
+          prepend-icon="mdi-refresh"
+          text="Clear"
+          @click="onClean()"></v-btn>
+        <v-btn
+          color="primary"
+          prepend-icon="mdi-magnify"
+          text="Search"
+          @click="getProducts()">
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -52,7 +70,11 @@ const { state } = toRefs(useProductStore());
             >
           </v-col>
           <v-col class="text-right" md="6">
-            <v-btn color="success" prepend-icon="mdi-plus" text="Add"> </v-btn>
+            <v-btn
+              color="success"
+              prepend-icon="mdi-plus"
+              text="Add"
+              @click="onModalOpen()"></v-btn>
           </v-col>
         </v-row>
       </v-card-title>
