@@ -7,6 +7,7 @@ const { pageSize } = useTableConfig;
 export const useProductStore = defineStore('product', () => {
   const state = reactive({
     loading: false,
+    activeModal: false,
     table: {
       search: null,
       header: [

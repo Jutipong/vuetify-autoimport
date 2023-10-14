@@ -1,19 +1,10 @@
 <script lang="ts" setup>
-import { ModalProps } from '@/types/product';
-
-const { getProducts, onClean } = useProductStore();
-const { state } = toRefs(useProductStore());
-
-const active = ref(false);
-
-function onModalOpen() {
-  active.value = true;
-}
+const { getProducts, onClean, state } = useProductStore();
 </script>
 
 <template>
   <div>
-    <product-add-modal v-model="active"></product-add-modal>
+    <product-action-modal v-model="state.activeModal"></product-action-modal>
 
     <v-card>
       <v-card-title>
@@ -74,7 +65,7 @@ function onModalOpen() {
               color="success"
               prepend-icon="mdi-plus"
               text="Add"
-              @click="onModalOpen()"></v-btn>
+              @click="state.activeModal = true"></v-btn>
           </v-col>
         </v-row>
       </v-card-title>

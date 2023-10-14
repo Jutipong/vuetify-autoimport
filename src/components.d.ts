@@ -9,7 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     LayoutsHeader: typeof import('./components/layouts/header.vue')['default']
     LayoutsNavigation: typeof import('./components/layouts/navigation.vue')['default']
-    ProductAddModal: typeof import('./components/product/add-modal.vue')['default']
+    ProductActionModal: typeof import('./components/product/action-modal.vue')['default']
     ProductSearch: typeof import('./components/product/search.vue')['default']
     ProductTable: typeof import('./components/product/table.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
