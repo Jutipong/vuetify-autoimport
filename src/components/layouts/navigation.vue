@@ -14,13 +14,23 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
   <v-navigation-drawer
     elevation="2"
     expand-on-hover
-    :rail="!$vuetify.display.mobile"
+    :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
     v-model="layoutStore.state.drawer">
     <v-list density="compact">
       <v-list-item
         prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg"
         title="ABC"
-        subtitle="abc@gmail.com"></v-list-item>
+        subtitle="abc@gmail.com">
+        <template v-slot:append>
+          <div class="justify-self-end">
+            <v-btn
+              rounded="xl"
+              :icon="layoutStore.state.isRail ? 'mdi-pin-off-outline' : 'mdi-pin-outline'"
+              @click="layoutStore.toggleRail()">
+            </v-btn>
+          </div>
+        </template>
+      </v-list-item>
     </v-list>
 
     <v-divider />
