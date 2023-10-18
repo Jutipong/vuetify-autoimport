@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { Product } from '@/types/product';
+
+const { Create } = useProductStore();
 const active = defineModel<boolean>();
+// const props = defineProps<Product>();
 
 function onClosed() {
   active.value = false;
-}
-
-function onSave() {
-  console.log('save');
 }
 </script>
 
@@ -48,7 +48,7 @@ function onSave() {
               color="primary"
               prepend-icon="mdi-content-save"
               text="Save"
-              @click="onSave()"></v-btn>
+              @click=""></v-btn>
             <v-btn
               color="warning"
               text="Close"

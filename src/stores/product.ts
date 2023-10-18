@@ -47,20 +47,14 @@ export const useProductStore = defineStore('product', () => {
         ? 0
         : (state.data.table.options.page - 1) * state.data.table.options.itemsPerPage;
 
-    await fetch(
+    const res: any = await api.get(
       `${appConfig.url.api}/products/search?q=${state.data.table.search ?? ''}&limit=${
         state.data.table.options.itemsPerPage
-      }&skip=${page}`,
-      {
-        method: 'get',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        state.data.table.result.datas = data?.products ?? [];
-        state.data.table.result.total = data?.total ?? 10;
-      });
+      }`
+    );
+
+    state.data.table.result.datas = res?.products ?? [];
+    state.data.table.result.total = res?.total ?? 10;
 
     state.data.loading = false;
   }
@@ -69,7 +63,7 @@ export const useProductStore = defineStore('product', () => {
     state.data.loading = true;
 
     debugger;
-    const res = await api.post(`${appConfig.url.api}/products/add`);
+    const res = await api.post(`${appConfig.url.api}/products/add`, product);
 
     notify.success('Product created successfully');
     state.data.loading = false;
