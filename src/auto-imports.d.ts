@@ -24,6 +24,7 @@ declare global {
   const ref: typeof import('vue')['ref']
   const toRefs: typeof import('vue')['toRefs']
   const useAuthStore: typeof import('./stores/auth')['useAuthStore']
+  const useGlobalStore: typeof import('./stores/global')['useGlobalStore']
   const useLayoutStore: typeof import('./stores/layout')['useLayoutStore']
   const useLocalStorages: typeof import('./@core/utils/localStorages')['useLocalStorages']
   const useProductStore: typeof import('./stores/product')['useProductStore']

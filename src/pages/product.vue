@@ -1,10 +1,23 @@
 <script lang="ts" setup>
+import { Product, newProductType } from '@/types/product';
+
 const { GetProducts, Clear, state } = useProductStore();
+
+const actionData = ref<Product>(newProductType());
+
+function onAction(obj: Product | null) {
+  Object.assign(actionData.value, obj ?? newProductType());
+  state.data.activeModal = true;
+}
+
+function onDelete(obj: Product) {
+  console.log(obj);
+}
 </script>
 
 <template>
   <div>
-    <product-action-modal v-model="state.data.activeModal" />
+    <product-action-modal :product="actionData" v-model="state.data.activeModal" />
 
     <v-card>
       <v-card-title>
@@ -67,7 +80,7 @@ const { GetProducts, Clear, state } = useProductStore();
               color="success"
               prepend-icon="mdi-plus"
               text="Add"
-              @click="state.data.activeModal = true"></v-btn>
+              @click="onAction(null)"></v-btn>
           </v-col>
         </v-row>
       </v-card-title>
@@ -78,8 +91,14 @@ const { GetProducts, Clear, state } = useProductStore();
           :headers="state.data.table.header"
           :items-length="state.data.table.result.total"
           :items="state.data.table.result.datas"
-          :loading="state.data.loading"
+          :loading="state.data.table.loading"
           @update:options="GetProducts()">
+          <template v-slot:item.actions="{ item }">
+            <v-icon color="primary" class="me-2" @click="onAction(item)">
+              mdi-pencil
+            </v-icon>
+            <v-icon color="error" @click="onDelete(item)"> mdi-delete </v-icon>
+          </template>
         </v-data-table-server>
       </v-card-text>
     </v-card>

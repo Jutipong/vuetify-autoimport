@@ -24,7 +24,7 @@ app.use(createPinia());
 app.use(Toast, {
   transition: 'Vue-Toastification__bounce',
   timeout: 5000,
-  maxToasts: 1,
+  maxToasts: 9,
   newestOnTop: true,
 } as PluginOptions);
 app.mount('#app');

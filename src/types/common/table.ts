@@ -22,6 +22,7 @@ export type Result<TDatas> = {
 };
 
 export type Table<TSearch, TDatas> = {
+  loading: boolean;
   header: Header[];
   search: TSearch;
   options: Option;

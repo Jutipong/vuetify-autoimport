@@ -4,11 +4,13 @@ import { Option, Table } from '../types/common/table';
 const { pageSize } = useTableConfig;
 
 export const useProductStore = defineStore('product', () => {
+  const globalStore = useGlobalStore();
+
   const state = reactive({
     data: {
-      loading: false,
       activeModal: false,
       table: {
+        loading: false,
         search: null,
         header: [
           { title: 'ID', key: 'id', align: 'center' },
@@ -17,6 +19,7 @@ export const useProductStore = defineStore('product', () => {
           { title: 'RATING', key: 'rating', align: 'end' },
           { title: 'STOCK', key: 'stock', align: 'end' },
           { title: 'BRAND', key: 'brand', align: 'end' },
+          { title: 'Actions', key: 'actions', sortable: false },
         ],
         options: {
           page: 1,
@@ -39,7 +42,7 @@ export const useProductStore = defineStore('product', () => {
   });
 
   async function GetProducts(option: Option | null = null) {
-    state.data.loading = true;
+    state.data.table.loading = true;
     state.data.table.options = option ? option : state.data.table.options;
 
     const page =
@@ -56,17 +59,36 @@ export const useProductStore = defineStore('product', () => {
     state.data.table.result.datas = res?.products ?? [];
     state.data.table.result.total = res?.total ?? 10;
 
-    state.data.loading = false;
+    state.data.table.loading = false;
   }
 
-  async function Create(product: Product) {
-    state.data.loading = true;
+  async function Create(product: Product): Promise<boolean> {
+    globalStore.state.loading = true;
 
-    debugger;
     const res = await api.post(`${appConfig.url.api}/products/add`, product);
 
+    globalStore.state.loading = false;
     notify.success('Product created successfully');
-    state.data.loading = false;
+
+    return true;
+  }
+
+  async function Update(product: Product): Promise<boolean> {
+    globalStore.state.loading = true;
+
+    const res = await api.put(`${appConfig.url.api}/products/${product.id}`, {
+      title: product.title,
+      price: product.price,
+      rating: product.rating,
+      stock: product.stock,
+      brand: product.brand,
+    });
+
+    console.log(res);
+    globalStore.state.loading = false;
+    notify.success('Product updated successfully');
+
+    return true;
   }
 
   async function Clear() {
@@ -79,5 +101,6 @@ export const useProductStore = defineStore('product', () => {
     GetProducts,
     Clear,
     Create,
+    Update,
   };
 });

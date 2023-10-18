@@ -10,8 +10,16 @@ const api = axios.create({
 
 const err = (error: any) => {
   const { logOut } = useAuthStore();
-  debugger;
+  const globalStore = useGlobalStore();
   const { status, data } = error.response;
+
+  notify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`);
+
+  globalStore.state.loading = false;
+
+  if (status === 401) {
+    logOut();
+  }
 
   // const { errors } = data;
   // let message = [];
@@ -19,54 +27,44 @@ const err = (error: any) => {
   //   message.push(errors[field]);
   // }
 
-  console.log(data);
+  // console.log(data);
 
-  switch (status) {
-    case 401:
-      //   defaultNotify.message = '';
-      //   Notify.create(defaultNotify);
-      logOut();
-      break;
-    case 403:
-      //   defaultNotify.message = 'การเข้าถึงถูกปฏิเสธ (403)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 404:
-      //   defaultNotify.message = 'ไม่พบบริการ (404)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 408:
-      //   defaultNotify.message = 'คำขอหมดเวลา (408)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 500:
-      //   defaultNotify.message = 'ข้อผิดพลาดของเซิร์ฟเวอร์ (500)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 501:
-      //   defaultNotify.message = 'ไม่ได้ใช้บริการ (501)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 502:
-      //   defaultNotify.message = 'ข้อผิดพลาดของเครือข่าย (502)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 503:
-      //   defaultNotify.message = 'ไม่สามารถให้บริการได้ (503)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 504:
-      //   defaultNotify.message = 'เครือข่ายหมดเวลา (504)';
-      //   Notify.create(defaultNotify);
-      break;
-    case 505:
-      //   defaultNotify.message = 'ไม่รองรับเวอร์ชัน HTTP (505)';
-      //   Notify.create(defaultNotify);
-      break;
-    default:
-      //   Notify.create(defaultNotify);
-      break;
-  }
+  // switch (status) {
+  //   case 401:
+  //     notify.error('Unauthorized');
+  //     logOut();
+  //     break;
+  //   case 403:
+  //     notify.error('การเข้าถึงถูกปฏิเสธ (403)');
+  //     break;
+  //   case 404:
+  //     notify.error('ไม่พบบริการ (404)');
+  //     break;
+  //   case 408:
+  //     notify.error('คำขอหมดเวลา (408)');
+  //     break;
+  //   case 500:
+  //     notify.error('ข้อผิดพลาดของเซิร์ฟเวอร์ (500)');
+  //     break;
+  //   case 501:
+  //     notify.error('ไม่ได้ใช้บริการ (501)');
+  //     break;
+  //   case 502:
+  //     notify.error('ข้อผิดพลาดของเครือข่าย (502)');
+  //     break;
+  //   case 503:
+  //     notify.error('ไม่สามารถให้บริการได้ (503)');
+  //     break;
+  //   case 504:
+  //     notify.error('เครือข่ายหมดเวลา (504)');
+  //     break;
+  //   case 505:
+  //     notify.error('ไม่รองรับเวอร์ชัน HTTP (505)');
+  //     break;
+  //   default:
+  //     notify.error(data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง');
+  //     break;
+  // }
   return Promise.reject(error);
 };
 
