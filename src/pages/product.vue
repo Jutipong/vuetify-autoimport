@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { getProducts, Clear, state } = useProductStore();
+const { GetProducts, Clear, state } = useProductStore();
 </script>
 
 <template>
@@ -40,7 +40,7 @@ const { getProducts, Clear, state } = useProductStore();
           color="primary"
           prepend-icon="mdi-magnify"
           text="Search"
-          @click="getProducts()">
+          @click="GetProducts()">
         </v-btn>
         <v-btn
           color="warning"
@@ -79,7 +79,7 @@ const { getProducts, Clear, state } = useProductStore();
           :items-length="state.data.table.result.total"
           :items="state.data.table.result.datas"
           :loading="state.data.loading"
-          @update:options="getProducts">
+          @update:options="GetProducts()">
         </v-data-table-server>
       </v-card-text>
     </v-card>

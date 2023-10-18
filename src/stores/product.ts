@@ -38,7 +38,7 @@ export const useProductStore = defineStore('product', () => {
     },
   });
 
-  async function getProducts(option: Option | null = null) {
+  async function GetProducts(option: Option | null = null) {
     state.data.loading = true;
     state.data.table.options = option ? option : state.data.table.options;
 
@@ -77,12 +77,12 @@ export const useProductStore = defineStore('product', () => {
 
   async function Clear() {
     state.data.table.search = null;
-    await getProducts();
+    await GetProducts();
   }
 
   return {
     state,
-    getProducts,
+    GetProducts,
     Clear,
     Create,
   };
