@@ -75,7 +75,7 @@ export const useProductStore = defineStore('product', () => {
     state.data.loading = false;
   }
 
-  async function onClean() {
+  async function Clear() {
     state.data.table.search = null;
     await getProducts();
   }
@@ -83,6 +83,7 @@ export const useProductStore = defineStore('product', () => {
   return {
     state,
     getProducts,
-    onClean,
+    Clear,
+    Create,
   };
 });

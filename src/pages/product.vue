@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { getProducts, onClean, state } = useProductStore();
+const { getProducts, Clear, state } = useProductStore();
 </script>
 
 <template>
@@ -46,7 +46,7 @@ const { getProducts, onClean, state } = useProductStore();
           color="warning"
           prepend-icon="mdi-refresh"
           text="Clear"
-          @click="onClean()"></v-btn>
+          @click="Clear()"></v-btn>
       </v-card-actions>
     </v-card>
 
