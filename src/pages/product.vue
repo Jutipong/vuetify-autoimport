@@ -37,16 +37,16 @@ const { getProducts, onClean, state } = useProductStore();
       <v-divider />
       <v-card-actions class="justify-end">
         <v-btn
-          color="warning"
-          prepend-icon="mdi-refresh"
-          text="Clear"
-          @click="onClean()"></v-btn>
-        <v-btn
           color="primary"
           prepend-icon="mdi-magnify"
           text="Search"
           @click="getProducts()">
         </v-btn>
+        <v-btn
+          color="warning"
+          prepend-icon="mdi-refresh"
+          text="Clear"
+          @click="onClean()"></v-btn>
       </v-card-actions>
     </v-card>
 

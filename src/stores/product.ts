@@ -1,7 +1,5 @@
 import { Product } from '../types/product';
 import { Option, Table } from '../types/common/table';
-import { Select } from '@/types/common/select';
-import { react } from '@babel/types';
 
 const { pageSize } = useTableConfig;
 
@@ -64,6 +62,16 @@ export const useProductStore = defineStore('product', () => {
         state.data.table.result.total = data?.total ?? 10;
       });
 
+    state.data.loading = false;
+  }
+
+  async function Create(product: Product) {
+    state.data.loading = true;
+
+    debugger;
+    const res = await api.post(`${appConfig.url.api}/products/add`);
+
+    notify.success('Product created successfully');
     state.data.loading = false;
   }
 

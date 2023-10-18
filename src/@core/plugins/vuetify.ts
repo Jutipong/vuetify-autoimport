@@ -39,14 +39,14 @@ export default createVuetify({
       fluid: true,
     },
     VBtn: {
-      variant: 'flat',
+      variant: 'elevated',
       rounded: '0',
     },
     VCard: {
       variant: 'flat',
       class: 'mb-3 pa-1',
       VBtn: {
-        variant: 'flat',
+        variant: 'elevated',
       },
     },
     VCardTitle: {},
@@ -66,7 +66,7 @@ export default createVuetify({
     VCardActions: {
       class: 'mt-1 mr-2 ml-2',
       VBtn: {
-        variant: 'flat',
+        variant: 'elevated',
       },
     },
     VTextField: {
