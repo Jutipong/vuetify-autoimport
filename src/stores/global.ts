@@ -1,12 +1,27 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
 
 export const useGlobalStore = defineStore('global', () => {
-  const state = reactive({
-    loading: false,
-  });
+  const loadings = ref(0);
+
+  const loading = computed(() => loadings.value > 0);
+
+  function setLoading() {
+    loadings.value++;
+  }
+
+  function unLoading() {
+    loadings.value--;
+  }
+
+  function resetLoading() {
+    loadings.value = 0;
+  }
 
   return {
-    state,
+    loading,
+    setLoading,
+    unLoading,
+    resetLoading,
   };
 });
 

@@ -1,14 +1,13 @@
 import { Product } from '../types/product';
 import { Option, Table } from '../types/common/table';
 
-const { pageSize } = useTableConfig;
+const { pageSize } = dataTableConfig;
 
 export const useProductStore = defineStore('product', () => {
   const globalStore = useGlobalStore();
 
   const state = reactive({
     data: {
-      activeModal: false,
       table: {
         loading: false,
         search: null,
@@ -63,20 +62,20 @@ export const useProductStore = defineStore('product', () => {
   }
 
   async function Create(product: Product): Promise<boolean> {
-    globalStore.state.loading = true;
+    globalStore.setLoading();
 
-    const res = await api.post(`${appConfig.url.api}/products/add`, product);
+    await api.post(`${appConfig.url.api}/products/add`, product);
 
-    globalStore.state.loading = false;
+    globalStore.unLoading();
     notify.success('Product created successfully');
 
     return true;
   }
 
   async function Update(product: Product): Promise<boolean> {
-    globalStore.state.loading = true;
+    globalStore.setLoading();
 
-    const res = await api.put(`${appConfig.url.api}/products/${product.id}`, {
+    await api.put(`${appConfig.url.api}/products/${product.id}`, {
       title: product.title,
       price: product.price,
       rating: product.rating,
@@ -84,8 +83,7 @@ export const useProductStore = defineStore('product', () => {
       brand: product.brand,
     });
 
-    console.log(res);
-    globalStore.state.loading = false;
+    globalStore.unLoading();
     notify.success('Product updated successfully');
 
     return true;

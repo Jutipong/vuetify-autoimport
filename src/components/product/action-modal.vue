@@ -3,6 +3,7 @@ import { Product } from '@/types/product';
 
 const globalStore = useGlobalStore();
 const { Create, Update } = useProductStore();
+
 const active = defineModel<boolean>();
 const { product } = defineProps<{ product: Product }>();
 
@@ -22,7 +23,12 @@ function onClose() {
       <v-dialog v-model="active" persistent width="1024">
         <v-card>
           <v-card-title>
-            <span class="text-h5">Create Product</span>
+            <v-chip
+              variant="outlined"
+              color="success"
+              :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
+              {{ product.id ? 'Update' : 'Create' }} Product
+            </v-chip>
           </v-card-title>
           <v-divider />
           <v-card-text>
@@ -54,7 +60,7 @@ function onClose() {
               color="primary"
               prepend-icon="mdi-content-save"
               text="Save"
-              :loading="globalStore.state.loading"
+              :loading="globalStore.loading"
               @click="onSave()"></v-btn>
             <v-btn
               color="warning"

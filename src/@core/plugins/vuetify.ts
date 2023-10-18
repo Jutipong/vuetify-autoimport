@@ -139,6 +139,7 @@ export default createVuetify({
     },
     VChip: {
       elevation: 0,
+      label: true,
     },
   },
 });

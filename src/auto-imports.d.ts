@@ -13,6 +13,7 @@ declare global {
   const api: typeof import('./@core/utils/api')['default']
   const appConfig: typeof import('./@core/constants/app')['appConfig']
   const computed: typeof import('vue')['computed']
+  const dataTableConfig: typeof import('./@core/constants/dataTable')['dataTableConfig']
   const defineLoader: typeof import('vue-router/auto')['defineLoader']
   const definePage: typeof import('unplugin-vue-router/runtime')['_definePage']
   const defineStore: typeof import('pinia')['defineStore']

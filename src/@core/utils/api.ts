@@ -15,7 +15,7 @@ const err = (error: any) => {
 
   notify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`);
 
-  globalStore.state.loading = false;
+  globalStore.resetLoading();
 
   if (status === 401) {
     logOut();

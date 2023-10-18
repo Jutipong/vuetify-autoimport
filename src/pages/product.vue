@@ -3,25 +3,25 @@ import { Product, newProductType } from '@/types/product';
 
 const { GetProducts, Clear, state } = useProductStore();
 
-const actionData = ref<Product>(newProductType());
+const activeModal = ref(false);
+const actionData = ref(newProductType());
 
 function onAction(obj: Product | null) {
-  Object.assign(actionData.value, obj ?? newProductType());
-  state.data.activeModal = true;
+  actionData.value = Object.assign({}, obj) ?? newProductType();
+  activeModal.value = true;
 }
 
 function onDelete(obj: Product) {
-  console.log(obj);
+  notify.error(`delete ${obj.title} success`);
 }
 </script>
 
 <template>
   <div>
-    <product-action-modal :product="actionData" v-model="state.data.activeModal" />
-
+    <product-action-modal :product="actionData" v-model="activeModal" />
     <v-card>
       <v-card-title>
-        <v-chip variant="outlined" color="primary" prepend-icon="mdi-magnify">
+        <v-chip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
           Search
         </v-chip>
       </v-card-title>
@@ -80,7 +80,7 @@ function onDelete(obj: Product) {
               color="success"
               prepend-icon="mdi-plus"
               text="Add"
-              @click="onAction(null)"></v-btn>
+              @click="onAction"></v-btn>
           </v-col>
         </v-row>
       </v-card-title>
