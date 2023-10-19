@@ -17,31 +17,31 @@ function onDelete(obj: Product) {
 
 <template>
   <div>
-    <product-action-modal :product="actionData" v-model="activeModal" />
-    <v-card>
-      <v-card-title>
-        <v-row>
-          <v-col md="6">
-            <v-chip
+    <ProductActionModal :product="actionData" v-model="activeModal" />
+    <VCard>
+      <VCardTitle>
+        <VRow>
+          <VCol md="6">
+            <VChip
               variant="outlined"
               color="success"
               prepend-icon="mdi-package-variant-closed"
               label
-              >Product</v-chip
+              >Product</VChip
             >
-          </v-col>
-          <v-col class="text-right" md="6">
-            <v-btn
+          </VCol>
+          <VCol class="text-right" md="6">
+            <VBtn
               color="success"
               prepend-icon="mdi-plus"
               text="Add"
-              @click="onAction"></v-btn>
-          </v-col>
-        </v-row>
-      </v-card-title>
-      <v-divider />
-      <v-card-text>
-        <v-data-table-server
+              @click="onAction"></VBtn>
+          </VCol>
+        </VRow>
+      </VCardTitle>
+      <VDivider />
+      <VCardText>
+        <VDataTableServer
           :items-per-page="state.data.table.options.itemsPerPage"
           :headers="state.data.table.header"
           :items-length="state.data.table.result.total"
@@ -49,13 +49,13 @@ function onDelete(obj: Product) {
           :loading="state.data.table.loading"
           @update:options="GetProducts()">
           <template v-slot:item.actions="{ item }">
-            <v-icon color="primary" class="me-2" @click="onAction(item)">
+            <VIcon color="primary" class="me-2" @click="onAction(item)">
               mdi-pencil
-            </v-icon>
-            <v-icon color="error" @click="onDelete(item)"> mdi-delete </v-icon>
+            </VIcon>
+            <VIcon color="error" @click="onDelete(item)"> mdi-delete </VIcon>
           </template>
-        </v-data-table-server>
-      </v-card-text>
-    </v-card>
+        </VDataTableServer>
+      </VCardText>
+    </VCard>
   </div>
 </template>

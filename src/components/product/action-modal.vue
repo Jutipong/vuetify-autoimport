@@ -18,58 +18,58 @@ function onClose() {
 </script>
 
 <template>
-  <teleport to="body">
-    <v-row justify="center">
-      <v-dialog v-model="active" persistent width="1024">
-        <v-card>
-          <v-card-title>
-            <v-chip
+  <Teleport to="body">
+    <VRow justify="center">
+      <VDialog v-model="active" persistent width="1024">
+        <VCard>
+          <VCardTitle>
+            <VChip
               variant="outlined"
               color="success"
               :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
               {{ product.id ? 'Update' : 'Create' }} Product
-            </v-chip>
-          </v-card-title>
-          <v-divider />
-          <v-card-text>
-            <v-row>
-              <v-col cols="12" md="4">
-                <v-text-field label="Title" v-model="product.title"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="4">
-                <v-text-field label="Price" v-model="product.price"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="4">
-                <v-text-field label="Rating" v-model="product.rating"></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="4">
-                <v-text-field label="Stock" v-model="product.stock"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="4">
-                <v-text-field label="Brand" v-model="product.brand"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="4"> </v-col>
-            </v-row>
-          </v-card-text>
-          <v-divider />
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
+            </VChip>
+          </VCardTitle>
+          <VDivider />
+          <VCardText>
+            <VRow>
+              <VCol cols="12" md="4">
+                <VTextField label="Title" v-model="product.title"></VTextField>
+              </VCol>
+              <VCol cols="12" md="4">
+                <VTextField label="Price" v-model="product.price"></VTextField>
+              </VCol>
+              <VCol cols="12" md="4">
+                <VTextField label="Rating" v-model="product.rating"></VTextField>
+              </VCol>
+            </VRow>
+            <VRow>
+              <VCol cols="12" md="4">
+                <VTextField label="Stock" v-model="product.stock"></VTextField>
+              </VCol>
+              <VCol cols="12" md="4">
+                <VTextField label="Brand" v-model="product.brand"></VTextField>
+              </VCol>
+              <VCol cols="12" md="4"> </VCol>
+            </VRow>
+          </VCardText>
+          <VDivider />
+          <VCardActions>
+            <VSpacer></VSpacer>
+            <VBtn
               color="primary"
               prepend-icon="mdi-content-save"
               text="Save"
               :loading="globalStore.loading"
-              @click="onSave()"></v-btn>
-            <v-btn
+              @click="onSave()"></VBtn>
+            <VBtn
               color="warning"
               text="Close"
               prepend-icon="mdi-close"
-              @click="onClose()"></v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row>
-  </teleport>
+              @click="onClose()"></VBtn>
+          </VCardActions>
+        </VCard>
+      </VDialog>
+    </VRow>
+  </Teleport>
 </template>

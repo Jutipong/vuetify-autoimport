@@ -3,49 +3,47 @@ const { GetProducts, Clear, state } = useProductStore();
 </script>
 
 <template>
-  <v-card>
-    <v-card-title>
-      <v-chip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
+  <VCard>
+    <VCardTitle>
+      <VChip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
         Search
-      </v-chip>
-    </v-card-title>
-    <v-divider />
-    <v-card-text>
-      <v-row class="">
-        <v-col cols="12" md="4">
-          <v-text-field
-            label="First name"
-            v-model="state.data.table.search"></v-text-field>
-        </v-col>
+      </VChip>
+    </VCardTitle>
+    <VDivider />
+    <VCardText>
+      <VRow class="">
+        <VCol cols="12" md="4">
+          <VTextField label="First name" v-model="state.data.table.search"></VTextField>
+        </VCol>
 
-        <v-col cols="12" md="4">
-          <v-text-field label="Last name"></v-text-field>
-        </v-col>
+        <VCol cols="12" md="4">
+          <VTextField label="Last name"></VTextField>
+        </VCol>
 
-        <v-col cols="12" md="4">
-          <v-select
+        <VCol cols="12" md="4">
+          <VSelect
             label="Status"
             :dirty="true"
             :items="state.master.status"
-            v-model="state.data.status"></v-select>
-        </v-col>
-      </v-row>
-    </v-card-text>
-    <v-divider />
-    <v-card-actions class="justify-end">
-      <v-btn
+            v-model="state.data.status"></VSelect>
+        </VCol>
+      </VRow>
+    </VCardText>
+    <VDivider />
+    <VCardActions class="justify-end">
+      <VBtn
         color="primary"
         prepend-icon="mdi-magnify"
         text="Search"
         @click="GetProducts()">
-      </v-btn>
-      <v-btn
+      </VBtn>
+      <VBtn
         color="warning"
         prepend-icon="mdi-refresh"
         text="Clear"
-        @click="Clear()"></v-btn>
-    </v-card-actions>
-  </v-card>
+        @click="Clear()"></VBtn>
+    </VCardActions>
+  </VCard>
 </template>
 
 <style lang="scss" scoped></style>
