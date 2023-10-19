@@ -37,7 +37,10 @@ function onClose() {
                 <VTextField label="Title" v-model="product.title"></VTextField>
               </VCol>
               <VCol cols="12" md="4">
-                <VTextField label="Price" v-model="product.price"></VTextField>
+                <!-- <VTextField label="Price" v-model="product.price"></VTextField> -->
+                <CommonCurrencyInput
+                  v-model="product.price"
+                  :options="{ currency: 'EUR' }" />
               </VCol>
               <VCol cols="12" md="4">
                 <VTextField label="Rating" v-model="product.rating"></VTextField>
