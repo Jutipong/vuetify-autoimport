@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    CommonCurrencyInput: typeof import('./components/common/CurrencyInput.vue')['default']
+    CommonVCurrency: typeof import('./components/common/vCurrency.vue')['default']
     LayoutsHeader: typeof import('./components/layouts/header.vue')['default']
     LayoutsNavigation: typeof import('./components/layouts/navigation.vue')['default']
     ProductActionModal: typeof import('./components/product/action-modal.vue')['default']

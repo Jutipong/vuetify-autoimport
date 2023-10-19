@@ -30,6 +30,7 @@ export default defineConfig({
       imports: [
         VueRouterAutoImports,
         {
+          '@vueuse/core': ['watchDebounced'],
           pinia: ['defineStore'],
           vue: [
             'ref',

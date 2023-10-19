@@ -19,6 +19,8 @@
     "@babel/types": "7.23.0",
     "@types/node": "18.18.4",
     "@vitejs/plugin-vue": "4.4.0",
+    "@vueuse/core": "^10.5.0",
+    "@vueuse/nuxt": "^10.5.0",
     "axios": "^1.5.1",
     "typescript": "5.2.2",
     "unplugin-auto-import": "^0.16.6",

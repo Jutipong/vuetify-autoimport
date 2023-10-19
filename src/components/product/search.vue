@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const { GetProducts, Clear, state } = useProductStore();
+function onClear() {
+  console.log('onClear');
+}
 </script>
 
 <template>
@@ -13,7 +16,10 @@ const { GetProducts, Clear, state } = useProductStore();
     <VCardText>
       <VRow class="">
         <VCol cols="12" md="4">
-          <VTextField label="First name" v-model="state.data.table.search"></VTextField>
+          <VTextField
+            label="First name"
+            v-model="state.data.table.search"
+            @click:clear="onClear"></VTextField>
         </VCol>
 
         <VCol cols="12" md="4">

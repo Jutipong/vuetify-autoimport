@@ -7,6 +7,7 @@ const actionData = ref(newProductType());
 
 function onAction(obj: Product | null) {
   actionData.value = Object.assign({}, obj) ?? newProductType();
+  actionData.value.price = 12.45;
   activeModal.value = true;
 }
 
