@@ -53,5 +53,13 @@
     "tsconfig.node.json": true,
     "src/vite-env.d.ts": true,
     "yarn.lock": true
-  }
+  },
+  "material-icon-theme.activeIconPack": "vue",
+  "material-icon-theme.folders.associations": {
+    "@core": "core",
+    "@v": "shared",
+    "components": "vue",
+    "stores": "database"
+  },
+  "material-icon-theme.folders.color": "#7cb342"
 }
