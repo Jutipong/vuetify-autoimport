@@ -1,9 +1,10 @@
 import axios from 'axios';
 const { getToken } = useLocalStorages;
+const { baseUrl } = useConstant;
 
 // create axios
 const api = axios.create({
-  baseURL: appConfig.url.api,
+  baseURL: baseUrl.api,
   timeout: 5000,
   headers: { 'Access-Control-Allow-Origin': '*' },
 });

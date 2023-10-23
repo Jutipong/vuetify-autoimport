@@ -51,6 +51,7 @@ export default defineConfig({
       dts: 'src/components.d.ts',
       deep: true,
       directoryAsNamespace: true,
+      globalNamespaces: ['global'],
     }),
     Layouts({
       layoutsDirs: 'src/@core/layouts',

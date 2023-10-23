@@ -1,7 +1,7 @@
 import { Product } from '../types/product';
 import { Option, Table } from '../types/common/table';
 
-const { pageSize } = dataTableConfig;
+const { app, baseUrl, dataTable } = useConstant;
 
 export const useProductStore = defineStore('product', () => {
   const globalStore = useGlobalStore();
@@ -22,7 +22,7 @@ export const useProductStore = defineStore('product', () => {
         ],
         options: {
           page: 1,
-          itemsPerPage: pageSize,
+          itemsPerPage: dataTable.pageSize,
           sortBy: [],
         },
         result: {
@@ -50,7 +50,7 @@ export const useProductStore = defineStore('product', () => {
         : (state.data.table.options.page - 1) * state.data.table.options.itemsPerPage;
 
     const res: any = await api.get(
-      `${appConfig.url.api}/products/search?q=${state.data.table.search ?? ''}&limit=${
+      `${baseUrl.api}/products/search?q=${state.data.table.search ?? ''}&limit=${
         state.data.table.options.itemsPerPage
       }`
     );
@@ -64,7 +64,7 @@ export const useProductStore = defineStore('product', () => {
   async function Create(product: Product): Promise<boolean> {
     globalStore.setLoading();
 
-    await api.post(`${appConfig.url.api}/products/add`, product);
+    await api.post(`${baseUrl.api}/products/add`, product);
 
     globalStore.unLoading();
     notify.success('Product created successfully');
@@ -75,7 +75,7 @@ export const useProductStore = defineStore('product', () => {
   async function Update(product: Product): Promise<boolean> {
     globalStore.setLoading();
 
-    await api.put(`${appConfig.url.api}/products/${product.id}`, {
+    await api.put(`${baseUrl.api}/products/${product.id}`, {
       title: product.title,
       price: product.price,
       rating: product.rating,

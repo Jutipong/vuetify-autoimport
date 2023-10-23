@@ -1,8 +1,10 @@
-export const appConfig = {
+export const useConstant = {
   app: {
-    appNam: import.meta.env.VITE_APP_NAME,
+    name: import.meta.env.VITE_APP_NAME,
+    tokenKey: 'efa32@fskf%4dsf',
+    userInfKey: 'userInfo',
   },
-  url: {
+  baseUrl: {
     api: import.meta.env.VITE_API_UR,
   },
   action: {
@@ -14,6 +16,7 @@ export const appConfig = {
     save: 'save',
     view: 'view',
   },
-  tokenKey: 'efa32@fskf%4dsf',
-  userInfKey: 'userInfo',
+  dataTable: {
+    pageSize: 25,
+  },
 };
