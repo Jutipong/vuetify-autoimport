@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { Product } from '@/types/product';
-// import VCurrency from '../common/vCurrency.vue';
+  import { Product } from '@/types/product';
+  // import VCurrency from '../common/vCurrency.vue';
 
-const globalStore = useGlobalStore();
-const { Create, Update } = useProductStore();
+  const globalStore = useGlobalStore();
+  const { Create, Update } = useProductStore();
 
-const active = defineModel<boolean>();
-const { product } = defineProps<{ product: Product }>();
+  const active = defineModel<boolean>();
+  const { product } = defineProps<{ product: Product }>();
 
-async function onSave() {
-  const res = product.id ? await Update(product) : await Create(product);
-  active.value = !res;
-}
+  async function onSave() {
+    const res = product.id ? await Update(product) : await Create(product);
+    active.value = !res;
+  }
 
-function onClose() {
-  active.value = false;
-}
+  function onClose() {
+    active.value = false;
+  }
 </script>
 
 <template>

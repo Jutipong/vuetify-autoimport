@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-const layoutStore = useLayoutStore();
+  const layoutStore = useLayoutStore();
 
-const open = ref(['Users']);
-const cruds = [
-  ['Demo1', 'mdi-chevron-right', '/demo01'],
-  ['Demo2', 'mdi-chevron-right', '/demo02'],
-  ['Product', 'mdi-package', '/product'],
-];
-const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
+  const open = ref(['Users']);
+  const cruds = [
+    ['Demo1', 'mdi-chevron-right', '/demo01'],
+    ['Demo2', 'mdi-chevron-right', '/demo02'],
+    ['Product', 'mdi-package', '/product'],
+  ];
+  const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
 </script>
 
 <template>

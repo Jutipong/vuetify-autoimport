@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const authStore = useAuthStore();
-const layoutStore = useLayoutStore();
-const { app } = useConstant;
+  const authStore = useAuthStore();
+  const layoutStore = useLayoutStore();
+  const { app } = useConstant;
 </script>
 
 <template>

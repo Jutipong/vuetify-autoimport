@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-const { state, logIn } = useAuthStore();
-const user = ref({
-  username: 'admin',
-  password: 'sdkjslfjaldjkl;flslsjfljslkkd',
-  visible: false,
-});
+  const { state, logIn } = useAuthStore();
+  const user = ref({
+    username: 'admin',
+    password: 'sdkjslfjaldjkl;flslsjfljslkkd',
+    visible: false,
+  });
 </script>
 
 <template>

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { Product, newProductType } from '@/types/product';
+  import { Product, newProductType } from '@/types/product';
 
-const { GetProducts, state } = useProductStore();
-const activeModal = ref(false);
-const actionData = ref(newProductType());
+  const { GetProducts, state } = useProductStore();
+  const activeModal = ref(false);
+  const actionData = ref(newProductType());
 
-function onAction(obj: Product | null) {
-  actionData.value = Object.assign({}, obj) ?? newProductType();
-  activeModal.value = true;
-}
+  function onAction(obj: Product | null) {
+    actionData.value = Object.assign({}, obj) ?? newProductType();
+    activeModal.value = true;
+  }
 
-function onDelete(obj: Product) {
-  notify.error(`delete ${obj.title} success`);
-}
+  function onDelete(obj: Product) {
+    notify.error(`delete ${obj.title} success`);
+  }
 </script>
 
 <template>

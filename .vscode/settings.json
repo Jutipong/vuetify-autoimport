@@ -61,5 +61,6 @@
     "components": "vue",
     "stores": "database"
   },
-  "material-icon-theme.folders.color": "#7cb342"
+  "material-icon-theme.folders.color": "#7cb342",
+  "prettier.requireConfig": true
 }

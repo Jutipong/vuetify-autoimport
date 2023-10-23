@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const { GetProducts, Clear, state } = useProductStore();
-function onClear() {
-  console.log('onClear');
-}
+  const { GetProducts, Clear, state } = useProductStore();
+  function onClear() {
+    console.log('onClear');
+  }
 </script>
 
 <template>

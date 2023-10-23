@@ -1,7 +1,7 @@
 {
-    "singleQuote": true,
-    "semi": true,
-    "printWidth": 90,
-    "bracketSameLine": true,
-    "bracket-same-line": true
+  "singleQuote": true,
+  "semi": true,
+  "printWidth": 90,
+  "bracketSameLine": true,
+  "vueIndentScriptAndStyle": true
 }

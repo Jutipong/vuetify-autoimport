@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const cards = ['Today', 'Yesterday'];
+  const cards = ['Today', 'Yesterday'];
 </script>
 
 <template>
