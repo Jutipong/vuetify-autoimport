@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCurrencyInput } from 'vue-currency-input';
-import { watch } from 'vue';
+import { PropType } from 'vue';
 
 enum CurrencyDisplay {
   symbol = 'symbol',
@@ -10,9 +10,12 @@ enum CurrencyDisplay {
   hidden = 'hidden',
 }
 
-type currencyType = Number | null;
-
-const props = defineProps({ modelValue: Number || null });
+const props = defineProps({
+  modelValue: {
+    type: [Number, null] as PropType<number | null>,
+    required: false,
+  },
+});
 
 const { inputRef, formattedValue, numberValue, setValue } = useCurrencyInput({
   currency: 'USD',
@@ -43,12 +46,4 @@ const onClear = () => setValue(null);
     :clearable="false"
     v-model="formattedValue"
     @click:clear="onClear"></VTextField>
-  <!-- <VTextField v-model="formattedValue" density="compact" variant="solo" ref="inputRef">
-    <template #prepend>
-      <VBtn size="x-small" icon @click="setValue(--numberValue)">➖</VBtn>
-    </template>
-    <template #append>
-      <VBtn size="x-small" icon @click="setValue(++numberValue)">➕</VBtn>
-    </template>
-  </VTextField> -->
 </template>

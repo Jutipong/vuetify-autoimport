@@ -31,7 +31,6 @@ declare global {
   const useProductStore: typeof import('./stores/product')['useProductStore']
   const useRoute: typeof import('vue-router/auto')['useRoute']
   const useRouter: typeof import('vue-router/auto')['useRouter']
-  const useTableConfig: typeof import('./@core/constants/table')['useTableConfig']
   const watch: typeof import('vue')['watch']
   const watchDebounced: typeof import('@vueuse/core')['watchDebounced']
   const watchEffect: typeof import('vue')['watchEffect']
