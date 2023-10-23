@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Product } from '@/types/product';
-import VCurrency from '../common/vCurrency.vue';
+// import VCurrency from '../common/vCurrency.vue';
 
 const globalStore = useGlobalStore();
 const { Create, Update } = useProductStore();
