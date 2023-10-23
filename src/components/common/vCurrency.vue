@@ -1,49 +1,54 @@
-<template>
-  <VTextField
-    ref="inputRef"
-    type="text"
-    :clearable="false"
-    @click:clear="onClear"></VTextField>
-</template>
-
 <script setup lang="ts">
-import { CurrencyDisplay } from '@/types/common/currencyInput';
 import { useCurrencyInput } from 'vue-currency-input';
+import { watch } from 'vue';
 
-const { inputRef, numberValue, setValue } = useCurrencyInput(
-  {
-    locale: undefined,
-    currency: 'USD',
-    currencyDisplay: CurrencyDisplay.hidden,
-    valueRange: undefined,
-    precision: 2,
-    hideCurrencySymbolOnFocus: true,
-    hideGroupingSeparatorOnFocus: false,
-    hideNegligibleDecimalDigitsOnFocus: false,
-    autoDecimalDigits: true,
-    useGrouping: true,
-  },
-  false
-);
+enum CurrencyDisplay {
+  symbol = 'symbol',
+  narrowSymbol = 'narrowSymbol',
+  code = 'code',
+  name = 'name',
+  hidden = 'hidden',
+}
 
-type currencyType = number | null;
+type currencyType = Number | null;
 
-const vModel = defineModel<currencyType>();
+const props = defineProps({ modelValue: Number || null });
 
-setValue(vModel.value as currencyType);
+const { inputRef, formattedValue, numberValue, setValue } = useCurrencyInput({
+  currency: 'USD',
+  currencyDisplay: CurrencyDisplay.hidden,
+  precision: 2,
+  hideCurrencySymbolOnFocus: true,
+  hideGroupingSeparatorOnFocus: true,
+  hideNegligibleDecimalDigitsOnFocus: true,
+  autoDecimalDigits: false,
+  useGrouping: true,
+  accountingSign: true,
+});
 
-watchDebounced(
-  numberValue,
-  (value: currencyType) => {
-    inputRef.value.value = value?.toString() ?? '';
-    if (vModel.value === value) return;
-
-    vModel.value = value;
-  },
-  {
-    debounce: 1000,
+watch(
+  () => props.modelValue,
+  (val) => {
+    setValue(val as number | null);
   }
 );
 
 const onClear = () => setValue(null);
 </script>
+
+<template>
+  <VTextField
+    ref="inputRef"
+    type="text"
+    :clearable="false"
+    v-model="formattedValue"
+    @click:clear="onClear"></VTextField>
+  <!-- <VTextField v-model="formattedValue" density="compact" variant="solo" ref="inputRef">
+    <template #prepend>
+      <VBtn size="x-small" icon @click="setValue(--numberValue)">➖</VBtn>
+    </template>
+    <template #append>
+      <VBtn size="x-small" icon @click="setValue(++numberValue)">➕</VBtn>
+    </template>
+  </VTextField> -->
+</template>
