@@ -62,5 +62,7 @@
     "stores": "database"
   },
   "material-icon-theme.folders.color": "#7cb342",
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Simple Dark"
 }
