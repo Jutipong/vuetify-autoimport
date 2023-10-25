@@ -1,4 +1,4 @@
-type UserLogin = {
+type UserLoginType = {
   id: number;
   username: string;
   email: string;
@@ -9,4 +9,4 @@ type UserLogin = {
   token: string;
 };
 
-export type { UserLogin };
+export type { UserLoginType };

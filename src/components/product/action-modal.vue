@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { Product } from '@/types/product';
+  import { ProductType } from '@/types/product';
   // import VCurrency from '../common/vCurrency.vue';
 
   const globalStore = useGlobalStore();
   const { Create, Update } = useProductStore();
 
   const active = defineModel<boolean>();
-  const { product } = defineProps<{ product: Product }>();
+  const { product } = defineProps<{ product: ProductType }>();
 
   async function onSave() {
     const res = product.id ? await Update(product) : await Create(product);

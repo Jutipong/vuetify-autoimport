@@ -1,4 +1,4 @@
-import { Product } from '../types/product';
+import { ProductType } from '../types/product';
 import { Option, Table } from '../types/common/table';
 
 const { app, baseUrl, dataTable } = useConstant;
@@ -29,7 +29,7 @@ export const useProductStore = defineStore('product', () => {
           datas: [],
           total: 0,
         },
-      } as Table<string | null, Product>,
+      } as Table<string | null, ProductType>,
       status: null,
     },
     master: {
@@ -61,7 +61,7 @@ export const useProductStore = defineStore('product', () => {
     state.data.table.loading = false;
   }
 
-  async function Create(product: Product): Promise<boolean> {
+  async function Create(product: ProductType): Promise<boolean> {
     globalStore.setLoading();
 
     await api.post(`${baseUrl.api}/products/add`, product);
@@ -72,7 +72,7 @@ export const useProductStore = defineStore('product', () => {
     return true;
   }
 
-  async function Update(product: Product): Promise<boolean> {
+  async function Update(product: ProductType): Promise<boolean> {
     globalStore.setLoading();
 
     await api.put(`${baseUrl.api}/products/${product.id}`, {
