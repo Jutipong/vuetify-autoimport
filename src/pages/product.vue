@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProductSearch />
+    <!-- <ProductSearch /> -->
     <ProductTable />
   </div>
 </template>

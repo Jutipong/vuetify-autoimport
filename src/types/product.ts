@@ -21,3 +21,13 @@ export function newProductType(): ProductType {
     category: null,
   } as ProductType;
 }
+
+export type SearchPropsType = {
+  search: {
+    name: string | null;
+    last: string | null;
+    status: string | null;
+  };
+  GetProducts: Function;
+  onClear: Function;
+};

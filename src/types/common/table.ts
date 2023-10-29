@@ -23,8 +23,8 @@ export type Result<TDatas> = {
 
 export type Table<TSearch, TDatas> = {
   loading: boolean;
-  header: Header[];
-  search: TSearch;
+  // header: Header[];
+  // search: TSearch;
   options: Option;
   result: Result<TDatas>;
 };

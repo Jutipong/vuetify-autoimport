@@ -1,34 +1,12 @@
 import { ProductType } from '../types/product';
 import { Option, Table } from '../types/common/table';
-const { dataTable } = useConstant;
+// const { dataTable } = useConstant;
 
 export const useProductStore = defineStore('product', () => {
   const globalStore = useGlobalStore();
 
   const state = reactive({
     data: {
-      table: {
-        loading: false,
-        search: null,
-        header: [
-          { title: 'ID', key: 'id', align: 'center' },
-          { title: 'Title', key: 'title' },
-          { title: 'PRICE', key: 'price', align: 'end' },
-          { title: 'RATING', key: 'rating', align: 'end' },
-          { title: 'STOCK', key: 'stock', align: 'end' },
-          { title: 'BRAND', key: 'brand', align: 'end' },
-          { title: 'Actions', key: 'actions', sortable: false },
-        ],
-        options: {
-          page: 1,
-          itemsPerPage: dataTable.pageSize,
-          sortBy: [],
-        },
-        result: {
-          datas: [],
-          total: 0,
-        },
-      } as Table<string | null, ProductType>,
       status: null,
     },
     master: {
@@ -38,20 +16,6 @@ export const useProductStore = defineStore('product', () => {
       ],
     },
   });
-
-  async function GetProducts(option: Option | null = null) {
-    state.data.table.loading = true;
-    state.data.table.options = option ? option : state.data.table.options;
-
-    // const page = state.data.table.options.page === 1 ? 0 : (state.data.table.options.page - 1) * state.data.table.options.itemsPerPage;
-
-    const res: any = await api.get(`/products/search?q=${state.data.table.search ?? ''}&limit=${state.data.table.options.itemsPerPage}`);
-
-    state.data.table.result.datas = res?.products ?? [];
-    state.data.table.result.total = res?.total ?? 10;
-
-    state.data.table.loading = false;
-  }
 
   async function Create(product: ProductType) {
     globalStore.setLoading();
@@ -81,15 +45,8 @@ export const useProductStore = defineStore('product', () => {
     return true;
   }
 
-  async function Clear() {
-    state.data.table.search = null;
-    await GetProducts();
-  }
-
   return {
     state,
-    GetProducts,
-    Clear,
     Create,
     Update,
   };
