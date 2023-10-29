@@ -1,16 +1,16 @@
 <script setup lang="ts">
-  import { Product, newProductType } from '@/types/product';
+  import { ProductType, newProductType } from '@/types/product';
 
   const { GetProducts, state } = useProductStore();
   const activeModal = ref(false);
   const actionData = ref(newProductType());
 
-  function onAction(obj: Product | null) {
+  function onAction(obj: ProductType | null) {
     actionData.value = Object.assign({}, obj) ?? newProductType();
     activeModal.value = true;
   }
 
-  function onDelete(obj: Product) {
+  function onDelete(obj: ProductType) {
     notify.error(`delete ${obj.title} success`);
   }
 </script>

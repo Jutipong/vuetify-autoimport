@@ -1,4 +1,4 @@
-import { UserLogin } from '@/types/auth';
+import { UserLoginType } from '@/types/auth';
 const { app } = useConstant;
 export const useLocalStorages = {
   ///////////
@@ -16,10 +16,10 @@ export const useLocalStorages = {
   /////////////
   //user info//
   /////////////
-  setUserInfo: (userInfo: UserLogin) => {
+  setUserInfo: (userInfo: UserLoginType) => {
     sessionStorage.setItem(app.userInfKey, JSON.stringify(userInfo));
   },
-  getUserInfo: (): UserLogin | null => {
+  getUserInfo: (): UserLoginType | null => {
     const userInfo = sessionStorage.getItem(app.userInfKey);
     return userInfo ? JSON.parse(userInfo) : null;
   },

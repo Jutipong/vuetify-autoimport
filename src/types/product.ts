@@ -1,4 +1,4 @@
-export type Product = {
+export type ProductType = {
   id: number | null;
   title: string | null;
   description: string | null;
@@ -10,7 +10,7 @@ export type Product = {
   category: string | null;
 };
 
-export function newProductType(): Product {
+export function newProductType(): ProductType {
   return {
     id: null,
     title: null,
@@ -19,5 +19,5 @@ export function newProductType(): Product {
     stock: null,
     brand: null,
     category: null,
-  } as Product;
+  } as ProductType;
 }
