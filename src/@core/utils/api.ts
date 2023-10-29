@@ -3,7 +3,7 @@ const { getToken } = useLocalStorages;
 const { baseUrl } = useConstant;
 
 // create axios
-const api = axios.create({
+const _api = axios.create({
   baseURL: baseUrl.api,
   timeout: 5000,
   headers: { 'Access-Control-Allow-Origin': '*' },
@@ -70,7 +70,7 @@ const err = (error: any) => {
 };
 
 // request interceptor
-api.interceptors.request.use((config: any) => {
+_api.interceptors.request.use((config: any) => {
   config.headers['Access-Control-Allow-Origin'] = '*';
   config.headers['Content-Type'] = 'application/json';
   config.headers['Authorization'] = 'Bearer ' + getToken();
@@ -80,12 +80,20 @@ api.interceptors.request.use((config: any) => {
 
 // response interceptor
 
-api.interceptors.response.use(({ data, config }: any) => {
+_api.interceptors.response.use(({ data, config }: any) => {
   // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta) {
   //   store.commit('SHOW_SNACKBAR', { text: data.meta.message, color: 'success' });
   // }
 
   return data;
 }, err);
+
+const api = {
+  get: _api.get,
+  post: _api.post,
+  put: _api.put,
+  delete: _api.delete,
+  patch: _api.patch,
+};
 
 export default api;

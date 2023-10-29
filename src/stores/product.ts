@@ -1,7 +1,6 @@
 import { ProductType } from '../types/product';
 import { Option, Table } from '../types/common/table';
-
-const { app, baseUrl, dataTable } = useConstant;
+const { dataTable } = useConstant;
 
 export const useProductStore = defineStore('product', () => {
   const globalStore = useGlobalStore();
@@ -44,16 +43,9 @@ export const useProductStore = defineStore('product', () => {
     state.data.table.loading = true;
     state.data.table.options = option ? option : state.data.table.options;
 
-    const page =
-      state.data.table.options.page === 1
-        ? 0
-        : (state.data.table.options.page - 1) * state.data.table.options.itemsPerPage;
+    // const page = state.data.table.options.page === 1 ? 0 : (state.data.table.options.page - 1) * state.data.table.options.itemsPerPage;
 
-    const res: any = await api.get(
-      `${baseUrl.api}/products/search?q=${state.data.table.search ?? ''}&limit=${
-        state.data.table.options.itemsPerPage
-      }`
-    );
+    const res: any = await api.get(`/products/search?q=${state.data.table.search ?? ''}&limit=${state.data.table.options.itemsPerPage}`);
 
     state.data.table.result.datas = res?.products ?? [];
     state.data.table.result.total = res?.total ?? 10;
@@ -61,10 +53,10 @@ export const useProductStore = defineStore('product', () => {
     state.data.table.loading = false;
   }
 
-  async function Create(product: ProductType): Promise<boolean> {
+  async function Create(product: ProductType) {
     globalStore.setLoading();
 
-    await api.post(`${baseUrl.api}/products/add`, product);
+    await api.post(`/products/add`, product);
 
     globalStore.unLoading();
     notify.success('Product created successfully');
@@ -72,10 +64,10 @@ export const useProductStore = defineStore('product', () => {
     return true;
   }
 
-  async function Update(product: ProductType): Promise<boolean> {
+  async function Update(product: ProductType) {
     globalStore.setLoading();
 
-    await api.put(`${baseUrl.api}/products/${product.id}`, {
+    await api.put(`/products/${product.id}`, {
       title: product.title,
       price: product.price,
       rating: product.rating,

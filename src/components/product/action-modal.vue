@@ -24,10 +24,7 @@
       <VDialog v-model="active" persistent width="1024">
         <VCard>
           <VCardTitle>
-            <VChip
-              variant="outlined"
-              color="success"
-              :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
+            <VChip variant="outlined" color="success" :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
               {{ product.id ? 'Update' : 'Create' }} Product
             </VChip>
           </VCardTitle>
@@ -57,17 +54,8 @@
           <VDivider />
           <VCardActions>
             <VSpacer></VSpacer>
-            <VBtn
-              color="primary"
-              prepend-icon="mdi-content-save"
-              text="Save"
-              :loading="globalStore.loading"
-              @click="onSave()"></VBtn>
-            <VBtn
-              color="warning"
-              text="Close"
-              prepend-icon="mdi-close"
-              @click="onClose()"></VBtn>
+            <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="globalStore.loading" @click="onSave()"></VBtn>
+            <VBtn color="warning" text="Close" prepend-icon="mdi-close" @click="onClose()"></VBtn>
           </VCardActions>
         </VCard>
       </VDialog>

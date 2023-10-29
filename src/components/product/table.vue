@@ -18,24 +18,15 @@
 <template>
   <div>
     <ProductActionModal :product="actionData" v-model="activeModal" />
+
     <VCard>
       <VCardTitle>
         <VRow>
           <VCol md="6">
-            <VChip
-              variant="outlined"
-              color="success"
-              prepend-icon="mdi-package-variant-closed"
-              label
-              >Product</VChip
-            >
+            <VChip variant="outlined" color="success" prepend-icon="mdi-package-variant-closed" label>Product</VChip>
           </VCol>
           <VCol class="text-right" md="6">
-            <VBtn
-              color="success"
-              prepend-icon="mdi-plus"
-              text="Add"
-              @click="onAction"></VBtn>
+            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="onAction"></VBtn>
           </VCol>
         </VRow>
       </VCardTitle>
@@ -49,9 +40,7 @@
           :loading="state.data.table.loading"
           @update:options="GetProducts()">
           <template v-slot:item.actions="{ item }">
-            <VIcon color="primary" class="me-2" @click="onAction(item)">
-              mdi-pencil
-            </VIcon>
+            <VIcon color="primary" class="me-2" @click="onAction(item)"> mdi-pencil </VIcon>
             <VIcon color="error" @click="onDelete(item)"> mdi-delete </VIcon>
           </template>
         </VDataTableServer>
