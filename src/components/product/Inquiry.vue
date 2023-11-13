@@ -36,28 +36,27 @@
     },
   });
 
-  async function GetProducts(option: Option | null = null) {
-    state.table.loading = true;
-    state.table.options = option ? option : state.table.options;
-
-    const res: any = await api.get(
-      `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`
-    );
-
-    state.table.result.datas = res?.products ?? [];
-    state.table.result.total = res?.total ?? 10;
-
-    state.table.loading = false;
-  }
-
   const func = {
+    getProducts: async (option: Option | null = null) => {
+      state.table.loading = true;
+      state.table.options = option ? option : state.table.options;
+
+      const res: any = await api.get(
+        `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`
+      );
+
+      state.table.result.datas = res?.products ?? [];
+      state.table.result.total = res?.total ?? 10;
+
+      state.table.loading = false;
+    },
     onClear: async () => {
       Object.assign(state.search, {
         name: null,
         last: null,
         status: null,
       });
-      await GetProducts();
+      await func.getProducts();
     },
     onAction: (obj: ProductType | null) => {
       Object.assign(state.modal.data, obj ?? newProductType());
@@ -75,7 +74,7 @@
     <ProductActionModal :product="state.modal.data" v-model="state.modal.active" />
 
     <!-- search -->
-    <VCard @keyup.enter="GetProducts()">
+    <VCard @keyup.enter="func.getProducts()">
       <VCardTitle>
         <VChip variant="outlined" color="primary" prepend-icon="mdi-magnify" label> Search </VChip>
       </VCardTitle>
@@ -101,7 +100,7 @@
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="GetProducts()"> </VBtn>
+        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()"> </VBtn>
         <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()"></VBtn>
       </VCardActions>
     </VCard>
@@ -126,7 +125,7 @@
           :items-length="state.table.result.total"
           :items="state.table.result.datas"
           :loading="state.table.loading"
-          @update:options="GetProducts()">
+          @update:options="func.getProducts()">
           <template v-slot:item.actions="{ item }">
             <VIcon color="primary" class="me-2" @click="func.onAction(item)"> mdi-pencil </VIcon>
             <VIcon color="error" @click="func.onDelete(item)"> mdi-delete </VIcon>
