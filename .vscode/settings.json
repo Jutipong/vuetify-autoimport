@@ -58,7 +58,6 @@
   "material-icon-theme.folders.associations": {
     "@core": "core",
     "@v": "shared",
-    "components": "vue",
     "stores": "database"
   },
   "material-icon-theme.folders.color": "#7cb342",
