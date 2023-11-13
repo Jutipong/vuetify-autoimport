@@ -2,53 +2,57 @@
   import { Header, Option, Table } from '@/types/common/table';
   import { ProductType, newProductType } from '@/types/product';
 
-  const header = [
-    { title: 'ID', key: 'id', align: 'center' },
-    { title: 'Title', key: 'title' },
-    { title: 'PRICE', key: 'price', align: 'end' },
-    { title: 'RATING', key: 'rating', align: 'end' },
-    { title: 'STOCK', key: 'stock', align: 'end' },
-    { title: 'BRAND', key: 'brand', align: 'end' },
-    { title: 'Actions', key: 'actions', sortable: false },
-  ] as Header[];
-
-  const search = reactive({
-    name: null,
-    last: null,
-    status: null,
+  const state = reactive({
+    header: [
+      { title: 'ID', key: 'id', align: 'center' },
+      { title: 'Title', key: 'title' },
+      { title: 'PRICE', key: 'price', align: 'end' },
+      { title: 'RATING', key: 'rating', align: 'end' },
+      { title: 'STOCK', key: 'stock', align: 'end' },
+      { title: 'BRAND', key: 'brand', align: 'end' },
+      { title: 'Actions', key: 'actions', sortable: false },
+    ] as Header[],
+    table: {
+      loading: false,
+      options: {
+        page: 1,
+        itemsPerPage: useConstant.dataTable.pageSize,
+        sortBy: [],
+      },
+      result: {
+        datas: [],
+        total: 0,
+      },
+    } as Table<ProductType>,
+    search: {
+      name: null,
+      last: null,
+      status: null,
+    },
+    modal: {
+      active: false,
+      data: newProductType(),
+    },
   });
 
-  const table = reactive<Table<ProductType>>({
-    loading: false,
-    options: {
-      page: 1,
-      itemsPerPage: useConstant.dataTable.pageSize,
-      sortBy: [],
-    },
-    result: {
-      datas: [],
-      total: 0,
-    },
-  });
-
-  const activeModal = ref(false);
-  const actionData = ref(newProductType());
   const productStore = useProductStore();
 
   async function GetProducts(option: Option | null = null) {
-    table.loading = true;
-    table.options = option ? option : table.options;
+    state.table.loading = true;
+    state.table.options = option ? option : state.table.options;
 
-    const res: any = await api.get(`/products/search?q=${search.name ?? ''}&limit=${table.options.itemsPerPage}`);
+    const res: any = await api.get(
+      `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`
+    );
 
-    table.result.datas = res?.products ?? [];
-    table.result.total = res?.total ?? 10;
+    state.table.result.datas = res?.products ?? [];
+    state.table.result.total = res?.total ?? 10;
 
-    table.loading = false;
+    state.table.loading = false;
   }
 
   async function onClear() {
-    Object.assign(search, {
+    Object.assign(state.search, {
       name: null,
       last: null,
       status: null,
@@ -57,8 +61,8 @@
   }
 
   function onAction(obj: ProductType | null) {
-    Object.assign(actionData.value, obj ?? newProductType());
-    activeModal.value = true;
+    Object.assign(state.modal.data, obj ?? newProductType());
+    state.modal.active = true;
   }
 
   function onDelete(obj: ProductType) {
@@ -69,7 +73,7 @@
 <template>
   <div>
     <!-- modal actions -->
-    <ProductActionModal :product="actionData" v-model="activeModal" />
+    <ProductActionModal :product="state.modal.data" v-model="state.modal.active" />
 
     <!-- search -->
     <VCard @keyup.enter="GetProducts()">
@@ -80,11 +84,11 @@
       <VCardText>
         <VRow class="">
           <VCol cols="12" md="4">
-            <VTextField label="First name" v-model="search.name"></VTextField>
+            <VTextField label="First name" v-model="state.search.name"></VTextField>
           </VCol>
 
           <VCol cols="12" md="4">
-            <VTextField label="Last name" v-model="search.last"></VTextField>
+            <VTextField label="Last name" v-model="state.search.last"></VTextField>
           </VCol>
 
           <VCol cols="12" md="4">
@@ -92,7 +96,7 @@
               label="Status"
               :dirty="true"
               :items="productStore.state.master.status"
-              v-model="search.status"></VSelect>
+              v-model="state.search.status"></VSelect>
           </VCol>
         </VRow>
       </VCardText>
@@ -118,11 +122,11 @@
       <VDivider />
       <VCardText>
         <VDataTableServer
-          :items-per-page="table.options.itemsPerPage"
-          :headers="header"
-          :items-length="table.result.total"
-          :items="table.result.datas"
-          :loading="table.loading"
+          :items-per-page="state.table.options.itemsPerPage"
+          :headers="state.header"
+          :items-length="state.table.result.total"
+          :items="state.table.result.datas"
+          :loading="state.table.loading"
           @update:options="GetProducts()">
           <template v-slot:item.actions="{ item }">
             <VIcon color="primary" class="me-2" @click="onAction(item)"> mdi-pencil </VIcon>
