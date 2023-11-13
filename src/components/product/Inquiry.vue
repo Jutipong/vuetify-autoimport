@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { Header, Option, Table } from '@/types/common/table';
-  import { ProductType, SearchPropsType, newProductType } from '@/types/product';
+  import { ProductType, newProductType } from '@/types/product';
 
   const header = [
     { title: 'ID', key: 'id', align: 'center' },
@@ -12,7 +12,13 @@
     { title: 'Actions', key: 'actions', sortable: false },
   ] as Header[];
 
-  const table = reactive<Table<null, ProductType>>({
+  const search = reactive({
+    name: null,
+    last: null,
+    status: null,
+  });
+
+  const table = reactive<Table<ProductType>>({
     loading: false,
     options: {
       page: 1,
@@ -25,22 +31,15 @@
     },
   });
 
-  const searchProps = reactive<SearchPropsType>({
-    search: { name: null, last: null, status: null },
-    GetProducts,
-    onClear,
-  });
-
   const activeModal = ref(false);
   const actionData = ref(newProductType());
+  const productStore = useProductStore();
 
   async function GetProducts(option: Option | null = null) {
     table.loading = true;
     table.options = option ? option : table.options;
 
-    const res: any = await api.get(
-      `/products/search?q=${searchProps.search.name ?? ''}&limit=${table.options.itemsPerPage}`
-    );
+    const res: any = await api.get(`/products/search?q=${search.name ?? ''}&limit=${table.options.itemsPerPage}`);
 
     table.result.datas = res?.products ?? [];
     table.result.total = res?.total ?? 10;
@@ -49,12 +48,16 @@
   }
 
   async function onClear() {
-    searchProps.search = { name: null, last: null, status: null };
+    Object.assign(search, {
+      name: null,
+      last: null,
+      status: null,
+    });
     await GetProducts();
   }
 
   function onAction(obj: ProductType | null) {
-    actionData.value = Object.assign({}, obj) ?? newProductType();
+    Object.assign(actionData.value, obj ?? newProductType());
     activeModal.value = true;
   }
 
@@ -65,10 +68,42 @@
 
 <template>
   <div>
+    <!-- modal actions -->
     <ProductActionModal :product="actionData" v-model="activeModal" />
 
-    <ProductSearch v-bind="searchProps" />
+    <!-- search -->
+    <VCard @keyup.enter="GetProducts()">
+      <VCardTitle>
+        <VChip variant="outlined" color="primary" prepend-icon="mdi-magnify" label> Search </VChip>
+      </VCardTitle>
+      <VDivider />
+      <VCardText>
+        <VRow class="">
+          <VCol cols="12" md="4">
+            <VTextField label="First name" v-model="search.name"></VTextField>
+          </VCol>
 
+          <VCol cols="12" md="4">
+            <VTextField label="Last name" v-model="search.last"></VTextField>
+          </VCol>
+
+          <VCol cols="12" md="4">
+            <VSelect
+              label="Status"
+              :dirty="true"
+              :items="productStore.state.master.status"
+              v-model="search.status"></VSelect>
+          </VCol>
+        </VRow>
+      </VCardText>
+      <VDivider />
+      <VCardActions class="justify-end">
+        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="GetProducts()"> </VBtn>
+        <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="onClear()"></VBtn>
+      </VCardActions>
+    </VCard>
+
+    <!-- table -->
     <VCard>
       <VCardTitle>
         <VRow>
@@ -76,7 +111,7 @@
             <VChip variant="outlined" color="success" prepend-icon="mdi-package-variant-closed" label>Product</VChip>
           </VCol>
           <VCol class="text-right" md="6">
-            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="onAction"></VBtn>
+            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="onAction(null)"></VBtn>
           </VCol>
         </VRow>
       </VCardTitle>

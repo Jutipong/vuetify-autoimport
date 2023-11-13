@@ -1,6 +1,6 @@
+import Inquiry from '@/components/product/inquiry.vue';
 <template>
   <div>
-    <!-- <ProductSearch /> -->
-    <ProductTable />
+    <ProductInquiry />
   </div>
 </template>

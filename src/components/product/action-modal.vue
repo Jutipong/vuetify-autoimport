@@ -1,12 +1,36 @@
 <script setup lang="ts">
   import { ProductType } from '@/types/product';
-  // import VCurrency from '../common/vCurrency.vue';
-
   const globalStore = useGlobalStore();
-  const { Create, Update } = useProductStore();
-
-  const active = defineModel<boolean>();
   const { product } = defineProps<{ product: ProductType }>();
+  const active = defineModel<boolean>();
+
+  async function Create(product: ProductType) {
+    globalStore.setLoading();
+
+    await api.post(`/products/add`, product);
+
+    globalStore.unLoading();
+    notify.success('Product created successfully');
+
+    return true;
+  }
+
+  async function Update(product: ProductType) {
+    globalStore.setLoading();
+
+    await api.put(`/products/${product.id}`, {
+      title: product.title,
+      price: product.price,
+      rating: product.rating,
+      stock: product.stock,
+      brand: product.brand,
+    });
+
+    globalStore.unLoading();
+    notify.success('Product updated successfully');
+
+    return true;
+  }
 
   async function onSave() {
     const res = product.id ? await Update(product) : await Create(product);
@@ -54,7 +78,12 @@
           <VDivider />
           <VCardActions>
             <VSpacer></VSpacer>
-            <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="globalStore.loading" @click="onSave()"></VBtn>
+            <VBtn
+              color="primary"
+              prepend-icon="mdi-content-save"
+              text="Save"
+              :loading="globalStore.loading"
+              @click="onSave()"></VBtn>
             <VBtn color="warning" text="Close" prepend-icon="mdi-close" @click="onClose()"></VBtn>
           </VCardActions>
         </VCard>

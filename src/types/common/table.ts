@@ -21,7 +21,7 @@ export type Result<TDatas> = {
   total: number;
 };
 
-export type Table<TSearch, TDatas> = {
+export type Table<TDatas> = {
   loading: boolean;
   // header: Header[];
   // search: TSearch;
