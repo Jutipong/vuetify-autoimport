@@ -1,6 +1,4 @@
 export const useProductStore = defineStore('product', () => {
-  const globalStore = useGlobalStore();
-
   const state = reactive({
     data: {
       status: null,
@@ -13,7 +11,5 @@ export const useProductStore = defineStore('product', () => {
     },
   });
 
-  return {
-    state,
-  };
+  return { state };
 });
