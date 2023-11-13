@@ -50,23 +50,23 @@
     state.table.loading = false;
   }
 
-  async function onClear() {
-    Object.assign(state.search, {
-      name: null,
-      last: null,
-      status: null,
-    });
-    await GetProducts();
-  }
-
-  function onAction(obj: ProductType | null) {
-    Object.assign(state.modal.data, obj ?? newProductType());
-    state.modal.active = true;
-  }
-
-  function onDelete(obj: ProductType) {
-    notify.error(`delete ${obj.title} success`);
-  }
+  const func = {
+    onClear: async () => {
+      Object.assign(state.search, {
+        name: null,
+        last: null,
+        status: null,
+      });
+      await GetProducts();
+    },
+    onAction: (obj: ProductType | null) => {
+      Object.assign(state.modal.data, obj ?? newProductType());
+      state.modal.active = true;
+    },
+    onDelete: (obj: ProductType) => {
+      notify.error(`delete ${obj.title} success`);
+    },
+  };
 </script>
 
 <template>
@@ -102,7 +102,7 @@
       <VDivider />
       <VCardActions class="justify-end">
         <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="GetProducts()"> </VBtn>
-        <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="onClear()"></VBtn>
+        <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()"></VBtn>
       </VCardActions>
     </VCard>
 
@@ -114,7 +114,7 @@
             <VChip variant="outlined" color="success" prepend-icon="mdi-package-variant-closed" label>Product</VChip>
           </VCol>
           <VCol class="text-right" md="6">
-            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="onAction(null)"></VBtn>
+            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="func.onAction(null)"></VBtn>
           </VCol>
         </VRow>
       </VCardTitle>
@@ -128,8 +128,8 @@
           :loading="state.table.loading"
           @update:options="GetProducts()">
           <template v-slot:item.actions="{ item }">
-            <VIcon color="primary" class="me-2" @click="onAction(item)"> mdi-pencil </VIcon>
-            <VIcon color="error" @click="onDelete(item)"> mdi-delete </VIcon>
+            <VIcon color="primary" class="me-2" @click="func.onAction(item)"> mdi-pencil </VIcon>
+            <VIcon color="error" @click="func.onDelete(item)"> mdi-delete </VIcon>
           </template>
         </VDataTableServer>
       </VCardText>
