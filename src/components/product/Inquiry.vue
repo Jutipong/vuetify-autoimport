@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { Header, Option, Table } from '@/types/common/table';
   import { ProductType, newProductType } from '@/types/product';
+  const productStore = useProductStore();
 
   const state = reactive({
     header: [
@@ -34,8 +35,6 @@
       data: newProductType(),
     },
   });
-
-  const productStore = useProductStore();
 
   async function GetProducts(option: Option | null = null) {
     state.table.loading = true;
