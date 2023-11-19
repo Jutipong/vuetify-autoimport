@@ -32,15 +32,7 @@ export default defineConfig({
         {
           '@vueuse/core': ['watchDebounced'],
           pinia: ['defineStore'],
-          vue: [
-            'ref',
-            'reactive',
-            'computed',
-            'watch',
-            'watchEffect',
-            'onMounted',
-            'toRefs',
-          ],
+          vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
         },
       ],
       dirs: ['src/@core/utils', 'src/stores', 'src/@core/constants'],
