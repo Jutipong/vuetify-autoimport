@@ -45,34 +45,63 @@
 <template>
   <Teleport to="body">
     <VRow justify="center">
-      <VDialog v-model="active" persistent width="1024">
+      <VDialog
+        v-model="active"
+        persistent
+        width="1024">
         <VCard>
           <VCardTitle>
-            <VChip variant="outlined" color="success" :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
+            <VChip
+              variant="outlined"
+              color="success"
+              :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
               {{ product.id ? 'Update' : 'Create' }} Product
             </VChip>
           </VCardTitle>
           <VDivider />
           <VCardText>
             <VRow>
-              <VCol cols="12" md="4">
-                <VTextField label="Title" v-model="product.title"></VTextField>
+              <VCol
+                cols="12"
+                md="4">
+                <VTextField
+                  label="Title"
+                  v-model="product.title"></VTextField>
               </VCol>
-              <VCol cols="12" md="4">
-                <VCurrency label="Price" v-model="product.price" />
+              <VCol
+                cols="12"
+                md="4">
+                <VCurrency
+                  label="Price"
+                  v-model="product.price" />
               </VCol>
-              <VCol cols="12" md="4">
-                <VTextField label="Rating" v-model="product.rating"></VTextField>
+              <VCol
+                cols="12"
+                md="4">
+                <VTextField
+                  label="Rating"
+                  v-model="product.rating"></VTextField>
               </VCol>
             </VRow>
             <VRow>
-              <VCol cols="12" md="4">
-                <VTextField label="Stock" v-model="product.stock"></VTextField>
+              <VCol
+                cols="12"
+                md="4">
+                <VTextField
+                  label="Stock"
+                  v-model="product.stock"></VTextField>
               </VCol>
-              <VCol cols="12" md="4">
-                <VTextField label="Brand" v-model="product.brand"></VTextField>
+              <VCol
+                cols="12"
+                md="4">
+                <VTextField
+                  label="Brand"
+                  v-model="product.brand"></VTextField>
               </VCol>
-              <VCol cols="12" md="4"> </VCol>
+              <VCol
+                cols="12"
+                md="4">
+              </VCol>
             </VRow>
           </VCardText>
           <VDivider />
@@ -84,7 +113,11 @@
               text="Save"
               :loading="globalStore.loading"
               @click="onSave()"></VBtn>
-            <VBtn color="warning" text="Close" prepend-icon="mdi-close" @click="onClose()"></VBtn>
+            <VBtn
+              color="warning"
+              text="Close"
+              prepend-icon="mdi-close"
+              @click="onClose()"></VBtn>
           </VCardActions>
         </VCard>
       </VDialog>

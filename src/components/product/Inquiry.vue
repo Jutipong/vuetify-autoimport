@@ -71,25 +71,43 @@
 <template>
   <div>
     <!-- modal actions -->
-    <ProductActionModal :product="state.modal.data" v-model="state.modal.active" />
+    <ProductActionModal
+      :product="state.modal.data"
+      v-model="state.modal.active" />
 
     <!-- search -->
     <VCard @keyup.enter="func.getProducts()">
       <VCardTitle>
-        <VChip variant="outlined" color="primary" prepend-icon="mdi-magnify" label> Search </VChip>
+        <VChip
+          variant="outlined"
+          color="primary"
+          prepend-icon="mdi-magnify"
+          label>
+          Search
+        </VChip>
       </VCardTitle>
       <VDivider />
       <VCardText>
         <VRow class="">
-          <VCol cols="12" md="4">
-            <VTextField label="First name" v-model="state.search.name"></VTextField>
+          <VCol
+            cols="12"
+            md="4">
+            <VTextField
+              label="First name"
+              v-model="state.search.name"></VTextField>
           </VCol>
 
-          <VCol cols="12" md="4">
-            <VTextField label="Last name" v-model="state.search.last"></VTextField>
+          <VCol
+            cols="12"
+            md="4">
+            <VTextField
+              label="Last name"
+              v-model="state.search.last"></VTextField>
           </VCol>
 
-          <VCol cols="12" md="4">
+          <VCol
+            cols="12"
+            md="4">
             <VSelect
               label="Status"
               :dirty="true"
@@ -100,8 +118,17 @@
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()"> </VBtn>
-        <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()"></VBtn>
+        <VBtn
+          color="primary"
+          prepend-icon="mdi-magnify"
+          text="Search"
+          @click="func.getProducts()">
+        </VBtn>
+        <VBtn
+          color="warning"
+          prepend-icon="mdi-refresh"
+          text="Clear"
+          @click="func.onClear()"></VBtn>
       </VCardActions>
     </VCard>
 
@@ -110,10 +137,22 @@
       <VCardTitle>
         <VRow>
           <VCol md="6">
-            <VChip variant="outlined" color="success" prepend-icon="mdi-package-variant-closed" label>Product</VChip>
+            <VChip
+              variant="outlined"
+              color="success"
+              prepend-icon="mdi-package-variant-closed"
+              label
+              >Product</VChip
+            >
           </VCol>
-          <VCol class="text-right" md="6">
-            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="func.onAction(null)"></VBtn>
+          <VCol
+            class="text-right"
+            md="6">
+            <VBtn
+              color="success"
+              prepend-icon="mdi-plus"
+              text="Add"
+              @click="func.onAction(null)"></VBtn>
           </VCol>
         </VRow>
       </VCardTitle>
@@ -127,8 +166,17 @@
           :loading="state.table.loading"
           @update:options="func.getProducts()">
           <template v-slot:item.actions="{ item }">
-            <VIcon color="primary" class="me-2" @click="func.onAction(item)"> mdi-pencil </VIcon>
-            <VIcon color="error" @click="func.onDelete(item)"> mdi-delete </VIcon>
+            <VIcon
+              color="primary"
+              class="me-2"
+              @click="func.onAction(item)">
+              mdi-pencil
+            </VIcon>
+            <VIcon
+              color="error"
+              @click="func.onDelete(item)">
+              mdi-delete
+            </VIcon>
           </template>
         </VDataTableServer>
       </VCardText>
