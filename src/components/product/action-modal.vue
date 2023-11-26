@@ -1,22 +1,22 @@
 <script setup lang="ts">
-  import { ProductType } from '@/types/product';
-  const globalStore = useGlobalStore();
-  const { product } = defineProps<{ product: ProductType }>();
-  const active = defineModel<boolean>();
+  import { ProductType } from '@/types/product'
+  const globalStore = useGlobalStore()
+  const { product } = defineProps<{ product: ProductType }>()
+  const active = defineModel<boolean>()
 
   async function Create(product: ProductType) {
-    globalStore.setLoading();
+    globalStore.setLoading()
 
-    await api.post(`/products/add`, product);
+    await api.post(`/products/add`, product)
 
-    globalStore.unLoading();
-    notify.success('Product created successfully');
+    globalStore.unLoading()
+    notify.success('Product created successfully')
 
-    return true;
+    return true
   }
 
   async function Update(product: ProductType) {
-    globalStore.setLoading();
+    globalStore.setLoading()
 
     await api.put(`/products/${product.id}`, {
       title: product.title,
@@ -24,21 +24,21 @@
       rating: product.rating,
       stock: product.stock,
       brand: product.brand,
-    });
+    })
 
-    globalStore.unLoading();
-    notify.success('Product updated successfully');
+    globalStore.unLoading()
+    notify.success('Product updated successfully')
 
-    return true;
+    return true
   }
 
   async function onSave() {
-    const res = product.id ? await Update(product) : await Create(product);
-    active.value = !res;
+    const res = product.id ? await Update(product) : await Create(product)
+    active.value = !res
   }
 
   function onClose() {
-    active.value = false;
+    active.value = false
   }
 </script>
 

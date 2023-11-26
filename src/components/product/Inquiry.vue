@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { Header, Option, Table } from '@/types/common/table';
-  import { ProductType, newProductType } from '@/types/product';
-  const productStore = useProductStore();
+  import { Header, Option, Table } from '@/types/common/table'
+  import { ProductType, newProductType } from '@/types/product'
+  const productStore = useProductStore()
 
   const state = reactive({
     header: [
@@ -34,38 +34,38 @@
       active: false,
       data: newProductType(),
     },
-  });
+  })
 
   const func = {
     getProducts: async (option: Option | null = null) => {
-      state.table.loading = true;
-      state.table.options = option ? option : state.table.options;
+      state.table.loading = true
+      state.table.options = option ? option : state.table.options
 
       const res: any = await api.get(
         `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`
-      );
+      )
 
-      state.table.result.datas = res?.products ?? [];
-      state.table.result.total = res?.total ?? 10;
+      state.table.result.datas = res?.products ?? []
+      state.table.result.total = res?.total ?? 10
 
-      state.table.loading = false;
+      state.table.loading = false
     },
     onClear: async () => {
       Object.assign(state.search, {
         name: null,
         last: null,
         status: null,
-      });
-      await func.getProducts();
+      })
+      await func.getProducts()
     },
     onAction: (obj: ProductType | null) => {
-      Object.assign(state.modal.data, obj ?? newProductType());
-      state.modal.active = true;
+      Object.assign(state.modal.data, obj ?? newProductType())
+      state.modal.active = true
     },
     onDelete: (obj: ProductType) => {
-      notify.error(`delete ${obj.title} success`);
+      notify.error(`delete ${obj.title} success`)
     },
-  };
+  }
 </script>
 
 <template>

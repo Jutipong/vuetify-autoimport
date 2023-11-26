@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-  const layoutStore = useLayoutStore();
+  const layoutStore = useLayoutStore()
 
-  const open = ref(['Users']);
+  const open = ref(['Users'])
   const cruds = [
     ['Demo1', 'mdi-chevron-right', '/demo01'],
     ['Demo2', 'mdi-chevron-right', '/demo02'],
     ['Product', 'mdi-package', '/product'],
-  ];
-  const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
+  ]
+  const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
 </script>
 
 <template>
@@ -34,48 +34,26 @@
     </v-list>
 
     <v-divider />
-    <v-list
-      color="primary"
-      density="compact"
-      variant="plain"
-      nav
-      :lines="false"
-      v-model:opened="open">
+    <v-list color="primary" density="compact" variant="plain" nav :lines="false" v-model:opened="open">
       <v-list-item prepend-icon="mdi-home" title="Home" value="/" to="/"></v-list-item>
 
       <v-list-group value="Users">
         <template v-slot:activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-test-tube"
-            title="Menu 1"></v-list-item>
+          <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 1"></v-list-item>
         </template>
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
-        <v-list-item
-          v-for="([title, icon, to], i) in cruds"
-          :key="i"
-          :value="to"
-          :to="to"
-          :title="title">
+        <v-list-item v-for="([title, icon, to], i) in cruds" :key="i" :value="to" :to="to" :title="title">
         </v-list-item>
       </v-list-group>
 
       <v-list-group value="Users2">
         <template v-slot:activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-test-tube"
-            title="Menu 2"></v-list-item>
+          <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 2"></v-list-item>
         </template>
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
-        <v-list-item
-          v-for="([title, icon, to], i) in cruds2"
-          :key="i"
-          :value="to"
-          :to="to"
-          :title="title">
+        <v-list-item v-for="([title, icon, to], i) in cruds2" :key="i" :value="to" :to="to" :title="title">
         </v-list-item>
       </v-list-group>
     </v-list>

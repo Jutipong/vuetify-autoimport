@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import { useCurrencyInput } from 'vue-currency-input';
-  import { PropType } from 'vue';
+  import { useCurrencyInput } from 'vue-currency-input'
+  import { PropType } from 'vue'
 
   enum CurrencyDisplay {
     symbol = 'symbol',
@@ -15,7 +15,7 @@
       type: [Number, null] as PropType<number | null>,
       required: false,
     },
-  });
+  })
 
   const { inputRef, formattedValue, numberValue, setValue } = useCurrencyInput({
     currency: 'USD',
@@ -27,16 +27,16 @@
     autoDecimalDigits: false,
     useGrouping: true,
     accountingSign: true,
-  });
+  })
 
   watch(
     () => props.modelValue,
     (val) => {
-      setValue(val as number | null);
+      setValue(val as number | null)
     }
-  );
+  )
 
-  const onClear = () => setValue(null);
+  const onClear = () => setValue(null)
 </script>
 
 <template>

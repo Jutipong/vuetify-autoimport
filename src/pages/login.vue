@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-  const { state, logIn } = useAuthStore();
+  const { state, logIn } = useAuthStore()
   const user = ref({
     username: 'admin',
     password: 'sdkjslfjaldjkl;flslsjfljslkkd',
     visible: false,
-  });
+  })
 </script>
 
 <template>
@@ -37,14 +37,7 @@
               v-model="user.password">
             </v-text-field>
 
-            <v-btn
-              type="submit"
-              block
-              class="mb-8"
-              color="blue"
-              size="large"
-              variant="tonal"
-              :loading="state.loading">
+            <v-btn type="submit" block class="mb-8" color="blue" size="large" variant="tonal" :loading="state.loading">
               Log In
             </v-btn>
           </v-form>

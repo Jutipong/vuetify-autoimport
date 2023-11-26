@@ -1,25 +1,25 @@
-import axios from 'axios';
-const { getToken } = useLocalStorages;
-const { baseUrl } = useConstant;
+import axios from 'axios'
+const { getToken } = useLocalStorages
+const { baseUrl } = useConstant
 
 // create axios
 const _api = axios.create({
   baseURL: baseUrl.api,
   timeout: 5000,
   headers: { 'Access-Control-Allow-Origin': '*' },
-});
+})
 
 const err = (error: any) => {
-  const { logOut } = useAuthStore();
-  const globalStore = useGlobalStore();
-  const { status, data } = error.response;
+  const { logOut } = useAuthStore()
+  const globalStore = useGlobalStore()
+  const { status, data } = error.response
 
-  notify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`);
+  notify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
 
-  globalStore.resetLoading();
+  globalStore.resetLoading()
 
   if (status === 401) {
-    logOut();
+    logOut()
   }
 
   // const { errors } = data;
@@ -66,17 +66,17 @@ const err = (error: any) => {
   //     notify.error(data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง');
   //     break;
   // }
-  return Promise.reject(error);
-};
+  return Promise.reject(error)
+}
 
 // request interceptor
 _api.interceptors.request.use((config: any) => {
-  config.headers['Access-Control-Allow-Origin'] = '*';
-  config.headers['Content-Type'] = 'application/json';
-  config.headers['Authorization'] = 'Bearer ' + getToken();
+  config.headers['Access-Control-Allow-Origin'] = '*'
+  config.headers['Content-Type'] = 'application/json'
+  config.headers['Authorization'] = 'Bearer ' + getToken()
 
-  return config;
-}, err);
+  return config
+}, err)
 
 // response interceptor
 
@@ -85,8 +85,8 @@ _api.interceptors.response.use(({ data, config }: any) => {
   //   store.commit('SHOW_SNACKBAR', { text: data.meta.message, color: 'success' });
   // }
 
-  return data;
-}, err);
+  return data
+}, err)
 
 const api = {
   get: _api.get,
@@ -94,6 +94,6 @@ const api = {
   put: _api.put,
   delete: _api.delete,
   patch: _api.patch,
-};
+}
 
-export default api;
+export default api

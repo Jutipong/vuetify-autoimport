@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  const cards = ['Today', 'Yesterday'];
+  const cards = ['Today', 'Yesterday']
 </script>
 
 <template>
   <v-container>
-    <!-- <Demo01Card />
-  <Demo01Card2 /> -->
     <v-row>
       <v-col v-for="card in cards" :key="card" cols="12">
         <v-card>
