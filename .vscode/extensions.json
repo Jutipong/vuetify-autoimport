@@ -20,6 +20,7 @@
     "exer7um.vue-3-vscode-snippets",
     "Vue.volar",
     "vuetifyjs.vuetify-vscode",
-    "formulahendry.auto-rename-tag"
+    "formulahendry.auto-rename-tag",
+    "antfu.file-nesting"
   ]
 }
