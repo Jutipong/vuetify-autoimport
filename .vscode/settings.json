@@ -65,6 +65,6 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Simple Dark",
   "editor.fontSize": 15,
-  "editor.fontFamily": "'Input Mono','Jetbrains Mono Light', 'Fira Codex', 'Cascadia Codex', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Input Mono','Jetbrains Mono Light', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
   "workbench.tree.indent": 10
 }
