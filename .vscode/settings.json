@@ -64,7 +64,7 @@
   "prettier.requireConfig": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Simple Dark",
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.fontFamily": "'Input Mono','Jetbrains Mono Light', 'Fira Codex', 'Cascadia Codex', Consolas, 'Courier New', monospace",
   "workbench.tree.indent": 10
 }
