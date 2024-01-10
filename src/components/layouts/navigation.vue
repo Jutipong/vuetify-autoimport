@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-  const layoutStore = useLayoutStore();
+  const layoutStore = useLayoutStore()
 
-  const open = ref(['Users']);
+  const open = ref(['Users'])
   const cruds = [
     ['Demo1', 'mdi-chevron-right', '/demo01'],
     ['Demo2', 'mdi-chevron-right', '/demo02'],
     ['Product', 'mdi-package', '/product'],
-  ];
-  const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']];
+  ]
+  const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
 </script>
 
 <template>
@@ -41,7 +41,11 @@
       nav
       :lines="false"
       v-model:opened="open">
-      <v-list-item prepend-icon="mdi-home" title="Home" value="/" to="/"></v-list-item>
+      <v-list-item
+        prepend-icon="mdi-home"
+        title="Home"
+        value="/"
+        to="/"></v-list-item>
 
       <v-list-group value="Users">
         <template v-slot:activator="{ props }">

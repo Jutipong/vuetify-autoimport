@@ -1,17 +1,17 @@
-import { useToast } from 'vue-toastification';
-const { success, error, info, warning } = useToast();
+import { useToast } from 'vue-toastification'
+const { success, error, info, warning } = useToast()
 
 export const notify = {
   info: (msg: string) => {
-    info(msg);
+    info(msg)
   },
   success: (msg: string) => {
-    success(msg);
+    success(msg)
   },
   warning: (msg: string) => {
-    warning(msg);
+    warning(msg)
   },
   error: (msg: string) => {
-    error(msg);
+    error(msg)
   },
-};
+}

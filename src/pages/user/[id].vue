@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const route = useRoute('/user/[id]');
+  const route = useRoute('/user/[id]')
 </script>
 
 <template>

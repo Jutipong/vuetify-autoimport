@@ -1,17 +1,23 @@
 <script lang="ts" setup>
-  const { state, logIn } = useAuthStore();
+  const { state, logIn } = useAuthStore()
   const user = ref({
     username: 'admin',
     password: 'sdkjslfjaldjkl;flslsjfljslkkd',
     visible: false,
-  });
+  })
 </script>
 
 <template>
-  <div fluid class="d-flex fill-height align-center justify-center">
+  <div
+    fluid
+    class="d-flex fill-height align-center justify-center">
     <v-row>
       <v-col>
-        <v-card class="mx-auto pa-12 pb-8" elevation="8" max-width="450" rounded="lg">
+        <v-card
+          class="mx-auto pa-12 pb-8"
+          elevation="8"
+          max-width="450"
+          rounded="lg">
           <v-form @submit.prevent="logIn(user.username, user.password)">
             <v-img
               class="mx-auto ma-16"

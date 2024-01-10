@@ -9,7 +9,7 @@ export const useProductStore = defineStore('product', () => {
         { id: false, text: 'InActive' },
       ],
     },
-  });
+  })
 
-  return { state };
-});
+  return { state }
+})

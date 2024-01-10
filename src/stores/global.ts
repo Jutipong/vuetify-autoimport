@@ -1,20 +1,20 @@
-import { defineStore, acceptHMRUpdate } from 'pinia';
+import { defineStore, acceptHMRUpdate } from 'pinia'
 
 export const useGlobalStore = defineStore('global', () => {
-  const loadings = ref(0);
+  const loadings = ref(0)
 
-  const loading = computed(() => loadings.value > 0);
+  const loading = computed(() => loadings.value > 0)
 
   function setLoading() {
-    loadings.value++;
+    loadings.value++
   }
 
   function unLoading() {
-    loadings.value--;
+    loadings.value--
   }
 
   function resetLoading() {
-    loadings.value = 0;
+    loadings.value = 0
   }
 
   return {
@@ -22,9 +22,9 @@ export const useGlobalStore = defineStore('global', () => {
     setLoading,
     unLoading,
     resetLoading,
-  };
-});
+  }
+})
 
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot))
 }

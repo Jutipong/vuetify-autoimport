@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  const authStore = useAuthStore();
-  const layoutStore = useLayoutStore();
-  const { app } = useConstant;
+  const authStore = useAuthStore()
+  const layoutStore = useLayoutStore()
+  const { app } = useConstant
 </script>
 
 <template>
@@ -21,7 +21,10 @@
       <v-app-bar-title>{{ app.name }} </v-app-bar-title>
 
       <template v-slot:append>
-        <v-btn color="error" prepend-icon="mdi-logout" @click="authStore.logOut()">
+        <v-btn
+          color="error"
+          prepend-icon="mdi-logout"
+          @click="authStore.logOut()">
           Logout
         </v-btn>
       </template>

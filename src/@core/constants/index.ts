@@ -19,4 +19,4 @@ export const useConstant = {
   dataTable: {
     pageSize: 25,
   },
-};
+}

@@ -1,25 +1,22 @@
 {
   "recommendations": [
-    "antfu.goto-alias",
-    "vue.volar",
-    "streetsidesoftware.code-spell-checker",
     "formulahendry.auto-rename-tag",
+    "streetsidesoftware.code-spell-checker",
+    "huibizhang.codesnap-plus",
     "naumovs.color-highlight",
-    "travis.simple-dark",
+    "antfu.file-nesting",
     "antfu.goto-alias",
-    "chrisbibby.hide-node-modules",
     "akamud.vscode-javascript-snippet-pack",
-    "PKief.material-icon-theme",
+    "lukas-tr.materialdesignicons-intellisense",
+    "pkief.material-icon-theme",
     "idered.npm",
-    "quicktype.quicktype",
     "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "shardulm94.trailing-spaces",
-    "Vue.vscode-typescript-vue-plugin",
-    "MarkosTh09.color-picker",
+    "yoavbls.pretty-ts-errors",
+    "travis.simple-dark",
+    "vue.vscode-typescript-vue-plugin",
+    "markosth09.color-picker",
     "exer7um.vue-3-vscode-snippets",
-    "Vue.volar",
-    "vuetifyjs.vuetify-vscode",
-    "formulahendry.auto-rename-tag"
+    "vue.volar",
+    "vuetifyjs.vuetify-vscode"
   ]
 }

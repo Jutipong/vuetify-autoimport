@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { Header, Option, Table } from '@/types/common/table';
-  import { ProductType, newProductType } from '@/types/product';
-  const productStore = useProductStore();
+  import { Header, Option, Table } from '@/types/common/table'
+  import { ProductType, newProductType } from '@/types/product'
+  const productStore = useProductStore()
 
   const state = reactive({
     header: [
@@ -34,62 +34,80 @@
       active: false,
       data: newProductType(),
     },
-  });
+  })
 
   const func = {
     getProducts: async (option: Option | null = null) => {
-      state.table.loading = true;
-      state.table.options = option ? option : state.table.options;
+      state.table.loading = true
+      state.table.options = option ? option : state.table.options
 
       const res: any = await api.get(
         `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`
-      );
+      )
 
-      state.table.result.datas = res?.products ?? [];
-      state.table.result.total = res?.total ?? 10;
+      state.table.result.datas = res?.products ?? []
+      state.table.result.total = res?.total ?? 10
 
-      state.table.loading = false;
+      state.table.loading = false
     },
     onClear: async () => {
       Object.assign(state.search, {
         name: null,
         last: null,
         status: null,
-      });
-      await func.getProducts();
+      })
+      await func.getProducts()
     },
     onAction: (obj: ProductType | null) => {
-      Object.assign(state.modal.data, obj ?? newProductType());
-      state.modal.active = true;
+      Object.assign(state.modal.data, obj ?? newProductType())
+      state.modal.active = true
     },
     onDelete: (obj: ProductType) => {
-      notify.error(`delete ${obj.title} success`);
+      notify.error(`delete ${obj.title} success`)
     },
-  };
+  }
 </script>
 
 <template>
   <div>
     <!-- modal actions -->
-    <ProductActionModal :product="state.modal.data" v-model="state.modal.active" />
+    <ProductActionModal
+      :product="state.modal.data"
+      v-model="state.modal.active" />
 
     <!-- search -->
     <VCard @keyup.enter="func.getProducts()">
       <VCardTitle>
-        <VChip variant="outlined" color="primary" prepend-icon="mdi-magnify" label> Search </VChip>
+        <VChip
+          variant="outlined"
+          color="primary"
+          prepend-icon="mdi-magnify"
+          label>
+          Search
+        </VChip>
       </VCardTitle>
       <VDivider />
       <VCardText>
         <VRow class="">
-          <VCol cols="12" md="4">
-            <VTextField label="First name" v-model="state.search.name"></VTextField>
+          <VCol
+            cols="12"
+            md="4">
+            <VTextField
+              label="First name"
+              v-model="state.search.name"></VTextField>
           </VCol>
 
-          <VCol cols="12" md="4">
-            <VTextField label="Last name" v-model="state.search.last"></VTextField>
+          <VCol
+            cols="12"
+            md="4">
+            <VTextField
+              label="Last name"
+              v-model="state.search.last"></VTextField>
           </VCol>
 
-          <VCol cols="12" md="4">
+          <VCol
+            cols="12"
+            md="4">
             <VSelect
               label="Status"
               :dirty="true"
@@ -100,8 +118,17 @@
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()"> </VBtn>
-        <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()"></VBtn>
+        <VBtn
+          color="primary"
+          prepend-icon="mdi-magnify"
+          text="Search"
+          @click="func.getProducts()">
+        </VBtn>
+        <VBtn
+          color="warning"
+          prepend-icon="mdi-refresh"
+          text="Clear"
+          @click="func.onClear()"></VBtn>
       </VCardActions>
     </VCard>
 
@@ -110,10 +137,22 @@
       <VCardTitle>
         <VRow>
           <VCol md="6">
-            <VChip variant="outlined" color="success" prepend-icon="mdi-package-variant-closed" label>Product</VChip>
+            <VChip
+              variant="outlined"
+              color="success"
+              prepend-icon="mdi-package-variant-closed"
+              label
+              >Product</VChip
+            >
           </VCol>
-          <VCol class="text-right" md="6">
-            <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="func.onAction(null)"></VBtn>
+          <VCol
+            class="text-right"
+            md="6">
+            <VBtn
+              color="success"
+              prepend-icon="mdi-plus"
+              text="Add"
+              @click="func.onAction(null)"></VBtn>
           </VCol>
         </VRow>
       </VCardTitle>
@@ -127,8 +166,17 @@
           :loading="state.table.loading"
           @update:options="func.getProducts()">
           <template v-slot:item.actions="{ item }">
-            <VIcon color="primary" class="me-2" @click="func.onAction(item)"> mdi-pencil </VIcon>
-            <VIcon color="error" @click="func.onDelete(item)"> mdi-delete </VIcon>
+            <VIcon
+              color="primary"
+              class="me-2"
+              @click="func.onAction(item)">
+              mdi-pencil
+            </VIcon>
+            <VIcon
+              color="error"
+              @click="func.onDelete(item)">
+              mdi-delete
+            </VIcon>
           </template>
         </VDataTableServer>
       </VCardText>
