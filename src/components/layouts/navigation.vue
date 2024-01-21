@@ -1,33 +1,35 @@
 <script lang="ts" setup>
-  const layoutStore = useLayoutStore()
+const layoutStore = useLayoutStore()
 
-  const open = ref(['Users'])
-  const cruds = [
-    ['Demo1', 'mdi-chevron-right', '/demo01'],
-    ['Demo2', 'mdi-chevron-right', '/demo02'],
-    ['Product', 'mdi-package', '/product'],
-  ]
-  const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
+const open = ref(['Users'])
+const cruds = [
+  ['Demo1', 'mdi-chevron-right', '/demo01'],
+  ['Demo2', 'mdi-chevron-right', '/demo02'],
+  ['Product', 'mdi-package', '/product'],
+]
+const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
 </script>
 
 <template>
   <v-navigation-drawer
+    v-model="layoutStore.state.drawer"
     elevation="2"
     expand-on-hover
     :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
-    v-model="layoutStore.state.drawer">
+  >
     <v-list density="compact">
       <v-list-item
         prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg"
         title="ABC"
-        subtitle="abc@gmail.com">
-        <template v-slot:append>
+        subtitle="abc@gmail.com"
+      >
+        <template #append>
           <div class="justify-self-end">
             <v-btn
               rounded="xl"
               :icon="layoutStore.state.isRail ? 'mdi-pin-off-outline' : 'mdi-pin-outline'"
-              @click="layoutStore.toggleRail()">
-            </v-btn>
+              @click="layoutStore.toggleRail()"
+            />
           </div>
         </template>
       </v-list-item>
@@ -35,52 +37,56 @@
 
     <v-divider />
     <v-list
+      v-model:opened="open"
       color="primary"
       density="compact"
       variant="plain"
       nav
       :lines="false"
-      v-model:opened="open">
+    >
       <v-list-item
         prepend-icon="mdi-home"
         title="Home"
         value="/"
-        to="/"></v-list-item>
+        to="/"
+      />
 
       <v-list-group value="Users">
-        <template v-slot:activator="{ props }">
+        <template #activator="{ props }">
           <v-list-item
             v-bind="props"
             prepend-icon="mdi-test-tube"
-            title="Menu 1"></v-list-item>
+            title="Menu 1"
+          />
         </template>
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
         <v-list-item
-          v-for="([title, icon, to], i) in cruds"
+          v-for="([title, to], i) in cruds"
           :key="i"
           :value="to"
           :to="to"
-          :title="title">
-        </v-list-item>
+          :title="title"
+        />
       </v-list-group>
 
       <v-list-group value="Users2">
-        <template v-slot:activator="{ props }">
+        <template #activator="{ props }">
           <v-list-item
             v-bind="props"
             prepend-icon="mdi-test-tube"
-            title="Menu 2"></v-list-item>
+            title="Menu 2"
+          />
         </template>
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
         <v-list-item
-          v-for="([title, icon, to], i) in cruds2"
+          v-for="([title, to], i) in cruds2"
           :key="i"
           :value="to"
           :to="to"
-          :title="title">
-        </v-list-item>
+          :title="title"
+        />
       </v-list-group>
     </v-list>
     <!-- <template v-slot:append>

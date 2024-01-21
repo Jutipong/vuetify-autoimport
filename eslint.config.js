@@ -5,11 +5,13 @@ module.exports = antfu(
     // Enable stylistic formatting rules
     // Or customize the stylistic rules
     stylistic: {
+
       indent: 2,
       overrides: {
         'no-console': 'off',
       },
       jsx: false,
+
     },
 
     // TypeScript and Vue are auto-detected, you can also explicitly enable them:
