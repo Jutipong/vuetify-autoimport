@@ -1,4 +1,4 @@
-export type ProductType = {
+export interface ProductType {
   id: number | null
   title: string | null
   description: string | null

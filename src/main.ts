@@ -6,15 +6,15 @@
 
 // import '@/scss/style.scss';
 
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import type { PluginOptions } from 'vue-toastification'
+import Toast from 'vue-toastification'
 import App from './App.vue'
 
 import vuetify from '@/@core/plugins/vuetify'
 import router from '@/@core/plugins/router'
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
-import Toast, { PluginOptions } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
 const app = createApp(App)

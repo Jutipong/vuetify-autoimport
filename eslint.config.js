@@ -8,7 +8,8 @@ module.exports = antfu(
 
       indent: 2,
       overrides: {
-        'no-console': 'off',
+        // 'no-console': 'off'
+        // 'no-debugger': false,
       },
       jsx: false,
 

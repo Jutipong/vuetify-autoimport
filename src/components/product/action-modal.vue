@@ -1,45 +1,46 @@
 <script setup lang="ts">
-  import { ProductType } from '@/types/product'
-  const globalStore = useGlobalStore()
-  const { product } = defineProps<{ product: ProductType }>()
-  const active = defineModel<boolean>()
+import type { ProductType } from '@/types/product'
 
-  async function Create(product: ProductType) {
-    globalStore.setLoading()
+const { product } = defineProps<{ product: ProductType }>()
+const globalStore = useGlobalStore()
+const active = defineModel<boolean>()
 
-    await api.post(`/products/add`, product)
+async function Create(product: ProductType) {
+  globalStore.setLoading()
 
-    globalStore.unLoading()
-    notify.success('Product created successfully')
+  await api.post(`/products/add`, product)
 
-    return true
-  }
+  globalStore.unLoading()
+  notify.success('Product created successfully')
 
-  async function Update(product: ProductType) {
-    globalStore.setLoading()
+  return true
+}
 
-    await api.put(`/products/${product.id}`, {
-      title: product.title,
-      price: product.price,
-      rating: product.rating,
-      stock: product.stock,
-      brand: product.brand,
-    })
+async function Update(product: ProductType) {
+  globalStore.setLoading()
 
-    globalStore.unLoading()
-    notify.success('Product updated successfully')
+  await api.put(`/products/${product.id}`, {
+    title: product.title,
+    price: product.price,
+    rating: product.rating,
+    stock: product.stock,
+    brand: product.brand,
+  })
 
-    return true
-  }
+  globalStore.unLoading()
+  notify.success('Product updated successfully')
 
-  async function onSave() {
-    const res = product.id ? await Update(product) : await Create(product)
-    active.value = !res
-  }
+  return true
+}
 
-  function onClose() {
-    active.value = false
-  }
+async function onSave() {
+  const res = product.id ? await Update(product) : await Create(product)
+  active.value = !res
+}
+
+function onClose() {
+  active.value = false
+}
 </script>
 
 <template>
@@ -48,13 +49,15 @@
       <VDialog
         v-model="active"
         persistent
-        width="1024">
+        width="1024"
+      >
         <VCard>
           <VCardTitle>
             <VChip
               variant="outlined"
               color="success"
-              :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
+              :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'"
+            >
               {{ product.id ? 'Update' : 'Create' }} Product
             </VChip>
           </VCardTitle>
@@ -63,61 +66,73 @@
             <VRow>
               <VCol
                 cols="12"
-                md="4">
+                md="4"
+              >
                 <VTextField
+                  v-model="product.title"
                   label="Title"
-                  v-model="product.title"></VTextField>
+                />
               </VCol>
               <VCol
                 cols="12"
-                md="4">
+                md="4"
+              >
                 <VCurrency
+                  v-model="product.price"
                   label="Price"
-                  v-model="product.price" />
+                />
               </VCol>
               <VCol
                 cols="12"
-                md="4">
+                md="4"
+              >
                 <VTextField
+                  v-model="product.rating"
                   label="Rating"
-                  v-model="product.rating"></VTextField>
+                />
               </VCol>
             </VRow>
             <VRow>
               <VCol
                 cols="12"
-                md="4">
+                md="4"
+              >
                 <VTextField
+                  v-model="product.stock"
                   label="Stock"
-                  v-model="product.stock"></VTextField>
+                />
               </VCol>
               <VCol
                 cols="12"
-                md="4">
+                md="4"
+              >
                 <VTextField
+                  v-model="product.brand"
                   label="Brand"
-                  v-model="product.brand"></VTextField>
+                />
               </VCol>
               <VCol
                 cols="12"
-                md="4">
-              </VCol>
+                md="4"
+              />
             </VRow>
           </VCardText>
           <VDivider />
           <VCardActions>
-            <VSpacer></VSpacer>
+            <VSpacer />
             <VBtn
               color="primary"
               prepend-icon="mdi-content-save"
               text="Save"
               :loading="globalStore.loading"
-              @click="onSave()"></VBtn>
+              @click="onSave()"
+            />
             <VBtn
               color="warning"
               text="Close"
               prepend-icon="mdi-close"
-              @click="onClose()"></VBtn>
+              @click="onClose()"
+            />
           </VCardActions>
         </VCard>
       </VDialog>

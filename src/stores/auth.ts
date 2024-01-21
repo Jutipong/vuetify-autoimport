@@ -1,4 +1,4 @@
-import { UserLoginType } from '../types/auth'
+import type { UserLoginType } from '../types/auth'
 import router from '@/@core/plugins/router'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -9,10 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
   async function logIn(username: string, password: string) {
     state.loading = true
 
-    const req = {
-      username: 'kminchelle',
-      password: '0lelplR',
-    }
+    const req = { username, password }
 
     const res: UserLoginType = await api.post('/auth/login', req)
 
@@ -40,8 +37,8 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   function isLogin() {
-    let userInfo = _getUserInfo()
-    return _isEmpty(userInfo) ? false : true
+    const userInfo = _getUserInfo()
+    return !_isEmpty(userInfo)
   }
 
   function getUserInfo(): UserLoginType {

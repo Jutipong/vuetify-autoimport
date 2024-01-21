@@ -1,4 +1,5 @@
-import { UserLoginType } from '@/types/auth'
+import type { UserLoginType } from '@/types/auth'
+
 const { app } = useConstant
 export const useLocalStorages = {
   ///////////
@@ -14,7 +15,7 @@ export const useLocalStorages = {
   clearToken: () => sessionStorage.removeItem(app.tokenKey),
 
   /////////////
-  //user info//
+  // user info//
   /////////////
   setUserInfo: (userInfo: UserLoginType) => {
     sessionStorage.setItem(app.userInfKey, JSON.stringify(userInfo))

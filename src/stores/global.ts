@@ -1,4 +1,4 @@
-import { defineStore, acceptHMRUpdate } from 'pinia'
+import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', () => {
   const loadings = ref(0)
@@ -25,6 +25,5 @@ export const useGlobalStore = defineStore('global', () => {
   }
 })
 
-if (import.meta.hot) {
+if (import.meta.hot)
   import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot))
-}

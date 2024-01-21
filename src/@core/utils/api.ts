@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const { getToken } = useLocalStorages
 const { baseUrl } = useConstant
 
@@ -9,7 +10,7 @@ const _api = axios.create({
   headers: { 'Access-Control-Allow-Origin': '*' },
 })
 
-const err = (error: any) => {
+function err(error: any) {
   const { logOut } = useAuthStore()
   const globalStore = useGlobalStore()
   const { status, data } = error.response
@@ -18,9 +19,8 @@ const err = (error: any) => {
 
   globalStore.resetLoading()
 
-  if (status === 401) {
+  if (status === 401)
     logOut()
-  }
 
   // const { errors } = data;
   // let message = [];
@@ -73,18 +73,16 @@ const err = (error: any) => {
 _api.interceptors.request.use((config: any) => {
   config.headers['Access-Control-Allow-Origin'] = '*'
   config.headers['Content-Type'] = 'application/json'
-  config.headers['Authorization'] = 'Bearer ' + getToken()
+  config.headers.Authorization = `Bearer ${getToken()}`
 
   return config
 }, err)
 
 // response interceptor
 
-_api.interceptors.response.use(({ data, config }: any) => {
-  // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta) {
-  //   store.commit('SHOW_SNACKBAR', { text: data.meta.message, color: 'success' });
-  // }
-
+_api.interceptors.response.use(({ data }: any) => {
+  // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta)
+  //   notify.warning(data.meta.message)
   return data
 }, err)
 

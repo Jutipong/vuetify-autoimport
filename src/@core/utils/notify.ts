@@ -1,4 +1,5 @@
 import { useToast } from 'vue-toastification'
+
 const { success, error, info, warning } = useToast()
 
 export const notify = {

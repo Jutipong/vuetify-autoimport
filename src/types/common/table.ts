@@ -1,27 +1,27 @@
-export type Option = {
+export interface Option {
   page: number
   itemsPerPage: number
   sortBy: SortBy[]
 }
 
-export type SortBy = {
+export interface SortBy {
   key: string
   order: string
 }
 
-export type Header = {
+export interface Header {
   title: string
   align?: 'start' | 'center' | 'end'
   sortable?: false | true
   key: string
 }
 
-export type Result<TDatas> = {
+export interface Result<TDatas> {
   datas: TDatas[]
   total: number
 }
 
-export type Table<TDatas> = {
+export interface Table<TDatas> {
   loading: boolean
   // header: Header[];
   // search: TSearch;

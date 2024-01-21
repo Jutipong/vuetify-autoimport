@@ -1,4 +1,4 @@
-type UserLoginType = {
+interface UserLoginType {
   id: number
   username: string
   email: string
