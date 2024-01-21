@@ -69,7 +69,7 @@ function onClose() {
                 md="4"
               >
                 <VTextField
-                  v-model="product.title"
+                  :model-value="product.title"
                   label="Title"
                 />
               </VCol>
@@ -78,7 +78,7 @@ function onClose() {
                 md="4"
               >
                 <VCurrency
-                  v-model="product.price"
+                  :model-value="product.price"
                   label="Price"
                 />
               </VCol>
@@ -87,7 +87,7 @@ function onClose() {
                 md="4"
               >
                 <VTextField
-                  v-model="product.rating"
+                  :model-value="product.rating"
                   label="Rating"
                 />
               </VCol>
@@ -98,7 +98,7 @@ function onClose() {
                 md="4"
               >
                 <VTextField
-                  v-model="product.stock"
+                  :model-value="product.stock"
                   label="Stock"
                 />
               </VCol>
@@ -107,7 +107,7 @@ function onClose() {
                 md="4"
               >
                 <VTextField
-                  v-model="product.brand"
+                  :model-value="product.brand"
                   label="Brand"
                 />
               </VCol>
