@@ -79,19 +79,16 @@ _api.interceptors.request.use((config: any) => {
 }, err)
 
 // response interceptor
-
 _api.interceptors.response.use(({ data }: any) => {
   // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta)
   //   notify.warning(data.meta.message)
   return data
 }, err)
 
-const api = {
+export default {
   get: _api.get,
   post: _api.post,
   put: _api.put,
   delete: _api.delete,
   patch: _api.patch,
 }
-
-export default api
