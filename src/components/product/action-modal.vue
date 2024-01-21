@@ -46,93 +46,44 @@ function onClose() {
 <template>
   <Teleport to="body">
     <VRow justify="center">
-      <VDialog
-        v-model="active"
-        persistent
-        width="1024"
-      >
+      <VDialog v-model="active" persistent width="1024">
         <VCard>
           <VCardTitle>
-            <VChip
-              variant="outlined"
-              color="success"
-              :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'"
-            >
+            <VChip variant="outlined" color="success" :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
               {{ product.id ? 'Update' : 'Create' }} Product
             </VChip>
           </VCardTitle>
           <VDivider />
           <VCardText>
             <VRow>
-              <VCol
-                cols="12"
-                md="4"
-              >
-                <VTextField
-                  :model-value="product.title"
-                  label="Title"
-                />
+              <VCol cols="12" md="4">
+                <VTextField :model-value="product.title" label="Title" />
               </VCol>
-              <VCol
-                cols="12"
-                md="4"
-              >
-                <VCurrency
-                  :model-value="product.price"
-                  label="Price"
-                />
+              <VCol cols="12" md="4">
+                <VCurrency :model-value="product.price" label="Price" />
               </VCol>
-              <VCol
-                cols="12"
-                md="4"
-              >
-                <VTextField
-                  :model-value="product.rating"
-                  label="Rating"
-                />
+              <VCol cols="12" md="4">
+                <VTextField :model-value="product.rating" label="Rating" />
               </VCol>
             </VRow>
             <VRow>
-              <VCol
-                cols="12"
-                md="4"
-              >
-                <VTextField
-                  :model-value="product.stock"
-                  label="Stock"
-                />
+              <VCol cols="12" md="4">
+                <VTextField :model-value="product.stock" label="Stock" />
               </VCol>
-              <VCol
-                cols="12"
-                md="4"
-              >
-                <VTextField
-                  :model-value="product.brand"
-                  label="Brand"
-                />
+              <VCol cols="12" md="4">
+                <VTextField :model-value="product.brand" label="Brand" />
               </VCol>
-              <VCol
-                cols="12"
-                md="4"
-              />
+              <VCol cols="12" md="4" />
             </VRow>
           </VCardText>
           <VDivider />
           <VCardActions>
             <VSpacer />
             <VBtn
-              color="primary"
-              prepend-icon="mdi-content-save"
-              text="Save"
-              :loading="globalStore.loading"
+              color="primary" prepend-icon="mdi-content-save" text="Save" :loading="globalStore.loading"
               @click="onSave()"
             />
-            <VBtn
-              color="warning"
-              text="Close"
-              prepend-icon="mdi-close"
-              @click="onClose()"
-            />
+            <VBtn color="warning" text="Close" prepend-icon="mdi-close" @click="onClose()" />
           </VCardActions>
         </VCard>
       </VDialog>
