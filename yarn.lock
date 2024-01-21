@@ -2065,15 +2065,6 @@ eslint-scope@^7.1.1, eslint-scope@^7.2.2:
     esrecurse "^4.3.0"
     estraverse "^5.2.0"
 
-eslint-ts-patch@^8.56.0-0, "eslint@npm:eslint-ts-patch":
-  version "8.56.0-0"
-  resolved "https://registry.yarnpkg.com/eslint-ts-patch/-/eslint-ts-patch-8.56.0-0.tgz#e7c1bb8dbf7f125f48caf922be3163b9ece2c33f"
-  integrity sha512-J9Efj9P1GBaC665MIeX6+kGje3vToaJ/Z3Ky5yI05Td+xiTCKHlG1cAd3IHgicf0bGYKV/Y/gWyp5/84MfsbOg==
-  dependencies:
-    debug "^4.3.4"
-    eslint "^8.56.0"
-    jiti "^1.21.0"
-
 eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1, eslint-visitor-keys@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz#0cd72fe8550e3c2eae156a96a4dddcd1c8ac5800"
@@ -2122,6 +2113,15 @@ eslint@^8.56.0:
     optionator "^0.9.3"
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
+
+"eslint@npm:eslint-ts-patch":
+  version "8.56.0-0"
+  resolved "https://registry.yarnpkg.com/eslint-ts-patch/-/eslint-ts-patch-8.56.0-0.tgz#e7c1bb8dbf7f125f48caf922be3163b9ece2c33f"
+  integrity sha512-J9Efj9P1GBaC665MIeX6+kGje3vToaJ/Z3Ky5yI05Td+xiTCKHlG1cAd3IHgicf0bGYKV/Y/gWyp5/84MfsbOg==
+  dependencies:
+    debug "^4.3.4"
+    eslint "^8.56.0"
+    jiti "^1.21.0"
 
 espree@^9.0.0, espree@^9.3.1, espree@^9.6.0, espree@^9.6.1:
   version "9.6.1"
