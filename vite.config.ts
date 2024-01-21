@@ -58,7 +58,7 @@ export default defineConfig({
       template: { transformAssetUrls },
       script: {
         defineModel: true,
-        propsDestructure: true,
+        // propsDestructure: true,
       },
     }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
