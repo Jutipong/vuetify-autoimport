@@ -3,11 +3,12 @@ const layoutStore = useLayoutStore()
 
 const open = ref(['Users'])
 const cruds = [
-  ['Demo1', 'mdi-chevron-right', '/demo01'],
-  ['Demo2', 'mdi-chevron-right', '/demo02'],
-  ['Product', 'mdi-package', '/product'],
+  { title: 'Demo1', icon: 'mdi-chevron-right', to: '/demo01' },
+  { title: 'Demo2', icon: 'mdi-chevron-right', to: '/demo02' },
+  { title: 'Product', icon: 'mdi-package', to: '/product' },
 ]
-const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
+
+const cruds2 = [{ title: 'Demo03', icon: 'mdi-chevron-right', to: '/demo03' }]
 </script>
 
 <template>
@@ -62,7 +63,7 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
         <v-list-item
-          v-for="([title, to], i) in cruds"
+          v-for="({ title, to }, i) in cruds"
           :key="i"
           :value="to"
           :to="to"
@@ -81,7 +82,7 @@ const cruds2 = [['Demo03', 'mdi-chevron-right', '/demo03']]
         <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
 
         <v-list-item
-          v-for="([title, to], i) in cruds2"
+          v-for="({ title, to }, i) in cruds2"
           :key="i"
           :value="to"
           :to="to"
