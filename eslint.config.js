@@ -10,6 +10,7 @@ module.exports = antfu(
       overrides: {
         // 'no-console': 'off'
         // 'no-debugger': false,
+        'valid-v-slot': false,
       },
       jsx: false,
 
