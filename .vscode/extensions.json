@@ -10,13 +10,13 @@
     "lukas-tr.materialdesignicons-intellisense",
     "pkief.material-icon-theme",
     "idered.npm",
-    "esbenp.prettier-vscode",
     "yoavbls.pretty-ts-errors",
     "travis.simple-dark",
     "vue.vscode-typescript-vue-plugin",
     "markosth09.color-picker",
     "exer7um.vue-3-vscode-snippets",
     "vue.volar",
-    "vuetifyjs.vuetify-vscode"
+    "vuetifyjs.vuetify-vscode",
+    "dbaeumer.vscode-eslint"
   ]
 }
