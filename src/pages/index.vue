@@ -1,3 +1,24 @@
+<script setup lang="ts">
+const items = [
+  {
+    color: 'red-lighten-2',
+    icon: 'mdi-star',
+  },
+  {
+    color: 'purple-lighten-2',
+    icon: 'mdi-book-variant',
+  },
+  {
+    color: 'green-lighten-1',
+    icon: 'mdi-airballoon',
+  },
+  {
+    color: 'indigo-lighten-2',
+    icon: 'mdi-layers-triple',
+  },
+]
+</script>
+
 <template>
   <v-container>
     <v-timeline align="start">
@@ -6,9 +27,12 @@
         :key="i"
         :dot-color="item.color"
         :icon="item.icon"
-        fill-dot>
+        fill-dot
+      >
         <v-card>
-          <v-card-title :class="['text-h6', `bg-${item.color}`]"> Lorem Ipsum Dolor </v-card-title>
+          <v-card-title class="text-h6" :class="[`bg-${item.color}`]">
+            Lorem Ipsum Dolor
+          </v-card-title>
           <v-card-text class="bg-white text--primary">
             <p>
               Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod
@@ -17,7 +41,8 @@
             </p>
             <v-btn
               :color="item.color"
-              variant="outlined">
+              variant="outlined"
+            >
               Button
             </v-btn>
           </v-card-text>
@@ -26,24 +51,3 @@
     </v-timeline>
   </v-container>
 </template>
-
-<script setup lang="ts">
-  const items = [
-    {
-      color: 'red-lighten-2',
-      icon: 'mdi-star',
-    },
-    {
-      color: 'purple-lighten-2',
-      icon: 'mdi-book-variant',
-    },
-    {
-      color: 'green-lighten-1',
-      icon: 'mdi-airballoon',
-    },
-    {
-      color: 'indigo-lighten-2',
-      icon: 'mdi-layers-triple',
-    },
-  ]
-</script>
