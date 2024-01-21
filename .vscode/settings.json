@@ -36,6 +36,12 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "vue.splitEditors.icon": true,
   "editor.minimap.enabled": false,
   "typescript.preferences.autoImportFileExcludePatterns": ["vue-router"],
