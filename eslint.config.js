@@ -10,10 +10,8 @@ module.exports = antfu(
       overrides: {
         // 'no-console': 'off'
         // 'no-debugger': false,
-        'valid-v-slot': false,
+        'valid-v-slot': 1,
       },
-      jsx: false,
-
     },
 
     // TypeScript and Vue are auto-detected, you can also explicitly enable them:
@@ -27,6 +25,7 @@ module.exports = antfu(
     // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
     ignores: [
       '**/fixtures',
+      '**/vite-env.d.ts',
       // ...globs
     ],
     formatters: {
