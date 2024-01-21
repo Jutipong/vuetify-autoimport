@@ -1,11 +1,11 @@
 // Plugins
+import { URL, fileURLToPath } from 'node:url'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 
 // Utilities
 import { defineConfig } from 'vite'
-import { fileURLToPath, URL } from 'node:url'
 
 import VueDevTools from 'vite-plugin-vue-devtools'
 
@@ -31,8 +31,8 @@ export default defineConfig({
         VueRouterAutoImports,
         {
           '@vueuse/core': ['watchDebounced'],
-          pinia: ['defineStore'],
-          vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
+          'pinia': ['defineStore'],
+          'vue': ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
         },
       ],
       dirs: ['src/@core/utils', 'src/stores', 'src/@core/constants'],
@@ -91,6 +91,6 @@ export default defineConfig({
     extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
   },
   server: {
-    port: Number(process.env.VITE_PORT || 3000),
+    port: 3000,
   },
 })
