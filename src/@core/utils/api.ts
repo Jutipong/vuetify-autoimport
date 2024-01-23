@@ -15,7 +15,7 @@ function err(error: any) {
   const globalStore = useGlobalStore()
   const { status, data } = error.response
 
-  notify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
+  vNotify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
 
   globalStore.resetLoading()
 

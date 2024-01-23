@@ -13,6 +13,7 @@ declare module 'vue' {
     ProductInquiry: typeof import('./components/product/Inquiry.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VConfirm: typeof import('./components/@v/confirm.vue')['default']
     VCurrency: typeof import('./components/@v/currency.vue')['default']
   }
 }

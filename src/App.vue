@@ -3,7 +3,11 @@ const globalStore = useGlobalStore()
 </script>
 
 <template>
+  <!-- main components -->
   <router-view />
+
+  <!-- util component -->
+  <VConfirm />
   <v-overlay v-model="globalStore.loading" class="align-center justify-center" persistent>
     <v-card>
       <v-card-text class="text-center">

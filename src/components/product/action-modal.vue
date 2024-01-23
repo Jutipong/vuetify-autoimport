@@ -11,7 +11,7 @@ async function Create(product: ProductType) {
   await api.post(`/products/add`, product)
 
   globalStore.unLoading()
-  notify.success('Product created successfully')
+  vNotify.success('Product created successfully')
 
   return true
 }
@@ -28,7 +28,7 @@ async function Update(product: ProductType) {
   })
 
   globalStore.unLoading()
-  notify.success('Product updated successfully')
+  vNotify.success('Product updated successfully')
 
   return true
 }

@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { provide } from 'vue'
+import store from '../@v/confirm'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 import { newProductType } from '@/types/product'
 
 const productStore = useProductStore()
+
+async function confirm() {
+  vConfirm.info('Confirm', 'Delete this post?')
+}
 
 const state = reactive({
   header: [
@@ -65,7 +71,7 @@ const func = {
     state.modal.active = true
   },
   onDelete: (obj: ProductType) => {
-    notify.error(`delete ${obj.title} success`)
+    vNotify.error(`delete ${obj.title} success`)
   },
 }
 </script>
@@ -103,7 +109,7 @@ const func = {
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()" />
+        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="confirm()" />
         <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()" />
       </VCardActions>
     </VCard>
@@ -140,5 +146,7 @@ const func = {
         </VDataTableServer>
       </VCardText>
     </VCard>
+
+    <!-- <VDialogConfirm /> -->
   </div>
 </template>
