@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { provide } from 'vue'
-import store from '../@v/confirm'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 import { newProductType } from '@/types/product'
@@ -8,7 +6,7 @@ import { newProductType } from '@/types/product'
 const productStore = useProductStore()
 
 async function confirm() {
-  vConfirm.info('Confirm', 'Delete this post?')
+  const ok = await vConfirm.info('Confirm', 'Delete this post?')
 }
 
 const state = reactive({

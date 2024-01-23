@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import useConfirm from './confirm'
+import store from '@/@core/utils/confirm'
 
-const state = useConfirm.state
+const state = store.state
 </script>
 
 <template>
@@ -19,8 +19,16 @@ const state = useConfirm.state
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="default" prepend-icon="mdi-close" text="Cancel" @click="state.isOpen = false" />
-              <v-btn color="success" prepend-icon="mdi-check" text="Confirm" @click="state.isOpen = false" />
+              <v-btn
+                min-width="116px"
+                :color="store.state.options.btnCancel.color" prepend-icon="mdi-close"
+                :text="store.state.options.btnCancel.text" @click="store.onCancel()"
+              />
+              <v-btn
+                min-width="116px"
+                :color="store.state.options.btnOk.color" prepend-icon="mdi-check"
+                :text="store.state.options.btnOk.text" @click="store.onOk()"
+              />
             </v-card-actions>
           </v-card>
         </v-dialog>

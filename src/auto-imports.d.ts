@@ -12,6 +12,7 @@ declare global {
   const _isEmpty: typeof import('./@core/utils/checkValue')['_isEmpty']
   const api: typeof import('./@core/utils/api')['default']
   const computed: typeof import('vue')['computed']
+  const confirm: typeof import('./@core/utils/confirm')['default']
   const defineLoader: typeof import('vue-router/auto')['defineLoader']
   const definePage: typeof import('unplugin-vue-router/runtime')['_definePage']
   const defineStore: typeof import('pinia')['defineStore']
