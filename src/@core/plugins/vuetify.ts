@@ -66,6 +66,7 @@ export default createVuetify({
       class: 'mt-1 mr-2 ml-2',
       VBtn: {
         variant: 'flat',
+        class: 'pl-4 pr-4',
       },
     },
     VTextField: {
