@@ -1,6 +1,6 @@
 const state = reactive({
   isOpen: false,
-  content: '',
+  message: '',
   title: '',
   // resolve: (_val: boolean) => {},
   // reject: (_val: boolean) => {},

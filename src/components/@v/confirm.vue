@@ -1,35 +1,31 @@
 <script setup lang="ts">
-import store from './confirm'
+import useConfirm from './confirm'
 
-const state = store.state
+const state = useConfirm.state
 </script>
 
 <template>
-  <Teleport to="body">
+  <teleport to="body">
     <div v-if="state.isOpen">
       <v-row justify="center">
         <v-dialog v-model="state.isOpen" persistent width="auto">
           <v-card>
-            <v-card-title class="text-h5">
-              Use Google's location service?
+            <v-card-title class="pa-1 pl-2">
+              {{ state.title }}
             </v-card-title>
+            <v-divider />
             <v-card-text>
-              Let Google help apps determine location. This means sending anonymous location data to Google, even
-              when no apps are running.
+              {{ state.message }}
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn color="green-darken-1" variant="text" @click="state.isOpen = false">
-                Disagree
-              </v-btn>
-              <v-btn color="green-darken-1" variant="text" @click="state.isOpen = false">
-                Agree
-              </v-btn>
+              <v-btn color="default" prepend-icon="mdi-close" text="Cancel" @click="state.isOpen = false" />
+              <v-btn color="success" prepend-icon="mdi-check" text="Confirm" @click="state.isOpen = false" />
             </v-card-actions>
           </v-card>
         </v-dialog>
       </v-row>
     </div>
-  </Teleport>
+  </teleport>
 </template>
 ./confirm

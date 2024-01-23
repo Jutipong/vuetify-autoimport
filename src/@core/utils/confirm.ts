@@ -1,22 +1,22 @@
 import useConfirm from '@/components/@v/confirm'
 
-function onOpen(title: string, content: string) {
+function onOpen(title: string, message: string) {
   useConfirm.state.isOpen = true
   useConfirm.state.title = title
-  useConfirm.state.content = content
+  useConfirm.state.message = message
 }
 
 export const vConfirm = {
-  info: (title: string, content: string) => {
-    onOpen(title, content)
+  info: (title: string, message: string) => {
+    onOpen(title, message)
   },
-  success: (title: string, content: string) => {
-    onOpen(title, content)
+  success: (title: string, message: string) => {
+    onOpen(title, message)
   },
-  warning: (title: string, content: string) => {
-    onOpen(title, content)
+  warning: (title: string, message: string) => {
+    onOpen(title, message)
   },
-  error: (title: string, content: string) => {
-    onOpen(title, content)
+  error: (title: string, message: string) => {
+    onOpen(title, message)
   },
 }
