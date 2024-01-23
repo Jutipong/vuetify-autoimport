@@ -1,12 +1,17 @@
+// ===========================================
+// ========= library confirm dialog ==========
+// ===========================================
+
 interface ConfirmOptions {
-  btnOk: {
-    text?: string
-    color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+  iconTitle?: ''
+  btnOk?: {
+    text: string
+    color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
     icon?: string
   }
-  btnCancel: {
-    color?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-    text?: string
+  btnCancel?: {
+    color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+    text: string
     icon?: string
   }
 }
@@ -55,21 +60,20 @@ export default {
 // ===========================================
 // ========== provie confirm dialog ==========
 // ===========================================
-
-// import store from '@/components/@v/confirm'
-
 export const vConfirm = {
-  info: (title: string, message: string): Promise<boolean> => {
-    init(title, message, {
+  info: (title: string, message: string, options?: ConfirmOptions) => {
+    const op = Object.assign({
       btnOk: {
-        text: 'OK',
+        text: 'Yes',
         color: 'success',
       },
       btnCancel: {
         text: 'Cancel',
         color: 'secondary',
       },
-    })
+    }, options)
+
+    init(title, message, op)
 
     return new Promise<boolean>((resolve, reject) => {
       state.resolve = resolve

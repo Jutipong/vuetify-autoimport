@@ -1,33 +1,42 @@
 <script setup lang="ts">
 import store from '@/@core/utils/confirm'
-
-const state = store.state
 </script>
 
 <template>
   <teleport to="body">
-    <div v-if="state.isOpen">
+    <div v-if="store.state.isOpen">
       <v-row justify="center">
-        <v-dialog v-model="state.isOpen" persistent width="auto">
-          <v-card>
+        <v-dialog v-model="store.state.isOpen" persistent width="auto">
+          <v-card
+            min-width="400px"
+            min-height="160px"
+          >
             <v-card-title class="pa-1 pl-2">
-              {{ state.title }}
+              <v-icon
+                :color="store.state.options.btnOk?.color ?? ''"
+                :icon="store.state.options.iconTitle ?? ' mdi-bell-ring'"
+              />
+              {{ store.state.title }}
             </v-card-title>
             <v-divider />
             <v-card-text>
-              {{ state.message }}
+              {{ store.state.message }}
             </v-card-text>
             <v-card-actions>
               <v-spacer />
               <v-btn
                 min-width="116px"
-                :color="store.state.options.btnCancel.color" prepend-icon="mdi-close"
-                :text="store.state.options.btnCancel.text" @click="store.onCancel()"
+                :color="store.state.options.btnCancel?.color ?? 'default'"
+                prepend-icon="mdi-close"
+                :text="store.state.options.btnCancel?.text ?? 'Cancel'"
+                @click="store.onCancel()"
               />
               <v-btn
                 min-width="116px"
-                :color="store.state.options.btnOk.color" prepend-icon="mdi-check"
-                :text="store.state.options.btnOk.text" @click="store.onOk()"
+                :color="store.state.options.btnOk?.color ?? 'success'"
+                prepend-icon="mdi-check"
+                :text="store.state.options.btnOk?.text ?? 'Yes'"
+                @click="store.onOk()"
               />
             </v-card-actions>
           </v-card>
@@ -36,4 +45,3 @@ const state = store.state
     </div>
   </teleport>
 </template>
-./confirm

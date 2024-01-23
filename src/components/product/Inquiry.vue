@@ -6,7 +6,7 @@ import { newProductType } from '@/types/product'
 const productStore = useProductStore()
 
 async function confirm() {
-  const ok = await vConfirm.info('Confirm', 'Delete this post?')
+  await vConfirm.info('Confirm Update', 'Update data.')
 }
 
 const state = reactive({
