@@ -12,12 +12,12 @@ const _api = axios.create({
 
 function err(error: any) {
   const { logOut } = useAuthStore()
-  const globalStore = useGlobalStore()
+  const $g = useGlobalStore()
   const { status, data } = error.response
 
   vNotify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
 
-  globalStore.resetLoading()
+  $g.resetLoading()
 
   if (status === 401)
     logOut()

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const globalStore = useGlobalStore()
+const $g = useGlobalStore()
 </script>
 
 <template>
@@ -8,12 +8,12 @@ const globalStore = useGlobalStore()
 
   <!-- util component -->
   <VConfirm />
-  <v-overlay v-model="globalStore.loading" class="align-center justify-center" persistent>
+  <v-overlay v-model="$g.loading" class="align-center justify-center" persistent>
     <v-card>
       <v-card-text class="text-center">
         <v-progress-circular size="32" color="green" indeterminate />
         <p class="mt-2">
-          Loading...
+          Loading....
         </p>
       </v-card-text>
     </v-card>

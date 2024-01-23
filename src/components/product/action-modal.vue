@@ -2,22 +2,22 @@
 import type { ProductType } from '@/types/product'
 
 const { product } = defineProps<{ product: ProductType }>()
-const globalStore = useGlobalStore()
+const $g = useGlobalStore()
 const active = defineModel<boolean>()
 
 async function Create(product: ProductType) {
-  globalStore.setLoading()
+  $g.setLoading()
 
   await api.post(`/products/add`, product)
 
-  globalStore.unLoading()
+  $g.unLoading()
   vNotify.success('Product created successfully')
 
   return true
 }
 
 async function Update(product: ProductType) {
-  globalStore.setLoading()
+  $g.setLoading()
 
   await api.put(`/products/${product.id}`, {
     title: product.title,
@@ -27,7 +27,7 @@ async function Update(product: ProductType) {
     brand: product.brand,
   })
 
-  globalStore.unLoading()
+  $g.unLoading()
   vNotify.success('Product updated successfully')
 
   return true
@@ -80,7 +80,7 @@ function onClose() {
           <VCardActions>
             <VSpacer />
             <VBtn
-              color="primary" prepend-icon="mdi-content-save" text="Save" :loading="globalStore.loading"
+              color="primary" prepend-icon="mdi-content-save" text="Save" :loading="$g.loading"
               @click="onSave()"
             />
             <VBtn color="warning" text="Close" prepend-icon="mdi-close" @click="onClose()" />
