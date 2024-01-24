@@ -1,16 +1,17 @@
 // ===========================================
 // ========= library confirm dialog ==========
 // ===========================================
+type color = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
 
 interface ConfirmOptions {
-  iconTitle?: ''
+  iconTitle?: string
   btnOk?: {
     text: string
-    color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+    color: color
     icon?: string
   }
   btnCancel?: {
-    color: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+    color: color
     text: string
     icon?: string
   }
@@ -71,7 +72,7 @@ export const vConfirm = {
         text: 'Cancel',
         color: 'secondary',
       },
-    }, options)
+    } as ConfirmOptions, options)
 
     init(title, message, op)
 
@@ -80,13 +81,63 @@ export const vConfirm = {
       state.reject = reject
     })
   },
-  // success: (title: string, message: string) => {
-  //   onOpen(title, message)
-  // },
-  // warning: (title: string, message: string) => {
-  //   onOpen(title, message)
-  // },
-  // error: (title: string, message: string) => {
-  //   onOpen(title, message)
-  // },
+  warning: (title: string, message: string, options?: ConfirmOptions) => {
+    const op = Object.assign({
+      btnOk: {
+        text: 'Yes',
+        color: 'warning',
+      },
+      btnCancel: {
+        text: 'Cancel',
+        color: 'secondary',
+      },
+    } as ConfirmOptions, options)
+
+    init(title, message, op)
+
+    return new Promise<boolean>((resolve, reject) => {
+      state.resolve = resolve
+      state.reject = reject
+    })
+  },
+  save: (title: string, message: string, options?: ConfirmOptions) => {
+    const op = Object.assign({
+      iconTitle: 'mdi-content-save',
+      btnOk: {
+        text: 'Yes',
+        color: 'primary',
+      },
+      btnCancel: {
+        text: 'Cancel',
+        color: 'secondary',
+      },
+    } as ConfirmOptions, options)
+
+    init(title, message, op)
+
+    return new Promise<boolean>((resolve, reject) => {
+      state.resolve = resolve
+      state.reject = reject
+    })
+  },
+  delete: (title: string, message: string, options?: ConfirmOptions) => {
+    const op = Object.assign({
+      iconTitle: 'mdi-delete',
+      btnOk: {
+        text: 'Yes',
+        color: 'error',
+      },
+      btnCancel: {
+        text: 'Cancel',
+        color: 'secondary',
+      },
+    } as ConfirmOptions, options)
+
+    init(title, message, op)
+
+    return new Promise<boolean>((resolve, reject) => {
+      state.resolve = resolve
+      state.reject = reject
+    })
+  },
 }

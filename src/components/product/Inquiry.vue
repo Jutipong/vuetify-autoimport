@@ -5,9 +5,12 @@ import { newProductType } from '@/types/product'
 
 const productStore = useProductStore()
 
-async function confirm() {
-  await vConfirm.info('Confirm Update', 'Update data.')
-}
+// async function confirm() {
+//   // await vConfirm.info('Confirm Update', 'Update data.')
+//   // await vConfirm.warning('Confirm Delete', 'Delete data.')
+//   // await vConfirm.save('Confirm Save', 'Save data.')
+//   // await vConfirm.delete('Confirm Delete', 'Delete data.')
+// }
 
 const state = reactive({
   header: [
@@ -68,7 +71,10 @@ const func = {
     Object.assign(state.modal.data, obj ?? newProductType())
     state.modal.active = true
   },
-  onDelete: (obj: ProductType) => {
+  onDelete: async (obj: ProductType) => {
+    if (!await vConfirm.delete('Confirm Delete', 'Delete data.'))
+      return
+
     vNotify.error(`delete ${obj.title} success`)
   },
 }
@@ -107,7 +113,7 @@ const func = {
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="confirm()" />
+        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()" />
         <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()" />
       </VCardActions>
     </VCard>

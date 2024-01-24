@@ -6,6 +6,9 @@ const $g = useGlobalStore()
 const active = defineModel<boolean>()
 
 async function Create(product: ProductType) {
+  if (!await vConfirm.save('Confirm Create', 'Create data.'))
+    return
+
   $g.setLoading()
 
   await api.post(`/products/add`, product)
@@ -17,6 +20,9 @@ async function Create(product: ProductType) {
 }
 
 async function Update(product: ProductType) {
+  if (!await vConfirm.save('Confirm Update', 'Update data.'))
+    return
+
   $g.setLoading()
 
   await api.put(`/products/${product.id}`, {

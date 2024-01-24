@@ -14,7 +14,7 @@ import store from '@/@core/utils/confirm'
             <v-card-title class="pa-1 pl-2">
               <v-icon
                 :color="store.state.options.btnOk?.color ?? ''"
-                :icon="store.state.options.iconTitle ?? ' mdi-bell-ring'"
+                :icon="store.state.options.iconTitle ?? ' mdi-alert-circle-outline'"
               />
               {{ store.state.title }}
             </v-card-title>
