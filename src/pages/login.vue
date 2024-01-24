@@ -31,7 +31,7 @@ const user = ref({
               v-model="user.username"
               class="mb-2"
               placeholder="User Name"
-              prepend-inner-icon="carbon:user"
+              prepend-inner-icon="mdi-account-outline"
               variant="outlined"
             />
 
