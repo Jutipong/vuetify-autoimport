@@ -27,14 +27,14 @@ import store from '@/@core/utils/confirm'
               <v-btn
                 min-width="116px"
                 :color="store.state.options.btnCancel?.color ?? 'default'"
-                prepend-icon="mdi-close"
+                :prepend-icon="store.state.options.btnCancel?.icon ?? 'mdi-close'"
                 :text="store.state.options.btnCancel?.text ?? 'Cancel'"
                 @click="store.onCancel()"
               />
               <v-btn
                 min-width="116px"
                 :color="store.state.options.btnOk?.color ?? 'success'"
-                prepend-icon="mdi-check"
+                :prepend-icon="store.state.options.btnOk?.icon ?? 'mdi-check'"
                 :text="store.state.options.btnOk?.text ?? 'Yes'"
                 @click="store.onOk()"
               />

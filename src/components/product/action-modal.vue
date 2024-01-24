@@ -86,10 +86,18 @@ function onClose() {
           <VCardActions>
             <VSpacer />
             <VBtn
-              color="primary" prepend-icon="mdi-content-save" text="Save" :loading="$g.loading"
+              color="warning"
+              prepend-icon="mdi-close"
+              text="Close"
+              @click="onClose()"
+            />
+            <VBtn
+              color="primary"
+              prepend-icon="mdi-content-save"
+              text="Save"
+              :loading="$g.loading"
               @click="onSave()"
             />
-            <VBtn color="warning" text="Close" prepend-icon="mdi-close" @click="onClose()" />
           </VCardActions>
         </VCard>
       </VDialog>

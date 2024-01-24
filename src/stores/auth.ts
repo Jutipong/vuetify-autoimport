@@ -22,6 +22,16 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function logOut() {
+    if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
+      iconTitle: 'mdi-logout',
+      btnOk: {
+        color: 'error',
+        text: 'Log out',
+        icon: 'mdi-logout',
+      },
+    }))
+      return
+
     router.push('/login')
   }
 

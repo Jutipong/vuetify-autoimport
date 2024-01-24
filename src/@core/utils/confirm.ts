@@ -81,25 +81,6 @@ export const vConfirm = {
       state.reject = reject
     })
   },
-  warning: (title: string, message: string, options?: ConfirmOptions) => {
-    const op = Object.assign({
-      btnOk: {
-        text: 'Yes',
-        color: 'warning',
-      },
-      btnCancel: {
-        text: 'Cancel',
-        color: 'secondary',
-      },
-    } as ConfirmOptions, options)
-
-    init(title, message, op)
-
-    return new Promise<boolean>((resolve, reject) => {
-      state.resolve = resolve
-      state.reject = reject
-    })
-  },
   save: (title: string, message: string, options?: ConfirmOptions) => {
     const op = Object.assign({
       iconTitle: 'mdi-content-save',
@@ -140,4 +121,23 @@ export const vConfirm = {
       state.reject = reject
     })
   },
+  // warning: (title: string, message: string, options?: ConfirmOptions) => {
+  //   const op = Object.assign({
+  //     btnOk: {
+  //       text: 'Yes',
+  //       color: 'warning',
+  //     },
+  //     btnCancel: {
+  //       text: 'Cancel',
+  //       color: 'secondary',
+  //     },
+  //   } as ConfirmOptions, options)
+
+  //   init(title, message, op)
+
+  //   return new Promise<boolean>((resolve, reject) => {
+  //     state.resolve = resolve
+  //     state.reject = reject
+  //   })
+  // },
 }
