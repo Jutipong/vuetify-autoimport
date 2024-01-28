@@ -8,10 +8,7 @@ const user = ref({
 </script>
 
 <template>
-  <div
-    fluid
-    class="d-flex fill-height align-center justify-center"
-  >
+  <div fluid class="d-flex fill-height align-center justify-center">
     <v-row>
       <v-col>
         <v-card
@@ -22,8 +19,10 @@ const user = ref({
         >
           <v-form @submit.prevent="logIn(user.username, user.password)">
             <v-img
+              transition="fade-transition"
               class="mx-auto ma-16"
               max-width="250"
+              height="60"
               src="https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-v3-slim-text-light.svg"
             />
 
@@ -56,6 +55,7 @@ const user = ref({
               :loading="state.loading"
             >
               Log In
+              <v-icon icon="mdi-login" />
             </v-btn>
           </v-form>
         </v-card>
