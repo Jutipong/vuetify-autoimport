@@ -1,4 +1,4 @@
-interface UserLoginType {
+interface UserLogin {
   id: number
   username: string
   email: string
@@ -9,4 +9,4 @@ interface UserLoginType {
   token: string
 }
 
-export type { UserLoginType }
+export type { UserLogin }

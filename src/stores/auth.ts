@@ -1,4 +1,4 @@
-import type { UserLoginType } from '../types/auth'
+import type { UserLogin } from '../types/auth'
 import router from '@/@core/plugins/router'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -11,7 +11,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const req = { username, password }
 
-    const res: UserLoginType = await api.post('/auth/login', req)
+    const res: UserLogin = await api.post('/auth/login', req)
 
     useLocalStorages.setToken(res.token)
     useLocalStorages.setUserInfo(res)
@@ -42,7 +42,7 @@ export const useAuthStore = defineStore('auth', () => {
       return null
     }
 
-    const userInfo: UserLoginType = val
+    const userInfo: UserLogin = val
     return userInfo
   }
 
@@ -51,7 +51,7 @@ export const useAuthStore = defineStore('auth', () => {
     return !_isEmpty(userInfo)
   }
 
-  function getUserInfo(): UserLoginType {
+  function getUserInfo(): UserLogin {
     const userInfo = _getUserInfo()!
     return userInfo
   }
