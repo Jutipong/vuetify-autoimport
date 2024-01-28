@@ -8,7 +8,7 @@ const $g = useGlobalStore()
 
   <!-- util component -->
   <VConfirm />
-  <v-overlay v-model="$g.loading" class="align-center justify-center" persistent>
+  <v-overlay v-model="$g.isLoading" class="align-center justify-center" persistent>
     <v-card>
       <v-card-text class="text-center">
         <v-progress-circular size="32" color="green" indeterminate />

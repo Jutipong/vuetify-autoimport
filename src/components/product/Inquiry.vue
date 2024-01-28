@@ -3,6 +3,8 @@ import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 import { newProductType } from '@/types/product'
 
+const $g = useGlobalStore()
+
 const productStore = useProductStore()
 
 // async function confirm() {
@@ -50,9 +52,11 @@ const func = {
     state.table.loading = true
     state.table.options = option || state.table.options
 
+    // $g.setLoading()
     const res: any = await api.get(
       `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`,
     )
+    // $g.unLoading()
 
     state.table.result.datas = res?.products ?? []
     state.table.result.total = res?.total ?? 10

@@ -5,11 +5,11 @@ const { setToken, setUserInfo } = useLocalStorages
 
 export const useLoginStore = defineStore('login', () => {
   const state = reactive({
-    loading: false,
+    isLoading: false,
   })
 
   async function logIn(username: string, password: string): Promise<void> {
-    state.loading = true
+    state.isLoading = true
 
     const req = { username, password }
 
@@ -18,7 +18,7 @@ export const useLoginStore = defineStore('login', () => {
     setToken(res.token)
     setUserInfo(res)
 
-    state.loading = false
+    state.isLoading = false
 
     router.push('/')
   }
@@ -37,6 +37,7 @@ export const useLoginStore = defineStore('login', () => {
     router.push('/login')
   }
   return {
+    state,
     logIn,
     logOut,
   }

@@ -95,7 +95,7 @@ function onClose() {
               color="primary"
               prepend-icon="mdi-content-save"
               text="Save"
-              :loading="$g.loading"
+              :loading="$g.isLoading"
               @click="onSave()"
             />
           </VCardActions>

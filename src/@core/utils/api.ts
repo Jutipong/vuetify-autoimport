@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+// const $g = useGlobalStore()
+
 const { getToken } = useLocalStorages
 const { baseUrl } = useConstant
 
@@ -71,6 +73,7 @@ function err(error: any) {
 
 // request interceptor
 _api.interceptors.request.use((config: any) => {
+  // $g.setLoading()
   config.headers['Access-Control-Allow-Origin'] = '*'
   config.headers['Content-Type'] = 'application/json'
   config.headers.Authorization = `Bearer ${getToken()}`
@@ -80,6 +83,7 @@ _api.interceptors.request.use((config: any) => {
 
 // response interceptor
 _api.interceptors.response.use(({ data }: any) => {
+  // $g.unLoading()
   // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta)
   //   notify.warning(data.meta.message)
   return data
