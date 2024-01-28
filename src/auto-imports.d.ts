@@ -26,7 +26,7 @@ declare global {
   const useConstant: typeof import('./@core/constants/index')['useConstant']
   const useGlobalStore: typeof import('./stores/global')['useGlobalStore']
   const useLayoutStore: typeof import('./stores/layout')['useLayoutStore']
-  const useLocalStorages: typeof import('./@core/utils/localStorages')['useLocalStorages']
+  const useLocalStorages: typeof import('./@core/utils/localstorages')['useLocalStorages']
   const useProductStore: typeof import('./stores/product')['useProductStore']
   const useRoute: typeof import('vue-router/auto')['useRoute']
   const useRouter: typeof import('vue-router/auto')['useRouter']
