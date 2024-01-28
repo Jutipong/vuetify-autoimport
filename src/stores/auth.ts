@@ -6,7 +6,7 @@ export const useAuthStore = defineStore('auth', () => {
     loading: false,
   })
 
-  async function logIn(username: string, password: string) {
+  async function logIn(username: string, password: string): Promise<void> {
     state.loading = true
 
     const req = { username, password }
@@ -21,7 +21,7 @@ export const useAuthStore = defineStore('auth', () => {
     router.push('/')
   }
 
-  async function logOut() {
+  async function logOut(): Promise<void> {
     if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
       iconTitle: 'mdi-logout',
       btnOk: {
@@ -35,18 +35,18 @@ export const useAuthStore = defineStore('auth', () => {
     router.push('/login')
   }
 
-  function _getUserInfo() {
+  function _getUserInfo(): UserLogin | null {
     const val = useLocalStorages.getUserInfo()
+
     if (!val) {
       router.push('/login')
       return null
     }
 
-    const userInfo: UserLogin = val
-    return userInfo
+    return val
   }
 
-  function isLogin() {
+  function isLogin(): boolean {
     const userInfo = _getUserInfo()
     return !_isEmpty(userInfo)
   }
@@ -56,7 +56,7 @@ export const useAuthStore = defineStore('auth', () => {
     return userInfo
   }
 
-  function getToken() {
+  function getToken(): string | null {
     const token = useLocalStorages.getToken()
     return token
   }
