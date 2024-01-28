@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { state, logIn } = useAuthStore()
+const { logIn } = useAuthStore()
 const user = ref({
   username: 'kminchelle',
   password: '0lelplR',
@@ -52,7 +52,6 @@ const user = ref({
               color="blue"
               size="large"
               variant="tonal"
-              :loading="state.loading"
             >
               Log In
               <v-icon icon="mdi-login" />

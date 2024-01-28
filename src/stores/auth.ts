@@ -1,6 +1,8 @@
 import type { UserLogin } from '../types/auth'
 import router from '@/@core/plugins/router'
 
+const { setToken, setUserInfo } = useLocalStorages
+
 export const useAuthStore = defineStore('auth', () => {
   const state = reactive({
     loading: false,
@@ -13,8 +15,8 @@ export const useAuthStore = defineStore('auth', () => {
 
     const res: UserLogin = await api.post('/auth/login', req)
 
-    useLocalStorages.setToken(res.token)
-    useLocalStorages.setUserInfo(res)
+    setToken(res.token)
+    setUserInfo(res)
 
     state.loading = false
 
@@ -34,38 +36,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     router.push('/login')
   }
-
-  function _getUserInfo(): UserLogin | null {
-    const val = useLocalStorages.getUserInfo()
-
-    if (!val) {
-      router.push('/login')
-      return null
-    }
-
-    return val
-  }
-
-  function isLogin(): boolean {
-    const userInfo = _getUserInfo()
-    return !_isEmpty(userInfo)
-  }
-
-  function getUserInfo(): UserLogin {
-    const userInfo = _getUserInfo()!
-    return userInfo
-  }
-
-  function getToken(): string | null {
-    const token = useLocalStorages.getToken()
-    return token
-  }
-
   return {
-    state,
-    isLogin,
-    getToken,
-    getUserInfo,
     logIn,
     logOut,
   }

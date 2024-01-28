@@ -19,8 +19,10 @@ router.beforeEach((to: any, from: any, next: any) => {
     return next()
   }
 
-  if (!getToken())
+  if (!getToken()) {
+    clearLocalStorage()
     return next({ path: '/login' })
+  }
 
   next()
 })
