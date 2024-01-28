@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 
-const { getToken, clearToken, clearUserInfo } = useLocalStorages
+const { getToken, clearLocalStorage } = useLocalStorages
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,21 +13,16 @@ const router = createRouter({
 
 router.beforeEach((to: any, from: any, next: any) => {
   document.title = 'TCRB'
+
   if (to.path === '/login') {
-    clearToken()
-    clearUserInfo()
+    clearLocalStorage()
     return next()
   }
 
-  const token = getToken()
-  if (!token)
+  if (!getToken())
     return next({ path: '/login' })
 
   next()
 })
-
-// router.afterEach(() => {
-//   // appStore.inprogress = false;
-// });
 
 export default router

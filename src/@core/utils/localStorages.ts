@@ -1,28 +1,27 @@
+import ls from 'localstorage-slim'
 import type { UserLogin } from '@/types/auth'
 
 const { app } = useConstant
+
+ls.config.storage = sessionStorage
+ls.config.encrypt = true
+
 export const useLocalStorages = {
-  ///////////
-  // token //
-  ///////////
+  clearLocalStorage: () => {
+    ls.clear()
+  },
   setToken: (token: string) => {
-    sessionStorage.setItem(app.tokenKey, token)
+    ls.set(app.tokenKey, token)
   },
   getToken: (): string | null => {
-    const token = sessionStorage.getItem(app.tokenKey)
+    const token = ls.get<string | null>(app.tokenKey)
     return token
   },
-  clearToken: () => sessionStorage.removeItem(app.tokenKey),
-
-  /////////////
-  // user info//
-  /////////////
   setUserInfo: (userInfo: UserLogin) => {
-    sessionStorage.setItem(app.userInfKey, JSON.stringify(userInfo))
+    ls.set(app.userInfKey, userInfo)
   },
   getUserInfo: (): UserLogin | null => {
-    const userInfo = sessionStorage.getItem(app.userInfKey)
-    return userInfo ? JSON.parse(userInfo) : null
+    const userInfo = ls.get<UserLogin | null>(app.userInfKey)
+    return userInfo
   },
-  clearUserInfo: () => sessionStorage.removeItem(app.userInfKey),
 }

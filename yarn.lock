@@ -2743,6 +2743,11 @@ local-pkg@^0.5.0:
     mlly "^1.4.2"
     pkg-types "^1.0.3"
 
+localstorage-slim@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/localstorage-slim/-/localstorage-slim-2.7.0.tgz#a8313d1e95adfc6edb5b66ec8fe91233fe9d8fa7"
+  integrity sha512-velxCZhb0mODaD9noe4pu3+OYnMKC66itqDqHMRsVpXKAJYU2+cUX09KRxoZ/nlVwitVgjlG2BZSEaP6RPJmgw==
+
 locate-path@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-5.0.0.tgz#1afba396afd676a6d42504d0a67a3a7eb9f62aa0"
