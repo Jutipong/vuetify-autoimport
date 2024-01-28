@@ -50,9 +50,7 @@ const func = {
     state.table.loading = true
     state.table.options = option || state.table.options
 
-    const res: any = await api.get(
-      `/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`,
-    )
+    const res = await api.get<any>(`/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`)
 
     state.table.result.datas = res?.products ?? []
     state.table.result.total = res?.total ?? 10

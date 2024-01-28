@@ -9,11 +9,7 @@ export const useLoginStore = defineStore('login', () => {
   async function logIn(username: string, password: string): Promise<void> {
     state.isLoading = true
 
-    const res: UserLogin = await api.post(
-      '/auth/login',
-      { username, password },
-      { isLoading: false },
-    )
+    const res = await api.post<UserLogin>('/auth/login', { username, password }, { isLoading: false })
 
     setToken(res.token)
     setUserInfo(res)
