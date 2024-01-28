@@ -4,16 +4,16 @@ import router from '@/@core/plugins/router'
 const { setToken, setUserInfo } = useLocalStorages
 
 export const useLoginStore = defineStore('login', () => {
-  const state = reactive({
-    isLoading: false,
-  })
+  const state = reactive({ isLoading: false })
 
   async function logIn(username: string, password: string): Promise<void> {
     state.isLoading = true
 
-    const req = { username, password }
-
-    const res: UserLogin = await api.post('/auth/login', req)
+    const res: UserLogin = await api.post(
+      '/auth/login',
+      { username, password },
+      { isLoading: false },
+    )
 
     setToken(res.token)
     setUserInfo(res)
@@ -23,19 +23,22 @@ export const useLoginStore = defineStore('login', () => {
     router.push('/')
   }
 
-  async function logOut(): Promise<void> {
-    if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
-      iconTitle: 'mdi-logout',
-      btnOk: {
-        color: 'error',
-        text: 'Log out',
-        icon: 'mdi-logout',
-      },
-    }))
-      return
+  async function logOut(alertConfirm: boolean = true): Promise<void> {
+    if (alertConfirm) {
+      if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
+        iconTitle: 'mdi-logout',
+        btnOk: {
+          color: 'error',
+          text: 'Log out',
+          icon: 'mdi-logout',
+        },
+      }))
+        return
+    }
 
     router.push('/login')
   }
+
   return {
     state,
     logIn,
