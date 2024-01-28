@@ -6,7 +6,7 @@ const { getToken } = useLocalStorages
 const { baseUrl } = useConstant
 
 // create axios
-const _api = axios.create({
+export const api = axios.create({
   baseURL: baseUrl.api,
   timeout: 5000,
   headers: { 'Access-Control-Allow-Origin': '*' },
@@ -72,7 +72,7 @@ function err(error: any) {
 }
 
 // request interceptor
-_api.interceptors.request.use((config: any) => {
+api.interceptors.request.use((config: any) => {
   // $g.setLoading()
   config.headers['Access-Control-Allow-Origin'] = '*'
   config.headers['Content-Type'] = 'application/json'
@@ -82,17 +82,18 @@ _api.interceptors.request.use((config: any) => {
 }, err)
 
 // response interceptor
-_api.interceptors.response.use(({ data }: any) => {
+api.interceptors.response.use(({ data }: any) => {
   // $g.unLoading()
   // if (['put', 'post', 'delete', 'patch'].includes(config.method) && data.meta)
   //   notify.warning(data.meta.message)
   return data
 }, err)
 
-export default {
-  get: _api.get,
-  post: _api.post,
-  put: _api.put,
-  delete: _api.delete,
-  patch: _api.patch,
-}
+// export default {
+//   get: _api.get,
+
+//    _api.post
+//   put: _api.put,
+//   delete: _api.delete,
+//   patch: _api.patch,
+// }

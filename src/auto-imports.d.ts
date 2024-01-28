@@ -10,7 +10,7 @@ declare global {
   const IP: typeof import('./@core/utils/regex')['IP']
   const URL: typeof import('./@core/utils/regex')['URL']
   const _isEmpty: typeof import('./@core/utils/checkValue')['_isEmpty']
-  const api: typeof import('./@core/utils/api')['default']
+  const api: typeof import('./@core/utils/axios')['api']
   const computed: typeof import('vue')['computed']
   const confirm: typeof import('./@core/utils/confirm')['default']
   const defineLoader: typeof import('vue-router/auto')['defineLoader']
