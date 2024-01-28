@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { logIn } = useAuthStore()
+const { logIn } = useLoginStore()
 const user = ref({
   username: 'kminchelle',
   password: '0lelplR',

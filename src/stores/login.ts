@@ -3,7 +3,7 @@ import router from '@/@core/plugins/router'
 
 const { setToken, setUserInfo } = useLocalStorages
 
-export const useAuthStore = defineStore('auth', () => {
+export const useLoginStore = defineStore('login', () => {
   const state = reactive({
     loading: false,
   })

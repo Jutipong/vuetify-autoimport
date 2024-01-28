@@ -11,7 +11,7 @@ const _api = axios.create({
 })
 
 function err(error: any) {
-  const { logOut } = useAuthStore()
+  const { logOut } = useLoginStore()
   const $g = useGlobalStore()
   const { status, data } = error.response
 
