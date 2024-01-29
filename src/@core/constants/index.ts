@@ -6,7 +6,7 @@ export const useConstant = {
     userInfKey: 'userInfo',
   },
   baseUrl: {
-    api: import.meta.env.VITE_API_UR,
+    api: import.meta.env.VITE_API_BaseUrl,
   },
   action: {
     add: 'add',
