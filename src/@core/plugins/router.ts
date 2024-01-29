@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 
+const { app } = useConstant
+
 const { getToken, clearLocalStorage } = useLocalStorages
 
 const router = createRouter({
@@ -12,7 +14,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to: any, from: any, next: any) => {
-  document.title = 'TCRB'
+  document.title = app.titleName
 
   if (to.path === '/login') {
     clearLocalStorage()
