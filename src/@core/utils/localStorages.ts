@@ -17,11 +17,11 @@ export const useLocalStorages = {
     const token = ls.get<string | null>(app.tokenKey)
     return token
   },
-  setUserInfo: (userInfo: UserLogin) => {
-    ls.set(app.userInfKey, userInfo)
+  setUserLogin: (userInfo: UserLogin) => {
+    ls.set(app.userLoginKey, userInfo)
   },
-  getUserInfo: (): UserLogin | null => {
-    const userInfo = ls.get<UserLogin | null>(app.userInfKey)
+  getUserLogin: (): UserLogin | null => {
+    const userInfo = ls.get<UserLogin | null>(app.userLoginKey)
     return userInfo
   },
 }

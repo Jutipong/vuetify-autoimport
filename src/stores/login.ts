@@ -1,7 +1,7 @@
 import type { UserLogin } from '../types/auth'
 import router from '@/@core/plugins/router'
 
-const { setToken, setUserInfo } = useLocalStorages
+const { setToken, setUserLogin } = useLocalStorages
 
 export const useLoginStore = defineStore('login', () => {
   const state = reactive({ isLoading: false })
@@ -12,7 +12,7 @@ export const useLoginStore = defineStore('login', () => {
     const res = await api.post<UserLogin>('/auth/login', { username, password }, { isLoading: false })
 
     setToken(res.token)
-    setUserInfo(res)
+    setUserLogin(res)
 
     state.isLoading = false
 
