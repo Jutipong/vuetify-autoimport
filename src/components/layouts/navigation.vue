@@ -99,3 +99,15 @@ const cruds2 = [{ title: 'Demo03', icon: 'mdi-chevron-right', to: '/demo03' }]
     </template> -->
   </v-navigation-drawer>
 </template>
+
+<style>
+a.v-list-item--active {
+  background: linear-gradient(
+    72.47deg,
+    #1976d2 22.16%,
+    rgba(85, 132, 241, 0.7) 76.47%
+  ) !important;
+  box-shadow: 0 2px 6px #7367f07a;
+  color: #fff !important;
+}
+</style>
