@@ -5,13 +5,6 @@ import { newProductType } from '@/types/product'
 
 const productStore = useProductStore()
 
-// async function confirm() {
-//   // await vConfirm.info('Confirm Update', 'Update data.')
-//   // await vConfirm.warning('Confirm Delete', 'Delete data.')
-//   // await vConfirm.save('Confirm Save', 'Save data.')
-//   // await vConfirm.delete('Confirm Delete', 'Delete data.')
-// }
-
 const state = reactive({
   header: [
     { title: 'ID', key: 'id', align: 'center' },
