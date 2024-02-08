@@ -18,8 +18,11 @@ export default createVuetify({
     ...labsComponents,
   },
   theme: {
-    themes: {
+    defaultTheme: 'light',
+    themes:
+    {
       light: {
+        dark: true,
         colors: {
           background: '#E0E0E0',
           surface: '#fbfbfb',
