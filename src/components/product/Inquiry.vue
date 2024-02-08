@@ -19,7 +19,7 @@ const state = reactive({
     loading: false,
     options: {
       page: 1,
-      itemsPerPage: useConstant.dataTable.pageSize,
+      itemsPerPage: _const.dataTable.pageSize,
       sortBy: [],
     },
     result: {
