@@ -1,12 +1,12 @@
-export function _isEmpty(value: unknown): boolean {
-  if (isNull(value))
+export function _isNullOrEmpty(value: unknown): boolean {
+  if (_isNull(value))
     return true
 
   switch (typeof value) {
     case 'string':
       return value.trim().length === 0
     case 'object':
-      return isEmpty(value)
+      return _isEmpty(value)
     case 'number':
       return false
     case 'boolean':

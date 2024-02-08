@@ -16,6 +16,7 @@ import Components from 'unplugin-vue-components/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import _ from 'lodash'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
@@ -32,7 +33,10 @@ export default defineConfig(({ mode }) => {
           VueRouterAutoImports,
           {
           // '@vueuse/core': ['watchDebounced'],
-            lodash: ['isEmpty', 'isNull'],
+            lodash: [
+              ['isEmpty', '_isEmpty'],
+              ['isNull', '_isNull'],
+            ],
             pinia: ['defineStore'],
             vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
           },
