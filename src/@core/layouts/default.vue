@@ -4,20 +4,20 @@ const $g = useGlobalStore()
 
 <template>
   <v-app>
-    <v-progress-linear :active="$g.isLoadingPage" style="z-index: 99999;" color="success" indeterminate :height="5" />
+    <v-progress-linear :active="$g.isLoading || $g.isLoadingPage" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
     <LayoutsHeader />
     <LayoutsNavigation />
     <v-main>
-      <v-container>
-        <router-view v-slot="{ Component }">
-          <transition
-            name="fade"
-            mode="out-in"
-          >
-            <component :is="Component" />
-          </transition>
-        </router-view>
-      </v-container>
+      <!-- <v-container> -->
+      <router-view v-slot="{ Component }">
+        <transition
+          name="fade"
+          mode="out-in"
+        >
+          <component :is="Component" />
+        </transition>
+      </router-view>
+      <!-- </v-container> -->
     </v-main>
   </v-app>
 </template>

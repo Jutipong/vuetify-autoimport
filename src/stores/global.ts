@@ -11,7 +11,9 @@ export const useGlobalStore = defineStore('global', () => {
   }
 
   function unLoading() {
-    loadings.value--
+    setTimeout(() => {
+      loadings.value--
+    }, 5000)
   }
 
   function resetLoading() {
