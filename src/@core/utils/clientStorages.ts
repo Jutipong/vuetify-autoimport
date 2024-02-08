@@ -4,7 +4,7 @@ import type { UserLogin } from '@/types/auth'
 ls.config.storage = sessionStorage
 ls.config.encrypt = true
 
-export const useLocalStorages = {
+export const clientStorages = {
   clear: () => {
     ls.clear()
   },

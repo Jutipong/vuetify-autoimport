@@ -1,7 +1,7 @@
 import type { UserLogin } from '../types/auth'
 import router from '@/@core/plugins/router'
 
-const { setToken, setUserLogin } = useLocalStorages
+const { setToken, setUserLogin } = clientStorages
 
 export const useLoginStore = defineStore('login', () => {
   const state = reactive({ isLoading: false })
@@ -32,7 +32,7 @@ export const useLoginStore = defineStore('login', () => {
         return
     }
 
-    router.push('/login')
+    router.replace('/login')
   }
 
   return {
