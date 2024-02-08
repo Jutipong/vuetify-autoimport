@@ -12,6 +12,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to: any, from: any, next: any) => {
+  const $g = useGlobalStore()
+  $g.isLoadingPage = true
+
   document.title = _const.app.titleName
 
   if (to.path === '/login') {
@@ -25,6 +28,11 @@ router.beforeEach((to: any, from: any, next: any) => {
   }
 
   next()
+})
+
+router.afterEach(() => {
+  const $g = useGlobalStore()
+  $g.isLoadingPage = false
 })
 
 export default router

@@ -1,7 +1,8 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
+import { defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', () => {
   const loadings = ref(0)
+  const isLoadingPage = ref(false)
 
   const isLoading = computed(() => loadings.value > 0)
 
@@ -19,6 +20,7 @@ export const useGlobalStore = defineStore('global', () => {
 
   return {
     isLoading,
+    isLoadingPage,
     setLoading,
     unLoading,
     resetLoading,

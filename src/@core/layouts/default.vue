@@ -1,5 +1,10 @@
+<script setup lang="ts">
+const $g = useGlobalStore()
+</script>
+
 <template>
   <v-app>
+    <v-progress-linear :active="$g.isLoadingPage" style="z-index: 99999;" color="success" indeterminate :height="5" />
     <LayoutsHeader />
     <LayoutsNavigation />
     <v-main>
