@@ -55,7 +55,7 @@ function onClose() {
       <VDialog v-model="active" persistent width="1024">
         <VCard>
           <VCardTitle>
-            <VChip variant="outlined" color="success" :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
+            <VChip color="success" :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
               {{ product.id ? 'Update' : 'Create' }} Product
             </VChip>
           </VCardTitle>

@@ -79,7 +79,7 @@ const func = {
     <!-- search -->
     <VCard @keyup.enter="func.getProducts()">
       <VCardTitle>
-        <VChip variant="outlined" color="primary" prepend-icon="mdi-magnify" label>
+        <VChip color="primary" prepend-icon="mdi-magnify" label>
           Search
         </VChip>
       </VCardTitle>
@@ -114,7 +114,7 @@ const func = {
       <VCardTitle>
         <VRow>
           <VCol md="6">
-            <VChip variant="outlined" color="success" prepend-icon="mdi-package-variant-closed" label>
+            <VChip color="success" prepend-icon="mdi-package-variant-closed" label>
               Product
             </VChip>
           </VCol>
