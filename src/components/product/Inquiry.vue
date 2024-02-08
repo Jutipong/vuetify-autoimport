@@ -104,8 +104,8 @@ const func = {
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()" />
         <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear()" />
+        <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.getProducts()" />
       </VCardActions>
     </VCard>
 
