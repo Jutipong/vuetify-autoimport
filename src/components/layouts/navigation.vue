@@ -7,8 +7,6 @@ const cruds = [
   { title: 'Demo2', icon: 'mdi-chevron-right', to: '/demo02' },
   { title: 'Product', icon: 'mdi-package', to: '/product' },
 ]
-
-const cruds2 = [{ title: 'Demo03', icon: 'mdi-chevron-right', to: '/demo03' }]
 </script>
 
 <template>
@@ -70,25 +68,6 @@ const cruds2 = [{ title: 'Demo03', icon: 'mdi-chevron-right', to: '/demo03' }]
           :title="title"
         />
       </v-list-group>
-
-      <v-list-group value="Users2">
-        <template #activator="{ props }">
-          <v-list-item
-            v-bind="props"
-            prepend-icon="mdi-test-tube"
-            title="Menu 2"
-          />
-        </template>
-        <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
-
-        <v-list-item
-          v-for="({ title, to }, i) in cruds2"
-          :key="i"
-          :value="to"
-          :to="to"
-          :title="title"
-        />
-      </v-list-group>
     </v-list>
     <!-- <template v-slot:append>
       <div class="pa-2">
@@ -100,7 +79,10 @@ const cruds2 = [{ title: 'Demo03', icon: 'mdi-chevron-right', to: '/demo03' }]
   </v-navigation-drawer>
 </template>
 
-<style>
+<style scoped>
+.v-list-item--variant-plain {
+  opacity: 1;
+}
 a.v-list-item--active {
   background: linear-gradient(
     72.47deg,
