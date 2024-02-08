@@ -14,10 +14,10 @@
     "localstorage-slim": "^2.7.0",
     "pinia": "2.1.7",
     "roboto-fontface": "0.10.0",
-    "vue": "3.4.15",
+    "vue": "3.4.16",
     "vue-router": "^4.2.5",
     "vue-toastification": "^2.0.0-rc.5",
-    "vuetify": "3.5.2"
+    "vuetify": "3.5.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.4",
@@ -37,7 +37,7 @@
     "vite-plugin-vue-devtools": "7.0.14",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-vuetify": "2.0.1",
-    "vue-currency-input": "^3.0.5",
+    "vue-currency-input": "^3.1.0",
     "vue-tsc": "1.8.27"
   }
 }
