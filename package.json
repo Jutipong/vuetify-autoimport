@@ -14,7 +14,7 @@
     "localstorage-slim": "^2.7.0",
     "pinia": "2.1.7",
     "roboto-fontface": "0.10.0",
-    "vue": "3.4.16",
+    "vue": "3.4.15",
     "vue-router": "^4.2.5",
     "vue-toastification": "^2.0.0-rc.5",
     "vuetify": "3.5.3"
