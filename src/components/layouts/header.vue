@@ -14,6 +14,9 @@ function toggleTheme() {
   theme.global.name.value = theme.global.name.value === 'light' ? 'dark' : 'light'
   setTheme(theme.global.name.value)
 }
+
+const iconTheme = computed(() => theme.global.name.value === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny')
+const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' : 'white')
 </script>
 
 <template>
@@ -37,7 +40,8 @@ function toggleTheme() {
       <template #append>
         <v-btn class="ma-2">
           <v-icon
-            icon="mdi-theme-light-dark"
+            :color="colorTheme"
+            :icon="iconTheme"
             @click="toggleTheme"
           />
         </v-btn>
