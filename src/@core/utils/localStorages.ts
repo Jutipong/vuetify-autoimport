@@ -7,7 +7,7 @@ ls.config.storage = sessionStorage
 ls.config.encrypt = true
 
 export const useLocalStorages = {
-  clearLocalStorage: () => {
+  clear: () => {
     ls.clear()
   },
   setToken: (token: string) => {

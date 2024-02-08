@@ -3,7 +3,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 
 const { app } = useConstant
 
-const { getToken, clearLocalStorage } = useLocalStorages
+const { getToken, clear: clearLocalStorage } = useLocalStorages
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
