@@ -21,6 +21,8 @@ const items = [
 
 <template>
   <v-container>
+    <v-countdown />
+
     <v-timeline align="start">
       <v-timeline-item
         v-for="(item, i) in items"

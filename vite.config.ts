@@ -36,6 +36,7 @@ export default defineConfig(({ mode }) => {
             lodash: [
               ['isEmpty', '_isEmpty'],
               ['isNull', '_isNull'],
+              ['debounce', '_debounce'],
             ],
             pinia: ['defineStore'],
             vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
