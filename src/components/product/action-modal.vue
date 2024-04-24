@@ -63,21 +63,21 @@ function onClose() {
           <VCardText>
             <VRow>
               <VCol cols="12" md="4">
-                <VTextField :model-value="product.title" label="Title" />
+                <VTextField v-model="product.title" label="Title" />
               </VCol>
               <VCol cols="12" md="4">
-                <VCurrency :model-value="product.price" label="Price" />
+                <VCurrency v-model="product.price" label="Price" />
               </VCol>
               <VCol cols="12" md="4">
-                <VTextField :model-value="product.rating" label="Rating" />
+                <VTextField v-model="product.rating" label="Rating" />
               </VCol>
             </VRow>
             <VRow>
               <VCol cols="12" md="4">
-                <VTextField :model-value="product.stock" label="Stock" />
+                <VTextField v-model="product.stock" label="Stock" />
               </VCol>
               <VCol cols="12" md="4">
-                <VTextField :model-value="product.brand" label="Brand" />
+                <VTextField v-model="product.brand" label="Brand" />
               </VCol>
               <VCol cols="12" md="4" />
             </VRow>

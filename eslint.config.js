@@ -20,6 +20,9 @@ module.exports = antfu(
 
     rules: {
       'vue/valid-v-slot': ['error', { allowModifiers: true }],
+      'vue/no-mutating-props': ['error', {
+        shallowOnly: true,
+      }],
     },
 
     // Disable jsonc and yaml support
