@@ -86,7 +86,7 @@ export default defineConfig(({ mode }) => {
       vuetify({
         autoImport: true,
         styles: {
-          configFile: 'src/assets/sass/variables.scss',
+          configFile: 'src/assets/sass/style.scss',
         },
       }),
     ],
