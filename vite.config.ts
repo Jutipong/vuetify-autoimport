@@ -68,17 +68,25 @@ export default defineConfig(({ mode }) => {
         },
       }),
       // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
-      vuetify({
-        autoImport: true,
-      }),
       ViteFonts({
         google: {
           families: [
+            {
+              name: 'Sedan',
+              styles: 'wght@100;300;400;500;700;900',
+
+            },
             {
               name: 'Roboto',
               styles: 'wght@100;300;400;500;700;900',
             },
           ],
+        },
+      }),
+      vuetify({
+        autoImport: true,
+        styles: {
+          configFile: 'src/assets/sass/variables.scss',
         },
       }),
     ],
