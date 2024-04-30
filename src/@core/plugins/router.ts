@@ -3,7 +3,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  extendRoutes: routes => setupLayouts(routes),
+  extendRoutes: (routes: any) => setupLayouts(routes),
   scrollBehavior() {
     return { top: 0 }
   },
