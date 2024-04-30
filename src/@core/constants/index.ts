@@ -6,7 +6,7 @@ export const _const = {
     userLoginKey: 'userLoginKey',
   },
   baseUrl: {
-    api: import.meta.env.VITE_API_BaseUrl,
+    api: import.meta.env.VITE_API_BASE_URL,
   },
   action: {
     add: 'add',
