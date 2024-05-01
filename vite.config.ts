@@ -3,7 +3,7 @@ import { URL, fileURLToPath } from 'node:url'
 import process from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-// import ViteFonts from 'unplugin-fonts/vite'
+import ViteFonts from 'unplugin-fonts/vite'
 
 // Utilities
 import { defineConfig, loadEnv } from 'vite'
@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
           /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
           /\.vue$/,
           /\.vue\?vue/, // .vue
-          /\.md$/, // .md
+          // /\.md$/, // .md
         ],
         imports: [
           VueRouterAutoImports,
@@ -63,17 +63,16 @@ export default defineConfig(({ mode }) => {
           defineModel: true,
         },
       }),
-      // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
-      // ViteFonts({
-      //   google: {
-      //     families: [
-      //       {
-      //         name: 'Poppins',
-      //         styles: 'wght@100;300;400;500;700;900',
-      //       },
-      //     ],
-      //   },
-      // }),
+      ViteFonts({
+        google: {
+          families: [
+            {
+              name: 'Poppins',
+              styles: 'wght@100;300;400;500;700;900',
+            },
+          ],
+        },
+      }),
       vuetify({
         autoImport: true,
         styles: {
