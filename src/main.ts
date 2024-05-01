@@ -10,6 +10,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import type { PluginOptions } from 'vue-toastification'
 import Toast from 'vue-toastification'
+import _ from 'lodash'
 import App from './App.vue'
 
 import vuetify from '@/@core/plugins/vuetify'

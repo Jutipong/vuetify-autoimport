@@ -3,7 +3,7 @@ const inputData = ref('')
 const countdown = ref(0)
 let timer: number | undefined
 
-watch(inputData, _debounce(() => {
+watch(inputData, _.debounce(() => {
   startCountdown()
 }, 1000))
 
