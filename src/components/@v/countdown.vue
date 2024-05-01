@@ -23,7 +23,7 @@ function startCountdown() {
 
 <template>
   <div>
-    <h1>Input</h1>
+    <h1>Counter Component</h1>
     <VInput v-model="inputData" />
     <VTextField v-model="inputData" label="Last name" />
     <p v-if="countdown > 0">

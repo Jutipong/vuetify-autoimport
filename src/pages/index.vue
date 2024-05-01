@@ -21,35 +21,43 @@ const items = [
 
 <template>
   <v-container>
-    <v-countdown />
+    <v-card>
+      <v-card-text>
+        <v-countdown />
+      </v-card-text>
+    </v-card>
 
-    <v-timeline align="start">
-      <v-timeline-item
-        v-for="(item, i) in items"
-        :key="i"
-        :dot-color="item.color"
-        :icon="item.icon"
-        fill-dot
-      >
-        <v-card>
-          <v-card-title class="text-h6" :class="[`bg-${item.color}`]">
-            Lorem Ipsum Dolor
-          </v-card-title>
-          <v-card-text class="bg-white text--primary">
-            <p>
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod
-              convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an
-              salutandi sententiae.
-            </p>
-            <v-btn
-              :color="item.color"
-              variant="outlined"
-            >
-              Button
-            </v-btn>
-          </v-card-text>
-        </v-card>
-      </v-timeline-item>
-    </v-timeline>
+    <v-card>
+      <v-card-text>
+        <v-timeline align="start">
+          <v-timeline-item
+            v-for="(item, i) in items"
+            :key="i"
+            :dot-color="item.color"
+            :icon="item.icon"
+            fill-dot
+          >
+            <v-card>
+              <v-card-title class="text-h6" :class="[`bg-${item.color}`]">
+                Lorem Ipsum Dolor
+              </v-card-title>
+              <v-card-text class="bg-white text--primary">
+                <p>
+                  Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod
+                  convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an
+                  salutandi sententiae.
+                </p>
+                <v-btn
+                  :color="item.color"
+                  variant="outlined"
+                >
+                  Button
+                </v-btn>
+              </v-card-text>
+            </v-card>
+          </v-timeline-item>
+        </v-timeline>
+      </v-card-text>
+    </v-card>
   </v-container>
 </template>
