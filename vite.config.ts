@@ -86,7 +86,7 @@ export default defineConfig(({ mode }) => {
     },
     optimizeDeps: {
       exclude: ['vuetify'],
-      entries: ['./src/**/*.vue', '.src/page/**/*.vue', '.src/components/**/*.vue'],
+      entries: ['./src/**/*.vue'],
     },
     resolve: {
       alias: {
