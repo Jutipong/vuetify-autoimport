@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const $g = useGlobalStore()
+// const route = useRoute()
 </script>
 
 <template>

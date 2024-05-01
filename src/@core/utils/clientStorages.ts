@@ -23,10 +23,9 @@ export const clientStorages = {
     return userInfo
   },
   setTheme: (theme: string): void => {
-    ls.set('theme', theme)
+    localStorage.setItem('theme', theme)
   },
   getTheme: (): string => {
-    const theme = ls.get<string | null>('theme') ?? 'light'
-    return theme
+    return localStorage.getItem('theme') ?? 'light'
   },
 }

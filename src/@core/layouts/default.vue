@@ -14,7 +14,9 @@ const $g = useGlobalStore()
           name="fade"
           mode="out-in"
         >
-          <component :is="Component" />
+          <KeepAlive :name="Component">
+            <component :is="Component" />
+          </KeepAlive>
         </transition>
       </router-view>
       <!-- </v-container> -->
@@ -30,7 +32,7 @@ const $g = useGlobalStore()
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.2s ease;
 }
 
 .fade-enter-from,
