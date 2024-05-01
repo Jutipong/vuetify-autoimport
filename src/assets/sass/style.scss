@@ -2,12 +2,12 @@
 // @import url('https://fonts.googleapis.com/css?family=Sarabun:300,400,400i,600,700,800&display=swap');
 
 // import font form local
-// @font-face {
-//     font-family: 'Sarabun';
-//     src: url('./src/assets/fonts/Sarabun-Regular.ttf') format('truetype');
-//     font-weight: normal;
-//     font-style: normal;
-// }
+@font-face {
+    font-family: 'Poppins';
+    src: url('./src/assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 $body-font-family: 'Poppins';
 
