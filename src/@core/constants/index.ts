@@ -1,7 +1,7 @@
 export const _const = {
   app: {
     name: import.meta.env.VITE_APP_NAME,
-    titleName: import.meta.env.VITE_APP_TITLE_NAME,
+    metaTitle: import.meta.env.VITE_APP_META_TITLE,
     tokenKey: 'efa32@fskf%4dsf',
     userLoginKey: 'userLoginKey',
   },

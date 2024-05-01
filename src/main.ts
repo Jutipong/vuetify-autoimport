@@ -18,6 +18,8 @@ import router from '@/@core/plugins/router'
 
 import 'vue-toastification/dist/index.css'
 
+document.title = _const.app.metaTitle
+
 const app = createApp(App)
 app.use(vuetify)
 app.use(router)
