@@ -1,40 +1,31 @@
 <script setup lang="ts">
 import type { CustomerType } from '@/types/customer'
 
-// ถ้าใช้ props แบบนี้ ตอนเรียกใช้งานจะต้องใช้ v-bind ในการส่งค่า
-// one-way binding ถ้าต้องการส่งค่ากลับให้ใช้ emit
-const props = defineProps<CustomerType>()
-const emit = defineEmits<{ update: [value: CustomerType] }>()
-const modalOpen = defineModel<boolean>()
+// props two-way binding
+const props = defineProps<{ modalOpen: boolean, customer: CustomerType }>()
 
-const customer = ref<CustomerType>({})
+const emit = defineEmits<{ onclose: [value: boolean] }>()
+
+const modalIsOpen = ref<boolean>(false)
 
 onMounted(() => {
-// ใน props ค่าของ defindmodel จะถูกเก็บไว้ใน props ด้วย ดังนั้น ไม่ว่าจะค่า props หรือ defindmodel ก็สามารถใช้ watch ได้
-  watch(props, (newVal) => {
-    if (!modalOpen.value) {
-      emit('update', customer.value)
-      customer.value = {}
-      return
-    }
-
-    Object.assign(customer, newVal)
-  })
+  watch(() => props.modalOpen, newVal => modalIsOpen.value = newVal)
 })
 
 function closeModal() {
-  modalOpen.value = false
+  emit('onclose', false)
+  modalIsOpen.value = false
 }
 </script>
 
 <template>
   <Teleport to="body">
     <VRow justify="center">
-      <VDialog v-model="modalOpen" persistent width="1024">
+      <VDialog v-model="modalIsOpen" persistent width="1024">
         <VCard>
           <VCardTitle>
             <VChip color="success" prepend-icon="product.id ?">
-              Id: {{ props }}
+              Modal 02: {{ customer }}
             </VChip>
           </VCardTitle>
           <VDivider />
@@ -61,7 +52,7 @@ function closeModal() {
           <VDivider />
           <VCardActions>
             <VSpacer />
-            <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal" />
+            <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal()" />
           </VCardActions>
         </VCard>
       </VDialog>
