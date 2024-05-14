@@ -7,13 +7,16 @@ const modalIsActive = ref(false)
 function openModal() {
   modalIsActive.value = true
 }
+
+function dataUpdate(value: CustomerType) {
+  Object.assign(userData, value)
+}
 </script>
 
 <template>
   <div>
-    <!-- modal actions -->
-    <CustomerActionModal01 v-model="modalIsActive" v-bind="userData" />
-    User: {{ userData }}
+    <!-- modal 01 -->
+    <CustomerActionModal01 v-model="modalIsActive" v-bind="userData" @update="dataUpdate" />
     <!-- search -->
     <VCard>
       <VCardTitle>
