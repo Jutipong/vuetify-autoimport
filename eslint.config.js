@@ -8,9 +8,9 @@ module.exports = antfu(
 
       indent: 2,
       overrides: {
-        // 'no-console': 'off'
-        // 'no-debugger': false,
-        // 'valid-v-slot': 1,
+        'vue/no-console': 'off',
+        'no-console': 'off',
+        'no-debugger': 'off',
       },
     },
 
