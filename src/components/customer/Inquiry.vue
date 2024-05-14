@@ -56,6 +56,7 @@ const dateTh = () => _dateTh()
 
     <!-- test type in component -->
     <CustomerActionModal04 :customer="customer" :modal-open="modalOpen_04" @onclose="closeModal04" />
+    <!-- <CustomerActionModal04 :customer="{ ...customer, Age: 0 }" :modal-open="modalOpen_04" @onclose="closeModal04" /> -->
 
     <VCard>
       <VCardTitle>
