@@ -1,22 +1,19 @@
 <script setup lang="ts">
-import { b } from 'node_modules/unplugin-vue-router/dist/options-yBvUhD_i.mjs'
 import type { CustomerType } from '@/types/customer'
 
 const customer = reactive<CustomerType>({})
-const modalOpen_01 = ref(false)
-const modalOpen_02 = ref(false)
-const modalOpen_03 = ref(false)
 
-// Modal 01
+// =============== Modal 01 ===============
+const modalOpen_01 = ref(false)
 function openModal_01() {
   modalOpen_01.value = true
 }
-
 function updateCustomer(value: CustomerType) {
   Object.assign(customer, value)
 }
 
-// Modal 02
+// =============== Modal 02 ===============
+const modalOpen_02 = ref(false)
 function openModal_02() {
   modalOpen_02.value = true
 }
@@ -24,10 +21,16 @@ function closeModal02(value: boolean) {
   modalOpen_02.value = value
 }
 
-// Modal 03
+// =============== Modal 03 ===============
+const modalOpen_03 = ref(false)
 function openModal_03() {
   modalOpen_03.value = true
 }
+function closeModal03(value: boolean) {
+  modalOpen_03.value = value
+}
+
+const dateTh = () => _dateTh()
 </script>
 
 <template>
@@ -39,12 +42,12 @@ function openModal_03() {
     <CustomerActionModal02 :customer="customer" :modal-open="modalOpen_02" @onclose="closeModal02" />
 
     <!-- two way binding by 'defineModel' -->
-    <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="(val) => modalOpen_03 = val" />
+    <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="closeModal03" />
 
     <VCard>
       <VCardTitle>
         <VChip color="primary" prepend-icon="mdi-magnify" label>
-          Search
+          {{ dateTh() }}
         </VChip>
       </VCardTitle>
       <VDivider />
