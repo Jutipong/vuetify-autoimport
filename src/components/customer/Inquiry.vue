@@ -30,6 +30,15 @@ function closeModal03(value: boolean) {
   modalOpen_03.value = value
 }
 
+// test type in component
+// =============== Modal 04 ===============
+const modalOpen_04 = ref(false)
+function openModal_04() {
+  modalOpen_04.value = true
+}
+function closeModal04(value: boolean) {
+  modalOpen_04.value = value
+}
 const dateTh = () => _dateTh()
 </script>
 
@@ -44,6 +53,9 @@ const dateTh = () => _dateTh()
 
     <!-- two way binding by 'defineModel' -->
     <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="closeModal03" />
+
+    <!-- test type in component -->
+    <CustomerActionModal04 :customer="customer" :modal-open="modalOpen_04" @onclose="closeModal04" />
 
     <VCard>
       <VCardTitle>
@@ -68,6 +80,7 @@ const dateTh = () => _dateTh()
         <VBtn color="primary" text="1.Props+Emit-v-bin" @click="openModal_01" />
         <VBtn color="primary" text="2.Props {} +Emit('close')" @click="openModal_02" />
         <VBtn color="primary" text="3.defineModel" @click="openModal_03" />
+        <VBtn color="primary" text="4.type in component" @click="openModal_04" />
       </VCardActions>
     </VCard>
   </div>
