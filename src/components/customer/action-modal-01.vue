@@ -34,7 +34,7 @@ function closeModal() {
         <VCard>
           <VCardTitle>
             <VChip color="success" prepend-icon="product.id ?">
-              Id: {{ props }}
+              Modal 02: {{ customer }}
             </VChip>
           </VCardTitle>
           <VDivider />

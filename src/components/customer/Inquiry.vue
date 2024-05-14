@@ -33,13 +33,13 @@ function openModal_03() {
 <template>
   <div>
     <!-- one way binding -->
-    <CustomerActionModal01 v-model="modalOpen_01" v-bind="customer" @update="updateCustomer" />
+    <CustomerActionModal01 v-bind="customer" v-model="modalOpen_01" @update="updateCustomer" />
 
     <!-- two way binding -->
-    <CustomerActionModal02 :modal-open="modalOpen_02" :customer="customer" @onclose="closeModal02" />
+    <CustomerActionModal02 :customer="customer" :modal-open="modalOpen_02" @onclose="closeModal02" />
 
-    <!-- two way binding -->
-    <CustomerActionModal03 v-model="modalOpen_03" />
+    <!-- two way binding by 'defineModel' -->
+    <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="(val) => modalOpen_03 = val" />
 
     <VCard>
       <VCardTitle>
