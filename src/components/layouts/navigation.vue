@@ -6,6 +6,7 @@ const cruds = [
   { title: 'Demo1', icon: 'mdi-chevron-right', to: '/demo01' },
   { title: 'Demo2', icon: 'mdi-chevron-right', to: '/demo02' },
   { title: 'Product', icon: 'mdi-package', to: '/product' },
+  { title: 'Customer', icon: 'mdi-package', to: '/customer' },
 ]
 </script>
 

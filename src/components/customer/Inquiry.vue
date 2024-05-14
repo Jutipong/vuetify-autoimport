@@ -39,6 +39,7 @@ const dateTh = () => _dateTh()
     <CustomerActionModal01 v-bind="customer" v-model="modalOpen_01" @update="updateCustomer" />
 
     <!-- two way binding -->
+    <!-- recommend: use 'defineProps' and 'defineEmits' for props and emit -->
     <CustomerActionModal02 :customer="customer" :modal-open="modalOpen_02" @onclose="closeModal02" />
 
     <!-- two way binding by 'defineModel' -->
@@ -64,9 +65,9 @@ const dateTh = () => _dateTh()
       </VCardText>
       <VDivider />
       <VCardActions class="justify-end">
-        <VBtn color="primary" text="Props+Emit-v-bin" @click="openModal_01" />
-        <VBtn color="primary" text="Props {} +Emit('close')" @click="openModal_02" />
-        <VBtn color="primary" text="defineModel" @click="openModal_03" />
+        <VBtn color="primary" text="1.Props+Emit-v-bin" @click="openModal_01" />
+        <VBtn color="primary" text="2.Props {} +Emit('close')" @click="openModal_02" />
+        <VBtn color="primary" text="3.defineModel" @click="openModal_03" />
       </VCardActions>
     </VCard>
   </div>
