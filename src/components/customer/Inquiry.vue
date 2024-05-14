@@ -30,7 +30,7 @@ function closeModal03(value: boolean) {
   modalOpen_03.value = value
 }
 
-// test type in component
+// type in component
 // =============== Modal 04 ===============
 const modalOpen_04 = ref(false)
 function openModal_04() {
@@ -54,7 +54,7 @@ const dateTh = () => _dateTh()
     <!-- two way binding by 'defineModel' -->
     <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="closeModal03" />
 
-    <!-- test type in component -->
+    <!-- type in component -->
     <CustomerActionModal04 :customer="customer" :modal-open="modalOpen_04" @onclose="closeModal04" />
     <!-- <CustomerActionModal04 :customer="{ ...customer, Age: 0 }" :modal-open="modalOpen_04" @onclose="closeModal04" /> -->
 
