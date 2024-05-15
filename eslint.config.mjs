@@ -1,6 +1,6 @@
-const antfu = require('@antfu/eslint-config').default
+import antfu from '@antfu/eslint-config'
 
-module.exports = antfu(
+export default antfu(
     {
         // Enable stylistic formatting rules
         // Or customize the stylistic rules
