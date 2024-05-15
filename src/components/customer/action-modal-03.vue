@@ -10,7 +10,9 @@ const customer = defineModel<CustomerType>({ required: true })
 const modalIsOpen = ref<boolean>(false)
 
 onMounted(() => {
-    watch(() => props.modalOpen, (newVal) => { modalIsOpen.value = newVal })
+    watch(() => props.modalOpen, (newVal) => {
+        modalIsOpen.value = newVal
+    })
 })
 
 function closeModal() {
