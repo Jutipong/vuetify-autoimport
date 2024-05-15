@@ -31,8 +31,8 @@ module.exports = antfu(
         // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
         ignores: [
             '**/fixtures',
-            // 'vite-env.d.ts',
-            // ...globs
+            'vite-env.d.ts',
+            // ...globs,
         ],
         formatters: {
             css: true,
