@@ -1,5 +1,5 @@
 <template>
-  <v-container>
-    <CustomerInquiry />
-  </v-container>
+    <v-container>
+        <CustomerInquiry />
+    </v-container>
 </template>

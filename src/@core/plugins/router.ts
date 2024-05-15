@@ -2,31 +2,31 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  extendRoutes: (routes: any) => setupLayouts(routes),
-  scrollBehavior() { return { top: 0 } },
+    history: createWebHistory(import.meta.env.BASE_URL),
+    extendRoutes: (routes: any) => setupLayouts(routes),
+    scrollBehavior() { return { top: 0 } },
 })
 
 router.beforeEach((to: any, from: any, next: any) => {
-  const $g = useGlobalStore()
-  $g.isLoadingPage = true
+    const $g = useGlobalStore()
+    $g.isLoadingPage = true
 
-  if (to.path === '/login') {
-    clientStorages.clear()
-    return next()
-  }
+    if (to.path === '/login') {
+        clientStorages.clear()
+        return next()
+    }
 
-  if (!clientStorages.getToken()) {
-    clientStorages.clear()
-    return next({ path: '/login' })
-  }
+    if (!clientStorages.getToken()) {
+        clientStorages.clear()
+        return next({ path: '/login' })
+    }
 
-  next()
+    next()
 })
 
 router.afterEach(() => {
-  const $g = useGlobalStore()
-  $g.isLoadingPage = false
+    const $g = useGlobalStore()
+    $g.isLoadingPage = false
 })
 
 export default router

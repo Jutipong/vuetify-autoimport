@@ -10,7 +10,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import type { PluginOptions } from 'vue-toastification'
 import Toast from 'vue-toastification'
-import _ from 'lodash'
 import App from './App.vue'
 
 import vuetify from '@/@core/plugins/vuetify'
@@ -25,9 +24,9 @@ app.use(vuetify)
 app.use(router)
 app.use(createPinia())
 app.use(Toast, {
-  transition: 'Vue-Toastification__bounce',
-  timeout: 5000,
-  maxToasts: 9,
-  newestOnTop: true,
+    transition: 'Vue-Toastification__bounce',
+    timeout: 5000,
+    maxToasts: 9,
+    newestOnTop: true,
 } as PluginOptions)
 app.mount('#app')

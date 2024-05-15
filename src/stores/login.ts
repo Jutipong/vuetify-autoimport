@@ -4,40 +4,40 @@ import router from '@/@core/plugins/router'
 const { setToken, setUserLogin } = clientStorages
 
 export const useLoginStore = defineStore('login', () => {
-  const state = reactive({ isLoading: false })
+    const state = reactive({ isLoading: false })
 
-  async function logIn(username: string, password: string): Promise<void> {
-    state.isLoading = true
+    async function logIn(username: string, password: string): Promise<void> {
+        state.isLoading = true
 
-    const res = await api.post<UserLogin>('/auth/login', { username, password }, { isLoading: false })
+        const res = await api.post<UserLogin>('/auth/login', { username, password }, { isLoading: false })
 
-    setToken(res.token)
-    setUserLogin(res)
+        setToken(res.token)
+        setUserLogin(res)
 
-    state.isLoading = false
+        state.isLoading = false
 
-    router.push('/')
-  }
-
-  async function logOut(alertConfirm: boolean = true): Promise<void> {
-    if (alertConfirm) {
-      if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
-        iconTitle: 'mdi-logout',
-        btnOk: {
-          color: 'error',
-          text: 'Log out',
-          icon: 'mdi-logout',
-        },
-      }))
-        return
+        router.push('/')
     }
 
-    router.replace('/login')
-  }
+    async function logOut(alertConfirm: boolean = true): Promise<void> {
+        if (alertConfirm) {
+            if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
+                iconTitle: 'mdi-logout',
+                btnOk: {
+                    color: 'error',
+                    text: 'Log out',
+                    icon: 'mdi-logout',
+                },
+            }))
+                return
+        }
 
-  return {
-    state,
-    logIn,
-    logOut,
-  }
+        router.replace('/login')
+    }
+
+    return {
+        state,
+        logIn,
+        logOut,
+    }
 })

@@ -1,20 +1,20 @@
 {
-  "recommendations": [
-    "formulahendry.auto-rename-tag",
-    "streetsidesoftware.code-spell-checker",
-    "naumovs.color-highlight",
-    "antfu.file-nesting",
-    "antfu.goto-alias",
-    "akamud.vscode-javascript-snippet-pack",
-    "lukas-tr.materialdesignicons-intellisense",
-    "pkief.material-icon-theme",
-    "idered.npm",
-    "yoavbls.pretty-ts-errors",
-    "travis.simple-dark",
-    "markosth09.color-picker",
-    "exer7um.vue-3-vscode-snippets",
-    "vue.volar",
-    "vuetifyjs.vuetify-vscode",
-    "dbaeumer.vscode-eslint"
-  ]
+    "recommendations": [
+        "formulahendry.auto-rename-tag",
+        "streetsidesoftware.code-spell-checker",
+        "naumovs.color-highlight",
+        "antfu.file-nesting",
+        "antfu.goto-alias",
+        "akamud.vscode-javascript-snippet-pack",
+        "lukas-tr.materialdesignicons-intellisense",
+        "pkief.material-icon-theme",
+        "idered.npm",
+        "yoavbls.pretty-ts-errors",
+        "travis.simple-dark",
+        "markosth09.color-picker",
+        "exer7um.vue-3-vscode-snippets",
+        "vue.volar",
+        "vuetifyjs.vuetify-vscode",
+        "dbaeumer.vscode-eslint"
+    ]
 }

@@ -1,29 +1,29 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
-    "useDefineForClassFields": true,
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "Bundler", // "Node",
-    "paths": {
-      "@/*": ["src/*"]
+    "compilerOptions": {
+        "target": "ESNext",
+        "jsx": "preserve",
+        "lib": ["ESNext", "DOM"],
+        "useDefineForClassFields": true,
+        "baseUrl": ".",
+        "module": "ESNext",
+        "moduleResolution": "Bundler", // "Node",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "resolveJsonModule": true,
+        "types": [
+            "vite/client",
+            "vite-plugin-vue-layouts/client",
+            "unplugin-vue-router/client"
+            // "vite-plugin-pages/client",
+        ],
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "skipLibCheck": true
     },
-    "resolveJsonModule": true,
-    "types": [
-      "vite/client",
-      "vite-plugin-vue-layouts/client",
-      "unplugin-vue-router/client"
-      // "vite-plugin-pages/client",
-    ],
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
-  },
-  "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./typed-router.d.ts"],
-  "exclude": ["node_modules"]
+    "references": [{ "path": "./tsconfig.node.json" }],
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./typed-router.d.ts"],
+    "exclude": ["node_modules"]
 }

@@ -10,44 +10,44 @@ const customer = defineModel<CustomerType>({ required: true })
 const modalIsOpen = ref<boolean>(false)
 
 onMounted(() => {
-  watch(() => props.modalOpen, (newVal) => { modalIsOpen.value = newVal })
+    watch(() => props.modalOpen, (newVal) => { modalIsOpen.value = newVal })
 })
 
 function closeModal() {
-  emit('onclose', false)
-  modalIsOpen.value = false
+    emit('onclose', false)
+    modalIsOpen.value = false
 }
 </script>
 
 <template>
-  <Teleport to="body">
-    <VRow justify="center">
-      <VDialog v-model="modalIsOpen" persistent width="1024">
-        <VCard>
-          <VCardTitle>
-            <VChip color="success" prepend-icon="product.id ?">
-              Modal 03: {{ customer }}
-            </VChip>
-          </VCardTitle>
-          <VDivider />
-          <VCardText>
-            <VRow>
-              <VCol cols="12" md="4">
-                <VTextField v-model="customer.Name" label="Name" />
-              </VCol>
-              <VCol cols="12" md="4">
-                <VTextField v-model="customer.Last" label="Last" />
-              </VCol>
-              <VCol cols="12" md="4" />
-            </VRow>
-          </VCardText>
-          <VDivider />
-          <VCardActions>
-            <VSpacer />
-            <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal()" />
-          </VCardActions>
-        </VCard>
-      </VDialog>
-    </VRow>
-  </Teleport>
+    <Teleport to="body">
+        <VRow justify="center">
+            <VDialog v-model="modalIsOpen" persistent width="1024">
+                <VCard>
+                    <VCardTitle>
+                        <VChip color="success" prepend-icon="product.id ?">
+                            Modal 03: {{ customer }}
+                        </VChip>
+                    </VCardTitle>
+                    <VDivider />
+                    <VCardText>
+                        <VRow>
+                            <VCol cols="12" md="4">
+                                <VTextField v-model="customer.Name" label="Name" />
+                            </VCol>
+                            <VCol cols="12" md="4">
+                                <VTextField v-model="customer.Last" label="Last" />
+                            </VCol>
+                            <VCol cols="12" md="4" />
+                        </VRow>
+                    </VCardText>
+                    <VDivider />
+                    <VCardActions>
+                        <VSpacer />
+                        <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal()" />
+                    </VCardActions>
+                </VCard>
+            </VDialog>
+        </VRow>
+    </Teleport>
 </template>

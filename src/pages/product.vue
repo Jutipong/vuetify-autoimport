@@ -1,5 +1,5 @@
 <template>
-  <v-container>
-    <ProductInquiry />
-  </v-container>
+    <v-container>
+        <ProductInquiry />
+    </v-container>
 </template>
