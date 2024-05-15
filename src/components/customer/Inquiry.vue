@@ -45,17 +45,17 @@ const dateTh = () => _dateTh()
 <template>
   <div>
     <!-- one way binding -->
-    <CustomerActionModal01 v-if="modalOpen_01" v-bind="customer" v-model="modalOpen_01" @update="updateCustomer" />
+    <CustomerActionModal01 v-bind="customer" v-model="modalOpen_01" @update="updateCustomer" />
 
     <!-- two way binding -->
     <!-- recommend: use 'defineProps' and 'defineEmits' for props and emit -->
-    <CustomerActionModal02 v-if="modalOpen_02" :customer="customer" :modal-open="modalOpen_02" @onclose="closeModal02" />
+    <CustomerActionModal02 :customer="customer" :modal-open="modalOpen_02" @onclose="closeModal02" />
 
     <!-- two way binding by 'defineModel' -->
-    <CustomerActionModal03 v-if="modalOpen_03" v-model="customer" :modal-open="modalOpen_03" @onclose="closeModal03" />
+    <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="closeModal03" />
 
     <!-- type in component -->
-    <CustomerActionModal04 v-if="modalOpen_04" :customer="customer" :modal-open="modalOpen_04" @onclose="closeModal04" />
+    <CustomerActionModal04 :customer="customer" :modal-open="modalOpen_04" @onclose="closeModal04" />
     <!-- <CustomerActionModal04 :customer="{ ...customer, Age: 0 }" :modal-open="modalOpen_04" @onclose="closeModal04" /> -->
 
     <VCard>
