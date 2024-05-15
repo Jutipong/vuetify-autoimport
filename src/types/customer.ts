@@ -3,4 +3,10 @@ export interface CustomerType {
   Name?: string
   Last?: string
   Address: string
+  Details: [
+    {
+      id: string
+      name: string
+    },
+  ]
 }

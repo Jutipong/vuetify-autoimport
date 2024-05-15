@@ -5,6 +5,10 @@ const props = defineProps<{
     id?: number | null
     Name?: string
     Last?: string
+    Details: [{
+      id: string
+      name: string
+    }]
   }
 }>()
 
