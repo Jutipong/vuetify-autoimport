@@ -7,9 +7,9 @@ export default antfu(
         stylistic: {
             indent: 4,
             overrides: {
-                'vue/no-console': 'off',
-                'no-console': 'off',
-                'no-debugger': 'off',
+                // 'no-console': 'off',
+                // 'no-debugger': 'off',
+                // 'no-restricted-syntax': 'off',
             },
         },
 
