@@ -21,7 +21,8 @@ export const useLoginStore = defineStore('login', () => {
 
     async function logOut(alertConfirm: boolean = true): Promise<void> {
         if (alertConfirm) {
-            if (!await vConfirm.info('Logout!', 'Are you sure you want to log out?', {
+            if (!await vConfirm.info('Logout!', `<div style="font-size: 60px; display: flex; justify-content: space-around; text-red" class="mdi mdi-close"></div>
+             <h3>Are you sure you want to log out?</h3>`, {
                 iconTitle: 'mdi-logout',
                 btnOk: {
                     color: 'error',

@@ -20,7 +20,7 @@ import store from '@/@core/utils/confirm'
                         </v-card-title>
                         <v-divider />
                         <v-card-text>
-                            {{ store.state.message }}
+                            <span v-html="store.state.message" />
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer />
