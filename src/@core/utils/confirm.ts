@@ -10,11 +10,13 @@ interface ConfirmOptions {
         color: color
         icon?: string
     }
+    btnOkDisabled?: boolean
     btnCancel?: {
         color: color
         text: string
         icon?: string
     }
+    btnCancelDisabled?: boolean
 }
 
 const state = reactive({
@@ -68,10 +70,12 @@ export const vConfirm = {
                 text: 'Yes',
                 color: 'success',
             },
+            btnOkDisabled: options?.btnOkDisabled,
             btnCancel: {
                 text: 'Cancel',
                 color: 'secondary',
             },
+            btnCancelDisabled: options?.btnCancelDisabled,
         } as ConfirmOptions, options)
 
         init(title, message, op)
@@ -88,10 +92,12 @@ export const vConfirm = {
                 text: 'Yes',
                 color: 'primary',
             },
+            btnOkDisabled: options?.btnOkDisabled,
             btnCancel: {
                 text: 'Cancel',
                 color: 'secondary',
             },
+            btnCancelDisabled: options?.btnCancelDisabled,
         } as ConfirmOptions, options)
 
         init(title, message, op)
@@ -108,10 +114,12 @@ export const vConfirm = {
                 text: 'Yes',
                 color: 'error',
             },
+            btnOkDisabled: options?.btnOkDisabled ?? false,
             btnCancel: {
                 text: 'Cancel',
                 color: 'secondary',
             },
+            btnCancelDisabled: options?.btnCancelDisabled ?? false,
         } as ConfirmOptions, options)
 
         init(title, message, op)

@@ -25,6 +25,7 @@ import store from '@/@core/utils/confirm'
                         <v-card-actions>
                             <v-spacer />
                             <v-btn
+                                v-if="!store.state.options.btnCancelDisabled"
                                 min-width="116px"
                                 :color="store.state.options.btnCancel?.color ?? 'default'"
                                 :prepend-icon="store.state.options.btnCancel?.icon ?? 'mdi-close'"
@@ -32,6 +33,7 @@ import store from '@/@core/utils/confirm'
                                 @click="store.onCancel()"
                             />
                             <v-btn
+                                v-if="!store.state.options.btnOkDisabled"
                                 min-width="116px"
                                 :color="store.state.options.btnOk?.color ?? 'success'"
                                 :prepend-icon="store.state.options.btnOk?.icon ?? 'mdi-check'"
