@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const { state, logIn } = useLoginStore()
 const user = ref({
-    username: 'kminchelle',
-    password: '0lelplR',
+    username: 'emilys',
+    password: 'emilyspass',
     visible: false,
 })
 </script>
