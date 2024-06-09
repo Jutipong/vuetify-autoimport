@@ -31,8 +31,9 @@ export const useLoginStore = defineStore('login', () => {
                 },
                 // btnCancelDisabled: true,
                 // btnOkDisabled: true,
-            }))
+            })) {
                 return
+            }
         }
 
         router.replace('/login')
