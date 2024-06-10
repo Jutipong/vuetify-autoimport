@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
                         vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
                     },
                 ],
-                dirs: ['src/@core/utils', 'src/stores', 'src/@core/constants'],
+                dirs: ['src/**/*.{ts,vue}'],
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
