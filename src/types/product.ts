@@ -8,6 +8,7 @@ export interface ProductType {
     stock: number | null
     brand: string | null
     category: string | null
+    status?: string
 }
 
 export function newProductType(): ProductType {

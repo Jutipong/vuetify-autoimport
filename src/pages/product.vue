@@ -1,5 +1,5 @@
 <template>
     <v-container>
-        <ProductInquiry />
+        <ProductSearchForm />
     </v-container>
 </template>

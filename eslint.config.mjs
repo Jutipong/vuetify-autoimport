@@ -5,9 +5,10 @@ export default antfu(
         stylistic: {
             indent: 4,
             overrides: {
-                // 'no-console': 'off',
+                'no-console': 'off',
+                'vue/no-console': 'off',
                 // 'no-debugger': 'off',
-                // 'no-restricted-syntax': 'off',
+                'no-restricted-syntax': 'off',
             },
         },
         typescript: true,
