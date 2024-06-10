@@ -4,12 +4,11 @@ import process from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
+import UnoCSS from 'unocss/vite'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 // Utilities
 import { defineConfig, loadEnv } from 'vite'
-
-import VueDevTools from 'vite-plugin-vue-devtools'
-import UnoCSS from 'unocss/vite'
 
 // Auto imports
 import AutoImport from 'unplugin-auto-import/vite'
@@ -17,7 +16,6 @@ import Components from 'unplugin-vue-components/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
-// import _ from 'lodash'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')

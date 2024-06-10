@@ -2,7 +2,7 @@
 import type ProductTableComponent from './table.vue'
 import type { ProductType } from '@/types/product'
 
-const tableComponent = ref<InstanceType<typeof ProductTableComponent> | null>(null)
+const tableRef = ref<InstanceType<typeof ProductTableComponent> | null>(null)
 
 const state = reactive({
     master: {
@@ -20,7 +20,7 @@ const func = {
     },
     onSearch: async () => {
         console.log('search from search-form.vue')
-        await tableComponent.value?.onSearch(state.search)
+        await tableRef.value?.onSearch(state.search)
     },
 }
 </script>
@@ -60,5 +60,5 @@ const func = {
     </VCard>
 
     <!-- table -->
-    <ProductTable ref="tableComponent" />
+    <ProductTable ref="tableRef" />
 </template>
