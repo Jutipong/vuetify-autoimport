@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { omit, pick, pickBy } from 'lodash'
+import { StateTree } from 'pinia'
 import type { ProductType } from '@/types/product'
 
 const $g = useGlobalStore()
@@ -26,11 +28,13 @@ const func = {
         vNotify.success('Product created successfully')
     },
     Update: async () => {
-        if (!await vConfirm.save('Confirm Update', 'Update data.'))
+        if (!await vConfirm.save('Confirm Update', `Update brand ${state.product.brand}`))
             return
 
+        const update = pick(state.product, ['id', 'title'])
+
         $g.setLoading()
-        await api.put(`/products/${state.product.id}`, { ...state.product })
+        await api.put(`/products/${state.product.id}`, { update })
 
         $g.unLoading()
         vNotify.success('Product updated successfully')

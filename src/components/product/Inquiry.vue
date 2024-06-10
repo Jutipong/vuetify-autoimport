@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ProductActionModal from './action-modal.vue'
+import type Modal from './modal.vue'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 
 const productStore = useProductStore()
-const modalRef = ref<InstanceType<typeof ProductActionModal> | null>(null)
+const modalRef = ref<InstanceType<typeof Modal> | null>(null)
 
 const state = reactive({
     header: [
@@ -69,7 +69,7 @@ const func = {
 <template>
     <div>
         <!-- modal actions -->
-        <ProductActionModal ref="modalRef" />
+        <ProductModal ref="modalRef" />
 
         <!-- search -->
         <VCard @keyup.enter="func.getProducts()">
