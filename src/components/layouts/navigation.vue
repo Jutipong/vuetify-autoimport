@@ -4,7 +4,7 @@ const layoutStore = useLayoutStore()
 const open = ref(['Users'])
 const cruds = [
     { title: 'Product', icon: 'mdi-package', to: '/product' },
-    { title: 'Customer', icon: 'mdi-package', to: '/customer' },
+    { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
 </script>
 
