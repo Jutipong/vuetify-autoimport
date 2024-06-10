@@ -1,83 +1,82 @@
 <script setup lang="ts">
 import type { ProductType } from '@/types/product'
 
-const { product } = defineProps<{ product: ProductType }>()
 const $g = useGlobalStore()
-const active = defineModel<boolean>()
 
-async function Create(product: ProductType) {
-    if (!await vConfirm.save('Confirm Create', 'Create data.'))
-        return
+const state = reactive({
+    product: {} as ProductType,
+    active: false,
+})
 
-    $g.setLoading()
+const title = computed(() => state.product.id ? 'Update' : 'Create')
+const titleIcon = computed(() => state.product.id ? 'mdi-pencil' : 'mdi-plus')
 
-    await api.post(`/products/add`, product)
+const func = {
+    onAction: async () => {
+        state.product.id ? await func.Update() : await func.Create()
+    },
+    Create: async () => {
+        if (!await vConfirm.save('Confirm Create', 'Create data.'))
+            return
 
-    $g.unLoading()
-    vNotify.success('Product created successfully')
+        $g.setLoading()
+        await api.post(`/products/add`, state.product)
 
-    return true
+        $g.unLoading()
+        vNotify.success('Product created successfully')
+    },
+    Update: async () => {
+        if (!await vConfirm.save('Confirm Update', 'Update data.'))
+            return
+
+        $g.setLoading()
+        await api.put(`/products/${state.product.id}`, { ...state.product })
+
+        $g.unLoading()
+        vNotify.success('Product updated successfully')
+    },
+    onOpen: (product: ProductType) => {
+        state.product = { ...product }
+        state.active = true
+    },
+    onClose: () => {
+        state.active = false
+        state.product = {} as ProductType
+    },
 }
 
-async function Update(product: ProductType) {
-    if (!await vConfirm.save('Confirm Update', 'Update data.'))
-        return
-
-    $g.setLoading()
-
-    await api.put(`/products/${product.id}`, {
-        title: product.title,
-        price: product.price,
-        rating: product.rating,
-        stock: product.stock,
-        brand: product.brand,
-    })
-
-    $g.unLoading()
-    vNotify.success('Product updated successfully')
-
-    return true
-}
-
-async function onSave() {
-    const res = product.id ? await Update(product) : await Create(product)
-    active.value = !res
-}
-
-function onClose() {
-    active.value = false
-}
+defineExpose({ open: func.onOpen, close: func.onClose })
 </script>
 
 <template>
     <Teleport to="body">
         <VRow justify="center">
-            <VDialog v-model="active" persistent width="1024">
+            <VDialog v-model="state.active" persistent width="1024">
                 <VCard>
                     <VCardTitle>
-                        <VChip color="success" :prepend-icon="product.id ? 'mdi-pencil' : 'mdi-plus'">
-                            {{ product.id ? 'Update' : 'Create' }} Product
+                        <VChip color="success" :prepend-icon="titleIcon">
+                            {{ title }} Product
                         </VChip>
                     </VCardTitle>
                     <VDivider />
                     <VCardText>
                         <VRow>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="product.title" label="Title" />
+                                <VTextField v-model="state.product.title" label="Title" />
                             </VCol>
                             <VCol cols="12" md="4">
-                                <VCurrency v-model="product.price" label="Price" />
+                                <VCurrency v-model="state.product.price" label="Price" />
                             </VCol>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="product.rating" label="Rating" />
+                                <VTextField v-model="state.product.rating" label="Rating" />
                             </VCol>
                         </VRow>
                         <VRow>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="product.stock" label="Stock" />
+                                <VTextField v-model="state.product.stock" label="Stock" />
                             </VCol>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="product.brand" label="Brand" />
+                                <VTextField v-model="state.product.brand" label="Brand" />
                             </VCol>
                             <VCol cols="12" md="4" />
                         </VRow>
@@ -89,14 +88,14 @@ function onClose() {
                             color="warning"
                             prepend-icon="mdi-close"
                             text="Close"
-                            @click="onClose()"
+                            @click="func.onClose()"
                         />
                         <VBtn
                             color="primary"
                             prepend-icon="mdi-content-save"
                             text="Save"
                             :loading="$g.isLoading"
-                            @click="onSave()"
+                            @click="func.onAction()"
                         />
                     </VCardActions>
                 </VCard>

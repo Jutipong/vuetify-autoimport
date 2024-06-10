@@ -56,7 +56,7 @@ export default defineConfig(({ mode }) => {
                 routesFolder: 'src/pages',
                 dts: 'src/typed-router.d.ts',
             }),
-            VueDevTools(),
+            // VueDevTools( ),
             vue({
                 template: { transformAssetUrls },
                 script: {

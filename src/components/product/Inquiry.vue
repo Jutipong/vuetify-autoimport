@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import ProductActionModal from './action-modal.vue'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
-import { newProductType } from '@/types/product'
 
 const productStore = useProductStore()
+const modalRef = ref<InstanceType<typeof ProductActionModal> | null>(null)
 
 const state = reactive({
     header: [
@@ -32,10 +33,6 @@ const state = reactive({
         last: null,
         status: null,
     },
-    modal: {
-        active: false,
-        data: newProductType(),
-    },
 })
 
 const func = {
@@ -43,27 +40,25 @@ const func = {
         state.table.loading = true
         state.table.options = option || state.table.options
 
-        const res = await api.get<any>(`/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`)
+        const { products, total } = await api.get<{ products: ProductType[], total: number }>(`/products/search?q=${state.search.name ?? ''}&limit=${state.table.options.itemsPerPage}`)
 
-        state.table.result.datas = res?.products ?? []
-        state.table.result.total = res?.total ?? 10
+        state.table.result.datas = products
+        state.table.result.total = total
 
         state.table.loading = false
     },
     onClear: async () => {
-        Object.assign(state.search, {
-            name: null,
-            last: null,
-            status: null,
-        })
+        Object.assign(state.search, { name: null, last: null, status: null })
         await func.getProducts()
     },
-    onAction: (obj: ProductType | null) => {
-        Object.assign(state.modal.data, obj ?? newProductType())
-        state.modal.active = true
+    onAdd: () => {
+        modalRef.value?.open({} as ProductType)
+    },
+    onEdit: (product: ProductType) => {
+        modalRef.value?.open(product)
     },
     onDelete: async (obj: ProductType) => {
-        if (!await vConfirm.delete('Confirm Delete', 'Delete data.'))
+        if (!await vConfirm.delete(`Confirm Delete`, `Delete '${obj.brand}'`))
             return
 
         vNotify.error(`delete ${obj.title} success`)
@@ -74,7 +69,7 @@ const func = {
 <template>
     <div>
         <!-- modal actions -->
-        <ProductActionModal v-model="state.modal.active" :product="state.modal.data" />
+        <ProductActionModal ref="modalRef" />
 
         <!-- search -->
         <VCard @keyup.enter="func.getProducts()">
@@ -119,7 +114,7 @@ const func = {
                         </VChip>
                     </VCol>
                     <VCol class="text-right" md="6">
-                        <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="func.onAction(null)" />
+                        <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="func.onAdd" />
                     </VCol>
                 </VRow>
             </VCardTitle>
@@ -131,7 +126,7 @@ const func = {
                     @update:options="func.getProducts()"
                 >
                     <template #item.actions="{ item }">
-                        <VIcon color="primary" class="me-2" @click="func.onAction(item)">
+                        <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
                             mdi-pencil
                         </VIcon>
                         <VIcon color="error" @click="func.onDelete(item)">
