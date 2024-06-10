@@ -67,7 +67,6 @@ defineExpose({
 </script>
 
 <template>
-    <!-- modal actions -->
     <ProductModal ref="modalRef" />
 
     <VCard>
