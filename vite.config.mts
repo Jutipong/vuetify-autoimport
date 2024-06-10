@@ -24,11 +24,11 @@ export default defineConfig(({ mode }) => {
             AutoImport({
                 include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
                 imports: [
+                    'vue',
+                    'pinia',
                     VueRouterAutoImports,
                     {
                         lodash: [['default', '_']],
-                        pinia: ['defineStore'],
-                        vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
                     },
                 ],
                 dirs: ['src/**/*.{ts,vue}'],
@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
                 dts: 'src/components.d.ts',
                 deep: true,
                 directoryAsNamespace: true,
-                globalNamespaces: ['global'],
+                // globalNamespaces: ['global'],
             }),
             Layouts({
                 layoutsDirs: 'src/@core/layouts',
@@ -79,6 +79,7 @@ export default defineConfig(({ mode }) => {
             chunkSizeWarningLimit: 5000,
         },
         optimizeDeps: {
+            include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash'],
             exclude: ['vuetify'],
             entries: ['./src/**/*.vue'],
         },
