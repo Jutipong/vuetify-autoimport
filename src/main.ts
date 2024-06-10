@@ -11,11 +11,11 @@ import { createPinia } from 'pinia'
 import type { PluginOptions } from 'vue-toastification'
 import Toast from 'vue-toastification'
 import App from './App.vue'
-
 import vuetify from '@/@core/plugins/vuetify'
 import router from '@/@core/plugins/router'
 
 import 'vue-toastification/dist/index.css'
+import 'virtual:uno.css'
 
 document.title = _const.app.metaTitle
 

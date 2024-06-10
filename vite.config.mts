@@ -9,6 +9,7 @@ import ViteFonts from 'unplugin-fonts/vite'
 import { defineConfig, loadEnv } from 'vite'
 
 import VueDevTools from 'vite-plugin-vue-devtools'
+import UnoCSS from 'unocss/vite'
 
 // Auto imports
 import AutoImport from 'unplugin-auto-import/vite'
@@ -23,16 +24,10 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [
             AutoImport({
-                include: [
-                    /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-                    /\.vue$/,
-                    /\.vue\?vue/, // .vue
-                    // /\.md$/, // .md
-                ],
+                include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
                 imports: [
                     VueRouterAutoImports,
                     {
-                        // '@vueuse/core': ['watchDebounced'],
                         lodash: [['default', '_']],
                         pinia: ['defineStore'],
                         vue: ['ref', 'reactive', 'computed', 'watch', 'watchEffect', 'onMounted', 'toRefs'],
@@ -40,6 +35,7 @@ export default defineConfig(({ mode }) => {
                 ],
                 dirs: ['src/@core/utils', 'src/stores', 'src/@core/constants'],
                 dts: './src/auto-imports.d.ts',
+                vueTemplate: true,
             }),
             Components({
                 dirs: ['src/components'],
@@ -56,7 +52,8 @@ export default defineConfig(({ mode }) => {
                 routesFolder: 'src/pages',
                 dts: 'src/typed-router.d.ts',
             }),
-            // VueDevTools( ),
+            VueDevTools(),
+            UnoCSS(),
             vue({
                 template: { transformAssetUrls },
                 script: {

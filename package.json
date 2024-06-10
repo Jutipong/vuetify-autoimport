@@ -1,42 +1,43 @@
 {
-  "name": "vuetify-autoimport",
-  "version": "0.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
-  },
-  "dependencies": {
-    "@mdi/font": "^7.4.47",
-    "@types/lodash": "^4.17.5",
-    "localstorage-slim": "^2.7.1",
-    "pinia": "^2.1.7",
-    "vue": "^3.4.27",
-    "vue-router": "^4.3.2",
-    "vue-toastification": "^2.0.0-rc.5",
-    "vuetify": "^3.6.8"
-  },
-  "devDependencies": {
-    "@antfu/eslint-config": "^2.21.0",
-    "@babel/types": "^7.24.7",
-    "@types/node": "^20.14.2",
-    "@vitejs/plugin-vue": "^5.0.5",
-    "@vueuse/core": "^10.10.0",
-    "axios": "^1.7.2",
-    "eslint": "^9.4.0",
-    "sass": "^1.77.4",
-    "typescript": "^5.4.5",
-    "unplugin-auto-import": "^0.17.6",
-    "unplugin-fonts": "^1.1.1",
-    "unplugin-vue-components": "^0.27.0",
-    "unplugin-vue-router": "^0.9.1",
-    "vite": "^5.2.13",
-    "vite-plugin-vue-devtools": "^7.2.1",
-    "vite-plugin-vue-layouts": "^0.11.0",
-    "vite-plugin-vuetify": "^2.0.3",
-    "vue-currency-input": "^3.1.0",
-    "vue-tsc": "^2.0.21"
-  }
+    "name": "vuetify-autoimport",
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "dependencies": {
+        "@mdi/font": "^7.4.47",
+        "@types/lodash": "^4.17.5",
+        "localstorage-slim": "^2.7.1",
+        "pinia": "^2.1.7",
+        "vue": "^3.4.27",
+        "vue-router": "^4.3.2",
+        "vue-toastification": "^2.0.0-rc.5",
+        "vuetify": "^3.6.8"
+    },
+    "devDependencies": {
+        "@antfu/eslint-config": "^2.21.0",
+        "@babel/types": "^7.24.7",
+        "@types/node": "^20.14.2",
+        "@vitejs/plugin-vue": "^5.0.5",
+        "@vueuse/core": "^10.10.0",
+        "axios": "^1.7.2",
+        "eslint": "^9.4.0",
+        "sass": "^1.77.4",
+        "typescript": "^5.4.5",
+        "unocss": "^0.60.4",
+        "unplugin-auto-import": "^0.17.6",
+        "unplugin-fonts": "^1.1.1",
+        "unplugin-vue-components": "^0.27.0",
+        "unplugin-vue-router": "^0.9.1",
+        "vite": "^5.2.13",
+        "vite-plugin-vue-devtools": "^7.2.1",
+        "vite-plugin-vue-layouts": "^0.11.0",
+        "vite-plugin-vuetify": "^2.0.3",
+        "vue-currency-input": "^3.1.0",
+        "vue-tsc": "^2.0.21"
+    }
 }
