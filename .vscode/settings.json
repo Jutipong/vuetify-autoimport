@@ -20,7 +20,8 @@
         "Vitesse",
         "vitest",
         "vuetify",
-        "vueuse"
+        "vueuse",
+        "wght"
     ],
     "editor.fontLigatures": true,
     "editor.smoothScrolling": true,

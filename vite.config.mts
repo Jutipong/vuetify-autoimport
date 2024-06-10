@@ -39,7 +39,6 @@ export default defineConfig(({ mode }) => {
                 dts: 'src/components.d.ts',
                 deep: true,
                 directoryAsNamespace: true,
-                // globalNamespaces: ['global'],
             }),
             Layouts({
                 layoutsDirs: 'src/@core/layouts',
@@ -80,13 +79,12 @@ export default defineConfig(({ mode }) => {
         },
         optimizeDeps: {
             include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash'],
-            exclude: ['vuetify'],
             entries: ['./src/**/*.vue'],
+            exclude: ['vuetify'],
         },
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
-                '~': fileURLToPath(new URL('./src', import.meta.url)),
             },
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
         },
