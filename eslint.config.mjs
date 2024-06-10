@@ -7,8 +7,7 @@ export default antfu(
             overrides: {
                 'no-console': 'off',
                 'vue/no-console': 'off',
-                // 'no-debugger': 'off',
-                'no-restricted-syntax': 'off',
+                'eslint-comments/no-unlimited-disable': 'off',
             },
         },
         typescript: true,
@@ -22,12 +21,13 @@ export default antfu(
             }],
         },
         // Disable jsonc and yaml support
-        jsonc: true,
-        yaml: true,
+        jsonc: false,
         // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
         ignores: [
             '**/fixtures',
             'vite-env.d.ts',
+            '**/*.d.ts',
+            '**/.d.ts',
         ],
     },
 )
