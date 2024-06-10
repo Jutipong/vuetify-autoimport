@@ -49,7 +49,10 @@ const func = {
     },
 }
 
-defineExpose({ open: func.onOpen, close: func.onClose })
+defineExpose({
+    open: func.onOpen,
+    close: func.onClose,
+})
 </script>
 
 <template>

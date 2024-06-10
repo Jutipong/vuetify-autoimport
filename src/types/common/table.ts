@@ -23,8 +23,6 @@ export interface Result<TDatas> {
 
 export interface Table<TDatas> {
     loading: boolean
-    // header: Header[];
-    // search: TSearch;
     options: Option
     result: Result<TDatas>
 }

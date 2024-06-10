@@ -4,17 +4,23 @@ import type { ProductType } from '@/types/product'
 
 const tableRef = ref<InstanceType<typeof ProductTable> | null>(null)
 
-const productStore = useProductStore()
-
-const state = reactive({ search: {} as ProductType })
+const state = reactive({
+    master: {
+        status: [
+            { id: true, text: 'Active' },
+            { id: false, text: 'InActive' },
+        ],
+    },
+    search: {} as ProductType,
+})
 
 const func = {
     onClear: async () => {
-        Object.assign(state.search, { name: null, last: null, status: null })
-        tableRef.value?.onSearch({} as ProductType)
+        state.search = {} as ProductType
     },
-    onSearch: () => {
-        tableRef.value?.onSearch(state.search)
+    onSearch: async () => {
+        console.log('search from search-form.vue')
+        await tableRef.value?.onSearch(state.search)
     },
 }
 </script>
@@ -28,6 +34,7 @@ const func = {
                     Search
                 </VChip>
             </VCardTitle>
+
             <VDivider />
             <VCardText>
                 <VRow class="">
@@ -41,8 +48,9 @@ const func = {
 
                     <VCol cols="12" md="4">
                         <VSelect
-                            v-model="state.search.status" label="Status" :dirty="true"
-                            :items="productStore.state.master.status"
+                            v-model="state.search.status"
+                            :dirty="true"
+                            :items="state.master.status" label="Status"
                         />
                     </VCol>
                 </VRow>
@@ -55,8 +63,6 @@ const func = {
         </VCard>
 
         <!-- table -->
-        <ProductTable />
-
-    <!-- <VDialogConfirm /> -->
+        <ProductTable ref="tableRef" />
     </div>
 </template>

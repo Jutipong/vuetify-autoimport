@@ -32,8 +32,9 @@ const state = reactive({
 })
 
 const func = {
-    onSearch: async (product: ProductType) => {
-        console.log(product)
+    onSearch: async (productSearch: ProductType) => {
+        state.search = { ...productSearch }
+        await func.getProducts()
     },
     getProducts: async (option: Option | null = null) => {
         state.table.loading = true
@@ -44,7 +45,6 @@ const func = {
 
         state.table.result.datas = products
         state.table.result.total = total
-
         state.table.loading = false
     },
     onAdd: () => {
@@ -61,7 +61,9 @@ const func = {
     },
 }
 
-defineExpose({ onSearch: func.onSearch })
+defineExpose({
+    onSearch: func.onSearch,
+})
 </script>
 
 <template>
