@@ -82,7 +82,9 @@ defineExpose({
                 </VCol>
             </VRow>
         </VCardTitle>
+
         <VDivider />
+
         <VCardText>
             <VDataTableServer
                 :headers="header"

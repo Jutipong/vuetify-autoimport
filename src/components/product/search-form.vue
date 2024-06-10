@@ -33,7 +33,6 @@ const func = {
             </VChip>
         </VCardTitle>
 
-        <VDivider />
         <VCardText>
             <VRow class="">
                 <VCol cols="12" md="4">
@@ -53,7 +52,7 @@ const func = {
                 </VCol>
             </VRow>
         </VCardText>
-        <VDivider />
+
         <VCardActions class="justify-end">
             <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear" />
             <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.onSearch" />
