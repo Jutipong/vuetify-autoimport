@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
     return {
         plugins: [
             AutoImport({
-                include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
+                include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
                 imports: [
                     VueRouterAutoImports,
                     {
@@ -35,7 +35,6 @@ export default defineConfig(({ mode }) => {
                 ],
                 dirs: ['src/@core/utils', 'src/stores', 'src/@core/constants'],
                 dts: './src/auto-imports.d.ts',
-                vueTemplate: true,
             }),
             Components({
                 dirs: ['src/components'],
