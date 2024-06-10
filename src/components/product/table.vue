@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import type ProductModal from './modal.vue'
+import type ProductModalComponent from './modal.vue'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 
-const modalRef = ref<InstanceType<typeof ProductModal> | null>(null)
+const modalComponent = ref<InstanceType<typeof ProductModalComponent> | null>(null)
 
 const header = ref<Header[]>([
     { title: 'ID', key: 'id', align: 'center' },
@@ -48,10 +48,10 @@ const func = {
         state.table.loading = false
     },
     onAdd: () => {
-        modalRef.value?.open({} as ProductType)
+        modalComponent.value?.open({} as ProductType)
     },
     onEdit: (product: ProductType) => {
-        modalRef.value?.open(product)
+        modalComponent.value?.open(product)
     },
     onDelete: async (obj: ProductType) => {
         if (!await vConfirm.delete(`Confirm Delete`, `Delete '${obj.brand}'`))
@@ -67,7 +67,7 @@ defineExpose({
 </script>
 
 <template>
-    <ProductModal ref="modalRef" />
+    <ProductModal ref="modalComponent" />
 
     <VCard>
         <VCardTitle>
