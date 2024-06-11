@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import store from '@/@core/utils/confirm'
+import store from '@/utils/confirm'
 </script>
 
 <template>

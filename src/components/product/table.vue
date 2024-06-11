@@ -17,11 +17,7 @@ const state = reactive({
             { title: 'Actions', key: 'actions', sortable: false },
         ] as Header[],
         loading: false,
-        options: {
-            page: 1,
-            itemsPerPage: _const.dataTable.pageSize,
-            sortBy: [],
-        },
+        options: tableOption,
         result: {
             datas: [],
             total: 0,
@@ -35,7 +31,7 @@ const func = {
         state.search = { ...productSearch }
         await func.getProducts()
     },
-    getProducts: async (option: Option | null = null) => {
+    getProducts: async (option?: Option) => {
         state.table.loading = true
         state.table.options = option || state.table.options
 
@@ -70,7 +66,7 @@ defineExpose({
 
 <template>
     <ProductModal ref="modalRef" />
-    {{ state.table.options }}
+
     <VCard>
         <VCardTitle>
             <VRow>
