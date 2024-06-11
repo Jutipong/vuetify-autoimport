@@ -12,12 +12,12 @@ function err(error: any) {
     const { logOut } = useLoginStore()
     const $g = useGlobalStore()
 
-    const { status, data } = error.response
-    vNotify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
+    const res = error?.response
+    vNotify.error(`status:${res?.status ?? 500} | message:${res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
 
     $g.resetLoading()
 
-    if (status === 401)
+    if (res?.status === 401)
         logOut(false)
 
     return Promise.reject(error)

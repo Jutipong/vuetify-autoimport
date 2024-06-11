@@ -34,9 +34,7 @@ const func = {
 
         const { products, total }
          = await api.get<{ products: ProductType[], total: number }>
-         (`/products/search?q=${state.search.brand ?? ''}
-         &limit=${state.table.options.itemsPerPage}
-         &skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`)
+         (`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}&skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`)
 
         state.table.result.datas = products
         state.table.result.total = total

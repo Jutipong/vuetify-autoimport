@@ -1,11 +1,3 @@
-/**
- * main.ts
- *
- * Bootstraps Vuetify and other plugins then mounts the App`
- */
-
-// import '@/scss/style.scss';
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import type { PluginOptions } from 'vue-toastification'

@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia'
-
 export const useGlobalStore = defineStore('global', () => {
     const loadings = ref(0)
     const isLoadingPage = ref(false)
@@ -26,3 +24,7 @@ export const useGlobalStore = defineStore('global', () => {
         resetLoading,
     }
 })
+
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot))
+}

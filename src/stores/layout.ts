@@ -15,3 +15,7 @@ export const useLayoutStore = defineStore('layout', () => {
         toggleRail,
     }
 })
+
+if (import.meta.hot) {
+    import.meta.hot.accept(acceptHMRUpdate(useLayoutStore, import.meta.hot))
+}
