@@ -18,10 +18,7 @@ const state = reactive({
         ] as Header[],
         loading: false,
         options: tableOption,
-        result: {
-            datas: [],
-            total: 0,
-        },
+        result: tableResult,
     } as Table<ProductType>,
     search: {} as ProductType,
 })

@@ -3,3 +3,8 @@ export const tableOption = {
     itemsPerPage: 20,
     sortBy: [],
 }
+
+export const tableResult = {
+    datas: [],
+    total: 0,
+}
