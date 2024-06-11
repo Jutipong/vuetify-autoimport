@@ -40,7 +40,10 @@ const func = {
         state.table.options = option || state.table.options
 
         const { products, total }
-         = await api.get<{ products: ProductType[], total: number }>(`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}`)
+         = await api.get<{ products: ProductType[], total: number }>
+         (`/products/search?q=${state.search.brand ?? ''}
+         &limit=${state.table.options.itemsPerPage}
+         &skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`)
 
         state.table.result.datas = products
         state.table.result.total = total
@@ -67,7 +70,7 @@ defineExpose({
 
 <template>
     <ProductModal ref="modalRef" />
-
+    {{ state.table.options }}
     <VCard>
         <VCardTitle>
             <VRow>
@@ -91,7 +94,7 @@ defineExpose({
                 :items-length="state.table.result.total"
                 :items="state.table.result.datas"
                 :loading="state.table.loading"
-                @update:options="func.getProducts()"
+                @update:options="func.getProducts"
             >
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
