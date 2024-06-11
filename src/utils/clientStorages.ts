@@ -9,17 +9,17 @@ export const clientStorages = {
         ls.clear()
     },
     setToken: (token: string) => {
-        ls.set(_const.app.tokenKey, token)
+        ls.set(appSetting.tokenKey, token)
     },
     getToken: (): string | null => {
-        const token = ls.get<string | null>(_const.app.tokenKey)
+        const token = ls.get<string | null>(appSetting.tokenKey)
         return token
     },
     setUserLogin: (userInfo: UserLogin) => {
-        ls.set(_const.app.userLoginKey, userInfo)
+        ls.set(appSetting.userLoginKey, userInfo)
     },
     getUserLogin: (): UserLogin | null => {
-        const userInfo = ls.get<UserLogin | null>(_const.app.userLoginKey)
+        const userInfo = ls.get<UserLogin | null>(appSetting.userLoginKey)
         return userInfo
     },
     setTheme: (theme: string): void => {

@@ -17,7 +17,7 @@ import router from '@/@core/plugins/router'
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
 
-document.title = _const.app.metaTitle
+document.title = appSetting.title
 
 const app = createApp(App)
 app.use(vuetify)

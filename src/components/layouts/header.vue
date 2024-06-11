@@ -4,7 +4,7 @@ import { useTheme } from 'vuetify'
 const authStore = useLoginStore()
 const layoutStore = useLayoutStore()
 const theme = useTheme()
-const { app } = _const
+const app = appSetting
 
 theme.global.name.value = clientStorages.getTheme()
 

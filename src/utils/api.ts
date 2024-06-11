@@ -5,7 +5,7 @@ import axios from 'axios'
 
 // create axios
 const _api = axios.create({
-    baseURL: _const.baseUrl.api,
+    baseURL: appSetting.baseUrl,
     timeout: 5000,
     headers: { 'Access-Control-Allow-Origin': '*' },
 })
