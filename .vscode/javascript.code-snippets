@@ -40,7 +40,7 @@
 	},
 	"Pinia Setup": {
 		"scope": "javascript,typescript",
-		"prefix": "cpn",
+		"prefix": "pn",
 		"body": [
 			"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
 			" $0",
