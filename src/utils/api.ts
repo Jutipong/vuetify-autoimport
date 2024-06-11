@@ -1,8 +1,6 @@
 import type { AxiosRequestConfig } from 'axios'
 import axios from 'axios'
 
-// const $g = useGlobalStore()
-
 // create axios
 const _api = axios.create({
     baseURL: appSetting.baseUrl,
@@ -13,8 +11,8 @@ const _api = axios.create({
 function err(error: any) {
     const { logOut } = useLoginStore()
     const $g = useGlobalStore()
-    const { status, data } = error.response
 
+    const { status, data } = error.response
     vNotify.error(`status:${status} | message:${data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
 
     $g.resetLoading()
