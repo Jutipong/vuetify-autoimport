@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => {
                             'toRef',
                             'onMounted',
                         ],
-                        pinia: ['defineStore'],
+                        pinia: ['defineStore', 'acceptHMRUpdate'],
                         lodash: [['default', '_']],
                     },
                 ],
