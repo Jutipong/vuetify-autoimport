@@ -24,14 +24,28 @@ export default defineConfig(({ mode }) => {
             AutoImport({
                 include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
                 imports: [
-                    'vue',
-                    'pinia',
                     VueRouterAutoImports,
                     {
+                        vue: [
+                            'ref',
+                            'reactive',
+                            'watchEffect',
+                            'computed',
+                            'watch',
+                            'defineProps',
+                            'defineEmits',
+                            'defineExpose',
+                            'withDefaults',
+                            'toRefs',
+                            'toRef',
+                            'onMounted',
+                        ],
+                        pinia: ['defineStore'],
                         lodash: [['default', '_']],
                     },
                 ],
-                dirs: ['src/**/*.{ts,vue}'],
+                // dirs: ['src/**/*.{ts,vue}', 'src/types'],
+                dirs: ['src/types'],
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
