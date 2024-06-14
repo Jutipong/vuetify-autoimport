@@ -9,6 +9,8 @@ import router from '@/@core/plugins/router'
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
 
+import appSetting from '@/constants/appSetting'
+
 document.title = appSetting.title
 
 const app = createApp(App)
