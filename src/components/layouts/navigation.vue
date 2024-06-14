@@ -3,6 +3,7 @@ const layoutStore = useLayoutStore()
 
 const open = ref(['Users'])
 const cruds = [
+    // { title: 'Home', icon: 'mdi-home', to: '/' },
     { title: 'Product', icon: 'mdi-package', to: '/product' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
@@ -16,11 +17,7 @@ const cruds = [
         :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
     >
         <v-list>
-            <v-list-item
-                prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg"
-                title="ABC"
-                subtitle="abc@gmail.com"
-            >
+            <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" title="ABC" subtitle="abc@gmail.com">
                 <template #append>
                     <div class="justify-self-end">
                         <v-btn
@@ -34,20 +31,13 @@ const cruds = [
         </v-list>
 
         <v-divider />
-        <v-list
-            v-model:opened="open"
-            color="primary"
-            variant="plain"
-            nav
-            :lines="false"
-        >
+        <v-list v-model:opened="open" color="primary" variant="plain" nav :lines="false">
             <v-list-item
                 prepend-icon="mdi-home"
                 title="Home"
                 value="/"
                 to="/"
             />
-
             <v-list-group value="Users">
                 <template #activator="{ props }">
                     <v-list-item
@@ -67,13 +57,6 @@ const cruds = [
                 />
             </v-list-group>
         </v-list>
-    <!-- <template v-slot:append>
-      <div class="pa-2">
-        <v-btn block color="red" @click="authStore.logOut()">
-          <icon name="mdi:logout"></icon>
-        </v-btn>
-      </div>
-    </template> -->
     </v-navigation-drawer>
 </template>
 
