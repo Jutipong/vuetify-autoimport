@@ -44,8 +44,7 @@ export default defineConfig(({ mode }) => {
                         lodash: [['default', '_']],
                     },
                 ],
-                // dirs: ['src/**/*.{ts,vue}', 'src/types'],
-                dirs: ['src/types'],
+                dirs: ['./src/**/*.{ts,vue}'],
                 dts: './src/auto-imports.d.ts',
             }),
             Components({

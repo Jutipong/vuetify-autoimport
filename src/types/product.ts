@@ -10,15 +10,3 @@ export interface ProductType {
     category: string | null
     status?: string
 }
-
-export function newProductType(): ProductType {
-    return {
-        id: null,
-        title: null,
-        price: null,
-        rating: null,
-        stock: null,
-        brand: null,
-        category: null,
-    } as ProductType
-}
