@@ -6,9 +6,10 @@ import App from './App.vue'
 import vuetify from '@/@core/plugins/vuetify'
 import router from '@/@core/plugins/router'
 
+// import '@/@core/scss/style.scss'
+
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
-
 import appSetting from '@/constants/appSetting'
 
 document.title = appSetting.title

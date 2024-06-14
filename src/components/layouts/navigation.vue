@@ -15,7 +15,7 @@ const cruds = [
         expand-on-hover
         :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
     >
-        <v-list density="compact">
+        <v-list>
             <v-list-item
                 prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg"
                 title="ABC"
@@ -37,7 +37,6 @@ const cruds = [
         <v-list
             v-model:opened="open"
             color="primary"
-            density="compact"
             variant="plain"
             nav
             :lines="false"
