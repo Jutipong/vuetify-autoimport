@@ -27,7 +27,7 @@ const func = {
 
 <template>
     <VCard @keyup.enter="func.onSearch()">
-        <VCardTitle>
+        <VCardTitle mb-1>
             <VChip color="primary" prepend-icon="mdi-magnify" label>
                 Search
             </VChip>

@@ -64,8 +64,8 @@ defineExpose({
                             {{ title }} Product
                         </VChip>
                     </VCardTitle>
-                    <VDivider />
-                    <VCardText>
+
+                    <VCardText mt-4 mb-4>
                         <VRow>
                             <VCol cols="12" md="4">
                                 <VTextField v-model="state.product.title" label="Title" />
@@ -87,7 +87,7 @@ defineExpose({
                             <VCol cols="12" md="4" />
                         </VRow>
                     </VCardText>
-                    <VDivider />
+
                     <VCardActions>
                         <VSpacer />
                         <VBtn

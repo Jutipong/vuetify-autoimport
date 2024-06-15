@@ -7,6 +7,7 @@ import vuetify from '@/@core/plugins/vuetify'
 import router from '@/@core/router'
 
 // import '@/@core/scss/style.scss'
+import '@/assets/css/main.css'
 
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'

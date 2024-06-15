@@ -53,9 +53,11 @@ export default createVuetify({
                 class: 'text-none',
             },
         },
-        VCardTitle: {},
+        VCardTitle: {
+            class: 'mr-4 ml-4',
+        },
         VCardText: {
-            class: 'ma-1',
+            class: 'mr-4 ml-4',
             VSelect: {
                 clearable: true,
                 variant: 'outlined',
@@ -68,7 +70,7 @@ export default createVuetify({
             },
         },
         VCardActions: {
-            class: 'mt-1 mr-2 ml-2',
+            class: 'mr-4 ml-4',
             VBtn: {
                 variant: 'flat',
                 class: 'pl-4 pr-4 text-none',
