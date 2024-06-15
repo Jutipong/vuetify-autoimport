@@ -17,9 +17,9 @@ const $g = useGlobalStore()
                     name="fade"
                     mode="out-in"
                 >
-                    <KeepAlive :name="Component">
-                        <component :is="Component" />
-                    </KeepAlive>
+                    <!-- <KeepAlive :name="Component"> -->
+                    <component :is="Component" />
+                    <!-- </KeepAlive> -->
                 </transition>
             </router-view>
             <!-- </v-container> -->
