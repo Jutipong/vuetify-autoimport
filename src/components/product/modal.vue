@@ -65,7 +65,7 @@ defineExpose({
                         </VChip>
                     </VCardTitle>
 
-                    <VCardText mt-4 mb-4>
+                    <VCardText mt-2 mb-2>
                         <VRow>
                             <VCol cols="12" md="4">
                                 <VTextField v-model="state.product.title" label="Title" />
