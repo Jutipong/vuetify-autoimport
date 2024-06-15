@@ -43,12 +43,14 @@ export default createVuetify({
         },
         VBtn: {
             variant: 'flat',
+            class: 'text-none',
         },
         VCard: {
             variant: 'flat',
             class: 'mb-3 pa-1',
             VBtn: {
                 variant: 'flat',
+                class: 'text-none',
             },
         },
         VCardTitle: {},
@@ -69,7 +71,7 @@ export default createVuetify({
             class: 'mt-1 mr-2 ml-2',
             VBtn: {
                 variant: 'flat',
-                class: 'pl-4 pr-4',
+                class: 'pl-4 pr-4 text-none',
             },
         },
         VTextField: {

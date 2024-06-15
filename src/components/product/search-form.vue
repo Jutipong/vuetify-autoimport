@@ -34,7 +34,7 @@ const func = {
         </VCardTitle>
 
         <VCardText>
-            <VRow class="">
+            <VRow>
                 <VCol cols="12" md="4">
                     <VTextField v-model="state.search.brand" label="Brand" />
                 </VCol>
