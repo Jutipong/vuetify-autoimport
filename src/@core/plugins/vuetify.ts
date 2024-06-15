@@ -1,60 +1,55 @@
-/**
- * plugins/vuetify.ts
- *
- * Framework documentation: https://vuetifyjs.com`
- */
-
-// Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
-// Composables
 import { createVuetify } from 'vuetify'
+import type { VuetifyOptions } from 'vuetify'
 import * as labsComponents from 'vuetify/labs/components'
 
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
     components: {
         ...labsComponents,
     },
     theme: {
         defaultTheme: 'light',
-        themes:
-    {
-        light: {
-            dark: true,
-            colors: {
-                background: '#E0E0E0',
-                surface: '#fbfbfb',
-                primary: '#5D87FF',
-                secondary: '#8A8D93',
-                error: '#FF4C51',
-                info: '#16B1FF',
-                success: '#4CAF50',
-                warning: '#FB8C00',
+        themes: {
+            light: {
+                dark: true,
+                colors: {
+                    background: '#E0E0E0',
+                    surface: '#fbfbfb',
+                    primary: '#5D87FF',
+                    secondary: '#8A8D93',
+                    error: '#FF4C51',
+                    info: '#16B1FF',
+                    success: '#4CAF50',
+                    warning: '#FB8C00',
+                },
             },
         },
-    },
     },
     ssr: false,
     defaults: {
         VContainer: {
             fluid: true,
+
         },
         VBtn: {
             variant: 'flat',
-            class: 'text-none',
+            rounded: 'lg',
+            class: 'text-none font-bold',
         },
         VCard: {
             variant: 'flat',
+            rounded: 'lg',
             class: 'mb-3 pa-1',
             VBtn: {
                 variant: 'flat',
-                class: 'text-none',
+                rounded: 'lg',
+                class: 'text-none font-bold',
             },
         },
         VCardTitle: {
-            class: 'mr-4 ml-4',
+            class: 'mr-4 ml-4 mt-1 mb-1',
         },
         VCardText: {
             class: 'mr-4 ml-4',
@@ -70,10 +65,11 @@ export default createVuetify({
             },
         },
         VCardActions: {
-            class: 'mr-4 ml-4',
+            class: 'mr-4 ml-4 mb-2',
             VBtn: {
+                rounded: 'lg',
                 variant: 'flat',
-                class: 'pl-4 pr-4 text-none',
+                class: 'pl-4 pr-4 text-none font-bold',
             },
         },
         VTextField: {
@@ -83,6 +79,7 @@ export default createVuetify({
             color: 'primary',
             dirty: true,
             variant: 'outlined',
+            rounded: 'lg',
         },
         VAutocomplete: {
             variant: 'outlined',
@@ -151,4 +148,4 @@ export default createVuetify({
             label: true,
         },
     },
-})
+} as VuetifyOptions)
