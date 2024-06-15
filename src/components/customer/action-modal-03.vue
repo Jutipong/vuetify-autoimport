@@ -31,8 +31,8 @@ function closeModal() {
                             Modal 03: {{ customer }}
                         </VChip>
                     </VCardTitle>
-                    <VDivider />
-                    <VCardText>
+
+                    <VCardText mt4 mb4>
                         <VRow>
                             <VCol cols="12" md="4">
                                 <VTextField v-model="customer.Name" label="Name" />

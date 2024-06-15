@@ -28,8 +28,8 @@ function closeModal() {
                             Modal 02: {{ customer }}
                         </VChip>
                     </VCardTitle>
-                    <VDivider />
-                    <VCardText>
+
+                    <VCardText mt4 mb4>
                         <VRow>
                             <VCol cols="12" md="4">
                                 <VTextField v-model="customer.Name" label="Name" />
@@ -39,17 +39,8 @@ function closeModal() {
                             </VCol>
                             <VCol cols="12" md="4" />
                         </VRow>
-                        <VRow>
-                            <VCol cols="12" md="4">
-                                <!-- <VTextField v-model="product.stock" label="Stock" /> -->
-                            </VCol>
-                            <VCol cols="12" md="4">
-                                <!-- <VTextField v-model="product.brand" label="Brand" /> -->
-                            </VCol>
-                            <VCol cols="12" md="4" />
-                        </VRow>
                     </VCardText>
-                    <VDivider />
+
                     <VCardActions>
                         <VSpacer />
                         <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal()" />
