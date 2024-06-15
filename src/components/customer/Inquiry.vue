@@ -64,7 +64,7 @@ const dateTh = () => _dateTh()
                     {{ dateTh() }}
                 </VChip>
             </VCardTitle>
-            <VDivider />
+
             <VCardText>
                 <VRow>
                     <VCol cols="12" md="4">
@@ -76,7 +76,7 @@ const dateTh = () => _dateTh()
                     <VCol cols="12" md="4" />
                 </VRow>
             </VCardText>
-            <VDivider />
+
             <VCardActions class="justify-end">
                 <VBtn color="primary" text="1.Props+Emit-v-bin" @click="openModal_01" />
                 <VBtn color="primary" text="2.Props {} +Emit('close')" @click="openModal_02" />
