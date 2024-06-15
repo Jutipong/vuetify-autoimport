@@ -1,14 +1,36 @@
 <script lang="ts" setup>
-const { state, logIn } = useLoginStore()
-const user = ref({
-    username: 'emilys',
-    password: 'emilyspass',
-    visible: false,
+import type { UserLogin } from '@/types/auth'
+
+const { setToken, setUserLogin } = clientStorages
+
+const state = reactive({
+    user: {
+        username: 'emilys',
+        password: 'emilyspass',
+        visible: false,
+    },
+    isLoading: false,
 })
+
+async function logIn() {
+    state.isLoading = true
+
+    const res = await api.post<UserLogin>('/auth/login', {
+        username: state.user.username,
+        password: state.user.password,
+    }, { isLoading: false })
+
+    setToken(res.token)
+    setUserLogin(res)
+
+    state.isLoading = false
+
+    router.push('/')
+}
 </script>
 
 <template>
-    <div fluid class="d-flex fill-height align-center justify-center">
+    <div fluid class="flex h-full items-center justify-center">
         <v-row>
             <v-col>
                 <v-card
@@ -17,7 +39,7 @@ const user = ref({
                     max-width="450"
                     rounded="lg"
                 >
-                    <v-form @submit.prevent="logIn(user.username, user.password)">
+                    <v-form @submit.prevent="logIn">
                         <v-img
                             transition="fade-transition"
                             class="mx-auto ma-16"
@@ -27,7 +49,7 @@ const user = ref({
                         />
 
                         <v-text-field
-                            v-model="user.username"
+                            v-model="state.user.username"
                             class="mb-2"
                             placeholder="User Name"
                             prepend-inner-icon="mdi-account-outline"
@@ -35,14 +57,14 @@ const user = ref({
                         />
 
                         <v-text-field
-                            v-model="user.password"
+                            v-model="state.user.password"
                             class="mb-4"
-                            :append-inner-icon="user.visible ? 'mdi-eye-off' : 'mdi-eye'"
-                            :type="user.visible ? 'text' : 'password'"
+                            :append-inner-icon="state.user.visible ? 'mdi-eye-off' : 'mdi-eye'"
+                            :type="state.user.visible ? 'text' : 'password'"
                             placeholder="Enter your password"
                             prepend-inner-icon="mdi-lock-outline"
                             variant="outlined"
-                            @click:append-inner="user.visible = !user.visible"
+                            @click:append-inner="state.user.visible = !state.user.visible"
                         />
 
                         <v-btn
