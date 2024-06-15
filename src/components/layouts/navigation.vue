@@ -17,7 +17,7 @@ const cruds = [
         :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
     >
         <v-list>
-            <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" title="ABC" subtitle="abc@gmail.com">
+            <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com">
                 <template #append>
                     <div class="justify-self-end">
                         <v-btn
