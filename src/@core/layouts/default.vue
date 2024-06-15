@@ -6,25 +6,25 @@ const $g = useGlobalStore()
 </script>
 
 <template>
-    <v-app>
-        <v-progress-linear :active="$g.isLoading || $g.isLoadingPage" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
+    <VApp>
+        <VProgressLinear :active="$g.isLoading || $g.isLoadingPage" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
         <LayoutsHeader />
         <LayoutsNavigation />
-        <v-main>
+        <VMain>
             <!-- <v-container> -->
-            <router-view v-slot="{ Component }">
-                <transition
+            <RouterView v-slot="{ Component }">
+                <Transition
                     name="fade"
                     mode="out-in"
                 >
                     <!-- <KeepAlive :name="Component"> -->
                     <component :is="Component" />
                     <!-- </KeepAlive> -->
-                </transition>
-            </router-view>
+                </Transition>
+            </RouterView>
             <!-- </v-container> -->
-        </v-main>
-    </v-app>
+        </VMain>
+    </VApp>
 </template>
 
 <style>
