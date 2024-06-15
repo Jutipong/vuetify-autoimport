@@ -6,7 +6,7 @@ import store from '@/utils/confirm'
     <teleport to="body">
         <div v-if="store.state.isOpen">
             <v-row justify="center">
-                <v-dialog v-model="store.state.isOpen" persistent width="auto">
+                <v-dialog v-model="store.state.isOpen" persistent width="auto" transition="dialog-top-transition">
                     <v-card
                         min-width="400px"
                         min-height="160px"
