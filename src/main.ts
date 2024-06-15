@@ -4,7 +4,7 @@ import type { PluginOptions } from 'vue-toastification'
 import Toast from 'vue-toastification'
 import App from './App.vue'
 import vuetify from '@/@core/plugins/vuetify'
-import router from '@/@core/plugins/router'
+import router from '@/@core/router'
 
 // import '@/@core/scss/style.scss'
 
