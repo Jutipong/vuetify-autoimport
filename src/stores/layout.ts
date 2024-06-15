@@ -1,5 +1,8 @@
 export const useLayoutStore = defineStore('layout', () => {
-    const state = reactive({ drawer: true, isRail: false })
+    const state = reactive({
+        drawer: true,
+        isRail: false,
+    })
 
     function toggleDrawer() {
         state.drawer = !state.drawer
