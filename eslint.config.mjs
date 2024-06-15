@@ -20,9 +20,8 @@ export default antfu(
                 shallowOnly: true,
             }],
         },
-        // Disable jsonc and yaml support
         jsonc: false,
-        // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
+        yaml: false,
         ignores: [
             '**/fixtures',
             'vite-env.d.ts',
