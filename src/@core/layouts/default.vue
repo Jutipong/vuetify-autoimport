@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import LayoutsHeader from './components/header.vue'
+import LayoutsNavigation from './components/navigation.vue'
+
 const $g = useGlobalStore()
 </script>
 
