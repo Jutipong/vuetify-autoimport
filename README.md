@@ -48,6 +48,9 @@ pnpm build
 bun run build
 ```
 
-### Customize configuration
+### todo
 
-See [Configuration Reference](https://vitejs.dev/config/).
+```
+# renew vNotify
+# add vConfirm mini
+```
