@@ -5,6 +5,23 @@ import { createVuetify } from 'vuetify'
 import type { VuetifyOptions } from 'vuetify'
 import * as labsComponents from 'vuetify/labs/components'
 
+const vBtn = {
+    variant: 'flat',
+    rounded: 'lg',
+    class: 'text-none font-500 pr-3 pl-3',
+}
+
+const vSelect = {
+    clearable: true,
+    variant: 'outlined',
+    density: 'compact',
+    color: 'primary',
+    hideDetails: 'auto',
+    dirty: true,
+    itemTitle: 'text',
+    itemValue: 'id',
+}
+
 export default createVuetify({
     components: {
         ...labsComponents,
@@ -31,46 +48,24 @@ export default createVuetify({
     defaults: {
         VContainer: {
             fluid: true,
-
         },
-        VBtn: {
-            variant: 'flat',
-            rounded: 'lg',
-            class: 'text-none font-bold',
-        },
+        VBtn: vBtn,
         VCard: {
             variant: 'flat',
             rounded: 'lg',
             class: 'mb-3 pa-1',
-            VBtn: {
-                variant: 'flat',
-                rounded: 'lg',
-                class: 'text-none font-bold',
-            },
+            VBtn: vBtn,
         },
         VCardTitle: {
             class: 'mr-4 ml-4 mt-1 mb-1',
         },
         VCardText: {
             class: 'mr-4 ml-4',
-            VSelect: {
-                clearable: true,
-                variant: 'outlined',
-                density: 'compact',
-                color: 'primary',
-                hideDetails: 'auto',
-                dirty: true,
-                itemTitle: 'text',
-                itemValue: 'id',
-            },
+            VSelect: vSelect,
         },
         VCardActions: {
             class: 'mr-4 ml-4 mb-2',
-            VBtn: {
-                rounded: 'lg',
-                variant: 'flat',
-                class: 'pl-4 pr-4 text-none font-bold',
-            },
+            VBtn: vBtn,
         },
         VTextField: {
             clearable: true,
@@ -113,13 +108,14 @@ export default createVuetify({
             color: 'primary',
             density: 'compact',
             hover: true,
-            VSelect: {
-                clearable: false,
-                variant: 'outlined',
-                density: 'compact',
-                itemTitle: 'title',
-                itemValue: 'value',
-            },
+            VSelect: vSelect,
+            // VSelect: {
+            //     clearable: false,
+            //     variant: 'outlined',
+            //     density: 'compact',
+            //     itemTitle: 'title',
+            //     itemValue: 'value',
+            // },
         },
         // VPagination: {
         //   activeColor: 'error',

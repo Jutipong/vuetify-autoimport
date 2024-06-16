@@ -21,6 +21,8 @@ const cruds = [
                 <template #append>
                     <div class="justify-self-end">
                         <v-btn
+                            :ripple="false"
+                            variant="plain"
                             rounded="xl"
                             :icon="layoutStore.state.isRail ? 'mdi-pin-off-outline' : 'mdi-pin-outline'"
                             @click="layoutStore.toggleRail()"

@@ -48,14 +48,15 @@ const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' 
             scroll-threshold="1000"
         >
             <v-app-bar-nav-icon
+                :ripple="false"
                 :icon="layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'"
-                variant="text"
+                variant="plain"
                 @click="layoutStore.toggleDrawer"
             />
             <v-app-bar-title>{{ app.name }} </v-app-bar-title>
 
             <template #append>
-                <v-btn @click="toggleTheme">
+                <v-btn :ripple="false" variant="plain" @click="toggleTheme">
                     <v-icon
                         :color="colorTheme"
                         :icon="iconTheme"
@@ -63,6 +64,9 @@ const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' 
                 </v-btn>
 
                 <v-btn
+                    font-semibold
+                    :ripple="false"
+                    variant="plain"
                     color="error"
                     prepend-icon="mdi-logout"
                     @click="logOut()"
