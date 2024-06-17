@@ -1,0 +1,43 @@
+.v-layout {
+
+    // desktop
+    .app-header {
+        background-color: rgb(var(--v-theme-primary));
+    }
+
+    .nav_active {
+        // background-color: rgb(var(--v-theme-primary));
+        background: linear-gradient(72.47deg,
+                #287fd6 22.16%,
+                rgba(115, 157, 255, 0.7) 76.47%) !important;
+
+        .v-list-item__prepend>.v-icon,
+        .v-list-item__append>.v-icon {
+
+            color: #ffffff;
+            left: 0px !important;
+        }
+
+        .v-list-item-title {
+            color: #ffffff;
+        }
+    }
+
+    .v-list-group__items .v-list-item {
+        padding-inline-start: 8px !important;
+    }
+
+
+
+    // mobile
+    .mini_nav {
+        .app_main {
+            margin-left: 77px;
+
+            .header {
+                left: 177px;
+                width: calc(100vw - 77px);
+            }
+        }
+    }
+}

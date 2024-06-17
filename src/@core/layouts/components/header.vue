@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useTheme } from 'vuetify'
-
 const layoutStore = useLayoutStore()
 const theme = useTheme()
+const { mobile } = useDisplay()
 const app = appSetting
 
 theme.global.name.value = clientStorages.getTheme()
@@ -14,8 +13,8 @@ function toggleTheme() {
 
 async function logOut(alertConfirm: boolean = true): Promise<void> {
     if (alertConfirm) {
-        if (!await vConfirm.info('Logout!', `<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" class="mdi mdi-alert-circle-outline"></div>
-             <h3>Are you sure you want to log out?</h3>`, {
+        if (!await vConfirm.info('Logout!', `<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" 
+        class="mdi mdi-alert-circle-outline"></div> <h3>Are you sure you want to log out?</h3>`, {
             iconTitle: 'mdi-logout',
             btnOk: {
                 color: 'error',
@@ -34,6 +33,14 @@ async function logOut(alertConfirm: boolean = true): Promise<void> {
 
 const iconTheme = computed(() => theme.global.name.value === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny')
 const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' : 'white')
+const iconDrawer = computed(() => {
+    if (!mobile.value) {
+        return layoutStore.state.rail ? 'mdi-menu-close' : 'mdi-menu-open'
+    }
+    else {
+        return layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'
+    }
+})
 </script>
 
 <template>
@@ -41,17 +48,12 @@ const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' 
         <!-- <v-system-bar> -->
         <!-- <v-progress-linear :active="true" indeterminate color="success" /> -->
         <!-- </v-system-bar> -->
-        <v-app-bar
-            color="primary"
-            density="compact"
-            scroll-behavior="inverted"
-            scroll-threshold="1000"
-        >
+        <v-app-bar class="app-header" color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
             <v-app-bar-nav-icon
                 :ripple="false"
-                :icon="layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'"
+                :icon="iconDrawer"
                 variant="plain"
-                @click="layoutStore.toggleDrawer"
+                @click="layoutStore.toggleDrawer()"
             />
             <v-app-bar-title>{{ app.name }} </v-app-bar-title>
 

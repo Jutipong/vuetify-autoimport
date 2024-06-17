@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import '@/assets/css/styles/index.scss'
 import type { PluginOptions } from 'vue-toastification'
 import Toast from 'vue-toastification'
 import App from './App.vue'

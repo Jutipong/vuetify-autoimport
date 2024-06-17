@@ -27,11 +27,11 @@ export default defineConfig(({ mode }) => {
                         vue: ['ref', 'reactive', 'watchEffect', 'computed', 'watch', 'defineProps', 'defineEmits', 'defineExpose', 'withDefaults', 'toRefs', 'toRef', 'onMounted', 'shallowRef'],
                         pinia: ['defineStore', 'acceptHMRUpdate'],
                         lodash: [['default', '_']],
+                        vuetify: ['useTheme', 'useDisplay'],
                     },
                 ],
                 dirs: ['./src/**'],
                 dts: './src/auto-imports.d.ts',
-                vueTemplate: true,
             }),
             Components({
                 dirs: ['src/components'],

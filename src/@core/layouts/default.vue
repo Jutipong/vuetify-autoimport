@@ -2,29 +2,38 @@
 import LayoutsHeader from './components/header.vue'
 import LayoutsNavigation from './components/navigation.vue'
 
+const { mobile } = useDisplay()
+
 const $g = useGlobalStore()
+const layoutCss = computed(() => {
+    return {
+        mini_nav: !mobile.value,
+        full_nav: mobile.value,
+    }
+})
 </script>
 
 <template>
-    <VApp>
-        <VProgressLinear :active="$g.isLoading || $g.isLoadingPage" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
-        <LayoutsHeader />
+    <v-app :class="layoutCss">
+        <v-progress-linear :active="$g.isLoading || $g.isLoadingPage" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
+
         <LayoutsNavigation />
-        <VMain>
+        <LayoutsHeader />
+        <v-main>
             <!-- <v-container> -->
-            <RouterView v-slot="{ Component }">
-                <Transition
+            <router-view v-slot="{ Component }">
+                <transition
                     name="fade"
                     mode="out-in"
                 >
                     <!-- <KeepAlive :name="Component"> -->
                     <component :is="Component" />
                     <!-- </KeepAlive> -->
-                </Transition>
-            </RouterView>
+                </transition>
+            </router-view>
             <!-- </v-container> -->
-        </VMain>
-    </VApp>
+        </v-main>
+    </v-app>
 </template>
 
 <style>
