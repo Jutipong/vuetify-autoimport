@@ -31,8 +31,8 @@ async function logOut(alertConfirm: boolean = true): Promise<void> {
     router.replace('/login')
 }
 
-const iconTheme = computed(() => theme.global.name.value === 'light' ? 'mdi-weather-night' : 'mdi-weather-sunny')
-const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' : 'white')
+const iconTheme = computed(() => theme.global.name.value === 'light' ? 'mdi-white-balance-sunny' : 'mdi-weather-night')
+const colorTheme = computed(() => theme.global.name.value === 'light' ? 'white' : 'black')
 const iconDrawer = computed(() => {
     if (!mobile.value) {
         return layoutStore.state.rail ? 'mdi-menu-close' : 'mdi-menu-open'
