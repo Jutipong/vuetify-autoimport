@@ -1,7 +1,7 @@
 export const useLayoutStore = defineStore('layout', () => {
     const state = reactive({
         drawer: true,
-        isRail: false,
+        // isRail: false,
     })
     // const isMobile = ref(getMobile())
 
@@ -9,11 +9,11 @@ export const useLayoutStore = defineStore('layout', () => {
         state.drawer = !state.drawer
     }
 
-    function toggleRail() {
-        state.isRail = !state.isRail
-    }
+    // function toggleRail() {
+    //     state.isRail = !state.isRail
+    // }
 
-    const isDrawerOpen = computed(() => !state.isRail)
+    // const isDrawerOpen = computed(() => !state.isRail)
 
     // function getMobile() {
     //     const rect = document.body.getBoundingClientRect()
@@ -37,8 +37,8 @@ export const useLayoutStore = defineStore('layout', () => {
         state,
         // isMobile,
         toggleDrawer,
-        isDrawerOpen,
-        toggleRail,
+        // isDrawerOpen,
+        // toggleRail,
     }
 })
 

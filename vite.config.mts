@@ -27,6 +27,7 @@ export default defineConfig(({ mode }) => {
                         vue: ['ref', 'reactive', 'watchEffect', 'computed', 'watch', 'defineProps', 'defineEmits', 'defineExpose', 'withDefaults', 'toRefs', 'toRef', 'onMounted', 'shallowRef'],
                         pinia: ['defineStore', 'acceptHMRUpdate'],
                         lodash: [['default', '_']],
+                        vuetify: ['useDisplay'],
                     },
                 ],
                 dirs: ['./src/**'],

@@ -19,15 +19,15 @@ const cruds = [
 
 <template>
     <v-navigation-drawer
-        :value="layoutStore.state.isRail"
+        v-model="layoutStore.state.drawer"
         class="layout_navigation"
         elevation="2"
         expand-on-hover
-        :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
+        :rail="!$vuetify.display.mobile && layoutStore.state.drawer"
     >
         <v-list>
             <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com">
-                <template #append>
+                <!-- <template #append>
                     <div class="justify-self-end">
                         <v-btn
                             class="sm"
@@ -38,7 +38,7 @@ const cruds = [
                             @click="layoutStore.toggleRail()"
                         />
                     </div>
-                </template>
+                </template> -->
             </v-list-item>
         </v-list>
 

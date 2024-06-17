@@ -11,6 +11,7 @@ const $g = useGlobalStore()
         <v-layout
             :class="{
                 mini_nav: !$vuetify.display.mobile,
+                full_nav: $vuetify.display.mobile,
             }"
         >
             <LayoutsNavigation />

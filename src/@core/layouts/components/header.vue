@@ -44,9 +44,9 @@ const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' 
         <v-app-bar color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
             <v-app-bar-nav-icon
                 :ripple="false"
-                :icon="layoutStore.state.isRail ? 'mdi-menu-open' : 'mdi-menu-close'"
+                :icon="layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'"
                 variant="plain"
-                @click="layoutStore.toggleRail()"
+                @click="layoutStore.toggleDrawer()"
             />
             <v-app-bar-title>{{ app.name }} </v-app-bar-title>
 
