@@ -67,9 +67,10 @@ const iconDrawer = computed(() => {
 
                 <v-btn
                     font-semibold
+                    class="color-red-6"
+                    hover="animate-shake-x animate-count-infinite animate-duration-4s"
                     :ripple="false"
                     variant="plain"
-                    color="error"
                     prepend-icon="mdi-logout"
                     @click="logOut()"
                 >
@@ -79,3 +80,9 @@ const iconDrawer = computed(() => {
         </v-app-bar>
     </div>
 </template>
+
+<style scoped>
+.v-btn--variant-plain {
+    opacity: 1;
+}
+</style>
