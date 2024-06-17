@@ -1,0 +1,25 @@
+.v-layout {
+    .mini_nav {
+        .layout_navigation {
+            .v-list-item__prepend {
+                padding-left: 0;
+            }
+
+            .v-list-group__items {
+                .v-list-item {
+                    padding-inline-start: 8px !important;
+                }
+            }
+
+        }
+
+        .app_main {
+            margin-left: 93px;
+
+            .header {
+                left: 108px;
+                width: calc(100vw - 130px);
+            }
+        }
+    }
+}

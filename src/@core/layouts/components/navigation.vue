@@ -1,9 +1,17 @@
 <script lang="ts" setup>
 const layoutStore = useLayoutStore()
 
+// const device = computed(() => layoutStore.isMobile)
+// watch(device, (val) => {
+//     console.log(device.value)
+//     if (val) {
+//         // navState.rail = false;
+//     }
+// })
+
 const open = ref(['Users'])
 const cruds = [
-    // { title: 'Home', icon: 'mdi-home', to: '/' },
+    { title: 'Home', icon: 'mdi-home', to: '/' },
     { title: 'Product', icon: 'mdi-package', to: '/product' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
@@ -11,7 +19,8 @@ const cruds = [
 
 <template>
     <v-navigation-drawer
-        v-model="layoutStore.state.drawer"
+        :value="layoutStore.state.isRail"
+        class="layout_navigation"
         elevation="2"
         expand-on-hover
         :rail="!$vuetify.display.mobile && layoutStore.state.isRail"
@@ -21,9 +30,10 @@ const cruds = [
                 <template #append>
                     <div class="justify-self-end">
                         <v-btn
+                            class="sm"
                             :ripple="false"
                             variant="plain"
-                            rounded="xl"
+                            rounded="lg"
                             :icon="layoutStore.state.isRail ? 'mdi-pin-off-outline' : 'mdi-pin-outline'"
                             @click="layoutStore.toggleRail()"
                         />
@@ -33,36 +43,32 @@ const cruds = [
         </v-list>
 
         <v-divider />
-        <v-list v-model:opened="open" color="primary" variant="plain" nav :lines="false">
-            <v-list-item
+        <v-list v-model:opened="open" color="primary" density="compact" nav>
+            <!-- <v-list-item
                 prepend-icon="mdi-home"
                 title="Home"
                 value="/"
                 to="/"
-            />
+            /> -->
             <v-list-group value="Users">
                 <template #activator="{ props }">
-                    <v-list-item
-                        v-bind="props"
-                        prepend-icon="mdi-test-tube"
-                        title="Menu 1"
-                    />
+                    <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 1" />
                 </template>
                 <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
-
                 <v-list-item
-                    v-for="({ title, to }, i) in cruds"
-                    :key="i"
+                    v-for="({ title, to, icon }, i) in cruds" :key="i"
+                    rounded="lg"
+                    :title="title"
+                    :prepend-icon="icon"
                     :value="to"
                     :to="to"
-                    :title="title"
                 />
             </v-list-group>
         </v-list>
     </v-navigation-drawer>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 .v-list-item--variant-plain {
     opacity: 1;
 }
@@ -75,4 +81,4 @@ a.v-list-item--active {
     box-shadow: 0 2px 6px #7367f07a;
     color: #fff !important;
 }
-</style>
+</style> -->

@@ -41,17 +41,12 @@ const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' 
         <!-- <v-system-bar> -->
         <!-- <v-progress-linear :active="true" indeterminate color="success" /> -->
         <!-- </v-system-bar> -->
-        <v-app-bar
-            color="primary"
-            density="compact"
-            scroll-behavior="inverted"
-            scroll-threshold="1000"
-        >
+        <v-app-bar color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
             <v-app-bar-nav-icon
                 :ripple="false"
-                :icon="layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'"
+                :icon="layoutStore.state.isRail ? 'mdi-menu-open' : 'mdi-menu-close'"
                 variant="plain"
-                @click="layoutStore.toggleDrawer"
+                @click="layoutStore.toggleRail()"
             />
             <v-app-bar-title>{{ app.name }} </v-app-bar-title>
 

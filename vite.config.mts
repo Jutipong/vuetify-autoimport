@@ -31,7 +31,6 @@ export default defineConfig(({ mode }) => {
                 ],
                 dirs: ['./src/**'],
                 dts: './src/auto-imports.d.ts',
-                vueTemplate: true,
             }),
             Components({
                 dirs: ['src/components'],
