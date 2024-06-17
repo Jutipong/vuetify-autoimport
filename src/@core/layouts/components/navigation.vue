@@ -11,7 +11,7 @@ const layoutStore = useLayoutStore()
 
 const open = ref(['Users'])
 const cruds = [
-    { title: 'Home', icon: 'mdi-home', to: '/' },
+    // { title: 'Home', icon: 'mdi-home', to: '/' },
     { title: 'Product', icon: 'mdi-package', to: '/product' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
@@ -44,25 +44,30 @@ const cruds = [
 
         <v-divider />
         <v-list v-model:opened="open" color="primary" density="compact" nav>
-            <!-- <v-list-item
+            <v-list-item
                 prepend-icon="mdi-home"
                 title="Home"
                 value="/"
                 to="/"
-            /> -->
+            />
             <v-list-group value="Users">
                 <template #activator="{ props }">
-                    <v-list-item v-bind="props" prepend-icon="mdi-test-tube" title="Menu 1" />
+                    <v-list-item
+                        v-bind="props"
+                        active-class="nav_active"
+                        prepend-icon="mdi-test-tube" title="Menu 1"
+                    />
                 </template>
                 <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
-                <v-list-item
-                    v-for="({ title, to, icon }, i) in cruds" :key="i"
-                    rounded="lg"
-                    :title="title"
-                    :prepend-icon="icon"
-                    :value="to"
-                    :to="to"
-                />
+                <template v-for="(row, index) in cruds" :key="index">
+                    <v-list-item
+                        rounded="lg"
+                        :title="row.title"
+                        :prepend-icon="row.icon"
+                        :value="row.to"
+                        :to="row.to"
+                    />
+                </template>
             </v-list-group>
         </v-list>
     </v-navigation-drawer>

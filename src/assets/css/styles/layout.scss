@@ -1,8 +1,23 @@
 .v-layout {
+
+    .nav_active {
+        background-color: rgb(var(--v-theme-primary));
+
+        .v-list-item__prepend>.v-icon,
+        .v-list-item__append>.v-icon {
+            color: #ffffff;
+            left: 0px;
+        }
+
+        .v-list-item-title {
+            color: #ffffff;
+        }
+    }
+
     .mini_nav {
         .layout_navigation {
             .v-list-item__prepend {
-                padding-left: 0;
+                padding-left: 0 !important;
             }
 
             .v-list-group__items {
@@ -11,15 +26,6 @@
                 }
             }
 
-        }
-
-        .app_main {
-            margin-left: 93px;
-
-            .header {
-                left: 108px;
-                width: calc(100vw - 130px);
-            }
         }
     }
 }
