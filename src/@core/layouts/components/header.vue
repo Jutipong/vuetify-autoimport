@@ -50,7 +50,7 @@ const iconDrawer = computed(() => {
         <!-- </v-system-bar> -->
         <v-app-bar class="app-header" color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
             <v-app-bar-nav-icon
-                class="animate-head-shake animate-count-infinite animate-duration-5s"
+                class="animate-head-shake animate-count-infinite animate-duration-6s"
                 :ripple="false"
                 :icon="iconDrawer"
                 variant="plain"
@@ -61,7 +61,7 @@ const iconDrawer = computed(() => {
             <template #append>
                 <v-btn :ripple="false" variant="plain" @click="toggleTheme">
                     <v-icon
-                        class="animate-swing animate-count-infinite animate-duration-5s"
+                        class="animate-swing animate-count-infinite animate-duration-6s"
                         :color="colorTheme"
                         :icon="iconTheme"
                     />
@@ -70,7 +70,7 @@ const iconDrawer = computed(() => {
                 <v-btn
                     font-semibold
                     class="color-red-600"
-                    hover="animate-head-shake animate-count-infinite animate-duration-5s"
+                    hover="animate-head-shake animate-count-infinite animate-duration-4s"
                     :ripple="false"
                     variant="plain"
                     prepend-icon="mdi-logout"
