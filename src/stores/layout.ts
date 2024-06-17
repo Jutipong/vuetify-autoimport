@@ -1,11 +1,9 @@
-import { el } from 'vuetify/locale'
-
 export const useLayoutStore = defineStore('layout', () => {
     const { mobile } = useDisplay()
 
     const state = reactive({
         drawer: true,
-        rail: false,
+        rail: true,
     })
 
     function toggleDrawer() {
