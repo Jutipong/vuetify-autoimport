@@ -9,7 +9,6 @@ const _api = axios.create({
 })
 
 function err(error: any) {
-    const { logOut } = useLoginStore()
     const $g = useGlobalStore()
 
     const res = error?.response
@@ -18,7 +17,7 @@ function err(error: any) {
     $g.resetLoading()
 
     if (res?.status === 401)
-        logOut(false)
+        router.push('/login')
 
     return Promise.reject(error)
 }

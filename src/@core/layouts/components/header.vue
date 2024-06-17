@@ -2,7 +2,7 @@
 const layoutStore = useLayoutStore()
 const theme = useTheme()
 const { mobile } = useDisplay()
-const app = appSetting
+const { name } = appSetting
 
 theme.global.name.value = clientStorages.getTheme()
 
@@ -56,7 +56,7 @@ const iconDrawer = computed(() => {
                 variant="plain"
                 @click="layoutStore.toggleDrawer()"
             />
-            <v-app-bar-title>{{ app.name }} </v-app-bar-title>
+            <v-app-bar-title>{{ name }} </v-app-bar-title>
 
             <template #append>
                 <v-btn :ripple="false" variant="plain" @click="toggleTheme">
