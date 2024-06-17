@@ -48,7 +48,7 @@ const iconDrawer = computed(() => {
         <!-- <v-system-bar> -->
         <!-- <v-progress-linear :active="true" indeterminate color="success" /> -->
         <!-- </v-system-bar> -->
-        <v-app-bar color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
+        <v-app-bar class="app-header" color="primary" density="compact" scroll-behavior="inverted" scroll-threshold="1000">
             <v-app-bar-nav-icon
                 :ripple="false"
                 :icon="iconDrawer"
