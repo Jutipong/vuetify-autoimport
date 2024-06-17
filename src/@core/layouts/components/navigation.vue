@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const layoutStore = useLayoutStore()
+// const { mobile } = useDisplay()
 
 // const device = computed(() => layoutStore.isMobile)
 // watch(device, (val) => {
@@ -23,7 +24,7 @@ const cruds = [
         class="layout_navigation"
         elevation="2"
         expand-on-hover
-        :rail="layoutStore.isRail"
+        :rail="layoutStore.state.rail"
     >
         <v-list>
             <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com">
