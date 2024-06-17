@@ -61,6 +61,7 @@ const iconDrawer = computed(() => {
             <template #append>
                 <v-btn :ripple="false" variant="plain" @click="toggleTheme">
                     <v-icon
+                        class="animate-swing animate-count-infinite animate-duration-5s"
                         :color="colorTheme"
                         :icon="iconTheme"
                     />
@@ -69,7 +70,7 @@ const iconDrawer = computed(() => {
                 <v-btn
                     font-semibold
                     class="color-red-600"
-                    hover="animate-head-shake animate-count-infinite animate-duration-4s"
+                    hover="animate-head-shake animate-count-infinite animate-duration-5s"
                     :ripple="false"
                     variant="plain"
                     prepend-icon="mdi-logout"
