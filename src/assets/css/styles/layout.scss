@@ -1,17 +1,22 @@
 .v-layout {
-
     .nav_active {
         background-color: rgb(var(--v-theme-primary));
 
         .v-list-item__prepend>.v-icon,
         .v-list-item__append>.v-icon {
             color: #ffffff;
-            left: 0px;
+            left: 0px !important;
         }
 
         .v-list-item-title {
             color: #ffffff;
         }
+
+
+    }
+
+    .v-list-group__items .v-list-item {
+        padding-inline-start: 8px !important;
     }
 
     .mini_nav {
@@ -20,11 +25,11 @@
                 padding-left: 0 !important;
             }
 
-            .v-list-group__items {
-                .v-list-item {
-                    padding-inline-start: 8px !important;
-                }
-            }
+            // .v-list-group__items {
+            //     .v-list-item {
+            //         padding-inline-start: 8px !important;
+            //     }
+            // }
 
         }
     }

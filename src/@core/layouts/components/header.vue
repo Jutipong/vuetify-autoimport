@@ -66,7 +66,7 @@ const colorTheme = computed(() => theme.global.name.value === 'light' ? 'black' 
                     prepend-icon="mdi-logout"
                     @click="logOut()"
                 >
-                    Logout
+                    {{ layoutStore.isRail }}
                 </v-btn>
             </template>
         </v-app-bar>

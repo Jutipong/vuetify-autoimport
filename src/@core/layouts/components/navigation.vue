@@ -23,7 +23,7 @@ const cruds = [
         class="layout_navigation"
         elevation="2"
         expand-on-hover
-        :rail="!$vuetify.display.mobile && layoutStore.state.drawer"
+        :rail="layoutStore.isRail"
     >
         <v-list>
             <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com">
@@ -59,15 +59,14 @@ const cruds = [
                     />
                 </template>
                 <!-- <v-list-subheader>REPORTS</v-list-subheader> -->
-                <template v-for="(row, index) in cruds" :key="index">
-                    <v-list-item
-                        rounded="lg"
-                        :title="row.title"
-                        :prepend-icon="row.icon"
-                        :value="row.to"
-                        :to="row.to"
-                    />
-                </template>
+                <v-list-item
+                    v-for="(row, index) in cruds" :key="index"
+                    rounded="lg"
+                    :title="row.title"
+                    :prepend-icon="row.icon"
+                    :value="row.to"
+                    :to="row.to"
+                />
             </v-list-group>
         </v-list>
     </v-navigation-drawer>
