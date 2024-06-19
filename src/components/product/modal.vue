@@ -60,7 +60,7 @@ defineExpose({
             <VDialog v-model="state.active" persistent width="1024">
                 <VCard>
                     <VCardTitle>
-                        <VChip size="large" rounded="lg" pa2 color="success" :prepend-icon="titleIcon">
+                        <VChip color="success" :prepend-icon="titleIcon">
                             {{ title }} Product
                         </VChip>
                     </VCardTitle>

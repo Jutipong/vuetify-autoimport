@@ -58,6 +58,11 @@ export default createVuetify({
         },
         VCardTitle: {
             class: 'mr-4 ml-4 mt-1 mb-1',
+            VChip: {
+                density: 'compact',
+                size: 'large',
+                class: '',
+            },
         },
         VCardText: {
             class: 'mr-4 ml-4',
