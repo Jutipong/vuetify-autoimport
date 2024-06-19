@@ -89,12 +89,12 @@ export const vConfirm = {
         const op = Object.assign({
             iconTitle: 'mdi-content-save',
             btnOk: {
-                text: 'Save',
+                text: 'Yes',
                 color: 'primary',
             },
             btnOkDisabled: options?.btnOkDisabled,
             btnCancel: {
-                text: 'Cancel',
+                text: 'No',
                 color: 'secondary',
             },
             btnCancelDisabled: options?.btnCancelDisabled,
@@ -111,12 +111,12 @@ export const vConfirm = {
         const op = Object.assign({
             iconTitle: 'mdi-delete',
             btnOk: {
-                text: 'Delete',
+                text: 'Yes',
                 color: 'error',
             },
             btnOkDisabled: options?.btnOkDisabled ?? false,
             btnCancel: {
-                text: 'Cancel',
+                text: 'No',
                 color: 'secondary',
             },
             btnCancelDisabled: options?.btnCancelDisabled ?? false,

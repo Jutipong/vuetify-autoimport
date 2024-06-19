@@ -18,11 +18,14 @@ async function logOut(alertConfirm: boolean = true): Promise<void> {
             iconTitle: 'mdi-logout',
             btnOk: {
                 color: 'error',
-                text: 'Log out',
+                text: 'Yes',
                 icon: 'mdi-logout',
             },
-            // btnCancelDisabled: true,
-            // btnOkDisabled: true,
+            btnCancel: {
+                color: 'secondary',
+                text: 'No',
+                icon: 'mdi-close',
+            },
         })) {
             return
         }

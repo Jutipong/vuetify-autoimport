@@ -45,7 +45,6 @@ function closeModal() {
                     </VCardText>
                     <VDivider />
                     <VCardActions>
-                        <VSpacer />
                         <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal()" />
                     </VCardActions>
                 </VCard>

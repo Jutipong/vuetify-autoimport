@@ -55,22 +55,22 @@ export default createVuetify({
             rounded: 'lg',
             class: 'mb-3 pa-1',
             VBtn: vBtn,
-        },
-        VCardTitle: {
-            class: 'mr-4 ml-4 mt-1 mb-1',
-            VChip: {
-                density: 'compact',
-                size: 'large',
-                class: '',
+            VCardTitle: {
+                class: 'mr-4 ml-4 mt-1 mb-1',
+                VChip: {
+                    density: 'compact',
+                    size: 'large',
+                    class: '',
+                },
             },
-        },
-        VCardText: {
-            class: 'mr-4 ml-4',
-            VSelect: vSelect,
-        },
-        VCardActions: {
-            class: 'mr-4 ml-4 mb-2',
-            VBtn: vBtn,
+            VCardText: {
+                class: 'mr-4 ml-4',
+                VSelect: vSelect,
+            },
+            VCardActions: {
+                class: 'mr-4 ml-4 mb-2',
+                VBtn: vBtn,
+            },
         },
         VTextField: {
             clearable: true,
@@ -113,14 +113,13 @@ export default createVuetify({
             color: 'primary',
             density: 'compact',
             hover: true,
-            VSelect: vSelect,
-            // VSelect: {
-            //     clearable: false,
-            //     variant: 'outlined',
-            //     density: 'compact',
-            //     itemTitle: 'title',
-            //     itemValue: 'value',
-            // },
+            VSelect: {
+                clearable: false,
+                variant: 'underlined',
+                density: 'compact',
+                itemTitle: 'title',
+                itemValue: 'value',
+            },
         },
         // VPagination: {
         //   activeColor: 'error',

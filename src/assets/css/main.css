@@ -5,3 +5,8 @@
 .v-card-actions {
     padding: 0rem 1rem !important;
 }
+
+.v-data-table-footer .v-data-table-footer__items-per-page .v-field__field {
+    font-size: 14px !important;
+    --v-field-padding-start: 20px !important;
+}

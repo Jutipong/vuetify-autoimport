@@ -16,11 +16,10 @@ import store from '@/utils/confirm'
                             {{ store.state.title }}
                         </VCardTitle>
                         <VDivider />
-                        <VCardText>
+                        <VCardText mt2 mb1>
                             <span v-html="store.state.message" />
                         </VCardText>
-                        <VCardActions>
-                            <VSpacer />
+                        <VCardActions class="justify-center">
                             <VBtn
                                 v-if="!store.state.options.btnCancelDisabled"
                                 min-width="116px"

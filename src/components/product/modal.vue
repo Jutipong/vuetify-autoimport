@@ -84,25 +84,15 @@ defineExpose({
                             <VCol cols="12" md="4">
                                 <VTextField v-model="state.product.brand" label="Brand" />
                             </VCol>
-                            <VCol cols="12" md="4" />
+                            <VCol cols="12" md="4">
+                                <VTextField v-model="state.product.brand" label="Brand" />
+                            </VCol>
                         </VRow>
                     </VCardText>
 
                     <VCardActions>
-                        <VSpacer />
-                        <VBtn
-                            color="warning"
-                            prepend-icon="mdi-close"
-                            text="Close"
-                            @click="func.onClose()"
-                        />
-                        <VBtn
-                            color="primary"
-                            prepend-icon="mdi-content-save"
-                            text="Save"
-                            :loading="$g.isLoading"
-                            @click="func.onAction()"
-                        />
+                        <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="func.onClose()" />
+                        <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="$g.isLoading" @click="func.onAction()" />
                     </VCardActions>
                 </VCard>
             </VDialog>
