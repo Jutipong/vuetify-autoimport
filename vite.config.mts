@@ -54,7 +54,7 @@ export default defineConfig(({ mode }) => {
                     defineModel: true,
                 },
             }),
-            // VueDevTools(),
+            VueDevTools(),
             // ViteFonts({
             //     google: {
             //         families: [
