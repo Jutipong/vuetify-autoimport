@@ -7,7 +7,7 @@ import * as labsComponents from 'vuetify/labs/components'
 
 const vBtn = {
     variant: 'flat',
-    rounded: 'lg',
+    // rounded: 'lg',
     class: 'text-none font-500 pr-3 pl-3',
 }
 
@@ -52,7 +52,7 @@ export default createVuetify({
         VBtn: vBtn,
         VCard: {
             variant: 'flat',
-            rounded: 'lg',
+            // rounded: 'lg',
             class: 'mb-3 pa-1',
             VBtn: vBtn,
             VCardTitle: {
@@ -60,7 +60,7 @@ export default createVuetify({
                 VChip: {
                     density: 'compact',
                     size: 'large',
-                    class: '',
+                    elevation: 0,
                 },
             },
             VCardText: {
@@ -79,7 +79,7 @@ export default createVuetify({
             color: 'primary',
             dirty: true,
             variant: 'outlined',
-            rounded: 'lg',
+            // rounded: 'lg',
         },
         VAutocomplete: {
             variant: 'outlined',
@@ -143,9 +143,9 @@ export default createVuetify({
             color: 'primary',
         },
         VChip: {
+            density: 'compact',
             size: 'small',
             elevation: 0,
-            label: true,
         },
     },
 } as VuetifyOptions)
