@@ -58,11 +58,11 @@ const func = {
                 </VCol>
 
                 <VCol cols="12" md="4">
-                    <VDateInput v-model="state.search.start" :max="state.search.end" label="Start Date" />
+                    <VDate id="start" v-model="state.search.start" :max="state.search.end" label="Start Date" />
                 </VCol>
 
                 <VCol cols="12" md="4">
-                    <VDateInput v-model="state.search.end" :min="state.search.start" label="End Date" />
+                    <VDate id="end" v-model="state.search.end" :min="state.search.start" label="End Date" />
                 </VCol>
             </VRow>
         </VCardText>

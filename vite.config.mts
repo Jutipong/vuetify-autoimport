@@ -3,7 +3,7 @@ import process from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import UnoCSS from 'unocss/vite'
-import VueDevTools from 'vite-plugin-vue-devtools'
+// import VueDevTools from 'vite-plugin-vue-devtools'
 
 import { defineConfig, loadEnv } from 'vite'
 
@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => {
                     defineModel: true,
                 },
             }),
-            VueDevTools(),
+            // VueDevTools(),
             vuetify({
                 autoImport: true,
                 styles: {
