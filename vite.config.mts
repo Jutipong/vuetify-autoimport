@@ -2,7 +2,6 @@ import { URL, fileURLToPath } from 'node:url'
 import process from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-// import ViteFonts from 'unplugin-fonts/vite'
 import UnoCSS from 'unocss/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
@@ -55,16 +54,6 @@ export default defineConfig(({ mode }) => {
                 },
             }),
             VueDevTools(),
-            // ViteFonts({
-            //     google: {
-            //         families: [
-            //             {
-            //                 name: 'Poppins',
-            //                 styles: 'wght@100;300;400;500;700;900',
-            //             },
-            //         ],
-            //     },
-            // }),
             vuetify({
                 autoImport: true,
                 styles: {
