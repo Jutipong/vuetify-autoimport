@@ -54,7 +54,8 @@ const func = {
 
             <VRow>
                 <VCol cols="12" md="4">
-                    <VNumberInput v-model="state.search.discountPercentage" v label="Discount" />
+                    <!-- <VNumberInput v-model="state.search.discountPercentage" label="Discount" /> -->
+                    <VCurrency v-model="state.search.discountPercentage" label="Discount" />
                 </VCol>
 
                 <VCol cols="12" md="4">
