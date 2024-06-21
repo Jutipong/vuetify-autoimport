@@ -53,4 +53,5 @@ bun run build
 ```
 # renew vNotify
 # add vConfirm mini
+# renew vNumber
 ```
