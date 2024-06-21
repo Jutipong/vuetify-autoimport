@@ -56,8 +56,7 @@ const iconDrawer = computed(() => {
             class="app-header"
             color="primary"
             density="compact"
-            scroll-behavior="elevate hide"
-            scroll-threshold="600"
+            scroll-behavior="elevate"
         >
             <v-app-bar-nav-icon
                 class="animate-head-shake animate-count-infinite animate-duration-6s"
