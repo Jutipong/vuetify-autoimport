@@ -103,7 +103,7 @@ export default {
     },
     VDataTableServer: {
         color: 'primary',
-        density: 'compact',
+        density: 'comfortable',
         hover: true,
         VSelect: {
             clearable: false,
