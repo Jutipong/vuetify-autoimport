@@ -85,7 +85,12 @@ defineExpose({
                                 <VTextField v-model="state.product.brand" label="Brand" />
                             </VCol>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="state.product.brand" label="Brand" />
+                                <VNumberInput
+                                    v-model="state.product.discountPercentage"
+                                    density="compact"
+                                    color="primary"
+                                    variant="outlined" label="Discount"
+                                />
                             </VCol>
                         </VRow>
                     </VCardText>

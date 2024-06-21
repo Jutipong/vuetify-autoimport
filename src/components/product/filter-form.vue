@@ -51,6 +51,20 @@ const func = {
                     />
                 </VCol>
             </VRow>
+
+            <VRow>
+                <VCol cols="12" md="4">
+                    <VNumberInput v-model="state.search.discountPercentage" v label="Discount" />
+                </VCol>
+
+                <VCol cols="12" md="4">
+                    <VDateInput v-model="state.search.start" :max="state.search.end" label="Start Date" />
+                </VCol>
+
+                <VCol cols="12" md="4">
+                    <VDateInput v-model="state.search.end" :min="state.search.start" label="End Date" />
+                </VCol>
+            </VRow>
         </VCardText>
 
         <VCardActions class="justify-end">

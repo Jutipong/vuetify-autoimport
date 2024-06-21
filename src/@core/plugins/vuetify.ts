@@ -4,6 +4,7 @@ import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import type { VuetifyOptions } from 'vuetify'
 import * as labsComponents from 'vuetify/labs/components'
+import { fa } from 'vuetify/locale'
 
 const vBtn = {
     variant: 'flat',
@@ -20,6 +21,27 @@ const vSelect = {
     dirty: true,
     itemTitle: 'text',
     itemValue: 'id',
+}
+
+const vNumber = {
+    clearable: true,
+    density: 'compact',
+    color: 'primary',
+    variant: 'outlined',
+    dirty: true,
+
+}
+
+const vDate = {
+    clearable: true,
+    density: 'compact',
+    color: 'primary',
+    dirty: true,
+    variant: 'outlined',
+    placeholder: '',
+    prependIcon: '',
+    appendInnerIcon: 'mdi-calendar',
+
 }
 
 export default createVuetify({
@@ -55,6 +77,7 @@ export default createVuetify({
             // rounded: 'lg',
             class: 'mb-3 pa-1',
             VBtn: vBtn,
+            VDateInput: vDate,
             VCardTitle: {
                 class: 'mr-4 ml-4 mt-1 mb-1',
                 VChip: {
@@ -66,6 +89,7 @@ export default createVuetify({
             VCardText: {
                 class: 'mr-4 ml-4',
                 VSelect: vSelect,
+                VNumberInput: vNumber,
             },
             VCardActions: {
                 class: 'mr-4 ml-4 mb-2',
@@ -147,5 +171,6 @@ export default createVuetify({
             size: 'small',
             elevation: 0,
         },
+        VNumber: vNumber,
     },
 } as VuetifyOptions)
