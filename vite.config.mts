@@ -61,7 +61,6 @@ export default defineConfig(({ mode }) => {
                 },
             }),
         ],
-        define: { 'process.env': {} },
         build: {
             chunkSizeWarningLimit: 5000,
         },
