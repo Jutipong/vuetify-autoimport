@@ -22,8 +22,8 @@ export default defineConfig(({ mode }) => {
                 imports: [
                     VueRouterAutoImports,
                     {
-                        typescript: ['readonly', 'Record', 'Partial', 'Pick', 'Omit', 'Exclude', 'Extract', 'NonNullable', 'Parameters', 'ConstructorParameters', 'ReturnType', 'InstanceType', 'Required', 'ThisType', 'OmitThisParameter', 'ThisType', 'ThisParameterType', 'Parameters', 'ConstructorParameters', 'ReturnType', 'InstanceType', 'Required', 'ThisType', 'OmitThisParameter', 'ThisType', 'ThisParameterType'],
-                        vue: ['ref', 'reactive', 'watchEffect', 'computed', 'watch', 'defineProps', 'defineEmits', 'defineExpose', 'withDefaults', 'toRefs', 'toRef', 'onMounted', 'shallowRef'],
+                        typescript: ['readonly', 'Record', 'Partial', 'Pick', 'Omit', 'Exclude', 'Extract', 'NonNullable', 'ReturnType', 'InstanceType', 'Required', 'ThisType'],
+                        vue: ['ref', 'reactive', 'watchEffect', 'computed', 'watch', 'defineProps', 'defineEmits', 'defineExpose', 'withDefaults', 'toRefs', 'toRef', 'onMounted'],
                         pinia: ['defineStore', 'acceptHMRUpdate'],
                         lodash: [['default', '_']],
                         vuetify: ['useTheme', 'useDisplay'],
