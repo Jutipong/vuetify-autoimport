@@ -35,6 +35,12 @@ const vDate = {
     hideActions: 'true',
 }
 
+const vChip = {
+    label: true,
+    density: 'compact',
+    size: 'large',
+    elevation: 0,
+}
 export default {
     VContainer: {
         fluid: true,
@@ -47,11 +53,7 @@ export default {
         VDateInput: vDate,
         VCardTitle: {
             class: 'mr-4 ml-4 mt-1 mb-1',
-            VChip: {
-                density: 'compact',
-                size: 'large',
-                elevation: 0,
-            },
+            VChip: vChip,
         },
         VCardText: {
             class: 'mr-4 ml-4',
@@ -128,10 +130,6 @@ export default {
     VTabs: {
         color: 'primary',
     },
-    VChip: {
-        density: 'compact',
-        size: 'small',
-        elevation: 0,
-    },
+    VChip: vChip,
     VNumber: vNumber,
 }

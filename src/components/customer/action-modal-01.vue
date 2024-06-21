@@ -33,7 +33,7 @@ function closeModal() {
             <VDialog v-model="modalOpen" persistent width="1024">
                 <VCard>
                     <VCardTitle>
-                        <VChip size="large" rounded="lg" color="success" prepend-icon="product.id ?">
+                        <VChip color="success" prepend-icon="product.id ?">
                             Modal 02: {{ customer }}
                         </VChip>
                     </VCardTitle>
