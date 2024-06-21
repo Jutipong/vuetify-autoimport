@@ -51,7 +51,14 @@ const iconDrawer = computed(() => {
         <!-- <v-system-bar> -->
         <!-- <v-progress-linear :active="true" indeterminate color="success" /> -->
         <!-- </v-system-bar> -->
-        <v-app-bar elevation="0" class="app-header" color="primary" density="compact" scroll-behavior="elevate hide" scroll-threshold="300">
+        <v-app-bar
+            elevation="0"
+            class="app-header"
+            color="primary"
+            density="compact"
+            scroll-behavior="elevate hide"
+            scroll-threshold="600"
+        >
             <v-app-bar-nav-icon
                 class="animate-head-shake animate-count-infinite animate-duration-6s"
                 :ripple="false"
