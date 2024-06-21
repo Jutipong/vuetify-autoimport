@@ -11,7 +11,8 @@
         "yoavbls.pretty-ts-errors",
         "travis.simple-dark",
         "antfu.unocss",
-        "vue.volar"
+        "vue.volar",
+        "naumovs.color-highlight"
 
     ]
 }
