@@ -95,6 +95,10 @@ defineExpose({
                         mdi-delete
                     </VIcon>
                 </template>
+
+                <template #loading>
+                    <v-skeleton-loader type="table-row@10" />
+                </template>
             </VDataTableServer>
         </VCardText>
     </VCard>
