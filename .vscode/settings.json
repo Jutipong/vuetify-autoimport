@@ -71,7 +71,6 @@
         "stores": "database"
     },
     "material-icon-theme.folders.color": "#7cb342",
-    "prettier.requireConfig": true,
     "workbench.iconTheme": "material-icon-theme",
     "workbench.colorTheme": "Simple Dark",
     "editor.fontSize": 15,
@@ -171,7 +170,7 @@
     // ---------- ESlint Config ----------
     // -----------------------------------
     // Enable the ESlint flat config support
-    "eslint.experimental.useFlatConfig": true,
+    // "eslint.experimental.useFlatConfig": true,
 
     // Disable the default formatter, use eslint instead
     "prettier.enable": false,
