@@ -28,11 +28,12 @@
 		"prefix": "vts",
 		"body": [
 			"<script lang=\"ts\" setup>",
+			"\t$1",
 			"</script>",
 			"",
 			"<template>",
 			"  <div>",
-			"\t$1",
+			"",
 			"  </div>",
 			"</template>"
 		],
@@ -53,5 +54,59 @@
 			""
 		],
 		"description": "Bootstrap the code needed for a Vue.js Pinia Setup Store file"
-	}
+	},
+	"import": {
+		"scope": "javascript,typescript",
+		"prefix": "im",
+		"description": "Import a module",
+		"body": [
+			"import { $1 } from '$2';"
+		],
+	},
+	"vue-reactive": {
+		"scope": "javascript,typescript,vue",
+		"prefix": "reactive",
+		"description": "reactive",
+		"body": [
+			"reactive({",
+			"  $2",
+			"})"
+		]
+	},
+	"vue-ref": {
+		"scope": "javascript,typescript,vue",
+		"prefix": "ref",
+		"description": "ref",
+		"body": [
+			"ref($2)"
+		]
+	},
+	"vue-watch": {
+		"scope": "javascript,typescript,vue",
+		"prefix": "watch",
+		"description": "watch",
+		"body": [
+			"watch($1, (newValue, oldValue) => {",
+			"  $2",
+			"})"
+		]
+	},
+	"vue-computed": {
+		"scope": "javascript,typescript,vue",
+		"prefix": "computed",
+		"description": "computed",
+		"body": [
+			"computed(() => { $1 })"
+		]
+	},
+	"vue-watch-effect": {
+		"scope": "javascript,typescript,vue",
+		"prefix": "watchEffect",
+		"description": "watchEffect",
+		"body": [
+			"watchEffect(() => {",
+			"  $1",
+			"})"
+		]
+	},
 }
