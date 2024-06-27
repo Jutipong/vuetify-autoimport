@@ -3,6 +3,7 @@ import { createPinia } from 'pinia'
 import '@/assets/css/styles/index.scss'
 import type { PluginOptions } from 'vue-toastification'
 import Toast from 'vue-toastification'
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import vuetify from '@/@core/plugins/vuetify'
 import router from '@/@core/router'
@@ -15,11 +16,12 @@ import 'virtual:uno.css'
 import appSetting from '@/constants/appSetting'
 
 document.title = appSetting.title
-
+const pinia = createPinia()
+pinia.use(piniaPluginPersistedstate)
 const app = createApp(App)
 app.use(vuetify)
 app.use(router)
-app.use(createPinia())
+app.use(pinia)
 app.use(Toast, {
     transition: 'Vue-Toastification__bounce',
     timeout: 5000,
