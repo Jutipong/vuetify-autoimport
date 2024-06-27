@@ -3,5 +3,5 @@ const value = defineModel<Date | null>()
 </script>
 
 <template>
-    <VDateInput id="start" v-model="value" @click:clear="value = null" />
+    <VDateInput v-model="value" @click:clear="value = null" />
 </template>
