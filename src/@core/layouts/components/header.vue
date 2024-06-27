@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { fa } from 'vuetify/locale'
+
 const layoutStore = useLayoutStore()
 const theme = useTheme()
 const { mobile } = useDisplay()
@@ -11,24 +13,23 @@ function toggleTheme() {
     clientStorages.setTheme(theme.global.name.value)
 }
 
-async function logOut(alertConfirm: boolean = true): Promise<void> {
-    if (alertConfirm) {
-        if (!await vConfirm.info('Logout!', `<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" 
-        class="mdi mdi-alert-circle-outline"></div> <h3>Are you sure you want to log out?</h3>`, {
-            iconTitle: 'mdi-logout',
-            btnOk: {
-                color: 'error',
-                text: 'Yes',
-                icon: 'mdi-logout',
-            },
-            btnCancel: {
-                color: 'secondary',
-                text: 'No',
-                icon: 'mdi-close',
-            },
-        })) {
-            return
-        }
+async function logOut() {
+    if (!await vConfirm.info('Logout!', '<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" '
+        + 'class="mdi mdi-logout animate-tada animate-count-infinite animate-duration-3s">'
+        + '</div> <h3>Are you sure you want to log out?</h3>', {
+        iconTitle: false,
+        btnOk: {
+            color: 'error',
+            text: 'Yes',
+            icon: 'mdi-logout',
+        },
+        btnCancel: {
+            color: 'secondary',
+            text: 'No',
+            icon: 'mdi-close',
+        },
+    })) {
+        return
     }
 
     router.replace('/login')

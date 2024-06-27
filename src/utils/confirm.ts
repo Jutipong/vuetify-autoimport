@@ -5,7 +5,7 @@ type color = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
 type btnType = { text: string, color: color, icon?: string } | false
 
 interface ConfirmOptions {
-    iconTitle?: string
+    iconTitle?: string | false
     btnOk?: btnType
     btnCancel?: btnType
 }

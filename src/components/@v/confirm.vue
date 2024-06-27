@@ -17,8 +17,10 @@ const colorIconTitle = computed(() => {
             <VRow justify="center">
                 <VDialog v-model="store.state.isOpen" persistent width="auto">
                     <VCard min-height="160px">
-                        <VCardTitle class="pa-1 pl-2">
+                        <VCardTitle class="pa-1 pl-2 font-weight-black">
                             <VIcon
+                                v-if="store.state.options.iconTitle"
+                                class="animate-tada animate-count-infinite animate-duration-3s"
                                 :color="colorIconTitle"
                                 :icon="store.state.options.iconTitle ?? ' mdi-alert-circle-outline'"
                             />
