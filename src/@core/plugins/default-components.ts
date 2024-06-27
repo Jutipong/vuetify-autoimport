@@ -1,6 +1,6 @@
 const vBtn = {
     variant: 'flat',
-    class: 'text-none font-500 pr-3 pl-3',
+    class: 'text-none font-500 pr-3 pl-3 font-semibold',
 }
 
 const vSelect = {
