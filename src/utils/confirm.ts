@@ -2,21 +2,12 @@
 // ========= library confirm dialog ==========
 // ===========================================
 type color = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+type btnType = { text: string, color: color, icon?: string } | false
 
 interface ConfirmOptions {
     iconTitle?: string
-    btnOk?: {
-        text: string
-        color: color
-        icon?: string
-    }
-    btnOkDisabled?: boolean
-    btnCancel?: {
-        color: color
-        text: string
-        icon?: string
-    }
-    btnCancelDisabled?: boolean
+    btnOk?: btnType
+    btnCancel?: btnType
 }
 
 const state = reactive({
@@ -70,12 +61,10 @@ export const vConfirm = {
                 text: 'Yes',
                 color: 'success',
             },
-            btnOkDisabled: options?.btnOkDisabled,
             btnCancel: {
                 text: 'Cancel',
                 color: 'secondary',
             },
-            btnCancelDisabled: options?.btnCancelDisabled,
         } as ConfirmOptions, options)
 
         init(title, message, op)
@@ -92,12 +81,10 @@ export const vConfirm = {
                 text: 'Yes',
                 color: 'primary',
             },
-            btnOkDisabled: options?.btnOkDisabled,
             btnCancel: {
                 text: 'No',
                 color: 'secondary',
             },
-            btnCancelDisabled: options?.btnCancelDisabled,
         } as ConfirmOptions, options)
 
         init(title, message, op)
@@ -114,12 +101,10 @@ export const vConfirm = {
                 text: 'Yes',
                 color: 'error',
             },
-            btnOkDisabled: options?.btnOkDisabled ?? false,
             btnCancel: {
                 text: 'No',
                 color: 'secondary',
             },
-            btnCancelDisabled: options?.btnCancelDisabled ?? false,
         } as ConfirmOptions, options)
 
         init(title, message, op)
@@ -129,23 +114,4 @@ export const vConfirm = {
             state.reject = reject
         })
     },
-    // warning: (title: string, message: string, options?: ConfirmOptions) => {
-    //   const op = Object.assign({
-    //     btnOk: {
-    //       text: 'Yes',
-    //       color: 'warning',
-    //     },
-    //     btnCancel: {
-    //       text: 'Cancel',
-    //       color: 'secondary',
-    //     },
-    //   } as ConfirmOptions, options)
-
-    //   init(title, message, op)
-
-    //   return new Promise<boolean>((resolve, reject) => {
-    //     state.resolve = resolve
-    //     state.reject = reject
-    //   })
-    // },
 }

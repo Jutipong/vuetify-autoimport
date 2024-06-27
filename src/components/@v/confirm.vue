@@ -1,5 +1,14 @@
 <script setup lang="ts">
 import store from '@/utils/confirm'
+
+const colorIconTitle = computed(() => {
+    if (store.state.options.btnOk) {
+        return store.state.options.btnOk.color
+    }
+    else {
+        return ''
+    }
+})
 </script>
 
 <template>
@@ -10,7 +19,7 @@ import store from '@/utils/confirm'
                     <VCard min-height="160px">
                         <VCardTitle class="pa-1 pl-2">
                             <VIcon
-                                :color="store.state.options.btnOk?.color ?? ''"
+                                :color="colorIconTitle"
                                 :icon="store.state.options.iconTitle ?? ' mdi-alert-circle-outline'"
                             />
                             {{ store.state.title }}
@@ -21,7 +30,7 @@ import store from '@/utils/confirm'
                         </VCardText>
                         <VCardActions class="justify-center">
                             <VBtn
-                                v-if="!store.state.options.btnCancelDisabled"
+                                v-if="store.state.options.btnCancel"
                                 min-width="116px"
                                 :color="store.state.options.btnCancel?.color ?? 'default'"
                                 :prepend-icon="store.state.options.btnCancel?.icon ?? 'mdi-close'"
@@ -29,7 +38,7 @@ import store from '@/utils/confirm'
                                 @click="store.onCancel()"
                             />
                             <VBtn
-                                v-if="!store.state.options.btnOkDisabled"
+                                v-if="store.state.options.btnOk"
                                 min-width="116px"
                                 :color="store.state.options.btnOk?.color ?? 'success'"
                                 :prepend-icon="store.state.options.btnOk?.icon ?? 'mdi-check'"
