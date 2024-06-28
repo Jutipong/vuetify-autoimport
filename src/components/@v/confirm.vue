@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import store from './confirm'
+import store from '../../utils/confirm'
 
 const colorIconTitle = computed(() => {
     if (store.state.options.btnOk) {
