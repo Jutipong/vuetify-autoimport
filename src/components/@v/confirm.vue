@@ -23,7 +23,7 @@ const card_min_width = computed(() => display.mobile.value ? '0px' : '300px')
                         <VCardTitle class="pa-1 pl-2 font-weight-black">
                             <VIcon
                                 v-if="store.state.options.iconTitle"
-                                class="animate-tada animate-count-infinite animate-duration-3s"
+                                class="animate-tada animate-count-infinite animate-duration-2s"
                                 :color="colorIconTitle"
                                 :icon="store.state.options.iconTitle ?? ' mdi-alert-circle-outline'"
                             />
