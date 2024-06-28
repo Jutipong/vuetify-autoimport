@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import store from '../../utils/confirm'
 
+const display = useDisplay()
 const colorIconTitle = computed(() => {
     if (store.state.options.btnOk) {
         return store.state.options.btnOk.color
@@ -9,14 +10,16 @@ const colorIconTitle = computed(() => {
         return ''
     }
 })
+
+const card_min_width = computed(() => display.mobile.value ? '0px' : '300px')
 </script>
 
 <template>
     <Teleport to="body">
         <div v-if="store.state.isOpen">
-            <VRow justify="center">
+            <VRow>
                 <VDialog v-model="store.state.isOpen" persistent width="auto">
-                    <VCard min-height="160px">
+                    <VCard :min-width="card_min_width">
                         <VCardTitle class="pa-1 pl-2 font-weight-black">
                             <VIcon
                                 v-if="store.state.options.iconTitle"
