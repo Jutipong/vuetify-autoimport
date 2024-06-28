@@ -27,7 +27,6 @@
     "axios": "^1.7.2",
     "eslint": "9.6.0",
     "sass": "^1.77.6",
-    "typescript": "^5.5.2",
     "unocss": "^0.61.0",
     "unplugin-auto-import": "^0.17.6",
     "unplugin-vue-components": "^0.27.2",
