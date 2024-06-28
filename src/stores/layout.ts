@@ -21,10 +21,12 @@ export const useLayoutStore = defineStore('layout', () => {
         state,
         toggleDrawer,
     }
-}, { persist: {
-    storage: localStorage,
-    paths: ['state'],
-} })
+}, {
+    persist: {
+        storage: localStorage,
+        paths: ['state'],
+    },
+})
 
 if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useLayoutStore, import.meta.hot))
