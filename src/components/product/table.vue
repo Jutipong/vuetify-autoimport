@@ -51,6 +51,7 @@ const func = {
             return
 
         vNotify.success(`delete ${obj.title} success`)
+        vAlert.success('Successful', `delete ${obj.title} success`)
     },
 }
 

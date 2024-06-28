@@ -17,6 +17,21 @@ const items = [
         icon: 'mdi-layers-triple',
     },
 ]
+function alertInfo() {
+    vAlert.info('Title infomation', 'sub title infomation')
+}
+
+function alertSuccess() {
+    vAlert.success('Title success', 'sub title success')
+}
+
+function alertWarning() {
+    vAlert.warning('Title warning', 'sub title warning')
+}
+
+function alertError() {
+    vAlert.error('Title error', 'sub title error')
+}
 </script>
 
 <template>
@@ -25,6 +40,23 @@ const items = [
             <v-card-text>
                 <v-countdown />
             </v-card-text>
+            <v-card-actions justify-end>
+                <v-btn color="primary" @click="alertInfo">
+                    alert info
+                </v-btn>
+
+                <v-btn color="success" @click="alertSuccess">
+                    alert success
+                </v-btn>
+
+                <v-btn color="warning" @click="alertWarning">
+                    alert warning
+                </v-btn>
+
+                <v-btn color="error" @click="alertError">
+                    alert error
+                </v-btn>
+            </v-card-actions>
         </v-card>
 
         <v-card>

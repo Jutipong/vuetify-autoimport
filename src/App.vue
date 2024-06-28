@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { } from './'
+
 const $g = useGlobalStore()
 </script>
 
@@ -8,6 +10,8 @@ const $g = useGlobalStore()
 
     <!-- util component -->
     <VConfirm />
+    <VValert />
+
     <v-overlay v-model="$g.isLoading" class="align-center justify-center" persistent>
         <v-card>
             <v-card-text class="text-center">
