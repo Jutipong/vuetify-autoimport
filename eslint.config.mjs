@@ -5,8 +5,8 @@ export default antfu(
         stylistic: {
             indent: 4,
             overrides: {
-                'no-console': 'off',
-                'vue/no-console': 'off',
+                // 'no-console': 'off',
+                // 'vue/no-console': 'off',
                 'eslint-comments/no-unlimited-disable': 'off',
             },
         },

@@ -19,7 +19,6 @@ const func = {
         state.search = {} as ProductType
     },
     onSearch: async () => {
-        console.log('search from search-form.vue')
         await tableRef.value?.onSearch(state.search)
     },
 }
