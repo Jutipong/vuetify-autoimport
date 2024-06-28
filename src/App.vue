@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { } from './'
-
 const $g = useGlobalStore()
 </script>
 
