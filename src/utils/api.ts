@@ -8,13 +8,13 @@ const _api = axios.create({
     headers: { 'Access-Control-Allow-Origin': '*' },
 })
 
-function err(error: any) {
-    const $g = useGlobalStore()
+function handleError(error: any) {
+    const globalStore = useGlobalStore()
 
     const res = error?.response
     vNotify.error(`status:${res?.status ?? 500} | message:${res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
 
-    $g.resetLoading()
+    globalStore.resetLoading()
 
     if (res?.status === 401)
         router.push('/login')
@@ -36,7 +36,7 @@ _api.interceptors.request.use((config: any) => {
     config.headers.Authorization = `Bearer ${clientStorages.getToken()}`
 
     return config
-}, err)
+}, handleError)
 
 // response interceptor
 _api.interceptors.response.use(({ config, data }: any) => {
@@ -48,7 +48,7 @@ _api.interceptors.response.use(({ config, data }: any) => {
     }
 
     return data
-}, err)
+}, handleError)
 
 type ApiOptions = { isLoading?: boolean } & AxiosRequestConfig
 
