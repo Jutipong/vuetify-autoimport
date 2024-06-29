@@ -1,4 +1,4 @@
-export const useGlobalStore = defineStore('global', () => {
+export const useAppStore = defineStore('app', () => {
     const loadings = ref(0)
     const isLoadingPage = ref(false)
 
@@ -26,5 +26,5 @@ export const useGlobalStore = defineStore('global', () => {
 })
 
 if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(useGlobalStore, import.meta.hot))
+    import.meta.hot.accept(acceptHMRUpdate(useAppStore, import.meta.hot))
 }

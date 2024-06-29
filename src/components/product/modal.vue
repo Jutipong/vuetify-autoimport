@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import type { ApiResponse } from '@/types/common/api-response'
 import type { ProductType } from '@/types/product'
 
-const $g = useGlobalStore()
+const appStore = useAppStore()
 
 const state = reactive({
     product: {} as ProductType,
@@ -16,10 +17,13 @@ const func = {
         state.product.id ? await func.Update() : await func.Create()
     },
     Create: async () => {
-        $g.setLoading()
-        await api.post(`/products/add`, state.product)
+        appStore.setLoading()
+        const { error } = await api.post<ApiResponse>(`/products/add`, state.product)
 
-        $g.unLoading()
+        if (error)
+            return
+
+        appStore.unLoading()
         vNotify.success('Product created successfully')
 
         state.active = false
@@ -30,10 +34,13 @@ const func = {
 
         const update = _.pick(state.product, ['id', 'title'])
 
-        $g.setLoading()
-        await api.put(`/products/${state.product.id}`, { update })
+        appStore.setLoading()
+        const { error } = await api.put<ApiResponse>(`/products/${state.product.id}`, { update })
 
-        $g.unLoading()
+        if (error)
+            return
+
+        appStore.unLoading()
         vNotify.success('Product updated successfully')
 
         state.active = false
@@ -97,7 +104,7 @@ defineExpose({
 
                     <VCardActions>
                         <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="func.onClose()" />
-                        <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="$g.isLoading" @click="func.onAction()" />
+                        <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="appStore.isLoading" @click="func.onAction()" />
                     </VCardActions>
                 </VCard>
             </VDialog>

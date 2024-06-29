@@ -9,8 +9,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to: any, from: any, next: any) => {
-    const $g = useGlobalStore()
-    $g.isLoadingPage = true
+    const appStore = useAppStore()
+    appStore.isLoadingPage = true
 
     if (to.path === '/login') {
         clientStorages.clear()
@@ -26,8 +26,8 @@ router.beforeEach((to: any, from: any, next: any) => {
 })
 
 router.afterEach(() => {
-    const $g = useGlobalStore()
-    $g.isLoadingPage = false
+    const appStore = useAppStore()
+    appStore.isLoadingPage = false
 })
 
 export default router

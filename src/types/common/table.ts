@@ -23,7 +23,6 @@ export interface Result<TDatas> {
 
 export interface Table<TDatas> {
     headers: readonly Header[]
-    loading: boolean
     options: Option
     result: Result<TDatas>
 }

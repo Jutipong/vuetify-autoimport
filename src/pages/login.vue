@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { UserLogin } from '@/types/auth'
+import type { ApiResponse, ErrorResponse } from '@/types/common/api-response'
 
 const { setToken, setUserLogin } = clientStorages
 
@@ -15,15 +16,18 @@ const state = reactive({
 async function logIn() {
     state.isLoading = true
 
-    const res = await api.post<UserLogin>('/auth/login', {
+    const { error, data } = await api.post<ApiResponse<UserLogin>>('/auth/login', {
         username: state.user.username,
         password: state.user.password,
-    }, { isLoading: false })
-
-    setToken(res.token)
-    setUserLogin(res)
+    }, { useCache: true, isLoading: false })
 
     state.isLoading = false
+
+    if (error)
+        return
+
+    setToken(data.token)
+    setUserLogin(data)
 
     router.push('/')
 }

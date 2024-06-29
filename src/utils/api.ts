@@ -1,7 +1,7 @@
-import type { AxiosRequestConfig } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { setupCache } from 'axios-cache-interceptor'
-import type { ApiResponse } from '@/types/common/api-response'
+import type { ErrorResponse } from '@/types/common/api-response'
 
 // create axios
 const axiosInstance = axios.create({
@@ -10,7 +10,6 @@ const axiosInstance = axios.create({
     headers: { 'Access-Control-Allow-Origin': '*' },
 })
 
-// Define a cache configuration
 setupCache(axiosInstance, {
     // 5 minutes
     // ttl: 5 * 60 * 1000, // 30 seconds in milliseconds
@@ -18,27 +17,6 @@ setupCache(axiosInstance, {
     ttl: 30 * 1000, // 30 seconds in milliseconds
 })
 
-function handleError(error: any) {
-    const globalStore = useGlobalStore()
-
-    const res = error?.response
-    vNotify.error(`status:${res?.status ?? 500} | message:${res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
-
-    globalStore.resetLoading()
-
-    if (res?.status === 401)
-        router.push('/login')
-
-    console.error('API Error:', error)
-    return Promise.resolve({
-        error: {
-            status: res?.status ?? 500,
-            message: res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง',
-        },
-    } as ApiResponse<null>)
-}
-
-// Function to generate a unique cache key
 function generateCacheKey(config: any) {
     // Basic example: URL + Method
     let key = `${config.url}_${config.method}`
@@ -56,12 +34,33 @@ function generateCacheKey(config: any) {
     return key
 }
 
+function handleError(error: any) {
+    const { resetLoading } = useAppStore()
+
+    const res = error?.response
+    vNotify.error(`status:${res?.status ?? 500} | message:${res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
+
+    resetLoading()
+
+    if (res?.status === 401)
+        router.push('/login')
+
+    return Promise.resolve({
+        error: {
+            status: res?.status ?? 500,
+            message: res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง',
+        } as ErrorResponse,
+    })
+
+    // return Promise.reject(error)
+}
+
 // request interceptor
 axiosInstance.interceptors.request.use((config: any) => {
     config.isLoading = config?.isLoading ?? true
 
     if (config?.isLoading) {
-        const { setLoading } = useGlobalStore()
+        const { setLoading } = useAppStore()
         setLoading()
     }
 
@@ -86,15 +85,15 @@ axiosInstance.interceptors.request.use((config: any) => {
 }, handleError)
 
 // response interceptor
-axiosInstance.interceptors.response.use(({ config, data }: any) => {
+axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<any, any> => {
     config.isLoading = config?.isLoading ?? true
 
     if (config?.isLoading) {
-        const { unLoading } = useGlobalStore()
+        const { unLoading } = useAppStore()
         unLoading()
     }
 
-    return data
+    return { data } as AxiosResponse<any, any>
 }, handleError)
 
 type ApiOptions = { isLoading?: boolean, useCache?: boolean } & AxiosRequestConfig

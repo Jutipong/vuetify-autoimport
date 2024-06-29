@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import type ProductModalComponent from './modal.vue'
+import type { ApiResponse } from '@/types/common/api-response'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 
 const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
+
+const { setLoading, unLoading, isLoading } = useAppStore()
 
 const state = reactive({
     table: {
@@ -16,7 +19,6 @@ const state = reactive({
             { title: 'BRAND', key: 'brand', align: 'end' },
             { title: 'Actions', key: 'actions', sortable: false },
         ] as Header[],
-        loading: false,
         options: tableOption,
         result: tableResult,
     } as Table<ProductType>,
@@ -29,16 +31,21 @@ const func = {
         await func.getProducts()
     },
     getProducts: async (option?: Option) => {
-        state.table.loading = true
+        setLoading()
+
         state.table.options = option || state.table.options
 
-        const { products, total }
-         = await api.get<{ products: ProductType[], total: number }>
+        const { data, error }
+         = await api.get<ApiResponse<{ products: ProductType[], total: number }>>
          (`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}&skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`)
 
-        state.table.result.datas = products
-        state.table.result.total = total
-        state.table.loading = false
+        if (error)
+            return
+
+        state.table.result.datas = data.products
+        state.table.result.total = data.total
+
+        unLoading()
     },
     onAdd: () => {
         modalRef.value?.open({} as ProductType)
@@ -85,7 +92,7 @@ defineExpose({
                 :items-per-page="state.table.options.itemsPerPage"
                 :items-length="state.table.result.total"
                 :items="state.table.result.datas"
-                :loading="state.table.loading"
+                :loading="isLoading"
                 @update:options="func.getProducts"
             >
                 <template #item.actions="{ item }">
