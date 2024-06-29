@@ -60,30 +60,28 @@
 		"prefix": "im",
 		"description": "Import a module",
 		"body": [
-			"import { $1 } from '$2';"
+			"import { $2 } from '$1';"
 		],
 	},
 	"vue-reactive": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "reactive",
+		"prefix": "vreactive",
 		"description": "reactive",
 		"body": [
-			"reactive({",
-			"  $2",
-			"})"
+			"const $1 = reactive($2)"
 		]
 	},
 	"vue-ref": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "ref",
+		"prefix": "vref",
 		"description": "ref",
 		"body": [
-			"ref($2)"
+			"const $1 = ref($2)"
 		]
 	},
 	"vue-watch": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "watch",
+		"prefix": "vwatch",
 		"description": "watch",
 		"body": [
 			"watch($1, (newValue, oldValue) => {",
@@ -93,10 +91,10 @@
 	},
 	"vue-computed": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "computed",
+		"prefix": "vcomputed",
 		"description": "computed",
 		"body": [
-			"computed(() => { $1 })"
+			"const $1 = computed(() => { $2 })"
 		]
 	},
 	"vue-watch-effect": {
