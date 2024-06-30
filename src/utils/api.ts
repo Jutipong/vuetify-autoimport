@@ -3,7 +3,6 @@ import axios from 'axios'
 import { setupCache } from 'axios-cache-interceptor'
 import type { ErrorResponse } from '@/types/common/api-response'
 
-// create axios
 const axiosInstance = axios.create({
     baseURL: appSetting.baseUrl,
     timeout: 5000,
@@ -11,10 +10,7 @@ const axiosInstance = axios.create({
 })
 
 setupCache(axiosInstance, {
-    // 5 minutes
-    // ttl: 5 * 60 * 1000, // 30 seconds in milliseconds
-    // 30 seconds
-    ttl: 30 * 1000, // 30 seconds in milliseconds
+    ttl: 5 * 60 * 1000,
 })
 
 function generateCacheKey(config: any) {
@@ -55,7 +51,6 @@ function handleError(error: any) {
     // return Promise.reject(error)
 }
 
-// request interceptor
 axiosInstance.interceptors.request.use((config: any) => {
     config.isLoading = config?.isLoading ?? true
 
@@ -68,7 +63,6 @@ axiosInstance.interceptors.request.use((config: any) => {
     config.headers['Content-Type'] = 'application/json'
     config.headers.Authorization = `Bearer ${clientStorages.getToken()}`
 
-    // Cache
     const { useCache } = config
     if (useCache) {
         config.cache = true
@@ -84,7 +78,6 @@ axiosInstance.interceptors.request.use((config: any) => {
     return config
 }, handleError)
 
-// response interceptor
 axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<any, any> => {
     config.isLoading = config?.isLoading ?? true
 
