@@ -4,7 +4,7 @@ import LayoutsNavigation from './components/navigation.vue'
 
 const { mobile } = useDisplay()
 
-const appStore = useAppStore()
+const { isProgressLoading } = useAppStore()
 const layoutCss = computed(() => {
     return {
         mini_nav: !mobile.value,
@@ -15,7 +15,7 @@ const layoutCss = computed(() => {
 
 <template>
     <v-app :class="layoutCss">
-        <v-progress-linear :active="appStore.isLoading || appStore.isLoadingPage" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
+        <v-progress-linear :active="isProgressLoading" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
 
         <LayoutsNavigation />
         <LayoutsHeader />

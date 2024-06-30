@@ -1,6 +1,6 @@
 export const useAppStore = defineStore('app', () => {
     const loadings = ref(0)
-    const isLoadingPage = ref(false)
+    const isProgressLoading = ref(false)
 
     const isLoading = computed(() => loadings.value > 0)
 
@@ -18,7 +18,7 @@ export const useAppStore = defineStore('app', () => {
 
     return {
         isLoading,
-        isLoadingPage,
+        isProgressLoading,
         setLoading,
         unLoading,
         resetLoading,

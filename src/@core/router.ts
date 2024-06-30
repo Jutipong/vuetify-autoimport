@@ -12,7 +12,7 @@ router.beforeEach((to: any, from: any, next: any) => {
     const { token, clearAuth } = useAuthStore()
     const appStore = useAppStore()
 
-    appStore.isLoadingPage = true
+    appStore.isProgressLoading = true
 
     if (to.path === '/login') {
         clearAuth()
@@ -29,7 +29,7 @@ router.beforeEach((to: any, from: any, next: any) => {
 
 router.afterEach(() => {
     const appStore = useAppStore()
-    appStore.isLoadingPage = false
+    appStore.isProgressLoading = false
 })
 
 export default router
