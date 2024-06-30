@@ -4,6 +4,7 @@ export const useLayoutStore = defineStore('layout', () => {
     const state = reactive({
         drawer: true,
         rail: true,
+        theme: 'light',
     })
 
     function toggleDrawer() {
@@ -17,9 +18,14 @@ export const useLayoutStore = defineStore('layout', () => {
         }
     }
 
+    function setTheme(theme: string) {
+        state.theme = theme
+    }
+
     return {
         state,
         toggleDrawer,
+        setTheme,
     }
 }, {
     persist: {

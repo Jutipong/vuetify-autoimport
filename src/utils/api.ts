@@ -54,6 +54,8 @@ function handleError(error: any) {
 }
 
 axiosInstance.interceptors.request.use((config: any) => {
+    const { token } = useAuthStore()
+
     config.isLoading = config?.isLoading ?? true
 
     if (config?.isLoading) {
@@ -63,7 +65,7 @@ axiosInstance.interceptors.request.use((config: any) => {
 
     config.headers['Access-Control-Allow-Origin'] = '*'
     config.headers['Content-Type'] = 'application/json'
-    config.headers.Authorization = `Bearer ${clientStorages.getToken()}`
+    config.headers.Authorization = `Bearer ${token}`
 
     const { useCache } = config
     if (useCache) {
