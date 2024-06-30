@@ -3,8 +3,8 @@ import LayoutsHeader from './components/header.vue'
 import LayoutsNavigation from './components/navigation.vue'
 
 const { mobile } = useDisplay()
-
 const { isProgressLoading } = useAppStore()
+
 const layoutCss = computed(() => {
     return {
         mini_nav: !mobile.value,
