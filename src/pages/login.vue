@@ -19,7 +19,7 @@ async function logIn() {
     const { error, data } = await api.post<ApiResponse<UserLogin>>('/auth/login', {
         username: state.user.username,
         password: state.user.password,
-    }, { useCache: true, isLoading: false })
+    }, { isLoading: false })
 
     state.isLoading = false
 
