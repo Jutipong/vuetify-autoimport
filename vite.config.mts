@@ -72,6 +72,7 @@ export default defineConfig(({ mode }) => {
         resolve: {
             alias: {
                 '@': fileURLToPath(new URL('./src', import.meta.url)),
+                '@assets': fileURLToPath(new URL('./src/assets', import.meta.url)),
             },
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
         },
