@@ -51,7 +51,5 @@ bun run build
 ### todo
 
 ```
-# renew vNotify
 # add vConfirm mini
-# renew vNumber
 ```
