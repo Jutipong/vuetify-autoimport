@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
-import { setupCache } from 'axios-cache-interceptor'
+import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
 import type { ErrorResponse } from '@/types/common/api-response'
 
 const axiosInstance = axios.create({
@@ -11,6 +11,8 @@ const axiosInstance = axios.create({
 
 setupCache(axiosInstance, {
     ttl: 5 * 60 * 1000,
+    storage: buildWebStorage(sessionStorage, 'axios-cache:'),
+    generateKey: req => generateCacheKey(req),
 })
 
 function generateCacheKey(config: any) {
@@ -66,7 +68,6 @@ axiosInstance.interceptors.request.use((config: any) => {
     const { useCache } = config
     if (useCache) {
         config.cache = true
-        config.cacheKey = generateCacheKey(config)
     }
     else {
         config.cache = false
