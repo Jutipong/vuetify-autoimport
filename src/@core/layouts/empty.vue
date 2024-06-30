@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const theme = useTheme()
-theme.global.name.value = clientStorages.getTheme()
+const { state } = useLayoutStore()
+theme.global.name.value = state.theme
 </script>
 
 <template>

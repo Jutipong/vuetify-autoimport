@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { UserLogin } from '@/types/auth'
-import type { ApiResponse, ErrorResponse } from '@/types/common/api-response'
+import type { ApiResponse } from '@/types/common/api-response'
 
-const { setToken, setUserLogin } = clientStorages
+const { setToken, setUser } = useAuthStore()
 
 const state = reactive({
     user: {
@@ -27,7 +27,7 @@ async function logIn() {
         return
 
     setToken(data.token)
-    setUserLogin(data)
+    setUser(data)
 
     router.push('/')
 }

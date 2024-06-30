@@ -9,16 +9,18 @@ const router = createRouter({
 })
 
 router.beforeEach((to: any, from: any, next: any) => {
+    const { token, clearAuth } = useAuthStore()
     const appStore = useAppStore()
+
     appStore.isLoadingPage = true
 
     if (to.path === '/login') {
-        clientStorages.clear()
+        clearAuth()
         return next()
     }
 
-    if (!clientStorages.getToken()) {
-        clientStorages.clear()
+    if (!token) {
+        clearAuth()
         return next({ path: '/login' })
     }
 

@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { fa } from 'vuetify/locale'
-
 const layoutStore = useLayoutStore()
 const theme = useTheme()
 const { mobile } = useDisplay()
 const { name } = appSetting
 
-theme.global.name.value = clientStorages.getTheme()
+theme.global.name.value = layoutStore.state.theme
 
 function toggleTheme() {
     theme.global.name.value = theme.global.name.value === 'light' ? 'dark' : 'light'
-    clientStorages.setTheme(theme.global.name.value)
+    layoutStore.setTheme(theme.global.name.value)
 }
 
 async function logOut() {
