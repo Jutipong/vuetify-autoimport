@@ -41,7 +41,7 @@
 	},
 	"Pinia Setup": {
 		"scope": "javascript,typescript",
-		"prefix": "pn",
+		"prefix": "cpn",
 		"body": [
 			"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
 			" $0",
@@ -57,7 +57,7 @@
 	},
 	"import": {
 		"scope": "javascript,typescript",
-		"prefix": "im",
+		"prefix": "vimport",
 		"description": "Import a module",
 		"body": [
 			"import { $2 } from '$1';"
