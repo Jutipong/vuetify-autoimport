@@ -65,7 +65,7 @@ export default defineConfig(({ mode }) => {
             chunkSizeWarningLimit: 5000,
         },
         optimizeDeps: {
-            include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash'],
+            include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash', 'axios-cache-interceptor'],
             entries: ['./src/**/*.vue'],
             exclude: ['vuetify'],
         },
