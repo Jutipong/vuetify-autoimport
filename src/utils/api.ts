@@ -4,7 +4,7 @@ import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
 import type { ErrorResponse } from '@/types/common/api-response'
 
 const axiosInstance = axios.create({
-    baseURL: appSetting.baseUrl,
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     timeout: 5000,
     headers: { 'Access-Control-Allow-Origin': '*' },
 })

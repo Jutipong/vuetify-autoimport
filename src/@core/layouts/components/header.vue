@@ -2,7 +2,7 @@
 const layoutStore = useLayoutStore()
 const theme = useTheme()
 const { mobile } = useDisplay()
-const { name } = appSetting
+const appName = import.meta.env.VITE_APP_NAME
 
 theme.global.name.value = layoutStore.state.theme
 
@@ -64,7 +64,7 @@ const iconDrawer = computed(() => {
                 variant="plain"
                 @click="layoutStore.toggleDrawer()"
             />
-            <v-app-bar-title>{{ name }} </v-app-bar-title>
+            <v-app-bar-title>{{ appName }} </v-app-bar-title>
 
             <template #append>
                 <v-btn :ripple="false" variant="plain" @click="toggleTheme">

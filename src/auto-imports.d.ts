@@ -21,7 +21,6 @@ declare global {
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const alert: typeof import('./utils/alert')['default']
   const api: typeof import('./utils/api')['default']
-  const appSetting: typeof import('./constants/appSetting')['default']
   const computed: typeof import('vue')['computed']
   const confirm: typeof import('./utils/confirm')['default']
   const defaultComponents: typeof import('./@core/plugins/default-components')['default']
