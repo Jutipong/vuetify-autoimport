@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import LayoutsHeader from './components/header.vue'
-import LayoutsNavigation from './components/navigation.vue'
-
 const { mobile } = useDisplay()
 const { isProgressLoading } = useAppStore()
 
@@ -17,8 +14,8 @@ const layoutCss = computed(() => {
     <v-app :class="layoutCss">
         <v-progress-linear :active="isProgressLoading" style="z-index: 99999; position: fixed !important;" color="success" indeterminate />
 
-        <LayoutsNavigation />
-        <LayoutsHeader />
+        <Header />
+        <Navigation />
         <v-main>
             <!-- <v-container> -->
             <router-view v-slot="{ Component }">

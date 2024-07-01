@@ -3,7 +3,6 @@ import process from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import UnoCSS from 'unocss/vite'
-// import VueDevTools from 'vite-plugin-vue-devtools'
 
 import { defineConfig, loadEnv } from 'vite'
 
@@ -33,7 +32,7 @@ export default defineConfig(({ mode }) => {
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
-                dirs: ['src/components'],
+                dirs: ['src/components', 'src/@core/layouts/components'],
                 dts: 'src/components.d.ts',
                 deep: true,
                 directoryAsNamespace: true,
@@ -48,12 +47,13 @@ export default defineConfig(({ mode }) => {
             }),
             UnoCSS(),
             vue({
-                template: { transformAssetUrls },
+                template: {
+                    transformAssetUrls,
+                },
                 script: {
                     defineModel: true,
                 },
             }),
-            // VueDevTools(),
             vuetify({
                 autoImport: true,
                 styles: {
