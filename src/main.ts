@@ -15,7 +15,7 @@ import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
 import appSetting from '@/constants/appSetting'
 
-document.title = appSetting.title
+// document.title = appSetting.title
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 const app = createApp(App)
