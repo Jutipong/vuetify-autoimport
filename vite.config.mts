@@ -14,7 +14,10 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, process.cwd(), '')
+    // const env = loadEnv(mode, process.cwd())
+    const env = loadEnv(mode, './envmock')
+    process.env = { ...process.env, ...env }
+    console.log(process.env)
     return {
         plugins: [
             AutoImport({
@@ -77,7 +80,7 @@ export default defineConfig(({ mode }) => {
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
         },
         server: {
-            port: Number.parseInt(env.VITE_PORT) || 3000,
+            port: Number.parseInt(process.env.VITE_PORT) || 3000,
         },
     }
 })
