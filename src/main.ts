@@ -14,6 +14,12 @@ import '@/assets/css/main.css'
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
 
+debugger
+EnvInit()
+
+const { VITE_APP_TITLE } = useEnv()
+document.title = VITE_APP_TITLE
+
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 const app = createApp(App)

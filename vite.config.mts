@@ -1,5 +1,6 @@
 import { URL, fileURLToPath } from 'node:url'
 import process from 'node:process'
+import * as fs from 'node:fs'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import UnoCSS from 'unocss/vite'
@@ -12,12 +13,12 @@ import Components from 'unplugin-vue-components/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { EnvInit } from './src/utils/loadEnv'
 
 export default defineConfig(({ mode }) => {
     // const env = loadEnv(mode, process.cwd())
     const env = loadEnv(mode, './envmock')
-    process.env = { ...process.env, ...env }
-    console.log(process.env)
+
     return {
         plugins: [
             AutoImport({
@@ -80,7 +81,7 @@ export default defineConfig(({ mode }) => {
             extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue'],
         },
         server: {
-            port: Number.parseInt(process.env.VITE_PORT) || 3000,
+            port: Number.parseInt(env.VITE_PORT) || 3000,
         },
     }
 })
