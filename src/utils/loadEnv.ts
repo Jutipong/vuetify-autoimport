@@ -1,5 +1,4 @@
 async function EnvInit() {
-    debugger
     await fetch('config.json')
         .then(response => response.json())
         .then((config) => {
@@ -8,7 +7,7 @@ async function EnvInit() {
 }
 
 function useEnv() {
-    if (dev == true) {
+    if (import.meta.env.DEV) {
         return import.meta.env as ImportMetaEnv
     }
     else {
