@@ -3,8 +3,10 @@ import axios from 'axios'
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
 import type { ErrorResponse } from '@/types/common/api-response'
 
+const { VITE_API_BASE_URL } = useEnv()
+
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL,
+    baseURL: VITE_API_BASE_URL,
     timeout: 5000,
     headers: { 'Access-Control-Allow-Origin': '*' },
 })
