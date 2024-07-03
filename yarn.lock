@@ -3733,7 +3733,7 @@ vue-toastification@^2.0.0-rc.5:
   resolved "https://registry.yarnpkg.com/vue-toastification/-/vue-toastification-2.0.0-rc.5.tgz#92798604d806ae473cfb76ed776fae294280f8f8"
   integrity sha512-q73e5jy6gucEO/U+P48hqX+/qyXDozAGmaGgLFm5tXX4wJBcVsnGp4e/iJqlm9xzHETYOilUuwOUje2Qg1JdwA==
 
-vue-tsc@2.0.24:
+vue-tsc@^2.0.24:
   version "2.0.24"
   resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-2.0.24.tgz#9938185492833baeda22b6c85a7ba316d4fd4873"
   integrity sha512-1qi4P8L7yS78A7OJ7CDDxUIZPD6nVxoQEgX3DkRZNi1HI1qOfzOJwQlNpmwkogSVD6S/XcanbW9sktzpSxz6rA==
@@ -3753,10 +3753,10 @@ vue@3.4.31:
     "@vue/server-renderer" "3.4.31"
     "@vue/shared" "3.4.31"
 
-vuetify@^3.6.10:
-  version "3.6.10"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.6.10.tgz#abd005dc9af31afba2b36fcbca62c13c4f29c998"
-  integrity sha512-Myd9+EFq4Gmu61yKPNVS0QdGQkcZ9cHom27wuvRw7jgDxM+X4MT9BwQRk/Dt1q3G3JlK8oh+ZYyq5Ps/Z73cMg==
+vuetify@3.6.11:
+  version "3.6.11"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.6.11.tgz#98c18afbe0abccf7bf4a29fc7de2a06630ad5726"
+  integrity sha512-DMreVZ6+WCVnvRoFVPGtC+Kc4afx+etcTLgX2AqUj6lQ4RrEx0TlQoNAW1oKPH4eViv2wfdvQ3xb/Yw1c86cTw==
 
 webpack-sources@^3.2.3:
   version "3.2.3"
