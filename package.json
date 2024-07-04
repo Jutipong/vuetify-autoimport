@@ -12,6 +12,7 @@
     "@mdi/font": "^7.4.47",
     "@types/lodash": "4.17.6",
     "axios-cache-interceptor": "1.5.3",
+    "localstorage-slim": "^2.7.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "typescript": "5.5.2",

@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
 }, {
     persist: {
-        storage: sessionStorage,
+        key: 'auth-encrypt',
         paths: ['token', 'user'],
     },
 })
