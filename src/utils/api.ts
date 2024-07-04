@@ -18,7 +18,7 @@ setupCache(axiosInstance, {
 })
 
 function cachePredicate(config: any) {
-    return (config.status !== 400 || config.status !== 401 || config.status !== 403 || config.status !== 404 || config.status !== 500)
+    return (config.status !== 400 && config.status !== 401 && config.status !== 403 && config.status !== 404 && config.status !== 500)
 }
 
 function updateCache(config: any) {
