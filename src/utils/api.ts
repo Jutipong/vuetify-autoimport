@@ -107,7 +107,7 @@ axiosInstance.interceptors.request.use((config: any) => {
     }
 
     // Remove the useCache property to avoid axios warnings
-    // delete config.useCache
+    delete config.useCache
 
     return config
 }, handleError)
