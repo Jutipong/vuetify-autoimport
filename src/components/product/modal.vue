@@ -18,7 +18,7 @@ const func = {
     },
     Create: async () => {
         appStore.setLoading()
-        const { error } = await api.post<ApiResponse>(`/products/add`, state.product)
+        const { error } = await api.post<ApiResponse>(`/products/add`, state.product, { useCache: true, cacheTimeout: '30sec' })
 
         if (error)
             return

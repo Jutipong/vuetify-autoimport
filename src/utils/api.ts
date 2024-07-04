@@ -12,8 +12,14 @@ const axiosInstance = axios.create({
 setupCache(axiosInstance, {
     storage: buildWebStorage(sessionStorage, 'axios-cache:'),
     generateKey: req => generateCacheKey(req),
+    methods: ['get', 'post'],
     update: config => updateCache(config),
+    cachePredicate: config => cachePredicate(config),
 })
+
+function cachePredicate(config: any) {
+    return (config.status !== 400 || config.status !== 401 || config.status !== 403 || config.status !== 404 || config.status !== 500)
+}
 
 function updateCache(config: any) {
     if (config.config.cacheTimeout) {
@@ -101,7 +107,7 @@ axiosInstance.interceptors.request.use((config: any) => {
     }
 
     // Remove the useCache property to avoid axios warnings
-    delete config.useCache
+    // delete config.useCache
 
     return config
 }, handleError)
