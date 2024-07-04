@@ -40,7 +40,7 @@ const func = {
          (`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}&skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`, { useCache: true })
 
         if (error)
-            return
+            return vAlert.error('Error', error.message)
 
         state.table.result.datas = data.products
         state.table.result.total = data.total
