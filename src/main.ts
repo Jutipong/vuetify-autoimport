@@ -18,29 +18,14 @@ ls.config.storage = sessionStorage
 ls.config.encrypt = true
 
 const secureStorage = {
-    getItem: (key: string): string | null => {
-        if (key.endsWith('-encrypt')) {
-            return ls.get(key)
-        }
-        else {
-            return sessionStorage.getItem(key)
-        }
+    getItem(key: string): string | null {
+        return key.endsWith('-encrypt') ? ls.get(key) : sessionStorage.getItem(key)
     },
-    setItem: (key: string, value: string) => {
-        if (key.endsWith('-encrypt')) {
-            ls.set(key, value)
-        }
-        else {
-            sessionStorage.setItem(key, value)
-        }
+    setItem(key: string, value: string): void {
+        key.endsWith('-encrypt') ? ls.set(key, value) : sessionStorage.setItem(key, value)
     },
-    removeItem: (key: string) => {
-        if (key.endsWith('-encrypt')) {
-            ls.remove(key)
-        }
-        else {
-            sessionStorage.removeItem(key)
-        }
+    removeItem(key: string): void {
+        key.endsWith('-encrypt') ? ls.remove(key) : sessionStorage.removeItem(key)
     },
 }
 
