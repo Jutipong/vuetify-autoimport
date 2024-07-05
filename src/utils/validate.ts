@@ -2,14 +2,14 @@ import { ref } from 'vue'
 import type { z } from 'zod'
 
 function useValidate<T extends z.ZodType<any, any>>(schema: T) {
-    const dataForm = ref({} as z.infer<T>)
+    const data = ref({} as z.infer<T>)
     const errors = ref({} as Record<string, string>)
     const hasValidated = ref(false)
 
     function validate(): boolean {
         hasValidated.value = true
 
-        const result = schema.safeParse(dataForm.value)
+        const result = schema.safeParse(data.value)
 
         if (result.success) {
             errors.value = {}
@@ -29,18 +29,18 @@ function useValidate<T extends z.ZodType<any, any>>(schema: T) {
 
     function reset() {
         errors.value = {} as Record<string, string>
-        dataForm.value = {} as z.infer<T>
+        data.value = {} as z.infer<T>
         hasValidated.value = false
     }
 
-    watch(dataForm, () => {
+    watch(data, () => {
         if (!hasValidated.value)
             return
 
         validate()
     }, { deep: true })
 
-    return { formData: dataForm, errors, validate, reset }
+    return { data, errors, validate, reset }
 }
 
 export { useValidate }
