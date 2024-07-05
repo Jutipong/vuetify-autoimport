@@ -17,9 +17,9 @@ const secureStorage = {
     },
 }
 
-const pinia = createPinia()
-pinia.use(createPersistedState({
+const piniaConfig = createPinia()
+piniaConfig.use(createPersistedState({
     storage: secureStorage,
 }))
 
-export { pinia }
+export { piniaConfig }

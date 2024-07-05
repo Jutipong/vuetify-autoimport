@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import type { z } from 'zod'
 
-function useValidation<T extends z.ZodType<any, any>>(schema: T) {
+function useValidate<T extends z.ZodType<any, any>>(schema: T) {
     const dataForm = ref({} as z.infer<T>)
     const errors = ref({} as Record<string, string>)
     const hasValidated = ref(false)
@@ -43,4 +43,4 @@ function useValidation<T extends z.ZodType<any, any>>(schema: T) {
     return { formData: dataForm, errors, validate, reset }
 }
 
-export { useValidation }
+export { useValidate }

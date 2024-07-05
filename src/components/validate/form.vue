@@ -21,7 +21,7 @@ const schema = z.object({
     discountPercentage: z.number(),
 })
 
-const { formData, errors, validate, reset } = useValidation(schema)
+const { formData, errors, validate, reset } = useValidate(schema)
 </script>
 
 <template>
