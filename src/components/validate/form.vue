@@ -2,8 +2,8 @@
 import { z } from 'zod'
 
 const schema = z.object({
-    title: z.union([z.string(), z.null()])
-        .refine(val => val !== null && val.length > 0, {
+    title: z.union([z.string(), z.null(), z.undefined()])
+        .refine(val => val !== null && val !== undefined, {
             message: 'Title is required',
         }),
     price: z.union([z.number(), z.null(), z.undefined()])
@@ -23,22 +23,25 @@ const schema = z.object({
 })
 
 type FormData = z.infer<typeof schema>
-const formData = ref<FormData>({} as FormData)
-const errors = ref<Record<string, string>>({})
+type ErrorField = Partial<keyof FormData>
+
+const formData = ref({} as FormData)
+const errors = ref ({} as Record<ErrorField, string>)
 const hasValidated = ref(false)
 
 function validateForm(): boolean {
     const result = schema.safeParse(formData.value)
 
     if (result.success) {
-        errors.value = {}
+        errors.value = {} as Record<ErrorField, string>
         hasValidated.value = true
         return true
     }
 
-    const formattedErrors: Record<string, string> = {}
+    const formattedErrors = {} as Record<ErrorField, string>
+
     result.error.errors.forEach((error) => {
-        const fieldName = error.path[0] as string
+        const fieldName = error.path[0] as ErrorField
         formattedErrors[fieldName] = error.message
     })
 
@@ -48,8 +51,8 @@ function validateForm(): boolean {
 }
 
 function resetValidate() {
-    errors.value = {}
-    formData.value = { } as FormData
+    errors.value = {} as Record<ErrorField, string>
+    formData.value = {} as FormData
     hasValidated.value = false
 }
 
