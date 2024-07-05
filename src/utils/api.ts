@@ -43,6 +43,30 @@ function getCacheTimeout(timeout: CacheTimeout) {
             return 30 * 60 * 1000
         case '1hour':
             return 60 * 60 * 1000
+        case '2hour':
+            return 2 * 60 * 60 * 1000
+        case '3hour':
+            return 3 * 60 * 60 * 1000
+        case '4hour':
+            return 4 * 60 * 60 * 1000
+        case '5hour':
+            return 5 * 60 * 60 * 1000
+        case '6hour':
+            return 6 * 60 * 60 * 1000
+        case '7hour':
+            return 7 * 60 * 60 * 1000
+        case '8hour':
+            return 8 * 60 * 60 * 1000
+        case '9hour':
+            return 9 * 60 * 60 * 1000
+        case '10hour':
+            return 10 * 60 * 60 * 1000
+        case '11hour':
+            return 11 * 60 * 60 * 1000
+        case '12hour':
+            return 12 * 60 * 60 * 1000
+        case '1day':
+            return 24 * 60 * 60 * 1000
         default:
             return 0
     }
@@ -69,7 +93,7 @@ function handleError(error: any) {
     console.error('api response error', error)
 
     const res = error?.response
-    const statusCode = res?.data?.code ?? '500'
+    const statusCode = res?.status ?? '500'
     const message = getErrorMessage(statusCode)
 
     vNotify.error(`status code:${statusCode} | ${message}`)
@@ -77,7 +101,7 @@ function handleError(error: any) {
 
     resetLoading()
 
-    if (res?.status === 401)
+    if (statusCode === 401)
         router.push('/login')
 
     const err = {
@@ -144,7 +168,9 @@ axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<a
     return { data } as AxiosResponse<any, any>
 }, handleError)
 
-type CacheTimeout = '30sec' | '1min' | '5min' | '10min' | '15min' | '30min' | '1hour'
+type CacheTimeout = '30sec' | '1min' | '5min' | '10min' | '15min' | '30min'
+    | '1hour' | '2hour' | '3hour' | '4hour' | '5hour' | '6hour' | '7hour' | '8hour'
+    | '9hour' | '10hour' | '11hour' | '12hour' | '1day'
 
 type ApiOptions = {
     isLoading?: boolean
