@@ -8,7 +8,7 @@ const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
 
 const { setLoading, unLoading, isLoading } = useAppStore()
 
-const table = ref({
+const table = reactive({
     headers: [
         { title: 'ID', key: 'id', align: 'center' },
         { title: 'Title', key: 'title' },
@@ -32,17 +32,17 @@ const func = {
     getProducts: async (option?: Option) => {
         setLoading()
 
-        table.value.options = option || table.value.options
+        table.options = option || table.options
 
         const { data, error }
          = await api.get<ApiResponse<{ products: ProductType[], total: number }>>
-         (`/products/search?q=${state.search.brand ?? ''}&limit=${table.value.options.itemsPerPage}&skip=${table.value.options.itemsPerPage * (table.value.options.page - 1)}`)
+         (`/xproducts/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
         if (error)
-            return vAlert.error('Error', error.message)
+            return
 
-        table.value.result.datas = data.products
-        table.value.result.total = data.total
+        table.result.datas = data.products
+        table.result.total = data.total
 
         unLoading()
     },
