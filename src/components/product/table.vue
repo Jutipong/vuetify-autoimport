@@ -8,22 +8,21 @@ const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
 
 const { setLoading, unLoading, isLoading } = useAppStore()
 
-const state = reactive({
-    table: {
-        headers: [
-            { title: 'ID', key: 'id', align: 'center' },
-            { title: 'Title', key: 'title' },
-            { title: 'PRICE', key: 'price', align: 'end' },
-            { title: 'RATING', key: 'rating', align: 'end' },
-            { title: 'STOCK', key: 'stock', align: 'end' },
-            { title: 'BRAND', key: 'brand', align: 'end' },
-            { title: 'Actions', key: 'actions', sortable: false },
-        ] as Header[],
-        options: tableOption,
-        result: tableResult,
-    } as Table<ProductType>,
-    search: {} as ProductType,
-})
+const table = ref({
+    headers: [
+        { title: 'ID', key: 'id', align: 'center' },
+        { title: 'Title', key: 'title' },
+        { title: 'PRICE', key: 'price', align: 'end' },
+        { title: 'RATING', key: 'rating', align: 'end' },
+        { title: 'STOCK', key: 'stock', align: 'end' },
+        { title: 'BRAND', key: 'brand', align: 'end' },
+        { title: 'Actions', key: 'actions', sortable: false },
+    ] as Header[],
+    options: { ...optionDataTable },
+    result: { ...resultDataTable },
+} as Table<ProductType>)
+
+const state = reactive({ search: {} as ProductType })
 
 const func = {
     onSearch: async (productSearch: ProductType) => {
@@ -33,17 +32,17 @@ const func = {
     getProducts: async (option?: Option) => {
         setLoading()
 
-        state.table.options = option || state.table.options
+        table.value.options = option || table.value.options
 
         const { data, error }
          = await api.get<ApiResponse<{ products: ProductType[], total: number }>>
-         (`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}&skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`)
+         (`/products/search?q=${state.search.brand ?? ''}&limit=${table.value.options.itemsPerPage}&skip=${table.value.options.itemsPerPage * (table.value.options.page - 1)}`)
 
         if (error)
             return vAlert.error('Error', error.message)
 
-        state.table.result.datas = data.products
-        state.table.result.total = data.total
+        table.value.result.datas = data.products
+        table.value.result.total = data.total
 
         unLoading()
     },
@@ -88,10 +87,10 @@ defineExpose({
 
         <VCardText>
             <VDataTableServer
-                :headers="state.table.headers"
-                :items-per-page="state.table.options.itemsPerPage"
-                :items-length="state.table.result.total"
-                :items="state.table.result.datas"
+                :headers="table.headers"
+                :items-per-page="table.options.itemsPerPage"
+                :items-length="table.result.total"
+                :items="table.result.datas"
                 :loading="isLoading"
                 @update:options="func.getProducts"
             >

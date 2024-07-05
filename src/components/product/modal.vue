@@ -21,7 +21,7 @@ const func = {
         const { error } = await api.post<ApiResponse>(`/products/add`, state.product, { useCache: true, cacheTimeout: '30sec' })
 
         if (error)
-            return
+            return vAlert.error('Error', error.message)
 
         appStore.unLoading()
         vNotify.success('Product created successfully')
@@ -38,7 +38,7 @@ const func = {
         const { error } = await api.put<ApiResponse>(`/products/${state.product.id}`, { update })
 
         if (error)
-            return
+            return vAlert.error('Error', error.message)
 
         appStore.unLoading()
         vNotify.success('Product updated successfully')
