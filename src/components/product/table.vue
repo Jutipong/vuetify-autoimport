@@ -36,7 +36,7 @@ const func = {
 
         const { data, error }
          = await api.get<ApiResponse<{ products: ProductType[], total: number }>>
-         (`/xproducts/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
+         (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
         if (error)
             return
