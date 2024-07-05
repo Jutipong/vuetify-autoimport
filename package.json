@@ -2,7 +2,7 @@
   "name": "vuetify-autoimport",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -17,6 +17,7 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "typescript": "5.5.3",
     "unplugin-fonts": "1.1.1",
+    "vite-plugin-restart": "0.4.1",
     "vue": "3.4.31",
     "vue-router": "^4.4.0",
     "vue-toastification": "^2.0.0-rc.5",
