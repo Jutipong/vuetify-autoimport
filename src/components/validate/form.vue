@@ -18,7 +18,9 @@ const schema = z.object({
         message: 'Stock is required',
     }),
     brand: z.string(),
-    discountPercentage: z.number(),
+    discountPercentage: requiredNumber.refine(val => val !== null && val !== undefined, {
+        message: 'Discount is required',
+    }),
 })
 
 const { formData, errors, validate, reset } = useValidate(schema)
@@ -53,7 +55,7 @@ const { formData, errors, validate, reset } = useValidate(schema)
                         <VTextField v-model="formData.brand" label="Brand" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="formData.discountPercentage" :error-messages="errors.discountPercentage" label="Discount" />
+                        <VCurrency v-model="formData.discountPercentage" :error-messages="errors.discountPercentage" label="Discount" />
                     </VCol>
                 </VRow>
             </VCardText>
