@@ -23,14 +23,14 @@ const schema = z.object({
     }),
 })
 
-const { data, errors, validate, reset } = useValidate(schema)
+const { dataForm, errors, validateForm, resetForm } = useValidate(schema)
 
 function onSubmit() {
-    if (!validate())
+    if (!validateForm())
         return
 
     vAlert.success('Successful', `Submit data successfully`)
-    reset()
+    resetForm()
 }
 </script>
 
@@ -46,30 +46,30 @@ function onSubmit() {
             <VCardText>
                 <VRow>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="data.title" :error-messages="errors?.title" label="Title" />
+                        <VTextField v-model="dataForm.title" :error-messages="errors?.title" label="Title" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.price" :error-messages="errors?.price" label="Price" />
+                        <VCurrency v-model="dataForm.price" :error-messages="errors?.price" label="Price" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.rating" :error-messages="errors?.rating" label="rating" />
+                        <VCurrency v-model="dataForm.rating" :error-messages="errors?.rating" label="rating" />
                     </VCol>
                 </VRow>
                 <VRow>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.stock" :error-messages="errors?.stock" label="stock" />
+                        <VCurrency v-model="dataForm.stock" :error-messages="errors?.stock" label="stock" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="data.brand" label="Brand" />
+                        <VTextField v-model="dataForm.brand" label="Brand" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.discountPercentage" :error-messages="errors?.discountPercentage" label="Discount" />
+                        <VCurrency v-model="dataForm.discountPercentage" :error-messages="errors?.discountPercentage" label="Discount" />
                     </VCol>
                 </VRow>
             </VCardText>
 
             <VCardActions class="justify-end">
-                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="reset()" />
+                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="resetForm()" />
                 <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" type="submit" />
             </VCardActions>
         </VCard>

@@ -8,14 +8,14 @@ function useValidate<T extends z.ZodType<any, any>>(schema: T) {
 type FormData = z.infer<typeof schema>
 type ErrorField = Partial<keyof FormData>
 
-const data = ref({} as FormData)
+const dataForm = ref({} as FormData)
 const errors = ref<Record<ErrorField, string>>()
 const hasValidated = ref(false)
 
-function validate(): boolean {
+function validateForm(): boolean {
     hasValidated.value = true
 
-    const result = schema.safeParse(data.value)
+    const result = schema.safeParse(dataForm.value)
 
     if (result.success) {
         errors.value = {} as Record<ErrorField, string>
@@ -33,20 +33,20 @@ function validate(): boolean {
     return false
 }
 
-function reset() {
+function resetForm() {
     errors.value = {} as Record<ErrorField, string>
-    data.value = {} as z.infer<T>
+    dataForm.value = {} as z.infer<T>
     hasValidated.value = false
 }
 
-watch(data, () => {
+watch(dataForm, () => {
     if (!hasValidated.value)
         return
 
-    validate()
+    validateForm()
 }, { deep: true })
 
-return { data, errors, validate, reset }
+return { dataForm, errors, validateForm, resetForm }
 }
 
 export { useValidate }
