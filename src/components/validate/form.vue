@@ -1,71 +1,39 @@
 <script lang="ts" setup>
-import { z } from 'zod'
+const requiredString = z.union([z.string(), z.null(), z.undefined()])
+const requiredNumber = z.union([z.number(), z.null(), z.undefined()])
 
 const schema = z.object({
-    title: z.union([z.string(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Title is required',
-        }),
-    price: z.union([z.number(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Price is required',
-        }),
-    rating: z.union([z.number(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Rating is required',
-        }),
-    stock: z.union([z.number(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Stock is required',
-        }),
-    brand: z.string(),
-    discountPercentage: z.number(),
+    title: requiredString.refine(val => !!val, {
+        message: 'Title is required',
+    }),
+    price: requiredNumber.refine(val => !!val, {
+        message: 'Price is required',
+    }),
+    rating: requiredNumber.refine(val => !!val, {
+        message: 'Rating is required',
+    }),
+    stock: requiredNumber.refine(val => !!val, {
+        message: 'Stock is required',
+    }),
+    brand: z.string().optional(),
+    discountPercentage: requiredNumber.refine(val => !!val, {
+        message: 'Discount is required',
+    }),
 })
 
-type FormData = z.infer<typeof schema>
-type ErrorField = Partial<keyof FormData>
+const { dataForm, errors, validateForm, resetForm } = useValidate(schema)
 
-const formData = ref({} as FormData)
-const errors = ref ({} as Record<ErrorField, string>)
-const hasValidated = ref(false)
-
-function validateForm(): boolean {
-    const result = schema.safeParse(formData.value)
-
-    if (result.success) {
-        errors.value = {} as Record<ErrorField, string>
-        hasValidated.value = true
-        return true
-    }
-
-    const formattedErrors = {} as Record<ErrorField, string>
-
-    result.error.errors.forEach((error) => {
-        const fieldName = error.path[0] as ErrorField
-        formattedErrors[fieldName] = error.message
-    })
-
-    errors.value = formattedErrors
-    hasValidated.value = true
-    return false
-}
-
-function resetValidate() {
-    errors.value = {} as Record<ErrorField, string>
-    formData.value = {} as FormData
-    hasValidated.value = false
-}
-
-watch(formData, () => {
-    if (!hasValidated.value)
+function onSubmit() {
+    if (!validateForm())
         return
 
-    validateForm()
-}, { deep: true })
+    vAlert.success('Successful', `Submit data successfully`)
+    resetForm()
+}
 </script>
 
 <template>
-    <VForm @submit.prevent="validateForm()">
+    <VForm @submit.prevent="onSubmit()">
         <VCard>
             <VCardTitle>
                 <VChip color="success" prepend-icon="mdi mdi-plus">
@@ -76,30 +44,30 @@ watch(formData, () => {
             <VCardText>
                 <VRow>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="formData.title" :error-messages="errors.title" label="Title" />
+                        <VTextField v-model="dataForm.title" :error-messages="errors?.title" label="Title" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="formData.price" :error-messages="errors.price" label="Price" />
+                        <VCurrency v-model="dataForm.price" :error-messages="errors?.price" label="Price" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="formData.rating" :error-messages="errors.rating" label="rating" />
+                        <VCurrency v-model="dataForm.rating" :error-messages="errors?.rating" label="rating" />
                     </VCol>
                 </VRow>
                 <VRow>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="formData.stock" :error-messages="errors.stock" label="stock" />
+                        <VCurrency v-model="dataForm.stock" :error-messages="errors?.stock" label="stock" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="formData.brand" label="Brand" />
+                        <VTextField v-model="dataForm.brand" label="Brand" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="formData.discountPercentage" :error-messages="errors.discountPercentage" label="Discount" />
+                        <VCurrency v-model="dataForm.discountPercentage" :error-messages="errors?.discountPercentage" label="Discount" />
                     </VCol>
                 </VRow>
             </VCardText>
 
-            <VCardActions>
-                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="resetValidate()" />
+            <VCardActions class="justify-end">
+                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="resetForm()" />
                 <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" type="submit" />
             </VCardActions>
         </VCard>

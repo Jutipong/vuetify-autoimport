@@ -66,22 +66,43 @@ function generateCacheKey(config: any) {
 function handleError(error: any) {
     const { resetLoading } = useAppStore()
 
+    console.error('api response error', error)
+
     const res = error?.response
-    vNotify.error(`status:${res?.status ?? 500} | message:${res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง'}`)
+    const statusCode = res?.data?.code ?? '500'
+    const message = getErrorMessage(statusCode)
+
+    vNotify.error(`status code:${statusCode} | ${message}`)
+    vAlert.error(`status code: ${statusCode}`, message)
 
     resetLoading()
 
     if (res?.status === 401)
         router.push('/login')
 
-    return Promise.resolve({
-        error: {
-            status: res?.status ?? 500,
-            message: res?.data?.message ?? 'เกิดข้อผิดพลาดบางอย่าง',
-        } as ErrorResponse,
-    })
+    const err = {
+        status: statusCode,
+        message,
+    } as ErrorResponse
 
-    // return Promise.reject(error)
+    return Promise.resolve(err)
+}
+
+const errorMessages: { [key: number]: string } = {
+    401: 'ไม่มีสิทธิ์ในการเข้าถึง (401)',
+    403: 'การเข้าถึงถูกปฏิเสธ (403)',
+    404: 'ไม่พบบริการ (404)',
+    408: 'คำขอหมดเวลา (408)',
+    500: 'ข้อผิดพลาดของเซิร์ฟเวอร์ (500)',
+    501: 'ไม่ได้ใช้บริการ (501)',
+    502: 'ข้อผิดพลาดของเครือข่าย (502)',
+    503: 'ไม่สามารถให้บริการได้ (503)',
+    504: 'เครือข่ายหมดเวลา (504)',
+    505: 'ไม่รองรับเวอร์ชัน HTTP (505)',
+}
+
+function getErrorMessage(statusCode: number) {
+    return errorMessages[statusCode] || 'เกิดข้อผิดพลาด'
 }
 
 axiosInstance.interceptors.request.use((config: any) => {

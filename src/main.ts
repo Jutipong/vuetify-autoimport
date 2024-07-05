@@ -16,7 +16,7 @@ import 'virtual:uno.css'
 const app = createApp(App)
 app.use(vuetify)
 app.use(router)
-app.use(pinia)
+app.use(piniaConfig)
 app.use(Toast, {
     transition: 'Vue-Toastification__bounce',
     timeout: 5000,
