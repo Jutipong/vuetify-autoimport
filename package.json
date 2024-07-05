@@ -19,7 +19,8 @@
     "vue": "3.4.31",
     "vue-router": "^4.4.0",
     "vue-toastification": "^2.0.0-rc.5",
-    "vuetify": "3.6.11"
+    "vuetify": "3.6.11",
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.21.2",

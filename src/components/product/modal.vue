@@ -96,7 +96,8 @@ defineExpose({
                                     v-model="state.product.discountPercentage"
                                     density="compact"
                                     color="primary"
-                                    variant="outlined" label="Discount"
+                                    variant="outlined"
+                                    label="Discount"
                                 />
                             </VCol>
                         </VRow>
