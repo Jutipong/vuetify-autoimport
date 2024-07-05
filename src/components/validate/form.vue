@@ -1,23 +1,22 @@
 <script lang="ts" setup>
 import { z } from 'zod'
 
+const requiredString = z.union([z.string(), z.null(), z.undefined()])
+const requiredNumber = z.union([z.number(), z.null(), z.undefined()])
+
 const schema = z.object({
-    title: z.union([z.string(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Title is required',
-        }),
-    price: z.union([z.number(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Price is required',
-        }),
-    rating: z.union([z.number(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Rating is required',
-        }),
-    stock: z.union([z.number(), z.null(), z.undefined()])
-        .refine(val => val !== null && val !== undefined, {
-            message: 'Stock is required',
-        }),
+    title: requiredString.refine(val => val !== null && val !== undefined, {
+        message: 'Title is required',
+    }),
+    price: requiredNumber.refine(val => val !== null && val !== undefined, {
+        message: 'Price is required',
+    }),
+    rating: requiredNumber.refine(val => val !== null && val !== undefined, {
+        message: 'Rating is required',
+    }),
+    stock: requiredNumber.refine(val => val !== null && val !== undefined, {
+        message: 'Stock is required',
+    }),
     brand: z.string(),
     discountPercentage: z.number(),
 })
