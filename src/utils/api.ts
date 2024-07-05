@@ -89,7 +89,6 @@ function generateCacheKey(config: any) {
 }
 
 function handleError(resError: any) {
-    console.log('resError', resError)
     const { resetLoading } = useAppStore()
 
     console.error('api response error', resError)
