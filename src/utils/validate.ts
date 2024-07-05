@@ -6,7 +6,7 @@ function useValidation<T extends z.ZodType<any, any>>(schema: T) {
     const errors = ref({} as Record<string, string>)
     const hasValidated = ref(false)
 
-    function validateForm(): boolean {
+    function validate(): boolean {
         hasValidated.value = true
 
         const result = schema.safeParse(dataForm.value)
@@ -27,7 +27,7 @@ function useValidation<T extends z.ZodType<any, any>>(schema: T) {
         return false
     }
 
-    function resetForm() {
+    function reset() {
         errors.value = {} as Record<string, string>
         dataForm.value = {} as z.infer<T>
         hasValidated.value = false
@@ -37,10 +37,10 @@ function useValidation<T extends z.ZodType<any, any>>(schema: T) {
         if (!hasValidated.value)
             return
 
-        validateForm()
+        validate()
     }, { deep: true })
 
-    return { formData: dataForm, errors, validateForm, resetForm }
+    return { formData: dataForm, errors, validate, reset }
 }
 
 export { useValidation }

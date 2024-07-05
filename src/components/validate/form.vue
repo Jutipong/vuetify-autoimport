@@ -21,11 +21,11 @@ const schema = z.object({
     discountPercentage: z.number(),
 })
 
-const { formData, errors, validateForm, resetForm } = useValidation(schema)
+const { formData, errors, validate, reset } = useValidation(schema)
 </script>
 
 <template>
-    <VForm @submit.prevent="validateForm()">
+    <VForm @submit.prevent="validate()">
         <VCard>
             <VCardTitle>
                 <VChip color="success" prepend-icon="mdi mdi-plus">
@@ -59,7 +59,7 @@ const { formData, errors, validateForm, resetForm } = useValidation(schema)
             </VCardText>
 
             <VCardActions class="justify-end">
-                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="resetForm()" />
+                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="reset()" />
                 <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" type="submit" />
             </VCardActions>
         </VCard>

@@ -33,7 +33,7 @@ declare global {
   const onBeforeRouteUpdate: typeof import('vue-router')['onBeforeRouteUpdate']
   const onMounted: typeof import('vue')['onMounted']
   const onUnmounted: typeof import('vue')['onUnmounted']
-  const pinia: typeof import('./utils/piniaConfig')['pinia']
+  const pinia: typeof import('./utils/pinia')['pinia']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('typescript')['readonly']
   const ref: typeof import('vue')['ref']
