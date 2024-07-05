@@ -98,7 +98,7 @@ watch(formData, () => {
                 </VRow>
             </VCardText>
 
-            <VCardActions>
+            <VCardActions class="justify-end">
                 <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="resetValidate()" />
                 <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" type="submit" />
             </VCardActions>

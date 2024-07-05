@@ -3,7 +3,7 @@ import process from 'node:process'
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import UnoCSS from 'unocss/vite'
-
+import ViteFonts from 'unplugin-fonts/vite'
 import { defineConfig, loadEnv } from 'vite'
 
 // Auto imports
@@ -58,6 +58,16 @@ export default defineConfig(({ mode }) => {
                 autoImport: true,
                 styles: {
                     configFile: 'src/assets/sass/style.scss',
+                },
+            }),
+            ViteFonts({
+                google: {
+                    families: [
+                        {
+                            name: 'Inter',
+                            styles: 'wght@100;300;400;500;700;900',
+                        },
+                    ],
                 },
             }),
         ],
