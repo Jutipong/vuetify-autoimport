@@ -2738,7 +2738,7 @@ micromark@~2.11.0:
     debug "^4.0.0"
     parse-entities "^2.0.0"
 
-micromatch@^4.0.4:
+micromatch@^4.0.4, micromatch@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.7.tgz#33e8190d9fe474a9895525f5618eee136d46c2e5"
   integrity sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==
@@ -3688,6 +3688,13 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+vite-plugin-restart@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-restart/-/vite-plugin-restart-0.4.1.tgz#c015447987beec52db4317372f513b949743dcbd"
+  integrity sha512-MYhDFaa2HMoSavr/2pShj6toKVFso+zqF6FAdWGC8JSIrsNig+4giy9EzoSySgGRJvsnbwZXKdjAvn8ag8rUkA==
+  dependencies:
+    micromatch "^4.0.7"
 
 vite-plugin-vue-layouts@^0.11.0:
   version "0.11.0"

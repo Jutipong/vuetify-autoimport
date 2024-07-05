@@ -14,7 +14,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, process.cwd(), '')
+    const env = loadEnv(mode, process.cwd())
     return {
         plugins: [
             AutoImport({
