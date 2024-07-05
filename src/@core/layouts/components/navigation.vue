@@ -14,6 +14,7 @@ const open = ref(['Users'])
 const cruds = [
     // { title: 'Home', icon: 'mdi-home', to: '/' },
     { title: 'Product', icon: 'mdi-package', to: '/product' },
+    { title: 'Validate [zod.dev]', icon: 'mdi-format-underline-wavy', to: '/validate' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
 </script>

@@ -19,6 +19,7 @@ declare module 'vue' {
     ProductTable: typeof import('./components/product/table.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ValidateForm: typeof import('./components/validate/form.vue')['default']
     VConfirm: typeof import('./components/@v/confirm.vue')['default']
     VCountdown: typeof import('./components/@v/countdown.vue')['default']
     VCurrency: typeof import('./components/@v/currency.vue')['default']
