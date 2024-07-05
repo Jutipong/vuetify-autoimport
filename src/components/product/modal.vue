@@ -6,7 +6,7 @@ const appStore = useAppStore()
 
 const state = reactive({
     product: {} as ProductType,
-    active: false,
+    open: false,
 })
 
 const title = computed(() => state.product.id ? 'Update' : 'Create')
@@ -18,15 +18,12 @@ const func = {
     },
     Create: async () => {
         appStore.setLoading()
-        const { error } = await api.post<ApiResponse>(`/products/add`, state.product, { useCache: true, cacheTimeout: '30sec' })
-
-        if (error)
-            return
+        await api.post<ApiResponse>(`/products/add`, state.product)
 
         appStore.unLoading()
         vNotify.success('Product created successfully')
 
-        state.active = false
+        state.open = false
     },
     Update: async () => {
         if (!await vConfirm.save('Confirm Update', `Update brand ${state.product.brand}`))
@@ -35,22 +32,19 @@ const func = {
         const update = _.pick(state.product, ['id', 'title'])
 
         appStore.setLoading()
-        const { error } = await api.put<ApiResponse>(`/products/${state.product.id}`, { update })
-
-        if (error)
-            return
+        await api.put<ApiResponse>(`/products/${state.product.id}`, { update })
 
         appStore.unLoading()
         vNotify.success('Product updated successfully')
 
-        state.active = false
+        state.open = false
     },
     onOpen: (product: ProductType) => {
         state.product = { ...product }
-        state.active = true
+        state.open = true
     },
     onClose: () => {
-        state.active = false
+        state.open = false
         state.product = {} as ProductType
     },
 }
@@ -64,7 +58,7 @@ defineExpose({
 <template>
     <Teleport to="body">
         <VRow justify="center">
-            <VDialog v-model="state.active" persistent width="1024">
+            <VDialog v-model="state.open" persistent width="1024">
                 <VCard>
                     <VCardTitle>
                         <VChip color="success" :prepend-icon="titleIcon">

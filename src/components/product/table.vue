@@ -34,15 +34,12 @@ const func = {
 
         table.options = option || table.options
 
-        const { data, error }
-         = await api.get<ApiResponse<{ products: ProductType[], total: number }>>
+        const { products, total }
+         = await api.get<{ products: ProductType[], total: number }>
          (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
-        if (error)
-            return
-
-        table.result.datas = data.products
-        table.result.total = data.total
+        table.result.datas = products
+        table.result.total = total
 
         unLoading()
     },

@@ -1,6 +1,7 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
+import { promise } from 'zod'
 import type { ErrorResponse } from '@/types/common/api-response'
 
 const axiosInstance = axios.create({
@@ -87,16 +88,17 @@ function generateCacheKey(config: any) {
     return key
 }
 
-function handleError(error: any) {
+function handleError(resError: any) {
+    console.log('resError', resError)
     const { resetLoading } = useAppStore()
 
-    console.error('api response error', error)
+    console.error('api response error', resError)
 
-    const res = error?.response
+    const res = resError?.response
     const statusCode = res?.status ?? '500'
     const message = getErrorMessage(statusCode)
 
-    vNotify.error(`status code:${statusCode} | ${message}`)
+    // vNotify.error(`status code:${statusCode} | ${message}`)
     vAlert.error(`status code: ${statusCode}`, message)
 
     resetLoading()
@@ -104,12 +106,16 @@ function handleError(error: any) {
     if (statusCode === 401)
         router.push('/login')
 
-    const err = {
-        status: statusCode,
-        message,
-    } as ErrorResponse
+    // if (resError.config.returnError) {
+    //     const error = {
+    //         status: statusCode,
+    //         message,
+    //     } as ErrorResponse
 
-    return Promise.resolve(err)
+    //     return Promise.resolve({ error })
+    // }
+
+    return Promise.reject(resError)
 }
 
 const errorMessages: { [key: number]: string } = {
@@ -165,7 +171,11 @@ axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<a
         unLoading()
     }
 
-    return { data } as AxiosResponse<any, any>
+    // if (config.returnError) {
+    //     return { data } as AxiosResponse<any, any>
+    // }
+
+    return data
 }, handleError)
 
 type CacheTimeout = '30sec' | '1min' | '5min' | '10min' | '15min' | '30min'
@@ -173,6 +183,7 @@ type CacheTimeout = '30sec' | '1min' | '5min' | '10min' | '15min' | '30min'
     | '9hour' | '10hour' | '11hour' | '12hour' | '1day'
 
 type ApiOptions = {
+    returnError?: boolean
     isLoading?: boolean
     useCache?: boolean
     cacheTimeout?: CacheTimeout

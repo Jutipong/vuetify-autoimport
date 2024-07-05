@@ -16,18 +16,15 @@ const state = reactive({
 async function logIn() {
     state.isLoading = true
 
-    const { error, data } = await api.post<ApiResponse<UserLogin>>('/auth/login', {
+    const res = await api.post<UserLogin>('/auth/login', {
         username: state.user.username,
         password: state.user.password,
     }, { isLoading: false })
 
     state.isLoading = false
 
-    if (error)
-        return
-
-    setToken(data.token)
-    setUser(data)
+    setToken(res.token)
+    setUser(res)
 
     router.push('/')
 }
