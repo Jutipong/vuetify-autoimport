@@ -5,22 +5,25 @@ const requiredString = z.union([z.string(), z.null(), z.undefined()])
 const requiredNumber = z.union([z.number(), z.null(), z.undefined()])
 
 const schema = z.object({
-    title: requiredString.refine(val => val !== null && val !== undefined, {
+    title: requiredString.refine(val => !!val, {
         message: 'Title is required',
     }),
-    price: requiredNumber.refine(val => val !== null && val !== undefined, {
+    price: requiredNumber.refine(val => !!val, {
         message: 'Price is required',
     }),
-    rating: requiredNumber.refine(val => val !== null && val !== undefined, {
+    rating: requiredNumber.refine(val => !!val, {
         message: 'Rating is required',
     }),
-    stock: requiredNumber.refine(val => val !== null && val !== undefined, {
+    stock: requiredNumber.refine(val => !!val, {
         message: 'Stock is required',
     }),
     brand: z.string().optional(),
-    discountPercentage: requiredNumber.refine(val => val !== null && val !== undefined, {
+    discountPercentage: requiredNumber.refine(val => !!val, {
         message: 'Discount is required',
     }),
+    // discountPercentage: requiredNumber.refine(val => val !== null && val !== undefined, {
+    //     message: 'Discount is required',
+    // }),
 })
 
 const { dataForm, errors, validateForm, resetForm } = useValidate(schema)
