@@ -37,7 +37,7 @@ const func = {
 
         const { data, error }
          = await api.get<ApiResponse<{ products: ProductType[], total: number }>>
-         (`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}&skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`, { useCache: true })
+         (`/products/search?q=${state.search.brand ?? ''}&limit=${state.table.options.itemsPerPage}&skip=${state.table.options.itemsPerPage * (state.table.options.page - 1)}`)
 
         if (error)
             return vAlert.error('Error', error.message)
