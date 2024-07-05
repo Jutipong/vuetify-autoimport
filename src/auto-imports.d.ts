@@ -58,4 +58,5 @@ declare global {
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const withDefaults: typeof import('vue')['withDefaults']
+  const z: typeof import('zod')['z']
 }

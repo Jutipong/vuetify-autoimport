@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { z } from 'zod'
-
 const requiredString = z.union([z.string(), z.null(), z.undefined()])
 const requiredNumber = z.union([z.number(), z.null(), z.undefined()])
 
@@ -21,9 +19,6 @@ const schema = z.object({
     discountPercentage: requiredNumber.refine(val => !!val, {
         message: 'Discount is required',
     }),
-    // discountPercentage: requiredNumber.refine(val => val !== null && val !== undefined, {
-    //     message: 'Discount is required',
-    // }),
 })
 
 const { dataForm, errors, validateForm, resetForm } = useValidate(schema)

@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => {
                         pinia: ['defineStore', 'acceptHMRUpdate'],
                         lodash: [['default', '_']],
                         vuetify: ['useTheme', 'useDisplay'],
+                        zod: ['z'],
                     },
                 ],
                 dirs: ['./src/**'],
