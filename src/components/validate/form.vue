@@ -17,17 +17,25 @@ const schema = z.object({
     stock: requiredNumber.refine(val => val !== null && val !== undefined, {
         message: 'Stock is required',
     }),
-    brand: z.string(),
+    brand: z.string().optional(),
     discountPercentage: requiredNumber.refine(val => val !== null && val !== undefined, {
         message: 'Discount is required',
     }),
 })
 
 const { data, errors, validate, reset } = useValidate(schema)
+
+function onSubmit() {
+    if (!validate())
+        return
+
+    vAlert.success('Successful', `Submit data successfully`)
+    reset()
+}
 </script>
 
 <template>
-    <VForm @submit.prevent="validate()">
+    <VForm @submit.prevent="onSubmit()">
         <VCard>
             <VCardTitle>
                 <VChip color="success" prepend-icon="mdi mdi-plus">
@@ -38,24 +46,24 @@ const { data, errors, validate, reset } = useValidate(schema)
             <VCardText>
                 <VRow>
                     <VCol cols="12" md="4">
-                        <VTextField v-model="data.title" :error-messages="errors.title" label="Title" />
+                        <VTextField v-model="data.title" :error-messages="errors?.title" label="Title" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.price" :error-messages="errors.price" label="Price" />
+                        <VCurrency v-model="data.price" :error-messages="errors?.price" label="Price" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.rating" :error-messages="errors.rating" label="rating" />
+                        <VCurrency v-model="data.rating" :error-messages="errors?.rating" label="rating" />
                     </VCol>
                 </VRow>
                 <VRow>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.stock" :error-messages="errors.stock" label="stock" />
+                        <VCurrency v-model="data.stock" :error-messages="errors?.stock" label="stock" />
                     </VCol>
                     <VCol cols="12" md="4">
                         <VTextField v-model="data.brand" label="Brand" />
                     </VCol>
                     <VCol cols="12" md="4">
-                        <VCurrency v-model="data.discountPercentage" :error-messages="errors.discountPercentage" label="Discount" />
+                        <VCurrency v-model="data.discountPercentage" :error-messages="errors?.discountPercentage" label="Discount" />
                     </VCol>
                 </VRow>
             </VCardText>
