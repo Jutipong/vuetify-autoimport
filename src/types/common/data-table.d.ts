@@ -1,33 +1,28 @@
-export {}
-declare global {
+interface Option {
+    page: number
+    itemsPerPage: number
+    sortBy: SortBy[]
+}
 
-    export interface Option {
-        page: number
-        itemsPerPage: number
-        sortBy: SortBy[]
-    }
+interface SortBy {
+    key: string
+    order: string
+}
 
-    export interface SortBy {
-        key: string
-        order: string
-    }
+interface Header {
+    title: string
+    align?: 'start' | 'center' | 'end'
+    sortable?: false | true
+    key: string
+}
 
-    export interface Header {
-        title: string
-        align?: 'start' | 'center' | 'end'
-        sortable?: false | true
-        key: string
-    }
+interface Result<TDatas> {
+    datas: TDatas[]
+    total: number
+}
 
-    export interface Result<TDatas> {
-        datas: TDatas[]
-        total: number
-    }
-
-    export interface Table<TDatas> {
-        headers: readonly Header[]
-        options: Option
-        result: Result<TDatas>
-    }
-
+interface Table<TDatas> {
+    headers: readonly Header[]
+    options: Option
+    result: Result<TDatas>
 }

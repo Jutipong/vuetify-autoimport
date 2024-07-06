@@ -1,19 +1,14 @@
-export {}
-declare global {
-
-    export interface ProductType {
-        id: number
-        title: string
-        description: string
-        price: number
-        discountPercentage: number
-        rating: number
-        stock: number
-        brand: string
-        category: string
-        status?: string
-        start?: Date
-        end?: Date
-    }
-
+interface ProductType {
+    id: number
+    title: string
+    description: string
+    price: number
+    discountPercentage: number
+    rating: number
+    stock: number
+    brand: string
+    category: string
+    status?: string
+    start?: Date
+    end?: Date
 }
