@@ -17,7 +17,6 @@
     "pinia-plugin-persistedstate": "^3.2.1",
     "typescript": "5.5.3",
     "unplugin-fonts": "1.1.1",
-    "vite-plugin-restart": "0.4.1",
     "vue": "3.4.31",
     "vue-router": "^4.4.0",
     "vue-toastification": "^2.0.0-rc.5",
@@ -25,7 +24,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.21.2",
+    "@antfu/eslint-config": "2.21.3",
     "@babel/types": "^7.24.7",
     "@types/node": "20.14.10",
     "@vitejs/plugin-vue": "^5.0.5",
