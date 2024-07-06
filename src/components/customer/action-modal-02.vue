@@ -8,9 +8,6 @@ const state = reactive({
     modalIsOpen: false,
 })
 
-// const modalIsOpen = ref<boolean>(false)
-// const customer = reactive<CustomerType>({} as CustomerType)
-
 onMounted(() => {
     watch(() => props.modalOpen, (newVal) => {
         state.modalIsOpen = newVal
