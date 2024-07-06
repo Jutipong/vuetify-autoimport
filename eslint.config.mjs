@@ -19,6 +19,7 @@ export default antfu(
             'vue/no-mutating-props': ['error', {
                 shallowOnly: true,
             }],
+            'vue/prop-name-casing': ['error', 'camelCase', 'pascalCase'],
         },
         jsonc: false,
         yaml: false,
