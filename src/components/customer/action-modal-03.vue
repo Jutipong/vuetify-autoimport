@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { CustomerType } from '@/types/customer'
-
 const props = defineProps<{ modalOpen: boolean }>()
 const emit = defineEmits<{ onclose: [value: boolean] }>()
 

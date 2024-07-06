@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { ProductType } from '@/types/product'
-
 const appStore = useAppStore()
 
 const state = reactive({

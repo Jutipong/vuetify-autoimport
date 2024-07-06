@@ -1,12 +1,15 @@
-interface UserLogin {
-    id: number
-    username: string
-    email: string
-    firstName: string
-    lastName: string
-    gender: string
-    image: string
-    token: string
-}
+export {}
+declare global {
 
-export type { UserLogin }
+    export interface UserLogin {
+        id: number
+        username: string
+        email: string
+        firstName: string
+        lastName: string
+        gender: string
+        image: string
+        token: string
+    }
+
+}

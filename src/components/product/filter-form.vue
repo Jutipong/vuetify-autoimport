@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type ProductTableComponent from './table.vue'
-import type { ProductType } from '@/types/product'
 
 const tableRef = ref<InstanceType<typeof ProductTableComponent> | null>(null)
 

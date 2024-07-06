@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { UserLogin } from '@/types/auth'
-
 const { setToken, setUser } = useAuthStore()
 
 const state = reactive({

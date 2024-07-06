@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { CustomerType } from '@/types/customer'
-
 const customer = reactive<CustomerType>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
 
 // =============== Modal 01 ===============
 const modalOpen_01 = ref(false)
 function openModal_01() {
+    debugger;
     modalOpen_01.value = true
 }
 function updateCustomer(value: CustomerType) {

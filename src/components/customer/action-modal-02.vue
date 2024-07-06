@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { CustomerType } from '@/types/customer'
-
 // props two-way binding
 const props = defineProps<{ modalOpen: boolean, customer: CustomerType }>()
 
