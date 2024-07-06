@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type ProductModalComponent from './modal.vue'
-import type { Header, Option, Table } from '@/types/common/table'
+import type { Header, Option, Table } from '@/types/common/data-table'
 import type { ProductType } from '@/types/product'
 
 const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
