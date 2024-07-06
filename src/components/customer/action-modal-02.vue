@@ -30,10 +30,10 @@ function closeModal() {
                     <VCardText mt2 mb2>
                         <VRow>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="customer.Name" label="Name" />
+                                <VTextField v-model="props.customer.Name" label="Name" />
                             </VCol>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="customer.Last" label="Last" />
+                                <VTextField v-model="props.customer.Last" label="Last" />
                             </VCol>
                             <VCol cols="12" md="4" />
                         </VRow>
