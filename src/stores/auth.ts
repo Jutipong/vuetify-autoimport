@@ -1,7 +1,7 @@
 import type { UserLogin } from '@/types/auth'
 
 export const useAuthStore = defineStore('auth', () => {
-    const token = ref< string | null>(null)
+    const token = ref<string | null>(null)
     const user = ref<UserLogin | null>(null)
 
     function clearAuth() {
