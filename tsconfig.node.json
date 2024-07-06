@@ -5,5 +5,8 @@
         "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true
     },
-    "include": ["vite.config.ts", "typed-router.d.ts"]
+    "include": [
+        "/src/constants/vite.config.ts",
+        "src/typed-router.d.ts"
+    ]
 }
