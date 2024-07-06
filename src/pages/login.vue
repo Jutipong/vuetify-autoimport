@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { UserLogin } from '@/types/auth'
-import type { ApiResponse } from '@/types/common/api-response'
 
 const { setToken, setUser } = useAuthStore()
 

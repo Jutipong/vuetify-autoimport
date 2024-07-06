@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ApiResponse } from '@/types/common/api-response'
 import type { ProductType } from '@/types/product'
 
 const appStore = useAppStore()
@@ -18,7 +17,7 @@ const func = {
     },
     Create: async () => {
         appStore.setLoading()
-        await api.post<ApiResponse>(`/products/add`, state.product)
+        await api.post(`/products/add`, state.product)
 
         appStore.unLoading()
         vNotify.success('Product created successfully')
@@ -32,7 +31,7 @@ const func = {
         const update = _.pick(state.product, ['id', 'title'])
 
         appStore.setLoading()
-        await api.put<ApiResponse>(`/products/${state.product.id}`, { update })
+        await api.put(`/products/${state.product.id}`, { update })
 
         appStore.unLoading()
         vNotify.success('Product updated successfully')

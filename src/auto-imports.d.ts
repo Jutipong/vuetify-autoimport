@@ -34,7 +34,7 @@ declare global {
   const onMounted: typeof import('vue')['onMounted']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const optionDataTable: typeof import('./constants/tableOption')['optionDataTable']
-  const piniaConfig: typeof import('./utils/piniaConfig')['piniaConfig']
+  const piniaConfig: typeof import('./utils/pinia-config')['piniaConfig']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('typescript')['readonly']
   const ref: typeof import('vue')['ref']

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type ProductModalComponent from './modal.vue'
-import type { ApiResponse } from '@/types/common/api-response'
 import type { Header, Option, Table } from '@/types/common/table'
 import type { ProductType } from '@/types/product'
 
