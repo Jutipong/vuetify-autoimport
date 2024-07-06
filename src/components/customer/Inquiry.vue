@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const customer = reactive<CustomerType>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
+const customer = ref<CustomerType>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
 
 // =============== Modal 01 ===============
 const modalOpen_01 = ref(false)
@@ -7,7 +7,7 @@ function openModal_01() {
     modalOpen_01.value = true
 }
 function updateCustomer(value: CustomerType) {
-    Object.assign(customer, value)
+    Object.assign(customer.value, value)
 }
 
 // =============== Modal 02 ===============
@@ -17,7 +17,7 @@ function openModal_02() {
 }
 function closeModal02(value1: boolean, value2: CustomerType) {
     modalOpen_02.value = value1
-    Object.assign(customer, value2)
+    Object.assign(customer.value, value2)
 }
 
 // =============== Modal 03 ===============
