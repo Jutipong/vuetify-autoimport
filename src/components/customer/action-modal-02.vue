@@ -1,18 +1,25 @@
 <script setup lang="ts">
 // props two-way binding
-const props = defineProps<{ modalOpen: boolean, customer: CustomerType }>()
+const props = defineProps<{ customer: CustomerType, modalOpen: boolean }>()
 
-const emit = defineEmits<{ onclose: [value: boolean] }>()
+const emit = defineEmits<{ onclose: [value: boolean, customer: CustomerType] }>()
 
 const modalIsOpen = ref<boolean>(false)
+const customer = ref({} as CustomerType)
 
 onMounted(() => {
-    watch(() => props.modalOpen, newVal => modalIsOpen.value = newVal)
+    watch(() => props.modalOpen, (newVal) => {
+        modalIsOpen.value = newVal
+    })
+    watch(() => props.customer, (newValue) => {
+        customer.value = newValue
+    })
 })
 
 function closeModal() {
-    emit('onclose', false)
+    emit('onclose', false, customer.value)
     modalIsOpen.value = false
+    customer.value = {} as CustomerType
 }
 </script>
 
@@ -30,10 +37,10 @@ function closeModal() {
                     <VCardText mt2 mb2>
                         <VRow>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="props.customer.Name" label="Name" />
+                                <VTextField v-model="customer.Name" label="Name" />
                             </VCol>
                             <VCol cols="12" md="4">
-                                <VTextField v-model="props.customer.Last" label="Last" />
+                                <VTextField v-model="customer.Last" label="Last" />
                             </VCol>
                             <VCol cols="12" md="4" />
                         </VRow>

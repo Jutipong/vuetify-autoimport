@@ -15,8 +15,9 @@ const modalOpen_02 = ref(false)
 function openModal_02() {
     modalOpen_02.value = true
 }
-function closeModal02(value: boolean) {
-    modalOpen_02.value = value
+function closeModal02(value1: boolean, value2: CustomerType) {
+    modalOpen_02.value = value1
+    Object.assign(customer, value2)
 }
 
 // =============== Modal 03 ===============
@@ -47,7 +48,7 @@ const dateTh = () => _dateTh()
 
         <!-- two way binding -->
         <!-- recommend: use 'defineProps' and 'defineEmits' for props and emit -->
-        <CustomerActionModal02 :customer="customer" :modal-open="modalOpen_02" @onclose="closeModal02" />
+        <CustomerActionModal02 :customer="{ ...customer }" :modal-open="modalOpen_02" @onclose="closeModal02" />
 
         <!-- two way binding by 'defineModel' -->
         <CustomerActionModal03 v-model="customer" :modal-open="modalOpen_03" @onclose="closeModal03" />
