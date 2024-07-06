@@ -1,11 +1,11 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 // ถ้าใช้ props แบบนี้ ตอนเรียกใช้งานจะต้องใช้ v-bind ในการส่งค่า
 // one-way binding ถ้าต้องการส่งค่ากลับให้ใช้ emit
 
 interface PropsType {
-    id?: number | null | undefined
-    Name?: string | undefined;
-    Last?: string | undefined;
+    id?: number | null
+    Name?: string
+    Last?: string
     Address: string
     Details: [
         {
@@ -15,7 +15,7 @@ interface PropsType {
     ]
 }
 
-const props = defineProps<PropsType>({} as PropsType)
+const props = defineProps<PropsType>()
 const emit = defineEmits<{ update: [value: CustomerType] }>()
 const modalOpen = defineModel<boolean>()
 
@@ -24,7 +24,6 @@ const customer = ref<CustomerType>({} as CustomerType)
 onMounted(() => {
 // ใน props ค่าของ defindmodel จะถูกเก็บไว้ใน props ด้วย ดังนั้น ไม่ว่าจะค่า props หรือ defindmodel ก็สามารถใช้ watch ได้
     watch(modalOpen, (newVal) => {
-        debugger;
         if (!newVal) {
             emit('update', customer.value)
             customer.value = {} as CustomerType
@@ -36,7 +35,6 @@ onMounted(() => {
 })
 
 function closeModal() {
-    debugger;
     modalOpen.value = false
 }
 </script>
@@ -71,4 +69,4 @@ function closeModal() {
             </VDialog>
         </VRow>
     </Teleport>
-</template> -->
+</template>

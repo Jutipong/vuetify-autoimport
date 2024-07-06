@@ -13,5 +13,4 @@ declare global {
             },
         ]
     }
-
 }
