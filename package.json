@@ -16,7 +16,7 @@
     "localstorage-slim": "^2.7.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "typescript": "5.5.3",
+    "typescript": "5.4.5",
     "unplugin-fonts": "1.1.1",
     "vue": "3.4.31",
     "vue-router": "^4.4.0",
