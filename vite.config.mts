@@ -5,13 +5,12 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import UnoCSS from 'unocss/vite'
 import ViteFonts from 'unplugin-fonts/vite'
 import { defineConfig, loadEnv } from 'vite'
-
-// Auto imports
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import VueRouter from 'unplugin-vue-router/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import { typescriptConfig, vueConfig } from './src/constants/vite-config'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
@@ -21,8 +20,8 @@ export default defineConfig(({ mode }) => {
                 imports: [
                     VueRouterAutoImports,
                     {
-                        typescript: ['readonly', 'Record', 'Partial', 'Pick', 'Omit', 'Exclude', 'Extract', 'NonNullable', 'ReturnType', 'InstanceType', 'Required', 'ThisType'],
-                        vue: ['ref', 'reactive', 'watchEffect', 'computed', 'watch', 'defineProps', 'defineEmits', 'defineExpose', 'withDefaults', 'toRefs', 'toRef', 'onMounted', 'onUnmounted'],
+                        typescript: typescriptConfig,
+                        vue: vueConfig,
                         pinia: ['defineStore', 'acceptHMRUpdate'],
                         lodash: [['default', '_']],
                         vuetify: ['useTheme', 'useDisplay'],
