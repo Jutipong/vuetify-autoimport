@@ -2,7 +2,8 @@
   "name": "vuetify-autoimport",
   "version": "0.0.0",
   "scripts": {
-    "dev": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && vite",
+    "x": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && vite",
+    "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
