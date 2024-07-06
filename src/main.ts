@@ -13,6 +13,8 @@ import '@/assets/css/main.css'
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
 
+document.title = import.meta.env.VITE_APP_TITLE
+
 const app = createApp(App)
 app.use(vuetify)
 app.use(router)
