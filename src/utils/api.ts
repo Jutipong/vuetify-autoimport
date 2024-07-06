@@ -1,11 +1,19 @@
-import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
+import type { TimeType } from './time-config'
+
+const { token } = useAuthStore()
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
-    timeout: 5000,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    timeout: _Time('1min'),
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+    },
 })
 
 setupCache(axiosInstance, {
@@ -23,52 +31,7 @@ function cachePredicate(config: any) {
 
 function updateCache(config: any) {
     if (config.config.cacheTimeout) {
-        config.config.cache.ttl = getCacheTimeout(config.config.cacheTimeout)
-    }
-}
-
-function getCacheTimeout(timeout: CacheTimeout) {
-    switch (timeout) {
-        case '30sec':
-            return 30 * 1000
-        case '1min':
-            return 60 * 1000
-        case '5min':
-            return 5 * 60 * 1000
-        case '10min':
-            return 10 * 60 * 1000
-        case '15min':
-            return 15 * 60 * 1000
-        case '30min':
-            return 30 * 60 * 1000
-        case '1hour':
-            return 60 * 60 * 1000
-        case '2hour':
-            return 2 * 60 * 60 * 1000
-        case '3hour':
-            return 3 * 60 * 60 * 1000
-        case '4hour':
-            return 4 * 60 * 60 * 1000
-        case '5hour':
-            return 5 * 60 * 60 * 1000
-        case '6hour':
-            return 6 * 60 * 60 * 1000
-        case '7hour':
-            return 7 * 60 * 60 * 1000
-        case '8hour':
-            return 8 * 60 * 60 * 1000
-        case '9hour':
-            return 9 * 60 * 60 * 1000
-        case '10hour':
-            return 10 * 60 * 60 * 1000
-        case '11hour':
-            return 11 * 60 * 60 * 1000
-        case '12hour':
-            return 12 * 60 * 60 * 1000
-        case '1day':
-            return 24 * 60 * 60 * 1000
-        default:
-            return 0
+        config.config.cache.ttl = _Time(config.config.cacheTimeout)
     }
 }
 
@@ -94,7 +57,7 @@ function handleError(resError: any) {
 
     const res = resError?.response
     const statusCode = res?.status ?? '500'
-    const message = getErrorMessage(statusCode)
+    const message = httpMessage[statusCode] || 'เกิดข้อผิดพลาด'
 
     // vNotify.error(`status code:${statusCode} | ${message}`)
     vAlert.error(`status code: ${statusCode}`, message)
@@ -116,47 +79,12 @@ function handleError(resError: any) {
     return Promise.reject(resError)
 }
 
-const errorMessages: { [key: number]: string } = {
-    401: 'ไม่มีสิทธิ์ในการเข้าถึง (401)',
-    403: 'การเข้าถึงถูกปฏิเสธ (403)',
-    404: 'ไม่พบบริการ (404)',
-    408: 'คำขอหมดเวลา (408)',
-    500: 'ข้อผิดพลาดของเซิร์ฟเวอร์ (500)',
-    501: 'ไม่ได้ใช้บริการ (501)',
-    502: 'ข้อผิดพลาดของเครือข่าย (502)',
-    503: 'ไม่สามารถให้บริการได้ (503)',
-    504: 'เครือข่ายหมดเวลา (504)',
-    505: 'ไม่รองรับเวอร์ชัน HTTP (505)',
-}
-
-function getErrorMessage(statusCode: number) {
-    return errorMessages[statusCode] || 'เกิดข้อผิดพลาด'
-}
-
 axiosInstance.interceptors.request.use((config: any) => {
-    const { token } = useAuthStore()
-
     config.isLoading = config?.isLoading ?? true
-
     if (config?.isLoading) {
         const { setLoading } = useAppStore()
         setLoading()
     }
-
-    config.headers['Access-Control-Allow-Origin'] = '*'
-    config.headers['Content-Type'] = 'application/json'
-    config.headers.Authorization = `Bearer ${token}`
-
-    const { useCache } = config
-    if (useCache) {
-        config.cache = true
-    }
-    else {
-        config.cache = false
-    }
-
-    // Remove the useCache property to avoid axios warnings
-    delete config.useCache
 
     return config
 }, handleError)
@@ -176,28 +104,33 @@ axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<a
     return data
 }, handleError)
 
-type CacheTimeout = '30sec' | '1min' | '5min' | '10min' | '15min' | '30min'
-    | '1hour' | '2hour' | '3hour' | '4hour' | '5hour' | '6hour' | '7hour' | '8hour'
-    | '9hour' | '10hour' | '11hour' | '12hour' | '1day'
-
 type ApiOptions = {
-    returnError?: boolean
+    baseURL?: string
     isLoading?: boolean
-    useCache?: boolean
-    cacheTimeout?: CacheTimeout
+    cache?: boolean
+    cacheTimeout?: TimeType
 } & AxiosRequestConfig
+
+function getDefaultApiConfig(config?: ApiOptions) {
+    if (!config)
+        return { cache: false } as ApiOptions
+
+    config.cache = config.cache ?? false
+
+    return config
+}
 
 export default {
     get: async <TResponse>(url: string, config?: ApiOptions) => {
-        return await axiosInstance.get<any, TResponse>(url, config)
+        return await axiosInstance.get<any, TResponse>(url, getDefaultApiConfig(config))
     },
     post: async <TResponse>(url: string, data?: any, config?: ApiOptions) => {
-        return await axiosInstance.post<any, TResponse>(url, data, config)
+        return await axiosInstance.post<any, TResponse>(url, data, getDefaultApiConfig(config))
     },
     put: async <TResponse>(url: string, data?: any, config?: ApiOptions) => {
-        return await axiosInstance.put<any, TResponse>(url, data, config)
+        return await axiosInstance.put<any, TResponse>(url, data, getDefaultApiConfig(config))
     },
     delete: async <TResponse>(url: string, config?: ApiOptions) => {
-        return await axiosInstance.delete<any, TResponse>(url, config)
+        return await axiosInstance.delete<any, TResponse>(url, getDefaultApiConfig(config))
     },
 }
