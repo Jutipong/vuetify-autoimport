@@ -1,6 +1,6 @@
 export {}
 declare global {
-    
+
     export interface Option {
         page: number
         itemsPerPage: number
@@ -29,5 +29,5 @@ declare global {
         options: Option
         result: Result<TDatas>
     }
-    
+
 }

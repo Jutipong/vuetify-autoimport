@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 // ถ้าใช้ props แบบนี้ ตอนเรียกใช้งานจะต้องใช้ v-bind ในการส่งค่า
 // one-way binding ถ้าต้องการส่งค่ากลับให้ใช้ emit
 
@@ -15,7 +15,7 @@ interface PropsType {
     ]
 }
 
-const props = defineProps<PropsType>()
+const props = defineProps<PropsType>({} as PropsType)
 const emit = defineEmits<{ update: [value: CustomerType] }>()
 const modalOpen = defineModel<boolean>()
 
@@ -71,4 +71,4 @@ function closeModal() {
             </VDialog>
         </VRow>
     </Teleport>
-</template>
+</template> -->
