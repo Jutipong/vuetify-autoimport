@@ -46,10 +46,3 @@ pnpm build
 
 # bun
 bun run build
-```
-
-### todo
-
-```
-# add vConfirm mini
-```
