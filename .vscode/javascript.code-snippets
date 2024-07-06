@@ -57,7 +57,7 @@
 	},
 	"import": {
 		"scope": "javascript,typescript",
-		"prefix": "vimport",
+		"prefix": "v-import",
 		"description": "Import a module",
 		"body": [
 			"import { $2 } from '$1';"
@@ -65,7 +65,7 @@
 	},
 	"vue-reactive": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "vreactive",
+		"prefix": "v-reactive",
 		"description": "reactive",
 		"body": [
 			"const $1 = reactive($2)"
@@ -73,7 +73,7 @@
 	},
 	"vue-ref": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "vref",
+		"prefix": "v-ref",
 		"description": "ref",
 		"body": [
 			"const $1 = ref($2)"
@@ -81,7 +81,7 @@
 	},
 	"vue-watch": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "vwatch",
+		"prefix": "v-watch",
 		"description": "watch",
 		"body": [
 			"watch($1, (newValue, oldValue) => {",
@@ -91,7 +91,7 @@
 	},
 	"vue-computed": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "vcomputed",
+		"prefix": "v-computed",
 		"description": "computed",
 		"body": [
 			"const $1 = computed(() => { $2 })"
@@ -99,7 +99,7 @@
 	},
 	"vue-watch-effect": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "watchEffect",
+		"prefix": "v-watchEffect",
 		"description": "watchEffect",
 		"body": [
 			"watchEffect(() => {",

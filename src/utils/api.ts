@@ -1,8 +1,6 @@
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import axios from 'axios'
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-import { promise } from 'zod'
-import type { ErrorResponse } from '@/types/common/api-response'
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -19,7 +17,8 @@ setupCache(axiosInstance, {
 })
 
 function cachePredicate(config: any) {
-    return (config.status !== 400 && config.status !== 401 && config.status !== 403 && config.status !== 404 && config.status !== 500)
+    const excludedStatusCodes = [400, 401, 403, 404, 500]
+    return !excludedStatusCodes.includes(config.status)
 }
 
 function updateCache(config: any) {
