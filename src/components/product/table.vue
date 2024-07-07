@@ -71,34 +71,10 @@ defineExpose({
                 </VCol>
             </VRow>
         </VCardTitle>
-        {{ table.options }}
+
         <VDivider />
 
         <VCardText>
-            <VDataTableServer
-                :headers="table.headers"
-                :items-per-page="table.options.itemsPerPage"
-                :items-length="table.result.total"
-                :items="table.result.datas"
-                :loading="isLoading"
-                @update:options="(option) => onSubmit(option)"
-            >
-                <template #item.actions="{ item }">
-                    <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
-                        mdi-pencil
-                    </VIcon>
-                    <VIcon color="error" @click="func.onDelete(item)">
-                        mdi-delete
-                    </VIcon>
-                </template>
-
-                <template #loading>
-                    <v-skeleton-loader type="table-row@10" />
-                </template>
-            </VDataTableServer>
-
-            <VDivider />
-
             <VDataTableServer
                 :headers="table.headers"
                 :items-per-page="table.options.itemsPerPage"
