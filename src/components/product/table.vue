@@ -81,15 +81,14 @@ defineExpose({
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
-                :items-per-page="table.options.itemsPerPage"
-                :items-length="table.result.total"
+                :page="table.options.page"
+                :per-page="table.options.itemsPerPage"
                 :items="table.result.datas"
-                :items-page="table.options.page"
+                :items-length="table.result.total"
                 :loading="isLoading"
                 @update:page="onPageChange"
                 @update:sort-by="onSortByChange"
             >
-                <!-- @update:options="(option) => onSubmit(option)" -->
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
                         mdi-pencil
