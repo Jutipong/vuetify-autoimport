@@ -1,4 +1,4 @@
-interface ProductType {
+interface Product {
     id: number
     title: string
     description: string

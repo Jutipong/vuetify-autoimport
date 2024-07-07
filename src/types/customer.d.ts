@@ -1,4 +1,4 @@
-interface CustomerType {
+interface Customer {
     id?: number | null
     Name?: string
     Last?: string

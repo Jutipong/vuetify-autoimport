@@ -3,7 +3,7 @@ const props = defineProps<{ modalOpen: boolean }>()
 const emit = defineEmits<{ onclose: [value: boolean] }>()
 
 // props two-way binding by 'defineModel'
-const customer = defineModel<CustomerType>({ required: true })
+const customer = defineModel<Customer>({ required: true })
 
 const modalIsOpen = ref<boolean>(false)
 

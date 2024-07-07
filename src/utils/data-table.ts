@@ -1,4 +1,4 @@
-function useDataTable<TDataTableResultType>(headers: DataTableHeaderType[], onSubmit: Function) {
+function useDataTable<TDataTableResultType>(headers: DataTableHeader[], onSubmit: Function) {
     const table = reactive({
         headers,
         options: {

@@ -16,17 +16,17 @@ interface PropsType {
 }
 
 const props = defineProps<PropsType>()
-const emit = defineEmits<{ update: [value: CustomerType] }>()
+const emit = defineEmits<{ update: [value: Customer] }>()
 const modalOpen = defineModel<boolean>()
 
-const customer = ref<CustomerType>({} as CustomerType)
+const customer = ref<Customer>({} as Customer)
 
 onMounted(() => {
 // ใน props ค่าของ defindmodel จะถูกเก็บไว้ใน props ด้วย ดังนั้น ไม่ว่าจะค่า props หรือ defindmodel ก็สามารถใช้ watch ได้
     watch(modalOpen, (newVal) => {
         if (!newVal) {
             emit('update', customer.value)
-            customer.value = {} as CustomerType
+            customer.value = {} as Customer
             return
         }
 

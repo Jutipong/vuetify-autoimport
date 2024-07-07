@@ -2,7 +2,7 @@
 const appStore = useAppStore()
 
 const state = reactive({
-    product: {} as ProductType,
+    product: {} as Product,
     open: false,
 })
 
@@ -36,13 +36,13 @@ const func = {
 
         state.open = false
     },
-    onOpen: (product: ProductType) => {
+    onOpen: (product: Product) => {
         state.product = { ...product }
         state.open = true
     },
     onClose: () => {
         state.open = false
-        state.product = {} as ProductType
+        state.product = {} as Product
     },
 }
 

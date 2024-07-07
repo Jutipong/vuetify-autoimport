@@ -10,12 +10,12 @@ const state = reactive({
             { id: false, text: 'InActive' },
         ],
     },
-    search: {} as ProductType,
+    search: {} as Product,
 })
 
 const func = {
     onClear: async () => {
-        state.search = {} as ProductType
+        state.search = {} as Product
     },
     onSearch: async () => {
         await tableRef.value?.onSearch(state.search)

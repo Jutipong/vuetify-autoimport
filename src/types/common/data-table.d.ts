@@ -1,28 +1,28 @@
-interface DataTableOptionType {
+interface DataTableOption {
     page: number
     itemsPerPage: number
-    sortBy: DataTableSortByType[]
+    sortBy: DataTableSortBy[]
 }
 
-interface DataTableSortByType {
+interface DataTableSortBy {
     key: string
     order: string
 }
 
-interface DataTableHeaderType {
+interface DataTableHeader {
     title: string
     align?: 'start' | 'center' | 'end'
     sortable?: false | true
     key: string
 }
 
-interface DataTableResultType<TDatas> {
+interface DataTableResult<TDatas> {
     datas: TDatas[]
     total: number
 }
 
 interface DataTableType<TDatas> {
-    headers: readonly DataTableHeaderType[]
-    options: DataTableOptionType
-    result: DataTableResultType<TDatas>
+    headers: readonly DataTableHeader[]
+    options: DataTableOption
+    result: DataTableResult<TDatas>
 }

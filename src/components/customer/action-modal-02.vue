@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // props two-way binding
-const props = defineProps<{ customer: CustomerType, modalOpen: boolean }>()
-const emit = defineEmits<{ onclose: [value: boolean, customer: CustomerType] }>()
+const props = defineProps<{ customer: Customer, modalOpen: boolean }>()
+const emit = defineEmits<{ onclose: [value: boolean, customer: Customer] }>()
 
 const state = reactive({
-    customer: {} as CustomerType,
+    customer: {} as Customer,
     modalIsOpen: false,
 })
 
@@ -20,7 +20,7 @@ onMounted(() => {
 function closeModal() {
     emit('onclose', false, state.customer)
     state.modalIsOpen = false
-    state.customer = {} as CustomerType
+    state.customer = {} as Customer
 }
 </script>
 

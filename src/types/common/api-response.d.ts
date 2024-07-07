@@ -1,6 +1,6 @@
-interface ErrorResponseType { status: number, message: string }
+interface ErrorResponse { status: number, message: string }
 
-interface ApiResponseType<TData = undefined> {
+interface ApiResponse<TData = undefined> {
     data: TData
-    error?: ErrorResponseType
+    error?: ErrorResponse
 }

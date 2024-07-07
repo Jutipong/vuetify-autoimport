@@ -5,9 +5,9 @@ const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
 
 const { setLoading, unLoading, isLoading } = useAppStore()
 
-const state = reactive({ search: {} as ProductType })
+const state = reactive({ search: {} as Product })
 
-const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<ProductType>([
+const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>([
     { title: 'ID', key: 'id', align: 'center' },
     { title: 'Title', key: 'title' },
     { title: 'PRICE', key: 'price', align: 'end' },
@@ -15,13 +15,13 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<ProductTy
     { title: 'STOCK', key: 'stock', align: 'end' },
     { title: 'BRAND', key: 'brand', align: 'end' },
     { title: 'Actions', key: 'actions', sortable: false },
-], async (option?: DataTableOptionType) => {
+], async (option?: DataTableOption) => {
     setLoading()
 
     Object.assign(table.options, option)
 
     const { products, total }
-         = await api.get<{ products: ProductType[], total: number }>
+         = await api.get<{ products: Product[], total: number }>
          (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
     table.result.datas = products
@@ -31,17 +31,17 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<ProductTy
 })
 
 const func = {
-    onSearch: async (productSearch: ProductType) => {
+    onSearch: async (productSearch: Product) => {
         state.search = { ...productSearch }
         onSubmit()
     },
     onAdd: () => {
-        modalRef.value?.open({} as ProductType)
+        modalRef.value?.open({} as Product)
     },
-    onEdit: (product: ProductType) => {
+    onEdit: (product: Product) => {
         modalRef.value?.open(product)
     },
-    onDelete: async (obj: ProductType) => {
+    onDelete: async (obj: Product) => {
         if (!await vConfirm.delete(`Confirm Delete`, `Delete '${obj.brand}'`))
             return
 
