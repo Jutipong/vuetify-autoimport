@@ -15,10 +15,10 @@ const table = reactive({
         { title: 'STOCK', key: 'stock', align: 'end' },
         { title: 'BRAND', key: 'brand', align: 'end' },
         { title: 'Actions', key: 'actions', sortable: false },
-    ] as Header[],
-    options: { ...optionDataTable },
-    result: { ...resultDataTable },
-} as Table<ProductType>)
+    ] as DataTableHeaderType[],
+    options: { ...dataTableOptionConst },
+    result: { ...dataTableResultType },
+} as DataTableType<ProductType>)
 
 const state = reactive({ search: {} as ProductType })
 
@@ -27,7 +27,7 @@ const func = {
         state.search = { ...productSearch }
         await func.getProducts()
     },
-    getProducts: async (option?: Option) => {
+    getProducts: async (option?: DataTableOptionType) => {
         setLoading()
 
         table.options = option || table.options
