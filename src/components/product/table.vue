@@ -52,9 +52,6 @@ const func = {
     },
 }
 
-const dateth = useDateTh()
-console.log(dateth)
-
 defineExpose({
     onSearch: func.onSearch,
 })
