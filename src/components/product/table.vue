@@ -1,12 +1,13 @@
 <script lang="ts" setup>
-import { useDate } from 'vuetify'
 import type ProductModalComponent from './modal.vue'
 
 const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
 
 const { setLoading, unLoading, isLoading } = useAppStore()
 
-const table = useDataTable<ProductType>([
+const state = reactive({ search: {} as ProductType })
+
+const { table, onSubmit } = useDataTable<ProductType>([
     { title: 'ID', key: 'id', align: 'center' },
     { title: 'Title', key: 'title' },
     { title: 'PRICE', key: 'price', align: 'end' },
@@ -14,28 +15,25 @@ const table = useDataTable<ProductType>([
     { title: 'STOCK', key: 'stock', align: 'end' },
     { title: 'BRAND', key: 'brand', align: 'end' },
     { title: 'Actions', key: 'actions', sortable: false },
-])
+], async (option?: DataTableOptionType) => {
+    setLoading()
 
-const state = reactive({ search: {} as ProductType })
+    Object.assign(table.options, option)
+
+    const { products, total }
+         = await api.get<{ products: ProductType[], total: number }>
+         (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
+
+    table.result.datas = products
+    table.result.total = total
+
+    unLoading()
+})
 
 const func = {
     onSearch: async (productSearch: ProductType) => {
         state.search = { ...productSearch }
-        await func.getProducts()
-    },
-    getProducts: async (option?: DataTableOptionType) => {
-        setLoading()
-
-        table.options = option || table.options
-
-        const { products, total }
-         = await api.get<{ products: ProductType[], total: number }>
-         (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
-
-        table.result.datas = products
-        table.result.total = total
-
-        unLoading()
+        onSubmit()
     },
     onAdd: () => {
         modalRef.value?.open({} as ProductType)
@@ -73,7 +71,7 @@ defineExpose({
                 </VCol>
             </VRow>
         </VCardTitle>
-
+        {{ table.options }}
         <VDivider />
 
         <VCardText>
@@ -83,7 +81,31 @@ defineExpose({
                 :items-length="table.result.total"
                 :items="table.result.datas"
                 :loading="isLoading"
-                @update:options="func.getProducts"
+                @update:options="(option) => onSubmit(option)"
+            >
+                <template #item.actions="{ item }">
+                    <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
+                        mdi-pencil
+                    </VIcon>
+                    <VIcon color="error" @click="func.onDelete(item)">
+                        mdi-delete
+                    </VIcon>
+                </template>
+
+                <template #loading>
+                    <v-skeleton-loader type="table-row@10" />
+                </template>
+            </VDataTableServer>
+
+            <VDivider />
+
+            <VDataTableServer
+                :headers="table.headers"
+                :items-per-page="table.options.itemsPerPage"
+                :items-length="table.result.total"
+                :items="table.result.datas"
+                :loading="isLoading"
+                @update:options="(option) => onSubmit(option)"
             >
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
