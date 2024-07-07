@@ -1,28 +1,28 @@
-interface Option {
+interface OptionType {
     page: number
     itemsPerPage: number
-    sortBy: SortBy[]
+    sortBy: SortByType[]
 }
 
-interface SortBy {
+interface SortByType {
     key: string
     order: string
 }
 
-interface Header {
+interface HeaderType {
     title: string
     align?: 'start' | 'center' | 'end'
     sortable?: false | true
     key: string
 }
 
-interface Result<TDatas> {
+interface ResultType<TDatas> {
     datas: TDatas[]
     total: number
 }
 
-interface Table<TDatas> {
-    headers: readonly Header[]
+interface TableType<TDatas> {
+    headers: readonly HeaderType[]
     options: Option
-    result: Result<TDatas>
+    result: ResultType<TDatas>
 }

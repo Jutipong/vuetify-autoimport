@@ -71,7 +71,7 @@ function handleError(resError: any) {
     //     const error = {
     //         status: statusCode,
     //         message,
-    //     } as ErrorResponse
+    //     } as ErrorResponseType
 
     //     return Promise.resolve({ error })
     // }

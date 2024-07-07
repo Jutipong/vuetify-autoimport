@@ -1,4 +1,4 @@
-interface Select<TId> {
+interface SelectType<TId> {
     id: TId
     text: string
 }

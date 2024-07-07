@@ -1,17 +1,17 @@
 export const useAuthStore = defineStore('auth', () => {
     const token = ref<string | null>(null)
-    const user = ref<UserLogin | null>(null)
+    const user = ref<UserLoginType | null>(null)
 
     function clearAuth() {
         token.value = null
-        user.value = {} as UserLogin
+        user.value = {} as UserLoginType
     }
 
     function setToken(value: string) {
         token.value = value
     }
 
-    function setUser(value: UserLogin) {
+    function setUser(value: UserLoginType) {
         user.value = value
     }
 

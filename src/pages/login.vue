@@ -13,7 +13,7 @@ const state = reactive({
 async function logIn() {
     state.isLoading = true
 
-    const res = await api.post<UserLogin>('/auth/login', {
+    const res = await api.post<UserLoginType>('/auth/login', {
         username: state.user.username,
         password: state.user.password,
     }, { isLoading: false })
