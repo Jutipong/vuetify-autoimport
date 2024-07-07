@@ -50,9 +50,7 @@ const func = {
     },
 }
 
-onMounted(() => {
-    onSubmit()
-})
+onMounted(() => onSubmit())
 
 defineExpose({
     onSearch: func.onSearch,
@@ -81,9 +79,9 @@ defineExpose({
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
-                :page="table.options.page"
-                :per-page="table.options.itemsPerPage"
                 :items="table.result.datas"
+                :page="table.options.page"
+                :items-per-page="table.options.itemsPerPage"
                 :items-length="table.result.total"
                 :loading="isLoading"
                 @update:page="onPageChange"
