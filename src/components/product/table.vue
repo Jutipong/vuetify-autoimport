@@ -20,9 +20,8 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
 
     Object.assign(table.options, option)
 
-    const { products, total }
-         = await api.get<{ products: Product[], total: number }>
-         (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
+    const { products, total } = await api.get<{ products: Product[], total: number }>
+    (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
     table.result.datas = products
     table.result.total = total
