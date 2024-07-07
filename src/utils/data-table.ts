@@ -19,11 +19,12 @@ function useDataTable<TDataTableResultType>(headers: DataTableHeaderType[], onSu
         onSubmit({ page })
     }
 
-    function onSortByChange(sortBy: DataTableSortByType[]) {
+    function onSortByChange(sortBy: any) {
         onSubmit({ sortBy })
     }
 
     function functionOnSubmit({ page } = { page: 1 }) {
+        table.options.page = page
         onSubmit({ page })
     }
 

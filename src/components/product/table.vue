@@ -50,7 +50,9 @@ const func = {
     },
 }
 
-onMounted(() => onSubmit())
+onMounted(() => {
+    onSubmit()
+})
 
 defineExpose({
     onSearch: func.onSearch,
@@ -75,17 +77,19 @@ defineExpose({
         </VCardTitle>
 
         <VDivider />
-        {{ table.options }}
+
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
                 :items-per-page="table.options.itemsPerPage"
                 :items-length="table.result.total"
                 :items="table.result.datas"
+                :items-page="table.options.page"
                 :loading="isLoading"
                 @update:page="onPageChange"
                 @update:sort-by="onSortByChange"
             >
+                <!-- @update:options="(option) => onSubmit(option)" -->
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
                         mdi-pencil
