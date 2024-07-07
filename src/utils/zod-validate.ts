@@ -1,4 +1,4 @@
-import type { z } from 'zod'
+import { z } from 'zod'
 
 //
 // version 2
@@ -48,7 +48,13 @@ watch(dataForm, () => {
 return { dataForm, errors, validateForm, resetForm }
 }
 
-export { useZodValidate }
+function requiredString(message: string, zodType: z.ZodType<any, any>[] = []) {
+    return z.union([z.string(), z.null(), z.undefined(), ...zodType]).refine(val => !!val, { message })
+}
+function requiredNumber(message: string, zodType: z.ZodType<any, any>[] = []) {
+    return z.union([z.number(), z.null(), z.undefined(), ...zodType]).refine(val => !!val, { message })
+}
+export { useZodValidate, requiredString, requiredNumber }
 
 //
 // version 1

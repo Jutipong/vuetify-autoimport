@@ -1,24 +1,11 @@
 <script lang="ts" setup>
-const requiredString = z.union([z.string(), z.null(), z.undefined()])
-const requiredNumber = z.union([z.number(), z.null(), z.undefined()])
-
 const schema = z.object({
-    title: requiredString.refine(val => !!val, {
-        message: 'Title is required',
-    }),
-    price: requiredNumber.refine(val => !!val, {
-        message: 'Price is required',
-    }),
-    rating: requiredNumber.refine(val => !!val, {
-        message: 'Rating is required',
-    }),
-    stock: requiredNumber.refine(val => !!val, {
-        message: 'Stock is required',
-    }),
+    title: requiredString('Title is required'),
+    price: requiredNumber('Price is required'),
+    rating: requiredNumber('Rating is required'),
+    stock: requiredNumber('Stock is required'),
     brand: z.string().optional(),
-    discountPercentage: requiredNumber.refine(val => !!val, {
-        message: 'Discount is required',
-    }),
+    discountPercentage: requiredNumber('Discount is required'),
 })
 
 const { dataForm, errors, validateForm, resetForm } = useZodValidate(schema)

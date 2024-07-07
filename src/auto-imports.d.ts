@@ -52,6 +52,8 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('typescript')['readonly']
   const ref: typeof import('vue')['ref']
+  const requiredNumber: typeof import('./utils/zod-validate')['requiredNumber']
+  const requiredString: typeof import('./utils/zod-validate')['requiredString']
   const resultDataTable: typeof import('./constants/table-option')['resultDataTable']
   const router: typeof import('./@core/router')['default']
   const toRef: typeof import('vue')['toRef']
