@@ -61,6 +61,7 @@ declare global {
   const typescriptConfig: typeof import('./constants/vite-config')['typescriptConfig']
   const useAppStore: typeof import('./stores/app')['useAppStore']
   const useAuthStore: typeof import('./stores/auth')['useAuthStore']
+  const useDataTable: typeof import('./utils/data-table')['useDataTable']
   const useDisplay: typeof import('vuetify')['useDisplay']
   const useLayoutStore: typeof import('./stores/layout')['useLayoutStore']
   const useRoute: typeof import('vue-router')['useRoute']

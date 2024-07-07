@@ -1,24 +1,19 @@
 <script lang="ts" setup>
 import type ProductModalComponent from './modal.vue'
-// import type { Header, Option, Table } from '@/types/common/data-table'
 
 const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
 
 const { setLoading, unLoading, isLoading } = useAppStore()
 
-const table = reactive({
-    headers: [
-        { title: 'ID', key: 'id', align: 'center' },
-        { title: 'Title', key: 'title' },
-        { title: 'PRICE', key: 'price', align: 'end' },
-        { title: 'RATING', key: 'rating', align: 'end' },
-        { title: 'STOCK', key: 'stock', align: 'end' },
-        { title: 'BRAND', key: 'brand', align: 'end' },
-        { title: 'Actions', key: 'actions', sortable: false },
-    ] as DataTableHeaderType[],
-    options: { ...dataTableOptionConst },
-    result: { ...dataTableResultType },
-} as DataTableType<ProductType>)
+const table = useDataTable<ProductType>([
+    { title: 'ID', key: 'id', align: 'center' },
+    { title: 'Title', key: 'title' },
+    { title: 'PRICE', key: 'price', align: 'end' },
+    { title: 'RATING', key: 'rating', align: 'end' },
+    { title: 'STOCK', key: 'stock', align: 'end' },
+    { title: 'BRAND', key: 'brand', align: 'end' },
+    { title: 'Actions', key: 'actions', sortable: false },
+])
 
 const state = reactive({ search: {} as ProductType })
 
