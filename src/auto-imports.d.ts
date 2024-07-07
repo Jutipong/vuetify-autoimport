@@ -64,7 +64,7 @@ declare global {
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useTheme: typeof import('vuetify')['useTheme']
-  const useValidate: typeof import('./utils/validate')['useValidate']
+  const useZodValidate: typeof import('./utils/zod-validate')['useZodValidate']
   const vAlert: typeof import('./utils/alert')['vAlert']
   const vConfirm: typeof import('./utils/confirm')['vConfirm']
   const vNotify: typeof import('./utils/notify')['vNotify']

@@ -21,7 +21,7 @@ const schema = z.object({
     }),
 })
 
-const { dataForm, errors, validateForm, resetForm } = useValidate(schema)
+const { dataForm, errors, validateForm, resetForm } = useZodValidate(schema)
 
 function onSubmit() {
     if (!validateForm())

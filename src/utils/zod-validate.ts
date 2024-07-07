@@ -4,7 +4,7 @@ import type { z } from 'zod'
 //
 // version 2
 //
-function useValidate<T extends z.ZodType<any, any>>(schema: T) {
+function useZodValidate<T extends z.ZodType<any, any>>(schema: T) {
 type FormData = z.infer<typeof schema>
 type ErrorField = Partial<keyof FormData>
 
@@ -49,7 +49,7 @@ watch(dataForm, () => {
 return { dataForm, errors, validateForm, resetForm }
 }
 
-export { useValidate }
+export { useZodValidate }
 
 //
 // version 1
