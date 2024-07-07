@@ -16,21 +16,14 @@ function openModal_02() {
     modalOpen_02.value = true
 }
 function closeModal02(value1: boolean, value2: CustomerType) {
-    // const result = _.isEmpty(value2)
-    // if (result) {
-    //     console.log('value2 is empty')
-    //     console.log('value2', value2)
-    // }
-    // else {
-    //     console.log('value2 is not empty')
-    //     console.log('value2', value2)
-    // }
-
-    // todo
-    // ทำยัไงให้ {} assign กับ customer ได้
+    if (_.isEmpty(value2)) {
+        customer.value = value2
+    }
+    else {
+        Object.assign(customer.value, value2)
+    }
 
     modalOpen_02.value = value1
-    Object.assign(customer.value, value2)
 }
 
 // =============== Modal 03 ===============
