@@ -44,7 +44,9 @@ function openModal_04() {
 function closeModal04(value: boolean) {
     modalOpen_04.value = value
 }
-const dateTh = () => _dateTh()
+// const dateTh = () => _dateTh()
+
+const dateTh = getDateTh(Date.now())
 </script>
 
 <template>
@@ -66,7 +68,7 @@ const dateTh = () => _dateTh()
         <VCard>
             <VCardTitle>
                 <VChip color="primary" prepend-icon="mdi-magnify" label>
-                    {{ dateTh() }}
+                    {{ dateTh }}
                 </VChip>
             </VCardTitle>
 

@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useDate } from 'vuetify'
 import type ProductModalComponent from './modal.vue'
 
 const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
@@ -50,6 +51,9 @@ const func = {
         vAlert.success('Successful', `delete ${obj.title} success`)
     },
 }
+
+const dateth = useDateTh()
+console.log(dateth)
 
 defineExpose({
     onSearch: func.onSearch,

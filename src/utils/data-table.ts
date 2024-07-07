@@ -1,8 +1,15 @@
 function useDataTable<TDataTableResultType>(headers: DataTableHeaderType[]) {
     const table = reactive({
-        headers: headers as DataTableHeaderType[],
-        options: { ...dataTableOptionConst },
-        result: { ...dataTableResultType },
+        headers,
+        options: {
+            page: 1,
+            itemsPerPage: 20,
+            sortBy: [],
+        },
+        result: {
+            datas: [],
+            total: 0,
+        },
     } as DataTableType<TDataTableResultType>)
 
     return table
