@@ -2,13 +2,14 @@ import axios from 'axios'
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-import type { TimeType } from './time-config'
+import type { TimeConfig } from './useDateTiem'
 
 const { token } = useAuthStore()
+const { timeCofig } = useDateTime()
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
-    timeout: _Time('1min'),
+    timeout: timeCofig('1min'),
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
@@ -31,7 +32,7 @@ function cachePredicate(config: any) {
 
 function updateCache(config: any) {
     if (config.config.cacheTimeout) {
-        config.config.cache.ttl = _Time(config.config.cacheTimeout)
+        config.config.cache.ttl = timeCofig(config.config.cacheTimeout)
     }
 }
 
@@ -108,7 +109,7 @@ type ApiOptions = {
     baseURL?: string
     isLoading?: boolean
     cache?: boolean
-    cacheTimeout?: TimeType
+    cacheTimeout?: TimeConfig
 } & AxiosRequestConfig
 
 function getDefaultApiConfig(config?: ApiOptions) {

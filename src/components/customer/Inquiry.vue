@@ -1,12 +1,13 @@
 <script setup lang="ts">
-const customer = ref<CustomerType>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
+const { dateTh } = useDateTime()
+const customer = ref<Customer>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
 
 // =============== Modal 01 ===============
 const modalOpen_01 = ref(false)
 function openModal_01() {
     modalOpen_01.value = true
 }
-function updateCustomer(value: CustomerType) {
+function updateCustomer(value: Customer) {
     Object.assign(customer.value, value)
 }
 
@@ -15,7 +16,7 @@ const modalOpen_02 = ref(false)
 function openModal_02() {
     modalOpen_02.value = true
 }
-function closeModal02(value1: boolean, value2: CustomerType) {
+function closeModal02(value1: boolean, value2: Customer) {
     if (_.isEmpty(value2)) {
         customer.value = value2
     }
@@ -46,7 +47,7 @@ function closeModal04(value: boolean) {
 }
 // const dateTh = () => _dateTh()
 
-const dateTh = getDateTh(Date.now())
+const th = dateTh(new Date())
 </script>
 
 <template>
@@ -68,7 +69,7 @@ const dateTh = getDateTh(Date.now())
         <VCard>
             <VCardTitle>
                 <VChip color="primary" prepend-icon="mdi-magnify" label>
-                    {{ dateTh }}
+                    {{ th }}
                 </VChip>
             </VCardTitle>
 
