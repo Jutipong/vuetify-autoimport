@@ -1,7 +1,7 @@
 interface DataTableOptionType {
     page: number
     itemsPerPage: number
-    sortBy: SortByType[]
+    sortBy: DataTableSortByType[]
 }
 
 interface DataTableSortByType {
@@ -23,6 +23,6 @@ interface DataTableResultType<TDatas> {
 
 interface DataTableType<TDatas> {
     headers: readonly DataTableHeaderType[]
-    options: Option
+    options: DataTableOptionType
     result: DataTableResultType<TDatas>
 }

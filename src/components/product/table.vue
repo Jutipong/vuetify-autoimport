@@ -7,7 +7,7 @@ const { setLoading, unLoading, isLoading } = useAppStore()
 
 const state = reactive({ search: {} as ProductType })
 
-const { table, onSubmit } = useDataTable<ProductType>([
+const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<ProductType>([
     { title: 'ID', key: 'id', align: 'center' },
     { title: 'Title', key: 'title' },
     { title: 'PRICE', key: 'price', align: 'end' },
@@ -50,6 +50,8 @@ const func = {
     },
 }
 
+onMounted(() => onSubmit())
+
 defineExpose({
     onSearch: func.onSearch,
 })
@@ -73,7 +75,7 @@ defineExpose({
         </VCardTitle>
 
         <VDivider />
-
+        {{ table.options }}
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
@@ -81,7 +83,8 @@ defineExpose({
                 :items-length="table.result.total"
                 :items="table.result.datas"
                 :loading="isLoading"
-                @update:options="(option) => onSubmit(option)"
+                @update:page="onPageChange"
+                @update:sort-by="onSortByChange"
             >
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">

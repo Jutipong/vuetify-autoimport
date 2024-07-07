@@ -1,11 +1,4 @@
-interface useDataTableType {
-    firstLoad: boolean
-}
-function useDataTable<TDataTableResultType>(
-    headers: DataTableHeaderType[],
-    onSubmit: Function,
-    options: useDataTableType = { firstLoad: true },
-) {
+function useDataTable<TDataTableResultType>(headers: DataTableHeaderType[], onSubmit: Function) {
     const table = reactive({
         headers,
         options: {
@@ -19,16 +12,27 @@ function useDataTable<TDataTableResultType>(
         },
     } as DataTableType<TDataTableResultType>)
 
-    function functionOnSubmit(args?: any) {
-        if (!options.firstLoad) {
-            options.firstLoad = true
+    function onPageChange(page: number) {
+        if (table.options.page === page)
             return
-        }
 
-        onSubmit(args)
+        onSubmit({ page })
     }
 
-    return { table, onSubmit: functionOnSubmit }
+    function onSortByChange(sortBy: DataTableSortByType[]) {
+        onSubmit({ sortBy })
+    }
+
+    function functionOnSubmit({ page } = { page: 1 }) {
+        onSubmit({ page })
+    }
+
+    return {
+        table,
+        onSubmit: functionOnSubmit,
+        onPageChange,
+        onSortByChange,
+    }
 }
 
 export { useDataTable }
