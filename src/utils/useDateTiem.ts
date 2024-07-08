@@ -1,20 +1,19 @@
-// ยังไม่เสร็จ
+import dayjs from 'dayjs'
 
-type DateFormat = 'dd/mm/yyyy' | 'dd/mm/yyyy HH:mm:ss' | 'yyyy/mm/dd'
+type DateFormat =
+    'DD/MM/YYYY' | 'DD/MM/YYYY HH:mm' | 'DD/MM/YYYY HH:mm:ss' | 'DD/MM/YYYY HH:mm A' | 'DD/MM/YYYY HH:mm:ss A' |
+    'YYYY/MM/DD' | 'YYYY/MM/DD HH:mm' | 'YYYY/MM/DD HH:mm:ss' | 'YYYY/MM/DD HH:mm A' | 'YYYY/MM/DD HH:mm:ss A' |
+    'HH:mm' | 'HH:mm:ss' | 'HH:mm A' | 'HH:mm:ss A'
 
 export type TimeConfig =
     '10sec' | '20sec' | '30sec' |
-    '1min' | '3min' | '5min' | '10min' | '15min' | '20min' | '30min' | '45min'
-    | '1hour' | '2hour' | '3hour' | '4hour' | '5hour' | '6hour' | '7hour' | '8hour'
-    | '9hour' | '10hour' | '11hour' | '12hour' | '1day'
+    '1min' | '3min' | '5min' | '10min' | '15min' | '20min' | '30min' | '45min' |
+    '1hour' | '2hour' | '3hour' | '4hour' | '5hour' | '6hour' | '7hour' | '8hour' |
+    '9hour' | '10hour' | '11hour' | '12hour' | '1day'
 
 function useDateTime() {
-    function dateTh(date: Date, formate: DateFormat = 'dd/mm/yyyy') {
-        const dateTh = new Date(date)
-        const day = dateTh.getDate()
-        const month = dateTh.getMonth() + 1
-        const year = dateTh.getFullYear() + 543
-        return formate === 'dd/mm/yyyy' ? `${day}/${month}/${year}` : `${year}/${month}/${day}`
+    function dateFormat(date: Date | string, formate: DateFormat = 'DD/MM/YYYY') {
+        return dayjs(date).format(formate)
     }
 
     function timeCofig(timeout: TimeConfig) {
@@ -72,7 +71,7 @@ function useDateTime() {
         }
     }
 
-    return { dateTh, timeCofig }
+    return { dateFormat, timeCofig }
 }
 
 export { useDateTime }

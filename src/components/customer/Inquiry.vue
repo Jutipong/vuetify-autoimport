@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { dateTh } = useDateTime()
+const { dateFormat } = useDateTime()
 const customer = ref<Customer>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
 
 // =============== Modal 01 ===============
@@ -45,9 +45,8 @@ function openModal_04() {
 function closeModal04(value: boolean) {
     modalOpen_04.value = value
 }
-// const dateTh = () => _dateTh()
 
-const th = dateTh(new Date())
+const th = dateFormat(new Date(), 'DD/MM/YYYY HH:mm:ss')
 </script>
 
 <template>
