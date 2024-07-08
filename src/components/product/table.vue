@@ -73,7 +73,7 @@ defineExpose({
         </VCardTitle>
 
         <VDivider />
-        {{ table.options }}
+
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
