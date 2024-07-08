@@ -1,4 +1,4 @@
-function useDataTable<TDataTableResultType>(headers: DataTableHeader[], onSubmit: Function) {
+function useDataTable<TItems>(headers: DataTableHeader[], onSubmit: Function) {
     const table = reactive({
         headers,
         options: {
@@ -10,12 +10,9 @@ function useDataTable<TDataTableResultType>(headers: DataTableHeader[], onSubmit
             items: [],
             itemsLength: 0,
         },
-    } as DataTableType<TDataTableResultType>)
+    } as DataTableType<TItems>)
 
     function onPageChange(page: number) {
-        if (table.options.page === page)
-            return
-
         onSubmit({ page })
     }
 
@@ -24,7 +21,6 @@ function useDataTable<TDataTableResultType>(headers: DataTableHeader[], onSubmit
     }
 
     function functionOnSubmit({ page } = { page: 1 }) {
-        table.options.page = page
         onSubmit({ page })
     }
 
