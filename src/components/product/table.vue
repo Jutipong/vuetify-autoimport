@@ -15,7 +15,7 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
     { title: 'STOCK', key: 'stock', align: 'end' },
     { title: 'BRAND', key: 'brand', align: 'end' },
     { title: 'Actions', key: 'actions', sortable: false },
-], async (option?: DataTableOption) => {
+], [{ key: 'id', order: 'asc' }], async (option?: DataTableOption) => {
     setLoading()
 
     Object.assign(table.options, option)
@@ -30,10 +30,6 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
 })
 
 const func = {
-    onSearch: async (productSearch: Product) => {
-        state.search = { ...productSearch }
-        onSubmit()
-    },
     onAdd: () => {
         modalRef.value?.open({} as Product)
     },
@@ -52,7 +48,10 @@ const func = {
 onMounted(() => onSubmit())
 
 defineExpose({
-    onSearch: func.onSearch,
+    onSearch: async (productSearch: Product) => {
+        state.search = { ...productSearch }
+        onSubmit()
+    },
 })
 </script>
 

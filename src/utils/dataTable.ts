@@ -1,10 +1,10 @@
-function useDataTable<TItems>(headers: DataTableHeader[], onSubmit: Function) {
+function useDataTable<TItems>(headers: DataTableHeader[], sortBy: DataTableSortBy[], onSubmit: Function) {
     const table = reactive({
         headers,
         options: {
             page: 1,
             itemsPerPage: 20,
-            sortBy: [],
+            sortBy,
         },
         result: {
             items: [],
