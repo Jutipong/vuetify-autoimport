@@ -6,7 +6,7 @@ interface DataTableOption {
 
 interface DataTableSortBy {
     key: string
-    order: string
+    order?: boolean | 'asc' | 'desc'
 }
 
 interface DataTableHeader {
