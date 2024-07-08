@@ -23,8 +23,8 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
     const { products, total } = await api.get<{ products: Product[], total: number }>
     (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
-    table.result.datas = products
-    table.result.total = total
+    table.result.items = products
+    table.result.itemsLength = total
 
     unLoading()
 })
@@ -78,14 +78,15 @@ defineExpose({
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
-                :items="table.result.datas"
                 :page="table.options.page"
+                :items="table.result.items"
                 :items-per-page="table.options.itemsPerPage"
-                :items-length="table.result.total"
+                :items-length="table.result.itemsLength"
                 :loading="isLoading"
                 @update:page="onPageChange"
                 @update:sort-by="onSortByChange"
             >
+                <!-- v-bind="{ ...table.options, ...table.result }" -->
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
                         mdi-pencil

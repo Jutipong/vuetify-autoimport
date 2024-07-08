@@ -17,8 +17,8 @@ interface DataTableHeader {
 }
 
 interface DataTableResult<TDatas> {
-    datas: TDatas[]
-    total: number
+    items: TDatas[]
+    itemsLength: number
 }
 
 interface DataTableType<TDatas> {

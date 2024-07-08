@@ -7,8 +7,8 @@ function useDataTable<TDataTableResultType>(headers: DataTableHeader[], onSubmit
             sortBy: [],
         },
         result: {
-            datas: [],
-            total: 0,
+            items: [],
+            itemsLength: 0,
         },
     } as DataTableType<TDataTableResultType>)
 
