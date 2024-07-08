@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { dateFormat } = useDateTime()
 const customer = ref<Customer>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
 
 // =============== Modal 01 ===============

@@ -2,10 +2,9 @@ import axios from 'axios'
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-import type { TimeConfig } from './useDateTiem'
+import type { TimeConfig } from './dateTime'
 
 const { token } = useAuthStore()
-const { timeCofig } = useDateTime()
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
