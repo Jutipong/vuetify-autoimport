@@ -74,19 +74,15 @@ defineExpose({
         </VCardTitle>
 
         <VDivider />
-
+        {{ table.options }}
         <VCardText>
             <VDataTableServer
                 :headers="table.headers"
-                :page="table.options.page"
-                :items="table.result.items"
-                :items-per-page="table.options.itemsPerPage"
-                :items-length="table.result.itemsLength"
+                v-bind="{ ...table.options, ...table.result }"
                 :loading="isLoading"
                 @update:page="onPageChange"
                 @update:sort-by="onSortByChange"
             >
-                <!-- v-bind="{ ...table.options, ...table.result }" -->
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
                         mdi-pencil
