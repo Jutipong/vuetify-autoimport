@@ -6,12 +6,12 @@
         "antfu.file-nesting",
         "antfu.goto-alias",
         "chrisbibby.hide-node-modules",
-        "pkief.material-icon-theme",
         "idered.npm",
         "yoavbls.pretty-ts-errors",
         "travis.simple-dark",
         "antfu.unocss",
         "vue.volar",
-        "naumovs.color-highlight"
+        "naumovs.color-highlight",
+        "vscode-icons-team.vscode-icons"
     ]
 }
