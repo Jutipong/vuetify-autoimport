@@ -20,9 +20,11 @@ export default antfu(
                 shallowOnly: true,
             }],
             'vue/prop-name-casing': ['off'],
+            'ts/no-unsafe-function-type': ['off'],
         },
         jsonc: false,
         yaml: false,
+        unocss: true,
         ignores: [
             '**/fixtures',
             'vite-env.d.ts',

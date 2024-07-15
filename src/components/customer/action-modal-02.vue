@@ -35,7 +35,7 @@ function closeModal() {
                         </VChip>
                     </VCardTitle>
 
-                    <VCardText mt2 mb2>
+                    <VCardText mb2 mt2>
                         <VRow>
                             <VCol cols="12" md="4">
                                 <VTextField v-model="state.customer.Name" label="Name" />

@@ -73,7 +73,7 @@ function alertError() {
                             <v-card-title class="text-h6" :class="[`bg-${item.color}`]">
                                 Lorem Ipsum Dolor
                             </v-card-title>
-                            <v-card-text class="bg-white text--primary">
+                            <v-card-text class="text--primary bg-white">
                                 <p>
                                     Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod
                                     convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an

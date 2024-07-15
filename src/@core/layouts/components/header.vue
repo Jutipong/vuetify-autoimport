@@ -58,7 +58,7 @@ const iconDrawer = computed(() => {
             scroll-behavior="elevate"
         >
             <v-app-bar-nav-icon
-                class="animate-head-shake animate-count-infinite animate-duration-6s"
+                class="animate-head-shake animate-duration-6s animate-count-infinite"
                 :ripple="false"
                 :icon="iconDrawer"
                 variant="plain"
@@ -69,7 +69,7 @@ const iconDrawer = computed(() => {
             <template #append>
                 <v-btn :ripple="false" variant="plain" @click="toggleTheme">
                     <v-icon
-                        class="animate-swing animate-count-infinite animate-duration-6s"
+                        class="animate-swing animate-duration-6s animate-count-infinite"
                         :color="colorTheme"
                         :icon="iconTheme"
                     />

@@ -11,7 +11,12 @@ const titleIcon = computed(() => state.product.id ? 'mdi-pencil' : 'mdi-plus')
 
 const func = {
     onAction: async () => {
-        state.product.id ? await func.Update() : await func.Create()
+        if (state.product.id) {
+            await func.Update()
+        }
+        else {
+            await func.Create()
+        }
     },
     Create: async () => {
         appStore.setLoading()

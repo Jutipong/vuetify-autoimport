@@ -28,7 +28,7 @@ async function logIn() {
 </script>
 
 <template>
-    <div fluid class="flex h-full items-center justify-center">
+    <div fluid class="h-full flex items-center justify-center">
         <v-row>
             <v-col>
                 <v-card
@@ -40,7 +40,7 @@ async function logIn() {
                     <v-form @submit.prevent="logIn">
                         <v-img
                             transition="fade-transition"
-                            class="mx-auto ma-16"
+                            class="ma-16 mx-auto"
                             max-width="250"
                             height="60"
                             src="https://cdn.vuetifyjs.com/docs/images/logos/vuetify-logo-v3-slim-text-light.svg"
