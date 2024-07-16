@@ -8,7 +8,6 @@ const { token } = useAuthStore()
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
-    timeout: timeCofig('1min'),
     headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
@@ -50,21 +49,28 @@ function generateCacheKey(config: any) {
     return key
 }
 
-function handleError(resError: any) {
+function handleError(err: any) {
     const { resetLoading } = useAppStore()
 
-    console.error('api response error', resError)
+    let code: any = ''
+    let message: string = ''
 
-    const res = resError?.response
-    const statusCode = res?.status ?? '500'
-    const message = httpMessage[statusCode] || 'เกิดข้อผิดพลาด'
+    if (err.code === 'ECONNABORTED') {
+        code = err.code
+        message = err.message
+    }
+    else {
+        const res = err?.response
+        code = res?.status ?? 500
+        message = httpMessage[code] || 'เกิดข้อผิดพลาด'
+    }
 
     // vNotify.error(`status code:${statusCode} | ${message}`)
-    vAlert.error(`status code: ${statusCode}`, message)
+    vAlert.error(`status code: ${code}`, message)
 
     resetLoading()
 
-    if (statusCode === 401)
+    if (code === 401)
         router.push('/login')
 
     // if (resError.config.returnError) {
@@ -76,7 +82,7 @@ function handleError(resError: any) {
     //     return Promise.resolve({ error })
     // }
 
-    return Promise.reject(resError)
+    return Promise.reject(err)
 }
 
 axiosInstance.interceptors.request.use((config: any) => {
@@ -105,6 +111,7 @@ axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<a
 }, handleError)
 
 type ApiOptions = {
+    timeout?: number
     baseURL?: string
     isLoading?: boolean
     cache?: boolean
@@ -112,9 +119,16 @@ type ApiOptions = {
 } & AxiosRequestConfig
 
 function getDefaultApiConfig(config?: ApiOptions) {
-    if (!config)
-        return { cache: false } as ApiOptions
+    const timeOutDefault = timeCofig('30sec')
 
+    if (!config) {
+        return {
+            timeout: timeOutDefault,
+            cache: false,
+        } as ApiOptions
+    }
+
+    config.timeout = config.timeout ?? timeOutDefault
     config.cache = config.cache ?? false
 
     return config
