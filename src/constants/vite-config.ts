@@ -39,4 +39,5 @@ export const vueConfig = [
     'toRef',
     'onMounted',
     'onUnmounted',
+    'shallowRef',
 ]
