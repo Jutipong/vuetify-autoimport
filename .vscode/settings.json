@@ -64,20 +64,20 @@
     "typescript.preferences.autoImportFileExcludePatterns": [
         "vue-router"
     ],
-    // "files.exclude": {
-    //     "**/.git": true,
-    //     "**/.svn": true,
-    //     "**/.hg": true,
-    //     "**/CVS": true,
-    //     "**/.DS_Store": true,
-    //     "**/Thumbs.db": true,
-    //     "**/node_modules": true,
-    //     ".browserslistrc": false,
-    //     ".gitignore": false,
-    //     "tsconfig.node.json": true,
-    //     "src/vite-env.d.ts": false,
-    //     "yarn.lock": false
-    // },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": false,
+        "**/.hg": false,
+        "**/CVS": false,
+        "**/.DS_Store": false,
+        "**/Thumbs.db": false,
+        "**/node_modules": true,
+        ".browserslistrc": false,
+        ".gitignore": false,
+        "tsconfig.node.json": false,
+        "src/vite-env.d.ts": false,
+        "yarn.lock": false
+    },
     "workbench.iconTheme": "vscode-icons",
     "workbench.colorTheme": "Simple Dark",
     "editor.fontSize": 15,
