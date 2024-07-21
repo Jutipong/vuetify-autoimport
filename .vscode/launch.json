@@ -10,6 +10,7 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
             "skipFiles": [
                 "${workspaceFolder}/node_modules/**",
             ],
