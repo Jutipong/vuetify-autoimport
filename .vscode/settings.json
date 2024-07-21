@@ -84,6 +84,7 @@
     "editor.lineHeight": 25,
     "editor.fontFamily": "'Jetbrains Mono Light', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
     "workbench.tree.indent": 12,
+    "debug.toolBarLocation": "commandCenter",
     // -----------------------------------
     // ---------- File Nesting -----------
     // -----------------------------------
