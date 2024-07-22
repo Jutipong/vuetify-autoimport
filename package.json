@@ -11,22 +11,21 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@types/lodash": "4.17.6",
+    "@types/lodash": "4.17.7",
     "axios-cache-interceptor": "1.5.3",
-    "dayjs": "1.11.11",
+    "dayjs": "1.11.12",
     "localstorage-slim": "^2.7.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "typescript": "5.4.5",
     "unplugin-fonts": "1.1.1",
-    "vue": "3.4.31",
+    "vue": "3.4.33",
     "vue-router": "^4.4.0",
     "vue-toastification": "2.0.0-rc.5",
-    "vuetify": "3.6.12",
+    "vuetify": "3.6.13",
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.23.0",
+    "@antfu/eslint-config": "^2.23.2",
     "@babel/types": "^7.24.9",
     "@types/node": "^20.14.11",
     "@unocss/eslint-config": "^0.61.5",
@@ -35,13 +34,13 @@
     "eslint": "^9.7.0",
     "sass": "1.77.6",
     "unocss": "^0.61.5",
-    "unplugin-auto-import": "^0.17.8",
+    "unplugin-auto-import": "^0.18.0",
     "unplugin-vue-components": "^0.27.3",
-    "unplugin-vue-router": "^0.10.0",
+    "unplugin-vue-router": "^0.10.1",
     "vite": "^5.3.4",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-vuetify": "^2.0.3",
     "vue-currency-input": "^3.1.0",
-    "vue-tsc": "^2.0.26"
+    "vue-tsc": "^2.0.28"
   }
 }
