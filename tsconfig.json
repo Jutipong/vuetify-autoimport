@@ -9,7 +9,7 @@
         "useDefineForClassFields": true,
         "baseUrl": ".",
         "module": "ESNext",
-        "moduleResolution": "Bundler", // "Node",
+        "moduleResolution": "Bundler",
         "paths": {
             "@/*": [
                 "src/*",
