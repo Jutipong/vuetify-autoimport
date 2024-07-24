@@ -15,7 +15,7 @@ export function dateFormat(date: Date | string, formate: DateFormat = 'DD/MM/YYY
     return dayjs(date).format(formate)
 }
 
-export function timeCofig(timeout: TimeConfig) {
+export function timeConfig(timeout: TimeConfig) {
     switch (timeout) {
         case '1sec':
             return 1 * 1000

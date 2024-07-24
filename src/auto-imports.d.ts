@@ -54,7 +54,7 @@ declare global {
   const requiredString: typeof import('./utils/zodValidate')['requiredString']
   const router: typeof import('./@core/router')['default']
   const shallowRef: typeof import('vue')['shallowRef']
-  const timeCofig: typeof import('./utils/dateTime')['timeCofig']
+  const timeConfig: typeof import('./utils/dateTime')['timeConfig']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const typescriptConfig: typeof import('./constants/vite-config')['typescriptConfig']
