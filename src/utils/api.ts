@@ -30,7 +30,7 @@ function cachePredicate(config: any) {
 
 function updateCache(config: any) {
     if (config.config.cacheTimeout) {
-        config.config.cache.ttl = timeCofig(config.config.cacheTimeout)
+        config.config.cache.ttl = timeConfig(config.config.cacheTimeout)
     }
 }
 
@@ -119,7 +119,7 @@ type ApiOptions = {
 } & AxiosRequestConfig
 
 function getDefaultApiConfig(config?: ApiOptions) {
-    const timeOutDefault = timeCofig('30sec')
+    const timeOutDefault = timeConfig('30sec')
 
     if (!config) {
         return {
