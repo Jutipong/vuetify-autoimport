@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-import type { TimeConfig } from './dateTime'
+import type { TimeConfigType } from './dateTime'
 
 const { token } = useAuthStore()
 
@@ -30,7 +30,7 @@ function cachePredicate(config: any) {
 
 function updateCache(config: any) {
     if (config.config.cacheTimeout) {
-        config.config.cache.ttl = timeConfig(config.config.cacheTimeout)
+        config.config.cache.ttl = _dateTime.TimeConfig(config.config.cacheTimeout)
     }
 }
 
@@ -66,7 +66,7 @@ function handleError(err: any) {
     }
 
     // vNotify.error(`status code:${statusCode} | ${message}`)
-    vAlert.error(`status code: ${code}`, message)
+    _alert.Err(`status code: ${code}`, message)
 
     resetLoading()
 
@@ -115,11 +115,11 @@ type ApiOptions = {
     baseURL?: string
     isLoading?: boolean
     cache?: boolean
-    cacheTimeout?: TimeConfig
+    cacheTimeout?: TimeConfigType
 } & AxiosRequestConfig
 
 function getDefaultApiConfig(config?: ApiOptions) {
-    const timeOutDefault = timeConfig('30sec')
+    const timeOutDefault = _dateTime.TimeConfig('30sec')
 
     if (!config) {
         return {
@@ -135,16 +135,16 @@ function getDefaultApiConfig(config?: ApiOptions) {
 }
 
 export default {
-    get: async <TResponse>(url: string, config?: ApiOptions) => {
+    Get: async <TResponse>(url: string, config?: ApiOptions) => {
         return await axiosInstance.get<any, TResponse>(url, getDefaultApiConfig(config))
     },
-    post: async <TResponse>(url: string, data?: any, config?: ApiOptions) => {
+    Post: async <TResponse>(url: string, data?: any, config?: ApiOptions) => {
         return await axiosInstance.post<any, TResponse>(url, data, getDefaultApiConfig(config))
     },
-    put: async <TResponse>(url: string, data?: any, config?: ApiOptions) => {
+    Put: async <TResponse>(url: string, data?: any, config?: ApiOptions) => {
         return await axiosInstance.put<any, TResponse>(url, data, getDefaultApiConfig(config))
     },
-    delete: async <TResponse>(url: string, config?: ApiOptions) => {
+    Delete: async <TResponse>(url: string, config?: ApiOptions) => {
         return await axiosInstance.delete<any, TResponse>(url, getDefaultApiConfig(config))
     },
 }

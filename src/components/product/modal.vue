@@ -20,24 +20,24 @@ const func = {
     },
     Create: async () => {
         appStore.setLoading()
-        await api.post(`/products/add`, state.product)
+        await api.Post(`/products/add`, state.product)
 
         appStore.unLoading()
-        vNotify.success('Product created successfully')
+        _notify.Success('Product created successfully')
 
         state.open = false
     },
     Update: async () => {
-        if (!await vConfirm.save('Confirm Update', `Update brand ${state.product.brand}`))
+        if (!await _confirm.Save('Confirm Update', `Update brand ${state.product.brand}`))
             return
 
         const update = _.pick(state.product, ['id', 'title'])
 
         appStore.setLoading()
-        await api.put(`/products/${state.product.id}`, { update })
+        await api.Put(`/products/${state.product.id}`, { update })
 
         appStore.unLoading()
-        vNotify.success('Product updated successfully')
+        _notify.Success('Product updated successfully')
 
         state.open = false
     },

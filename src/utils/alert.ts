@@ -42,17 +42,17 @@ export default {
 // ===========================================
 // ========== provie alert ==========
 // ===========================================
-export const vAlert = {
-    info: (title: string, subTitle: string) => {
+export const _alert = {
+    Info: (title: string, subTitle: string) => {
         openAlert(title, subTitle, 'mdi mdi-alert-circle-outline', 'info')
     },
-    success: (title: string, subTitle: string) => {
+    Success: (title: string, subTitle: string) => {
         openAlert(title, subTitle, 'mdi mdi-check-circle-outline', 'success')
     },
-    warning: (title: string, subTitle: string) => {
+    Warning: (title: string, subTitle: string) => {
         openAlert(title, subTitle, 'mdi mdi-alert-circle-outline', 'warning')
     },
-    error: (title: string, subTitle: string) => {
+    Err: (title: string, subTitle: string) => {
         openAlert(title, subTitle, 'mdi mdi-close-circle-outline', 'error')
     },
 }
