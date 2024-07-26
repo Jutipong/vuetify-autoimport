@@ -15,7 +15,7 @@
     "axios-cache-interceptor": "1.5.3",
     "dayjs": "1.11.12",
     "localstorage-slim": "^2.7.1",
-    "pinia": "^2.1.7",
+    "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "unplugin-fonts": "1.1.1",
     "vue": "3.4.33",
@@ -27,20 +27,20 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.23.2",
     "@babel/types": "^7.24.9",
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@unocss/eslint-config": "^0.61.5",
-    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue": "^5.1.0",
     "axios": "^1.7.2",
     "eslint": "^9.7.0",
     "sass": "1.77.6",
     "unocss": "^0.61.5",
-    "unplugin-auto-import": "^0.18.0",
+    "unplugin-auto-import": "^0.18.2",
     "unplugin-vue-components": "^0.27.3",
     "unplugin-vue-router": "^0.10.1",
-    "vite": "^5.3.4",
+    "vite": "^5.3.5",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-vuetify": "^2.0.3",
     "vue-currency-input": "^3.1.0",
-    "vue-tsc": "^2.0.28"
+    "vue-tsc": "^2.0.29"
   }
 }
