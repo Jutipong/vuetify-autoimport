@@ -20,7 +20,7 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
 
     Object.assign(table.options, option)
 
-    const { products, total } = await api.get<{ products: Product[], total: number }>
+    const { products, total } = await api.Get<{ products: Product[], total: number }>
     (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
     table.result.items = products
@@ -37,11 +37,11 @@ const func = {
         modalRef.value?.open(product)
     },
     onDelete: async (obj: Product) => {
-        if (!await vConfirm.delete(`Confirm Delete`, `Delete '${obj.brand}'`))
+        if (!await _confirm.Delete(`Confirm Delete`, `Delete '${obj.brand}'`))
             return
 
-        vNotify.success(`delete ${obj.title} success`)
-        vAlert.success('Successful', `delete ${obj.title} success`)
+        _notify.Success(`delete ${obj.title} success`)
+        _alert.Success('Successful', `delete ${obj.title} success`)
     },
 }
 

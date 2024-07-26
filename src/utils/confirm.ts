@@ -54,8 +54,8 @@ export default {
 // ===========================================
 // ========== provie confirm dialog ==========
 // ===========================================
-export const vConfirm = {
-    info: (title: string, message: string, options?: ConfirmOptions) => {
+export const _confirm = {
+    Info: (title: string, message: string, options?: ConfirmOptions) => {
         const op = Object.assign({
             btnOk: {
                 text: 'Yes',
@@ -74,7 +74,7 @@ export const vConfirm = {
             state.reject = reject
         })
     },
-    save: (title: string, message: string, options?: ConfirmOptions) => {
+    Save: (title: string, message: string, options?: ConfirmOptions) => {
         const op = Object.assign({
             iconTitle: 'mdi-content-save',
             btnOk: {
@@ -94,7 +94,7 @@ export const vConfirm = {
             state.reject = reject
         })
     },
-    delete: (title: string, message: string, options?: ConfirmOptions) => {
+    Delete: (title: string, message: string, options?: ConfirmOptions) => {
         const op = Object.assign({
             iconTitle: 'mdi-delete',
             btnOk: {

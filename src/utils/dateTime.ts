@@ -5,17 +5,17 @@ export type DateFormat =
     'YYYY/MM/DD' | 'YYYY/MM/DD HH:mm' | 'YYYY/MM/DD HH:mm:ss' | 'YYYY/MM/DD HH:mm A' | 'YYYY/MM/DD HH:mm:ss A' |
     'HH:mm' | 'HH:mm:ss' | 'HH:mm A' | 'HH:mm:ss A'
 
-export type TimeConfig =
+export type TimeConfigType =
     '1sec' | '5sec' | '10sec' | '15sec' | '20sec' | '25sec' | '30sec' | '35sec' | '40sec' | '45sec' | '50sec' | '55sec' |
     '1min' | '2min' | '3min' | '4min' | '5min' | '10min' | '15min' | '20min' | '25min' | '30min' | '35min' | '40min' | '45min' | '50min' | '55min' |
     '1hour' | '2hour' | '3hour' | '4hour' | '5hour' | '6hour' | '7hour' | '8hour' |
     '9hour' | '10hour' | '11hour' | '12hour' | '1day'
 
-export function dateFormat(date: Date | string, formate: DateFormat = 'DD/MM/YYYY') {
+function Format(date: Date | string, formate: DateFormat = 'DD/MM/YYYY') {
     return dayjs(date).format(formate)
 }
 
-export function timeConfig(timeout: TimeConfig) {
+function TimeConfig(timeout: TimeConfigType) {
     switch (timeout) {
         case '1sec':
             return 1 * 1000
@@ -100,4 +100,9 @@ export function timeConfig(timeout: TimeConfig) {
         default:
             return 0
     }
+}
+
+export const _dateTime = {
+    Format,
+    TimeConfig,
 }
