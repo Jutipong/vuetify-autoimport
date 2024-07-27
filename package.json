@@ -15,7 +15,7 @@
     "dayjs": "1.11.12",
     "localstorage-slim": "^2.7.1",
     "lodash": "4.17.21",
-    "pinia": "^2.2.0",
+    "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "unocss": "^0.61.6",
     "unplugin-fonts": "1.1.1",
