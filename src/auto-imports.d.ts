@@ -27,7 +27,7 @@ declare global {
   const Tuple: typeof import('typescript')['Tuple']
   const Uncapitalize: typeof import('typescript')['Uncapitalize']
   const Uppercase: typeof import('typescript')['Uppercase']
-  const _: typeof import('lodash')['default']
+  const _: typeof import('./utils/lodash')['_']
   const _alert: typeof import('./utils/alert')['_alert']
   const _confirm: typeof import('./utils/confirm')['_confirm']
   const _dateTime: typeof import('./utils/dateTime')['_dateTime']

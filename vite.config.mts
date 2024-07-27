@@ -23,7 +23,6 @@ export default defineConfig(({ mode }) => {
                         typescript: typescriptConfig,
                         vue: vueConfig,
                         pinia: ['defineStore', 'acceptHMRUpdate'],
-                        lodash: [['default', '_']],
                         vuetify: ['useTheme', 'useDisplay'],
                         zod: ['z'],
                     },
