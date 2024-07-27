@@ -12,7 +12,7 @@ function toggleTheme() {
 }
 
 async function logOut() {
-    if (!await vConfirm.info('Logout!', '<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" '
+    if (!await _confirm.Info('Logout!', '<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" '
         + 'class="mdi mdi-logout animate-tada animate-count-infinite animate-duration-3s">'
         + '</div> <h3>Are you sure you want to log out?</h3>', {
         iconTitle: false,
