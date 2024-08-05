@@ -45,7 +45,7 @@ function closeModal04(value: boolean) {
     modalOpen_04.value = value
 }
 
-const th = dateFormat(new Date(), 'DD/MM/YYYY HH:mm:ss')
+const th = _dateTime.Format(new Date(), 'DD/MM/YYYY HH:mm:ss')
 </script>
 
 <template>
