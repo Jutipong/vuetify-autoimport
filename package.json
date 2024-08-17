@@ -7,7 +7,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "x": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && rm -f ./src/typed-router.d.ts && vite"
+    "x": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && rm -f ./src/typed-router.d.ts && vite",
+     "gen-type":"npx swagger-typescript-api -p http://localhost:5224/swagger/v1/swagger.json --no-client -o ./src/types -n api-type.ts"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -34,6 +35,7 @@
     "@vitejs/plugin-vue": "^5.1.2",
     "axios": "^1.7.4",
     "sass": "1.77.6",
+    "swagger-typescript-api": "^13.0.21",
     "unplugin-auto-import": "^0.18.2",
     "unplugin-vue-components": "^0.27.4",
     "unplugin-vue-router": "^0.10.6",
