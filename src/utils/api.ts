@@ -1,10 +1,26 @@
 import axios from 'axios'
-import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse } from 'axios'
 
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
 import type { TimeConfigType } from './dateTime'
 
 const { token } = useAuthStore()
+
+function dateTransformer(data: any): any {
+    if (data instanceof Date) {
+        const res = data.toLocaleString()
+        return res
+    }
+    if (Array.isArray(data)) {
+        const res = data.map(dateTransformer)
+        return res
+    }
+    if (typeof data === 'object' && data !== null) {
+        const res = Object.fromEntries(Object.entries(data).map(([key, value]) => [key, dateTransformer(value)]))
+        return res
+    }
+    return data
+}
 
 const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -13,6 +29,7 @@ const axiosInstance = axios.create({
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
     },
+    transformRequest: [dateTransformer, ...(axios.defaults.transformRequest as AxiosRequestTransformer[])],
 })
 
 setupCache(axiosInstance, {
