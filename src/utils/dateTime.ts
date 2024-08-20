@@ -2,7 +2,9 @@ import dayjs from 'dayjs'
 
 export type DateFormat =
     'DD/MM/YYYY' | 'DD/MM/YYYY HH:mm' | 'DD/MM/YYYY HH:mm:ss' | 'DD/MM/YYYY HH:mm A' | 'DD/MM/YYYY HH:mm:ss A' |
+    'DD-MM-YYYY' | 'DD-MM-YYYY HH:mm' | 'DD-MM-YYYY HH:mm:ss' | 'DD-MM-YYYY HH:mm A' | 'DD-MM-YYYY HH:mm:ss A' |
     'YYYY/MM/DD' | 'YYYY/MM/DD HH:mm' | 'YYYY/MM/DD HH:mm:ss' | 'YYYY/MM/DD HH:mm A' | 'YYYY/MM/DD HH:mm:ss A' |
+    'YYYY-MM-DD' | 'YYYY-MM-DD HH:mm' | 'YYYY-MM-DD HH:mm:ss' | 'YYYY-MM-DD HH:mm A' | 'YYYY-MM-DD HH:mm:ss A' |
     'HH:mm' | 'HH:mm:ss' | 'HH:mm A' | 'HH:mm:ss A'
 
 export type TimeConfigType =
