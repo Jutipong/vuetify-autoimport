@@ -53,6 +53,6 @@ export const _alert = {
         openAlert(title, subTitle, 'mdi mdi-alert-circle-outline', 'warning')
     },
     Err: (title: string, subTitle: string) => {
-        openAlert(title, subTitle, 'mdi mdi-close-circle-outline', 'error')
+        openAlert(title, subTitle, 'mdi mdi-emoticon-sad-outline', 'error')
     },
 }
