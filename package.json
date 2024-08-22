@@ -27,7 +27,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.26.0",
+    "@antfu/eslint-config": "^2.27.0",
     "@babel/types": "^7.25.2",
     "@types/lodash": "4.17.7",
     "@types/node": "^20.16.1",
