@@ -66,7 +66,9 @@ const func = {
             </VRow>
 
             <VRow>
-                <VSelect2 />
+                <VCol cols="12" md="4">
+                    <VSelect2 />
+                </VCol>
             </VRow>
         </VCardText>
 

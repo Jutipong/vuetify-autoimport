@@ -1,32 +1,56 @@
 <script setup lang="ts">
-const search = ref(null)
+import { fa } from 'vuetify/locale'
+
+const search = ref('')
 const items = ref([] as Item[])
 const isLoading = ref(false)
 const selected = ref<Item | null>(null)
+const isLoadData = ref(false)
 
-async function onInput(val: any) {
-    if (!val) {
-        // items.value = []
-        return false
-    }
+async function fetchData(val?: string) {
+    return await api.Post<any>('customer/MasterSelect2', { name: val, pageSize: 10 }, {
+        baseURL: 'http://localhost:5224/',
+        isLoading: false,
+    })
+}
 
-    const res = await api.Post<any>('customer/Inquiry', { name: val }, { baseURL: 'http://localhost:7213/' })
-    items.value = res.map((item: any) => ({ id: res.Id, name: `${item.name}` }))
+const onInput = _.debounce(async (val: string) => {
+    if (!isLoadData.value)
+        return
+
+    isLoading.value = true
+    items.value = await fetchData(val)
+    isLoading.value = false
+}, 600)
+
+onMounted(() => {
+    watch(search, (val: string) => {
+        if (val.length < 2)
+            return
+
+        onInput(val)
+    })
+})
+
+function onMenu(val: boolean) {
+    isLoadData.value = val
 }
 </script>
 
 <template>
-    item: {{ items }}
     <v-autocomplete
-        v-model:search-input.lazy="search"
+        v-model:search="search"
         v-model="selected"
+        :dirty="true"
+        label="Select2"
         :items="items"
         :loading="isLoading"
         no-filter
-        item-title="name"
+        item-title="text"
         item-value="id"
         clearable
         return-object
-        @update:search="onInput"
+        placeholder="minimum 2 characters"
+        @update:menu="onMenu"
     />
 </template>

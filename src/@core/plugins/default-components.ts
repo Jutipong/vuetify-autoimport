@@ -78,6 +78,7 @@ export default {
         density: 'compact',
         color: 'primary',
         hideDetails: 'auto',
+        dirty: true,
     },
     VCombobox: {
         variant: 'outlined',
