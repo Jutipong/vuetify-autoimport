@@ -24,6 +24,9 @@ declare module 'vue' {
     VCountdown: typeof import('./components/@v/countdown.vue')['default']
     VCurrency: typeof import('./components/@v/currency.vue')['default']
     VDate: typeof import('./components/@v/date.vue')['default']
+    VSelect2: typeof import('./components/@v/select2.vue')['default']
     VValert: typeof import('./components/@v/valert.vue')['default']
+    VXxselect2: typeof import('./components/@v/xxselect2.vue')['default']
+    VXxxxselect2: typeof import('./components/@v/xxxxselect2.vue')['default']
   }
 }

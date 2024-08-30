@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Okselect2 from '../@v/select2.vue'
 import type ProductTableComponent from './table.vue'
 
 const tableRef = ref<InstanceType<typeof ProductTableComponent> | null>(null)
@@ -62,6 +63,10 @@ const func = {
                 <VCol cols="12" md="4">
                     <VDate id="end" v-model="state.search.end" :min="state.search.start" label="End Date" />
                 </VCol>
+            </VRow>
+
+            <VRow>
+                <VSelect2 />
             </VRow>
         </VCardText>
 

@@ -56,6 +56,7 @@ declare global {
   const requiredNumber: typeof import('./utils/zodValidate')['requiredNumber']
   const requiredString: typeof import('./utils/zodValidate')['requiredString']
   const router: typeof import('./@core/router')['default']
+  const select2: typeof import('./components/@v/xxxxselect2.vue')['default']
   const shallowRef: typeof import('vue')['shallowRef']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
