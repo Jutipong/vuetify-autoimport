@@ -1,34 +1,36 @@
 <script setup lang="ts">
-type debounceTime = '1sec' | '2sec' | '3sec' | '4sec'
-
 const props = withDefaults(defineProps<{
+    modelValue: string | null
     minimumCharacters?: number
     pageSize?: number
-    debounceTime?: debounceTime
+    debounceTime?: TimeConfig
     baseUrl?: string
     url: string
     cache?: boolean
     cacheTimeout?: TimeConfig
 }>(), {
+    modelValue: null,
     minimumCharacters: 2,
     pageSize: 10,
+    debounceTime: '1sec',
     cache: true,
     cacheTimeout: '5min',
 })
 
-const val = defineModel<AutoComplateServer | null>()
+const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
+const stateValue = ref<AutoComplateServer | null>(null)
 const textSearch = ref('')
 const items = ref([] as AutoComplateServer[])
 
 const isLoading = ref(false)
 const isFetchData = ref(false)
 
-const placeholder = computed(() => `minimum ${props.minimumCharacters} characters`)
-const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data found')
-
 const func = {
     fetchData: async (text: string, idInit?: string[]) => {
         if (!isFetchData.value)
+            return
+
+        if (idInit?.length === 0)
             return
 
         const isDataInOptions = items.value.some(x => x.text === text)
@@ -38,7 +40,7 @@ const func = {
         isLoading.value = true
 
         try {
-            items.value = await api.Post<AutoComplateServer[]>(props.url, {
+            const res = await api.Post<AutoComplateServer[]>(props.url, {
                 textSearch: text,
                 idInit,
                 pageSize: props.pageSize,
@@ -48,6 +50,17 @@ const func = {
                 cache: props.cache,
                 cacheTimeout: '5min',
             })
+
+            // first load and have id value
+            if (idInit?.length) {
+                const result = res.filter(r => r.id === idInit[0])
+                items.value = result
+                stateValue.value = result[0]
+            }
+            // normal load
+            else {
+                items.value = res
+            }
         }
         finally {
             isLoading.value = false
@@ -56,27 +69,15 @@ const func = {
     onMenu: (val: boolean) => {
         isFetchData.value = val
     },
-    getDebounceTime: () => {
-        switch (props.debounceTime) {
-            case '1sec':
-                return 1000
-            case '2sec':
-                return 2000
-            case '3sec':
-                return 3000
-            case '4sec':
-                return 4000
-            default:
-                return 1000
-        }
-    },
 }
 
 onBeforeMount(async () => {
-    if (!val.value)
+    if (!props.modelValue)
         return
 
-    items.value = [val.value]
+    isFetchData.value = true
+    await func.fetchData('', [props.modelValue])
+    isFetchData.value = false
 })
 
 watchDebounced(textSearch, async (val: string) => {
@@ -84,13 +85,23 @@ watchDebounced(textSearch, async (val: string) => {
         return
 
     await func.fetchData(val)
-}, { debounce: func.getDebounceTime() })
+}, { debounce: _dateTime.GetTimeConfig(props.debounceTime) })
+
+watch(stateValue, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer | null) => {
+    if (newVal?.id === oldVal?.id)
+        return
+
+    emit('update:modelValue', newVal?.id ?? null)
+})
+
+const placeholder = computed(() => `minimum ${props.minimumCharacters} characters`)
+const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data found')
 </script>
 
 <template>
     <v-autocomplete
         v-model:search="textSearch"
-        v-model="val"
+        v-model="stateValue"
         :dirty="true"
         :items="items"
         :loading="isLoading"
@@ -98,9 +109,9 @@ watchDebounced(textSearch, async (val: string) => {
         item-title="text"
         item-value="id"
         clearable
+        return-object
         :placeholder="placeholder"
         :no-data-text="noDataText"
-        return-object
         @update:menu="func.onMenu"
     />
 </template>

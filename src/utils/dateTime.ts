@@ -99,5 +99,5 @@ function GetTimeConfig(timeout: TimeConfig) {
 
 export const _dateTime = {
     Format,
-    TimeConfig: GetTimeConfig,
+    GetTimeConfig,
 }

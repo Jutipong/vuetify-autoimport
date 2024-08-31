@@ -71,7 +71,7 @@
         "**/CVS": false,
         "**/.DS_Store": false,
         "**/Thumbs.db": false,
-        "**/node_modules": false,
+        "**/node_modules": true,
         ".browserslistrc": false,
         ".gitignore": false,
         "tsconfig.node.json": false,

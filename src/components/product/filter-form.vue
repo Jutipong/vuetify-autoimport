@@ -11,7 +11,7 @@ const state = reactive({
         ],
     },
     search: {
-        // autoComplateServer: { id: '6f39a523-e6ca-4116-a534-0fd28a1ad828', text: 'Test 1' },
+        autoComplateServer: '0d464588-56a6-4831-b085-f26cb65ee7fd',
     } as Product,
 })
 
@@ -70,7 +70,7 @@ const func = {
                 <VCol cols="12" md="4">
                     <VAutocompleteServer
                         v-model="state.search.autoComplateServer"
-                        label="AutocompleteServer server side"
+                        label="Autocomplete server side"
                         base-url="http://localhost:7213"
                         url="/customer/AutocompleteServer"
                     />
