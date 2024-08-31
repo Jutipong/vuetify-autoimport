@@ -20,7 +20,7 @@ export interface Customer {
   isActive?: boolean | null;
 }
 
-export interface CustomerCreateCommand {
+export interface CustomerCreateRequest {
   code?: string | null;
   name?: string | null;
   /** @format int32 */
@@ -28,11 +28,11 @@ export interface CustomerCreateCommand {
   email?: string | null;
 }
 
-export interface CustomerDapperHandlerQuery {
+export interface CustomerDapperRequest {
   name?: string | null;
 }
 
-export interface CustomerInquiryQuery {
+export interface CustomerInquiryRequest {
   name?: string | null;
 }
 
@@ -43,7 +43,19 @@ export interface CustomerListResult {
   value?: Customer[] | null;
 }
 
-export interface CustomerUpdateCommand {
+export interface CustomerSelect2Request {
+  name?: string | null;
+  /** @format int32 */
+  pageSize?: number | null;
+}
+
+export interface CustomerSelect2Response {
+  /** @format uuid */
+  id?: string;
+  text?: string | null;
+}
+
+export interface CustomerUpdateRequest {
   /** @format uuid */
   id?: string;
   code?: string | null;
