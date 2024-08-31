@@ -2,7 +2,7 @@ import axios from 'axios'
 import type { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse } from 'axios'
 
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-import type { TimeConfigType } from './dateTime'
+import type { TimeConfig } from './dateTime'
 
 const { token } = useAuthStore()
 
@@ -136,7 +136,7 @@ type ApiOptions = {
     baseURL?: string
     isLoading?: boolean
     cache?: boolean
-    cacheTimeout?: TimeConfigType
+    cacheTimeout?: TimeConfig
 } & AxiosRequestConfig
 
 function getDefaultApiConfig(config?: ApiOptions) {
