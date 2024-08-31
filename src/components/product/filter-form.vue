@@ -70,9 +70,9 @@ const func = {
                 <VCol cols="12" md="4">
                     <VAutocompleteServer
                         v-model="state.search.autoComplateServer"
-                        label="Select2 server side"
+                        label="AutocompleteServer server side"
                         base-url="http://localhost:7213"
-                        url="/customer/MasterSelect2"
+                        url="/customer/AutocompleteServer"
                     />
                 </VCol>
             </VRow>

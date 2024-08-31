@@ -20,6 +20,19 @@ export interface Customer {
   isActive?: boolean | null;
 }
 
+export interface CustomerAutocompleteRequest {
+  textSearch?: string | null;
+  idInit?: string[] | null;
+  /** @format int32 */
+  pageSize?: number | null;
+}
+
+export interface CustomerAutocompleteResponse {
+  /** @format uuid */
+  id?: string;
+  text?: string | null;
+}
+
 export interface CustomerCreateRequest {
   code?: string | null;
   name?: string | null;
@@ -41,18 +54,6 @@ export interface CustomerListResult {
   isFailure?: boolean;
   error?: Error;
   value?: Customer[] | null;
-}
-
-export interface CustomerSelect2Request {
-  name?: string | null;
-  /** @format int32 */
-  pageSize?: number | null;
-}
-
-export interface CustomerSelect2Response {
-  /** @format uuid */
-  id?: string;
-  text?: string | null;
 }
 
 export interface CustomerUpdateRequest {

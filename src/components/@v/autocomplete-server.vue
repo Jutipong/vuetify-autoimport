@@ -27,11 +27,11 @@ const placeholder = computed(() => `minimum ${props.minimumCharacters} character
 const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data found')
 
 const func = {
-    fetchData: async (textSearch: string, idSearch?: string[]) => {
+    fetchData: async (text: string, idInit?: string[]) => {
         if (!isFetchData.value)
             return
 
-        const isDataInOptions = items.value.some(x => x.text === textSearch)
+        const isDataInOptions = items.value.some(x => x.text === text)
         if (isDataInOptions)
             return
 
@@ -39,8 +39,8 @@ const func = {
 
         try {
             items.value = await api.Post<AutoComplateServer[]>(props.url, {
-                textSearch,
-                idSearch,
+                textSearch: text,
+                idInit,
                 pageSize: props.pageSize,
             }, {
                 baseURL: props.baseUrl,
