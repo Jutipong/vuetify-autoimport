@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-export interface Customer {
+interface Customer {
   /** @format uuid */
   id?: string;
   code?: string | null;
@@ -20,20 +20,20 @@ export interface Customer {
   isActive?: boolean | null;
 }
 
-export interface CustomerAutocompleteRequest {
+interface CustomerAutocompleteRequest {
   textSearch?: string | null;
   idInit?: string[] | null;
   /** @format int32 */
   pageSize?: number | null;
 }
 
-export interface CustomerAutocompleteResponse {
+interface CustomerAutocompleteResponse {
   /** @format uuid */
   id?: string;
   text?: string | null;
 }
 
-export interface CustomerCreateRequest {
+interface CustomerCreateRequest {
   code?: string | null;
   name?: string | null;
   /** @format int32 */
@@ -41,22 +41,22 @@ export interface CustomerCreateRequest {
   email?: string | null;
 }
 
-export interface CustomerDapperRequest {
+interface CustomerDapperRequest {
   name?: string | null;
 }
 
-export interface CustomerInquiryRequest {
+interface CustomerInquiryRequest {
   name?: string | null;
 }
 
-export interface CustomerListResult {
+interface CustomerListResult {
   isSuccess?: boolean;
   isFailure?: boolean;
   error?: Error;
   value?: Customer[] | null;
 }
 
-export interface CustomerUpdateRequest {
+interface CustomerUpdateRequest {
   /** @format uuid */
   id?: string;
   code?: string | null;
@@ -66,7 +66,7 @@ export interface CustomerUpdateRequest {
   email?: string | null;
 }
 
-export interface Error {
+interface Error {
   code?: string | null;
   message?: string | null;
 }

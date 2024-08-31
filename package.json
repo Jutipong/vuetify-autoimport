@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "x": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && rm -f ./src/typed-router.d.ts && vite",
-    "gen-type": "npx swagger-typescript-api -p http://localhost:5224/swagger/v1/swagger.json --no-client -o ./src/types -n api-type.ts"
+    "gen-type": "npx swagger-typescript-api -p http://localhost:5224/swagger/v1/swagger.json --no-client -o ./src/types -n api-type.d.ts && sed -i '' 's/export //g' ./src/types/api-type.d.ts"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
