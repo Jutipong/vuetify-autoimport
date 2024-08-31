@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { watchDebounced } from '@vueuse/core'
 import type { TimeConfig } from '@/utils/dateTime'
 
 type debounceTime = '1sec' | '2sec' | '3sec' | '4sec'
@@ -18,6 +17,7 @@ const props = withDefaults(defineProps<{
     cache: true,
     cacheTimeout: '5min',
 })
+
 const val = defineModel<string | null | string[]>()
 const textSearch = ref('')
 const items = ref([] as Select2<string>[])
@@ -29,20 +29,25 @@ const placeholder = computed(() => `minimum ${props.minimumCharacters} character
 const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data found')
 
 const func = {
-    fetchData: async (val: string) => {
+    fetchData: async (textSearch: string, idSearch?: string[]) => {
         if (!isFetchData.value)
+            return
+
+        const isDataInOptions = items.value.some(x => x.text === textSearch)
+        if (isDataInOptions)
             return
 
         isLoading.value = true
 
         try {
             items.value = await api.Post<Select2<string>[]>(props.url, {
-                name: val,
+                textSearch,
+                idSearch,
                 pageSize: props.pageSize,
             }, {
                 baseURL: props.baseUrl,
                 isLoading: false,
-                cache: true,
+                cache: props.cache,
                 cacheTimeout: '5min',
             })
         }
@@ -68,6 +73,21 @@ const func = {
         }
     },
 }
+
+onBeforeMount(async () => {
+    if (!val.value)
+        return
+
+    isFetchData.value = true
+
+    let ids: string[] = []
+    if (typeof val.value === 'string')
+        ids = [val.value]
+
+    await func.fetchData('', ids)
+
+    isFetchData.value = false
+})
 
 watchDebounced(textSearch, async (val: string) => {
     if (val.length < props.minimumCharacters)

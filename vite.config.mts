@@ -20,11 +20,12 @@ export default defineConfig(({ mode }) => {
                 imports: [
                     VueRouterAutoImports,
                     {
-                        typescript: typescriptConfig,
-                        vue: vueConfig,
-                        pinia: ['defineStore', 'acceptHMRUpdate'],
-                        vuetify: ['useTheme', 'useDisplay'],
-                        zod: ['z'],
+                        'typescript': typescriptConfig,
+                        'vue': vueConfig,
+                        'pinia': ['defineStore', 'acceptHMRUpdate'],
+                        'vuetify': ['useTheme', 'useDisplay'],
+                        'zod': ['z'],
+                        '@vueuse/core': ['watchDebounced'],
                     },
                 ],
                 dirs: ['./src/**'],

@@ -40,4 +40,5 @@ export const vueConfig = [
     'onMounted',
     'onUnmounted',
     'shallowRef',
+    'onBeforeMount',
 ]

@@ -11,7 +11,9 @@ const state = reactive({
             { id: false, text: 'InActive' },
         ],
     },
-    search: {} as Product,
+    search: {
+        select2: 'ca1873de-2319-488b-8dd1-dba736f3bd48',
+    } as Product,
 })
 
 const func = {
@@ -71,8 +73,9 @@ const func = {
                     <VAutocompleteServer
                         v-model="state.search.select2"
                         label="Select2 server side"
-                        base-url="http://localhost:5224"
+                        base-url="http://localhost:7213"
                         url="/customer/MasterSelect2"
+                        :cache="false"
                     />
                 </VCol>
             </VRow>
