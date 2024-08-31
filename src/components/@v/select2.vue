@@ -1,40 +1,52 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
 
+const { minimumCharacters, pageSize, debounceTime } = withDefaults(defineProps<{
+    minimumCharacters?: number
+    pageSize?: number
+    debounceTime?: number
+}>(), {
+    minimumCharacters: 2,
+    pageSize: 10,
+    debounceTime: 1000,
+})
+
 const textSearch = ref('')
 const dataSelected = ref<Item | null>(null)
 const items = ref([] as Item[])
 const isLoading = ref(false)
 const isFetchData = ref(false)
-const minimumCharacters = ref(2)
 
-const placeholder = computed(() => `minimum ${minimumCharacters.value} characters`)
+const placeholder = computed(() => `minimum ${minimumCharacters} characters`)
 const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data found')
 
-async function fetchData(val?: string) {
-    if (!isFetchData.value)
-        return
+const func = {
+    fetchData: async (val: string) => {
+        if (!isFetchData.value)
+            return
 
-    isLoading.value = true
+        isLoading.value = true
 
-    items.value = await api.Post<any>('customer/MasterSelect2', { name: val, pageSize: 10 }, {
-        baseURL: 'http://localhost:5224/',
-        isLoading: false,
-    })
+        items.value = await api.Post<any>('customer/MasterSelect2', { name: val, pageSize }, {
+            baseURL: 'http://localhost:5224/',
+            isLoading: false,
+            cache: true,
+            cacheTimeout: '5min',
+        })
 
-    isLoading.value = false
+        isLoading.value = false
+    },
+    onMenu: (val: boolean) => {
+        isFetchData.value = val
+    },
 }
 
 watchDebounced(textSearch, async (val: string) => {
-    if (val.length < 2)
+    if (val.length < minimumCharacters)
         return
 
-    await fetchData(val)
-}, { debounce: 1000 })
-
-function onMenu(val: boolean) {
-    isFetchData.value = val
-}
+    await func.fetchData(val)
+}, { debounce: debounceTime })
 </script>
 
 <template>
@@ -49,9 +61,8 @@ function onMenu(val: boolean) {
         item-title="text"
         item-value="id"
         clearable
-        return-object
         :placeholder="placeholder"
         :no-data-text="noDataText"
-        @update:menu="onMenu"
+        @update:menu="func.onMenu"
     />
 </template>
