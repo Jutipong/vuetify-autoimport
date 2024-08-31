@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { watchDebounced } from '@vueuse/core'
-import type { TimeConfigType } from '@/utils/dateTime'
+import type { TimeConfig } from '@/utils/dateTime'
 
 type debounceTime = '1sec' | '2sec' | '3sec' | '4sec'
 
@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<{
     baseUrl?: string
     url: string
     cache?: boolean
-    cacheTimeout?: TimeConfigType
+    cacheTimeout?: TimeConfig
 }>(), {
     minimumCharacters: 2,
     pageSize: 10,
