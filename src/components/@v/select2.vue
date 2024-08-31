@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<{
     cache: true,
     cacheTimeout: '5min',
 })
-const val = defineModel<string | null>()
+const val = defineModel<string | null | string[]>()
 const textSearch = ref('')
 const items = ref([] as Select2<string>[])
 
