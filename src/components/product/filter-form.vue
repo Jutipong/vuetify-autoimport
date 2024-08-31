@@ -67,7 +67,7 @@ const func = {
 
             <VRow>
                 <VCol cols="12" md="4">
-                    <VSelect2 />
+                    <VSelect2 base-url="http://localhost:5224" url="'/customer/MasterSelect2'" />
                 </VCol>
             </VRow>
         </VCardText>
