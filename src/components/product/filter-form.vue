@@ -33,6 +33,7 @@ const func = {
         </VCardTitle>
 
         <VCardText>
+            {{ state.search.select2 }}
             <VRow>
                 <VCol cols="12" md="4">
                     <VTextField v-model="state.search.brand" label="Brand" />
@@ -67,7 +68,12 @@ const func = {
 
             <VRow>
                 <VCol cols="12" md="4">
-                    <VSelect2 base-url="http://localhost:5224" url="'/customer/MasterSelect2'" />
+                    <VSelect2
+                        v-model="state.search.select2"
+                        label="Select2 server side"
+                        base-url="http://localhost:5224"
+                        url="/customer/MasterSelect2"
+                    />
                 </VCol>
             </VRow>
         </VCardText>

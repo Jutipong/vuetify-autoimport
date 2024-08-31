@@ -18,11 +18,9 @@ const props = withDefaults(defineProps<{
     cache: true,
     cacheTimeout: '5min',
 })
-
+const val = defineModel<string | null>()
 const textSearch = ref('')
-
-const dataSelected = ref<string | null>(null)
-const items = ref([] as Select2Type<string>[])
+const items = ref([] as Select2<string>[])
 
 const isLoading = ref(false)
 const isFetchData = ref(false)
@@ -37,19 +35,25 @@ const func = {
 
         isLoading.value = true
 
-        items.value = await api.Post<Select2Type<string>[]>(props.url, { name: val, pageSize: props.pageSize }, {
-            baseURL: props.baseUrl,
-            isLoading: false,
-            cache: true,
-            cacheTimeout: '5min',
-        })
-
-        isLoading.value = false
+        try {
+            items.value = await api.Post<Select2<string>[]>(props.url, {
+                name: val,
+                pageSize: props.pageSize,
+            }, {
+                baseURL: props.baseUrl,
+                isLoading: false,
+                cache: true,
+                cacheTimeout: '5min',
+            })
+        }
+        finally {
+            isLoading.value = false
+        }
     },
     onMenu: (val: boolean) => {
         isFetchData.value = val
     },
-    debounceTime: () => {
+    getDebounceTime: () => {
         switch (props.debounceTime) {
             case '1sec':
                 return 1000
@@ -70,15 +74,14 @@ watchDebounced(textSearch, async (val: string) => {
         return
 
     await func.fetchData(val)
-}, { debounce: func.debounceTime() })
+}, { debounce: func.getDebounceTime() })
 </script>
 
 <template>
     <v-autocomplete
         v-model:search="textSearch"
-        v-model="dataSelected"
+        v-model="val"
         :dirty="true"
-        label="Select2"
         :items="items"
         :loading="isLoading"
         no-filter

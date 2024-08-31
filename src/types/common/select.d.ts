@@ -1,9 +1,4 @@
-interface Select2Type<TId> {
+interface Select2<TId> {
     id: TId
     text: string
 }
-
-// interface Item {
-//     id: number
-//     name: string
-// }
