@@ -11,5 +11,5 @@ interface Product {
     status?: string
     start?: Date
     end?: Date
-    select2?: string
+    autoComplateServer?: AutoComplateServer | null
 }

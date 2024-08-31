@@ -2,7 +2,6 @@ import axios from 'axios'
 import type { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse } from 'axios'
 
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-import type { TimeConfig } from './dateTime'
 
 const { token } = useAuthStore()
 

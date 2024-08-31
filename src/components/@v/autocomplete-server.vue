@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { TimeConfig } from '@/utils/dateTime'
-
 type debounceTime = '1sec' | '2sec' | '3sec' | '4sec'
 
 const props = withDefaults(defineProps<{
@@ -18,9 +16,9 @@ const props = withDefaults(defineProps<{
     cacheTimeout: '5min',
 })
 
-const val = defineModel<string | null | string[]>()
+const val = defineModel<AutoComplateServer | null>()
 const textSearch = ref('')
-const items = ref([] as Select2<string>[])
+const items = ref([] as AutoComplateServer[])
 
 const isLoading = ref(false)
 const isFetchData = ref(false)
@@ -40,7 +38,7 @@ const func = {
         isLoading.value = true
 
         try {
-            items.value = await api.Post<Select2<string>[]>(props.url, {
+            items.value = await api.Post<AutoComplateServer[]>(props.url, {
                 textSearch,
                 idSearch,
                 pageSize: props.pageSize,
@@ -78,15 +76,7 @@ onBeforeMount(async () => {
     if (!val.value)
         return
 
-    isFetchData.value = true
-
-    let ids: string[] = []
-    if (typeof val.value === 'string')
-        ids = [val.value]
-
-    await func.fetchData('', ids)
-
-    isFetchData.value = false
+    items.value = [val.value]
 })
 
 watchDebounced(textSearch, async (val: string) => {
@@ -110,6 +100,7 @@ watchDebounced(textSearch, async (val: string) => {
         clearable
         :placeholder="placeholder"
         :no-data-text="noDataText"
+        return-object
         @update:menu="func.onMenu"
     />
 </template>

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Okselect2 from '../@v/autocomplete-server.vue'
 import type ProductTableComponent from './table.vue'
 
 const tableRef = ref<InstanceType<typeof ProductTableComponent> | null>(null)
@@ -12,7 +11,7 @@ const state = reactive({
         ],
     },
     search: {
-        select2: 'ca1873de-2319-488b-8dd1-dba736f3bd48',
+        // autoComplateServer: { id: '6f39a523-e6ca-4116-a534-0fd28a1ad828', text: 'Test 1' },
     } as Product,
 })
 
@@ -35,7 +34,6 @@ const func = {
         </VCardTitle>
 
         <VCardText>
-            {{ state.search.select2 }}
             <VRow>
                 <VCol cols="12" md="4">
                     <VTextField v-model="state.search.brand" label="Brand" />
@@ -71,11 +69,10 @@ const func = {
             <VRow>
                 <VCol cols="12" md="4">
                     <VAutocompleteServer
-                        v-model="state.search.select2"
+                        v-model="state.search.autoComplateServer"
                         label="Select2 server side"
                         base-url="http://localhost:7213"
                         url="/customer/MasterSelect2"
-                        :cache="false"
                     />
                 </VCol>
             </VRow>
