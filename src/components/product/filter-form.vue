@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Okselect2 from '../@v/select2.vue'
+import Okselect2 from '../@v/autocomplete-server.vue'
 import type ProductTableComponent from './table.vue'
 
 const tableRef = ref<InstanceType<typeof ProductTableComponent> | null>(null)
@@ -68,7 +68,7 @@ const func = {
 
             <VRow>
                 <VCol cols="12" md="4">
-                    <VSelect2
+                    <VAutocompleteServer
                         v-model="state.search.select2"
                         label="Select2 server side"
                         base-url="http://localhost:5224"
