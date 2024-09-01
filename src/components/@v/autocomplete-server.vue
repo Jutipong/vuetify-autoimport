@@ -48,16 +48,14 @@ const func = {
                 baseURL: props.baseUrl,
                 isLoading: false,
                 cache: props.cache,
-                cacheTimeout: '5min',
+                cacheTimeout: props.cacheTimeout,
             })
 
-            // first load and have id value
             if (idInit?.length) {
                 const result = res.filter(r => r.id === idInit[0])
                 items.value = result
                 stateValue.value = result[0]
             }
-            // normal load
             else {
                 items.value = res
             }
@@ -92,6 +90,18 @@ watch(stateValue, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer
         return
 
     emit('update:modelValue', newVal?.id ?? null)
+})
+
+watch(() => props.modelValue, async (newVal: string | null) => {
+    if (stateValue.value?.id === newVal)
+        return
+
+    if (!newVal)
+        return stateValue.value = null
+
+    isFetchData.value = true
+    await func.fetchData('', [newVal])
+    isFetchData.value = false
 })
 
 const placeholder = computed(() => `minimum ${props.minimumCharacters} characters`)
