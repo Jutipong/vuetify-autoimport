@@ -2,6 +2,8 @@
 const props = withDefaults(defineProps<{
     modelValue: string | null
     minimumCharacters?: number
+    noDataMessage: string
+    loadingMessage: string
     pageSize?: number
     debounceTime?: TimeConfig
     baseUrl?: string
@@ -11,6 +13,8 @@ const props = withDefaults(defineProps<{
 }>(), {
     modelValue: null,
     minimumCharacters: 2,
+    noDataMessage: 'No data found',
+    loadingMessage: 'Loading...',
     pageSize: 10,
     debounceTime: '1sec',
     cache: false,
@@ -121,7 +125,7 @@ watch(() => props.modelValue, async (newVal: string | null) => {
         clearable
         return-object
         :placeholder="`minimum ${props.minimumCharacters} characters`"
-        :no-data-text="isLoading ? 'Loading...' : 'No data found'"
+        :no-data-text="isLoading ? `${props.loadingMessage ?? 'Loading...'}` : `${props.noDataMessage ?? 'No data found'}`"
         :error-messages="isServerError ? `Server err: ${props.baseUrl}${props.url}` : ''"
         @update:menu="func.onMenu"
     />
