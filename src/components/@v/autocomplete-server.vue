@@ -128,7 +128,7 @@ const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data foun
         return-object
         :placeholder="placeholder"
         :no-data-text="noDataText"
-        :error-messages="isServerError ? 'Server error' : ''"
+        :error-messages="isServerError ? `Server err: ${props.baseUrl}${props.url}` : ''"
         @update:menu="func.onMenu"
     />
 </template>
