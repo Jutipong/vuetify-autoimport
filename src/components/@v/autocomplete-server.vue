@@ -13,28 +13,21 @@ const props = withDefaults(defineProps<{
     minimumCharacters: 2,
     pageSize: 10,
     debounceTime: '1sec',
-    cache: true,
+    cache: false,
     cacheTimeout: '5min',
 })
 
 const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
-const stateValue = ref<AutoComplateServer | null>(null)
-const textSearch = ref('')
+const vModel = ref<AutoComplateServer | null>(null)
+const search = ref('')
 const items = ref([] as AutoComplateServer[])
 
 const isLoading = ref(false)
 const isFetchData = ref(false)
 
 const func = {
-    fetchData: async (text: string, idInit?: string[]) => {
+    fetchData: async (text: string, idInit?: string) => {
         if (!isFetchData.value)
-            return
-
-        if (idInit?.length === 0)
-            return
-
-        const isDataInOptions = items.value.some(x => x.text === text)
-        if (isDataInOptions)
             return
 
         isLoading.value = true
@@ -42,7 +35,7 @@ const func = {
         try {
             const res = await api.Post<AutoComplateServer[]>(props.url, {
                 textSearch: text,
-                idInit,
+                idInit: idInit?.length ? [idInit] : null,
                 pageSize: props.pageSize,
             }, {
                 baseURL: props.baseUrl,
@@ -51,14 +44,14 @@ const func = {
                 cacheTimeout: props.cacheTimeout,
             })
 
-            if (idInit?.length) {
-                const result = res.filter(r => r.id === idInit[0])
-                items.value = result
-                stateValue.value = result[0]
+            if (idInit) {
+                const result = res.find(r => r.id === idInit)
+                items.value = result ? [result] : []
+                vModel.value = result ?? null
+                return
             }
-            else {
-                items.value = res
-            }
+
+            items.value = res
         }
         finally {
             isLoading.value = false
@@ -73,34 +66,40 @@ onBeforeMount(async () => {
     if (!props.modelValue)
         return
 
+    // if (idInit?.length === 0)
+    //     return
+
     isFetchData.value = true
-    await func.fetchData('', [props.modelValue])
+    await func.fetchData('', props.modelValue)
     isFetchData.value = false
 })
 
-watchDebounced(textSearch, async (val: string) => {
-    if (val.length < props.minimumCharacters)
+watchDebounced(search, async (strSearch: string) => {
+    if (strSearch.length < props.minimumCharacters)
         return
 
-    await func.fetchData(val)
+    if (items.value.some(x => x.text === strSearch))
+        return
+
+    await func.fetchData(strSearch)
 }, { debounce: _dateTime.GetTimeConfig(props.debounceTime) })
 
-watch(stateValue, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer | null) => {
-    if (newVal?.id === oldVal?.id)
+watch(vModel, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer | null) => {
+    if (newVal?.id === oldVal?.id || props.modelValue === newVal)
         return
 
     emit('update:modelValue', newVal?.id ?? null)
 })
 
 watch(() => props.modelValue, async (newVal: string | null) => {
-    if (stateValue.value?.id === newVal)
+    if (vModel.value?.id === newVal)
         return
 
     if (!newVal)
-        return stateValue.value = null
+        return vModel.value = null
 
     isFetchData.value = true
-    await func.fetchData('', [newVal])
+    await func.fetchData('', newVal)
     isFetchData.value = false
 })
 
@@ -110,8 +109,8 @@ const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data foun
 
 <template>
     <v-autocomplete
-        v-model:search="textSearch"
-        v-model="stateValue"
+        v-model:search="search"
+        v-model="vModel"
         :dirty="true"
         :items="items"
         :loading="isLoading"
