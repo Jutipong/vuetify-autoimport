@@ -109,9 +109,6 @@ watch(() => props.modelValue, async (newVal: string | null) => {
     await func.fetchData('', newVal)
     isFetchData.value = false
 })
-
-const placeholder = computed(() => `minimum ${props.minimumCharacters} characters`)
-const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data found')
 </script>
 
 <template>
@@ -126,8 +123,8 @@ const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data foun
         item-value="id"
         clearable
         return-object
-        :placeholder="placeholder"
-        :no-data-text="noDataText"
+        :placeholder="`minimum ${props.minimumCharacters} characters`"
+        :no-data-text="isLoading ? 'Loading...' : 'No data found'"
         :error-messages="isServerError ? `Server err: ${props.baseUrl}${props.url}` : ''"
         @update:menu="func.onMenu"
     />
