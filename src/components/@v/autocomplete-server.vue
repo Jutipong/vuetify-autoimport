@@ -2,6 +2,7 @@
 const props = withDefaults(defineProps<{
     modelValue: string | null
     minimumCharacters?: number
+    placeholderText: string | null
     pageSize?: number
     debounceTime?: TimeConfig
     baseUrl?: string
@@ -11,6 +12,7 @@ const props = withDefaults(defineProps<{
 }>(), {
     modelValue: null,
     minimumCharacters: 2,
+    placeholderText: null,
     pageSize: 10,
     debounceTime: '1sec',
     cache: false,
@@ -73,9 +75,6 @@ onBeforeMount(async () => {
     if (!props.modelValue)
         return
 
-    // if (idInit?.length === 0)
-    //     return
-
     isFetchData.value = true
     await func.fetchData('', props.modelValue)
     isFetchData.value = false
@@ -123,7 +122,7 @@ watch(() => props.modelValue, async (newVal: string | null) => {
         item-value="id"
         clearable
         return-object
-        :placeholder="`minimum ${props.minimumCharacters} characters`"
+        :placeholder=" props.placeholderText ?? `minimum ${props.minimumCharacters} characters`"
         :no-data-text="isLoading ? 'Loading...' : 'No data found'"
         :error-messages="isServerError ? `Server err: ${props.baseUrl}${props.url}` : ''"
         @update:menu="func.onMenu"
