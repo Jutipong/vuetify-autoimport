@@ -131,7 +131,7 @@ axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<a
 }, handleError)
 
 type ApiOptions = {
-    timeout?: number
+    timeOut?: TimeConfig
     baseURL?: string
     isLoading?: boolean
     cache?: boolean
@@ -139,18 +139,18 @@ type ApiOptions = {
 } & AxiosRequestConfig
 
 function getDefaultApiConfig(config?: ApiOptions) {
-    const timeOutDefault = _dateTime.GetTimeConfig('30sec')
-
     if (!config) {
-        return {
-            timeout: timeOutDefault,
-            cache: false,
-        } as ApiOptions
+        return { timeout: _dateTime.GetTimeConfig('30sec'), cache: false }
     }
 
-    config.timeout = config.timeout ?? timeOutDefault
-    config.cache = config.cache ?? false
+    if (config.timeOut) {
+        config.timeout = _dateTime.GetTimeConfig(config.timeOut!)
+    }
+    else {
+        config.timeout = _dateTime.GetTimeConfig('30sec')
+    }
 
+    config.cache = config.cache ?? false
     return config
 }
 
