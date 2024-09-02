@@ -126,7 +126,7 @@ watch(() => props.modelValue, async (newVal: string | null) => {
         return-object
         :placeholder="`minimum ${props.minimumCharacters} characters`"
         :no-data-text="isLoading ? `${props.loadingMessage ?? 'Loading...'}` : `${props.noDataMessage ?? 'No data found'}`"
-        :error-messages="isServerError ? `Server err: ${props.baseUrl}${props.url}` : ''"
+        :error-messages="isServerError ? `url error: ${props.baseUrl}${props.url}` : ''"
         @update:menu="func.onMenu"
     />
 </template>
