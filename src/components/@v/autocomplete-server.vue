@@ -21,6 +21,7 @@ const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
 const vModel = ref<AutoComplateServer | null>(null)
 const search = ref('')
 const items = ref([] as AutoComplateServer[])
+const isServerError = ref(false)
 
 const isLoading = ref(false)
 const isFetchData = ref(false)
@@ -33,6 +34,8 @@ const func = {
         isLoading.value = true
 
         try {
+            isServerError.value = false
+
             const res = await api.Post<AutoComplateServer[]>(props.url, {
                 textSearch: text,
                 idInit: idInit?.length ? [idInit] : null,
@@ -52,6 +55,10 @@ const func = {
             }
 
             items.value = res
+        }
+        catch {
+            isServerError.value = true
+            items.value = []
         }
         finally {
             isLoading.value = false
@@ -121,6 +128,7 @@ const noDataText = computed(() => isLoading.value ? 'Loading...' : 'No data foun
         return-object
         :placeholder="placeholder"
         :no-data-text="noDataText"
+        :error-messages="isServerError ? 'Server error' : ''"
         @update:menu="func.onMenu"
     />
 </template>
