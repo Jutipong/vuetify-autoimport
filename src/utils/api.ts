@@ -50,7 +50,7 @@ function cachePredicate(config: any) {
 
 function updateCache(config: any) {
     if (config.config.cacheTimeout) {
-        config.config.cache.ttl = _dateTime.GetTimeConfig(config.config.cacheTimeout)
+        config.config.cache.ttl = _dateTime.TimeConfig(config.config.cacheTimeout)
     }
 }
 
@@ -140,14 +140,14 @@ type ApiOptions = {
 
 function getDefaultApiConfig(config?: ApiOptions) {
     if (!config) {
-        return { timeout: _dateTime.GetTimeConfig('30sec'), cache: false }
+        return { timeout: _dateTime.TimeConfig('30sec'), cache: false }
     }
 
     if (config.timeOut) {
-        config.timeout = _dateTime.GetTimeConfig(config.timeOut!)
+        config.timeout = _dateTime.TimeConfig(config.timeOut!)
     }
     else {
-        config.timeout = _dateTime.GetTimeConfig('30sec')
+        config.timeout = _dateTime.TimeConfig('30sec')
     }
 
     config.cache = config.cache ?? false

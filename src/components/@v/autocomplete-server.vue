@@ -91,7 +91,7 @@ watchDebounced(search, async (strSearch: string) => {
         return
 
     await func.fetchData(strSearch)
-}, { debounce: _dateTime.GetTimeConfig(props.debounceTime) })
+}, { debounce: _dateTime.TimeConfig(props.debounceTime) })
 
 watch(vModel, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer | null) => {
     if (newVal?.id === oldVal?.id || props.modelValue === newVal)

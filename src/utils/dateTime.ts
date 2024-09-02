@@ -4,7 +4,7 @@ function Format(date: Date | string, formate: DateFormat = 'DD/MM/YYYY') {
     return dayjs(date).format(formate)
 }
 
-function GetTimeConfig(timeout: TimeConfig) {
+function TimeConfig(timeout: TimeConfig) {
     switch (timeout) {
         case '1sec':
             return 1 * 1000
@@ -99,5 +99,5 @@ function GetTimeConfig(timeout: TimeConfig) {
 
 export const _dateTime = {
     Format,
-    GetTimeConfig,
+    TimeConfig,
 }
