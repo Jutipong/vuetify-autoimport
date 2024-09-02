@@ -13,7 +13,7 @@ const appStore = useAppStore()
     <v-overlay v-model="appStore.isLoading" class="align-center justify-center" persistent>
         <v-card>
             <v-card-text class="text-center">
-                <v-progress-circular size="32" color="green" indeterminate />
+                <v-progress-circular size="32" color="success" indeterminate />
                 <p class="mt-2">
                     Loading....
                 </p>

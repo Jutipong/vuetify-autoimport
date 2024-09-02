@@ -2,8 +2,8 @@
 const props = withDefaults(defineProps<{
     modelValue: string | null
     minimumCharacters?: number
-    noDataMessage: string
-    loadingMessage: string
+    noDataMessage?: string
+    loadingMessage?: string
     pageSize?: number
     debounceTime?: TimeConfig
     baseUrl?: string
@@ -22,6 +22,7 @@ const props = withDefaults(defineProps<{
 })
 
 const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
+
 const vModel = ref<AutoComplateServer | null>(null)
 const search = ref('')
 const items = ref([] as AutoComplateServer[])
@@ -128,5 +129,9 @@ watch(() => props.modelValue, async (newVal: string | null) => {
         :no-data-text="isLoading ? `${props.loadingMessage ?? 'Loading...'}` : `${props.noDataMessage ?? 'No data found'}`"
         :error-messages="isServerError ? `url error: ${props.baseUrl}${props.url}` : ''"
         @update:menu="func.onMenu"
-    />
+    >
+        <template v-if="isLoading" #append-inner>
+            <v-icon size="34" color="success" icon="mdi mdi-loading" animate-spin />
+        </template>
+    </v-autocomplete>
 </template>
