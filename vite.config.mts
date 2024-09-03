@@ -46,14 +46,7 @@ export default defineConfig(({ mode }) => {
                 dts: 'src/typed-router.d.ts',
             }),
             UnoCSS(),
-            vue({
-                template: {
-                    transformAssetUrls,
-                },
-                script: {
-                    defineModel: true,
-                },
-            }),
+            vue(),
             vuetify({
                 autoImport: true,
                 styles: {
