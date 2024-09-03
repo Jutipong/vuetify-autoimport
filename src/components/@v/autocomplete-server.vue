@@ -1,5 +1,16 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+const {
+    modelValue = null,
+    minimumCharacters = 2,
+    noDataMessage = 'No data found',
+    loadingMessage = 'Loading...',
+    pageSize = 10,
+    debounceTime = '1sec',
+    url,
+    baseUrl,
+    cache = false,
+    cacheTimeout = '5min',
+} = defineProps<{
     modelValue: string | null
     minimumCharacters?: number
     noDataMessage?: string
@@ -10,16 +21,7 @@ const props = withDefaults(defineProps<{
     url: string
     cache?: boolean
     cacheTimeout?: TimeConfig
-}>(), {
-    modelValue: null,
-    minimumCharacters: 2,
-    noDataMessage: 'No data found',
-    loadingMessage: 'Loading...',
-    pageSize: 10,
-    debounceTime: '1sec',
-    cache: false,
-    cacheTimeout: '5min',
-})
+}>()
 
 const emit = defineEmits<{ 'update:modelValue': [value: string | null] }>()
 
@@ -41,15 +43,15 @@ const func = {
         try {
             isServerError.value = false
 
-            const res = await api.Post<AutoComplateServer[]>(props.url, {
+            const res = await api.Post<AutoComplateServer[]>(url, {
                 textSearch: text,
                 idInit: idInit?.length ? [idInit] : null,
-                pageSize: props.pageSize,
+                pageSize,
             }, {
-                baseURL: props.baseUrl,
+                baseURL: baseUrl,
                 isLoading: false,
-                cache: props.cache,
-                cacheTimeout: props.cacheTimeout,
+                cache,
+                cacheTimeout,
             })
 
             if (idInit) {
@@ -75,32 +77,32 @@ const func = {
 }
 
 onBeforeMount(async () => {
-    if (!props.modelValue)
+    if (!modelValue)
         return
 
     isFetchData.value = true
-    await func.fetchData('', props.modelValue)
+    await func.fetchData('', modelValue)
     isFetchData.value = false
 })
 
 watchDebounced(search, async (strSearch: string) => {
-    if (strSearch.length < props.minimumCharacters)
+    if (strSearch.length < minimumCharacters)
         return
 
     if (items.value.some(x => x.text === strSearch))
         return
 
     await func.fetchData(strSearch)
-}, { debounce: _dateTime.TimeConfig(props.debounceTime) })
+}, { debounce: _dateTime.TimeConfig(debounceTime) })
 
 watch(vModel, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer | null) => {
-    if (newVal?.id === oldVal?.id || props.modelValue === newVal)
+    if (newVal?.id === oldVal?.id || modelValue === newVal)
         return
 
     emit('update:modelValue', newVal?.id ?? null)
 })
 
-watch(() => props.modelValue, async (newVal: string | null) => {
+watch(() => modelValue, async (newVal: string | null) => {
     if (vModel.value?.id === newVal)
         return
 
@@ -114,7 +116,7 @@ watch(() => props.modelValue, async (newVal: string | null) => {
 </script>
 
 <template>
-    <v-autocomplete
+    <VAutocomplete
         v-model:search="search"
         v-model="vModel"
         :dirty="true"
@@ -125,13 +127,13 @@ watch(() => props.modelValue, async (newVal: string | null) => {
         item-value="id"
         clearable
         return-object
-        :placeholder="`minimum ${props.minimumCharacters} characters`"
-        :no-data-text="isLoading ? `${props.loadingMessage ?? 'Loading...'}` : `${props.noDataMessage ?? 'No data found'}`"
-        :error-messages="isServerError ? `url error: ${props.baseUrl}${props.url}` : ''"
+        :placeholder="`minimum ${minimumCharacters} characters`"
+        :no-data-text="isLoading ? `${loadingMessage ?? 'Loading...'}` : `${noDataMessage ?? 'No data found'}`"
+        :error-messages="isServerError ? `url error: ${baseUrl}${url}` : ''"
         @update:menu="func.onMenu"
     >
         <template v-if="isLoading" #append-inner>
             <v-icon size="34" color="success" icon="mdi mdi-loading" animate-spin />
         </template>
-    </v-autocomplete>
+    </VAutocomplete>
 </template>
