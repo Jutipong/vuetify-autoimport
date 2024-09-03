@@ -25,7 +25,7 @@
 	},
 	"vue template script setup ts composition api": {
 		"scope": "vue",
-		"prefix": "vts",
+		"prefix": "v-create-setup",
 		"body": [
 			"<script lang=\"ts\" setup>",
 			"\t$1",
@@ -41,7 +41,7 @@
 	},
 	"Pinia Setup": {
 		"scope": "javascript,typescript",
-		"prefix": "cpn",
+		"prefix": "v-create-sotre",
 		"body": [
 			"export const use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}Store = defineStore('$TM_FILENAME_BASE', () => {",
 			" $0",
@@ -60,7 +60,7 @@
 		"prefix": "v-import",
 		"description": "Import a module",
 		"body": [
-			"import { $2 } from '$1';"
+			"import $2 from '$1';"
 		],
 	},
 	"vue-reactive": {
@@ -68,7 +68,7 @@
 		"prefix": "v-reactive",
 		"description": "reactive",
 		"body": [
-			"const $1 = reactive($2)"
+			"const $1 = reactive$2($3)"
 		]
 	},
 	"vue-ref": {
@@ -76,7 +76,7 @@
 		"prefix": "v-ref",
 		"description": "ref",
 		"body": [
-			"const $1 = ref($2)"
+			"const $1 = ref$2($3)"
 		]
 	},
 	"vue-watch": {
@@ -109,7 +109,7 @@
 	},
 	"declare global": {
 		"scope": "javascript,typescript,vue",
-		"prefix": "dgt",
+		"prefix": "v-declare-global",
 		"description": "declare global",
 		"body": [
 			"export {}",
