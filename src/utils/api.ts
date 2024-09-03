@@ -130,28 +130,29 @@ axiosInstance.interceptors.response.use(({ config, data }: any): AxiosResponse<a
     return data
 }, handleError)
 
-type ApiOptions = {
-    timeOut?: TimeConfig
+interface ApiOptions {
+    timeout?: TimeConfig
     baseURL?: string
     isLoading?: boolean
     cache?: boolean
     cacheTimeout?: TimeConfig
-} & AxiosRequestConfig
+}
 
-function getDefaultApiConfig(config?: ApiOptions) {
+function getDefaultApiConfig(config?: ApiOptions): AxiosRequestConfig {
     if (!config) {
-        return { timeout: _dateTime.TimeConfig('30sec'), cache: false }
+        return {
+            timeout: _dateTime.TimeConfig('30sec'),
+            cache: false,
+        } as AxiosRequestConfig
     }
 
-    if (config.timeOut) {
-        config.timeout = _dateTime.TimeConfig(config.timeOut!)
-    }
-    else {
-        config.timeout = _dateTime.TimeConfig('30sec')
-    }
-
-    config.cache = config.cache ?? false
-    return config
+    return {
+        ...config,
+        cache: config.cache ?? false,
+        timeout: config?.timeout
+            ? _dateTime.TimeConfig(config.timeout!)
+            : _dateTime.TimeConfig('30sec'),
+    } as AxiosRequestConfig
 }
 
 export default {
