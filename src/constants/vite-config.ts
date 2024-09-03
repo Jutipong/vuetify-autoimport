@@ -26,6 +26,7 @@ export const typescriptConfig = [
 ]
 
 export const vueConfig = [
+    'useId',
     'ref',
     'reactive',
     'watchEffect',
@@ -41,4 +42,5 @@ export const vueConfig = [
     'onUnmounted',
     'shallowRef',
     'onBeforeMount',
+    'useTemplateRef',
 ]
