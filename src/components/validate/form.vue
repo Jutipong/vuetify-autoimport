@@ -14,7 +14,7 @@ function onSubmit() {
     if (!validateForm())
         return
 
-    vAlert.success('Successful', `Submit data successfully`)
+    _alert.Success('Successful', `Submit data successfully`)
     resetForm()
 }
 </script>

@@ -3,10 +3,10 @@ interface Customer {
     Name?: string
     Last?: string
     Address: string
-    Details: [
-        {
-            id: string
-            name: string
-        },
-    ]
+    Details:
+    {
+        id: string
+        name: string
+    }[]
+
 }

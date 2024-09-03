@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import type ProductTableComponent from './table.vue'
-
-const tableRef = ref<InstanceType<typeof ProductTableComponent> | null>(null)
+const tableRef = useTemplateRef('table')
 
 const state = reactive({
     master: {
@@ -85,5 +83,5 @@ const func = {
     </VCard>
 
     <!-- table -->
-    <ProductTable ref="tableRef" />
+    <ProductTable ref="table" />
 </template>

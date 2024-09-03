@@ -1,15 +1,16 @@
 <script setup lang="ts">
 const props = defineProps<{
     modalOpen: boolean
-    customer: {
-        id?: number | null
-        Name?: string
-        Last?: string
-        Details: [{
-            id: string
-            name: string
-        }]
-    }
+    customer: Customer
+    // customer:  {
+    //     id?: number | null
+    //     Name?: string
+    //     Last?: string
+    //     Details: [{
+    //         id: string
+    //         name: string
+    //     }]
+    // }
 }>()
 
 const emit = defineEmits<{ onclose: [value: boolean] }>()

@@ -1,14 +1,17 @@
 <script setup lang="ts">
-const customer = ref<Customer>({ Address: 'ที่อยู่', Details: [{ id: 'id', name: 'name' }] })
+const customer = ref<Customer>({
+    Address: 'ที่อยู่',
+    Details: [{ id: 'id', name: 'name' }],
+})
 
 // =============== Modal 01 ===============
-const modalOpen_01 = ref(false)
-function openModal_01() {
-    modalOpen_01.value = true
-}
-function updateCustomer(value: Customer) {
-    Object.assign(customer.value, value)
-}
+// const modalOpen_01 = ref(false)
+// function openModal_01() {
+//     modalOpen_01.value = true
+// }
+// function updateCustomer(value: Customer) {
+//     Object.assign(customer.value, value)
+// }
 
 // =============== Modal 02 ===============
 const modalOpen_02 = ref(false)
@@ -51,7 +54,7 @@ const th = _dateTime.Format(new Date(), 'DD/MM/YYYY HH:mm:ss')
 <template>
     <div>
         <!-- one way binding -->
-        <CustomerActionModal01 v-bind="customer" v-model="modalOpen_01" @update="updateCustomer" />
+        <!-- <CustomerActionModal01 v-bind="{ ...customer }" v-model="modalOpen_01" @update="updateCustomer" /> -->
 
         <!-- two way binding -->
         <!-- recommend: use 'defineProps' and 'defineEmits' for props and emit -->
@@ -84,7 +87,7 @@ const th = _dateTime.Format(new Date(), 'DD/MM/YYYY HH:mm:ss')
             </VCardText>
 
             <VCardActions class="justify-end">
-                <VBtn color="primary" text="1.Props+Emit-v-bin" @click="openModal_01" />
+                <!-- <VBtn color="primary" text="1.Props+Emit-v-bin" @click="openModal_01" /> -->
                 <VBtn color="primary" text="2.Props {} +Emit('close')" @click="openModal_02" />
                 <VBtn color="primary" text="3.defineModel" @click="openModal_03" />
                 <VBtn color="primary" text="4.type in component" @click="openModal_04" />

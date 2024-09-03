@@ -18,19 +18,19 @@ const items = [
     },
 ]
 function alertInfo() {
-    vAlert.info('Title infomation', 'sub title infomation')
+    _alert.Info('Title infomation', 'sub title infomation')
 }
 
 function alertSuccess() {
-    vAlert.success('Title success', 'sub title success')
+    _alert.Success('Title success', 'sub title success')
 }
 
 function alertWarning() {
-    vAlert.warning('Title warning', 'sub title warning')
+    _alert.Warning('Title warning', 'sub title warning')
 }
 
 function alertError() {
-    vAlert.error('Title error', 'sub title error')
+    _alert.Err('Title error', 'sub title error')
 }
 </script>
 

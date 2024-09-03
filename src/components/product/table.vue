@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import type ProductModalComponent from './modal.vue'
-
-const modalRef = ref<InstanceType<typeof ProductModalComponent> | null>(null)
+const modalRef = useTemplateRef('modal')
 
 const { setLoading, unLoading, isLoading } = useAppStore()
 
@@ -56,7 +54,7 @@ defineExpose({
 </script>
 
 <template>
-    <ProductModal ref="modalRef" />
+    <ProductModal ref="modal" />
 
     <VCard>
         <VCardTitle>
