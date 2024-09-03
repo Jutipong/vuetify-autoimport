@@ -60,6 +60,10 @@
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "vue.splitEditors.icon": true,
+    "vue.inlayHints.missingProps": true,
+    "vue.inlayHints.optionsWrapper": true,
+    "vue.inlayHints.vBindShorthand": true,
+    "vue.inlayHints.destructuredProps": true,
     "editor.minimap.enabled": false,
     "typescript.preferences.autoImportFileExcludePatterns": [
         "vue-router"
