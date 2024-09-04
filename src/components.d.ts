@@ -20,6 +20,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ValidateForm: typeof import('./components/validate/form.vue')['default']
+    VAutocompleteMultipleServer: typeof import('./components/@v/autocomplete-multiple-server.vue')['default']
     VAutocompleteServer: typeof import('./components/@v/autocomplete-server.vue')['default']
     VConfirm: typeof import('./components/@v/confirm.vue')['default']
     VCountdown: typeof import('./components/@v/countdown.vue')['default']

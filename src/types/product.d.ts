@@ -12,4 +12,5 @@ interface Product {
     start?: Date
     end?: Date
     autoComplateServer: string | null
+    autoComplateMultipleServer: string[] | null
 }
