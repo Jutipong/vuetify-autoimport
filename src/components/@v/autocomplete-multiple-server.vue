@@ -105,8 +105,9 @@ watch(vModel, (newVal: AutoComplateServer[] | null, oldVal: AutoComplateServer[]
     if (newIds.length === oldIds.length && newIds?.every(newId => oldIds?.some(id => id === newId)))
         return
 
-    const modelValueIds = modelValue?.map(id => id) ?? []
-    if (newVal?.length === modelValueIds?.length && newIds?.every(newId => modelValueIds?.some(modalValueId => modalValueId === newId)))
+    const propsIds = modelValue?.map(id => id) ?? []
+
+    if (newVal?.length === propsIds?.length && newIds?.every(newId => propsIds?.some(propsId => propsId === newId)))
         return
 
     emit('update:modelValue', newVal?.length ? newVal.map(r => r.id) : null)
