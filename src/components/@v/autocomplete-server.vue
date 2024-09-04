@@ -96,7 +96,7 @@ watchDebounced(search, async (strSearch: string) => {
 }, { debounce: _dateTime.TimeConfig(debounceTime) })
 
 watch(vModel, (newVal: AutoComplateServer | null, oldVal: AutoComplateServer | null) => {
-    if (newVal?.id === oldVal?.id || modelValue === newVal)
+    if (newVal?.id === oldVal?.id || newVal === modelValue)
         return
 
     emit('update:modelValue', newVal?.id ?? null)
