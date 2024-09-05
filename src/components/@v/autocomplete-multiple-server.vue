@@ -61,7 +61,7 @@ const func = {
                 return
             }
 
-            items.value = res
+            items.value = [...items.value, ...res.filter(r => !items.value.map(r2 => r2.id).includes(r.id))]
         }
         catch {
             isServerError.value = true
@@ -85,8 +85,7 @@ onBeforeMount(async () => {
     isFetchData.value = false
 })
 
-watchDebounced(search, async (strSearch: string) => {
-    debugger
+watchDebounced(search, async (strSearch) => {
     if ((strSearch?.length ?? 0) < minimumCharacters)
         return
 
@@ -96,9 +95,7 @@ watchDebounced(search, async (strSearch: string) => {
     await func.fetchData(strSearch)
 }, { debounce: _dateTime.TimeConfig(debounceTime) })
 
-watch(vModel, (newVal: AutoComplateServer[] | null, oldVal: AutoComplateServer[] | null) => {
-    debugger
-
+watch(vModel, (newVal, oldVal) => {
     const newIds = newVal?.map(r => r.id) ?? []
     const oldIds = oldVal?.map(r => r.id) ?? []
 
@@ -113,9 +110,7 @@ watch(vModel, (newVal: AutoComplateServer[] | null, oldVal: AutoComplateServer[]
     emit('update:modelValue', newVal?.length ? newVal.map(r => r.id) : null)
 })
 
-watch(() => modelValue, async (newVal: string[] | null) => {
-    debugger
-
+watch(() => modelValue, async (newVal) => {
     const newIds = newVal?.map(id => id) ?? []
     const vModelId = vModel.value?.map(r => r.id) ?? []
 
