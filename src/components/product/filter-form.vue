@@ -66,20 +66,19 @@ const func = {
             </VRow>
 
             <VRow>
-                <!-- <VCol cols="12" md="4">
+                <VCol cols="12" md="4">
                     <VAutocompleteServer
                         v-model="state.search.autoComplateServer"
                         label="Autocomplete server side"
                         base-url="http://localhost:7213"
                         url="/customer/AutocompleteServer"
                     />
-                </VCol> -->
+                </VCol>
 
-                <VCol cols="12" md="12">
-                    {{ state.search.autoComplateMultipleServer }}
+                <VCol cols="12" md="6">
                     <VAutocompleteMultipleServer
                         v-model="state.search.autoComplateMultipleServer"
-                        label="Autocomplete server side"
+                        label="Autocomplete Multiple server side"
                         base-url="http://localhost:5224"
                         url="/customer/AutocompleteServer"
                     />
