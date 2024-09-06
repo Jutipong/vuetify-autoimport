@@ -1,4 +1,4 @@
-async function GetFileBase64<T>(files: T): Promise<T> {
+async function GetBase64<T>(files: T): Promise<T> {
     if (_.isArray(files)) {
         const selectedFiles = files.map((fileItem: any) => {
             return new Promise((resolve) => {
@@ -36,5 +36,5 @@ async function GetFileBase64<T>(files: T): Promise<T> {
 }
 
 export const _file = {
-    GetFileBase64,
+    GetBase64,
 }
