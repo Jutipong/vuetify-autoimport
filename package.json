@@ -23,14 +23,14 @@
     "pinia-plugin-persistedstate": "^3.2.3",
     "unocss": "^0.62.3",
     "unplugin-fonts": "^1.1.1",
-    "vue": "^3.5.1",
+    "vue": "^3.5.3",
     "vue-router": "^4.4.3",
     "vue-toastification": "^2.0.0-rc.5",
     "vuetify": "^3.7.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.2.0",
+    "@antfu/eslint-config": "^3.3.2",
     "@babel/types": "^7.25.6",
     "@types/lodash": "^4.17.7",
     "@types/node": "^22.5.4",

@@ -31,6 +31,7 @@ declare global {
   const _alert: typeof import('./utils/alert')['_alert']
   const _confirm: typeof import('./utils/confirm')['_confirm']
   const _dateTime: typeof import('./utils/dateTime')['_dateTime']
+  const _file: typeof import('./utils/file')['_file']
   const _notify: typeof import('./utils/notify')['_notify']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const alert: typeof import('./utils/alert')['default']

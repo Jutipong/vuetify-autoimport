@@ -22,6 +22,10 @@ const func = {
         await tableRef.value?.onSearch(state.search)
     },
 }
+
+// watch(() => state.search.files, async (files: File | File[]) => {
+//     const result = await _file.GetFileBase64(files)
+// })
 </script>
 
 <template>
@@ -82,6 +86,12 @@ const func = {
                         base-url="http://localhost:5224"
                         url="/customer/AutocompleteServer"
                     />
+                </VCol>
+            </VRow>
+
+            <VRow>
+                <VCol cols="12" md="4">
+                    <v-file-input v-model="state.search.files" label="File input" />
                 </VCol>
             </VRow>
         </VCardText>

@@ -1,7 +1,7 @@
 import axios from 'axios'
-import type { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse } from 'axios'
-
 import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
+
+import type { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse } from 'axios'
 
 const { token } = useAuthStore()
 
