@@ -23,7 +23,7 @@ const func = {
     },
 }
 
-watch(() => state.search.files, async (files: File | File[]) => {
+watch(() => state.search.files, async (files) => {
     const result = await _file.GetBase64(files)
     console.log(result)
 })

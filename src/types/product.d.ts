@@ -14,7 +14,6 @@ interface Product {
     autoComplateServer: string | null
     autoComplateMultipleServer: string[] | null
     files: File
-    fileInput: File
 }
 
 interface File {
