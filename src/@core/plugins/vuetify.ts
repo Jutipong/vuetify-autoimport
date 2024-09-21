@@ -1,9 +1,9 @@
+import type { VuetifyOptions } from 'vuetify'
+import { createVuetify } from 'vuetify'
+
+import * as labsComponents from 'vuetify/labs/components'
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
-
-import { createVuetify } from 'vuetify'
-import type { VuetifyOptions } from 'vuetify'
-import * as labsComponents from 'vuetify/labs/components'
 
 export default createVuetify({
     ssr: false,

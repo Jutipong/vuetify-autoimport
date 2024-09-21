@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCurrencyInput } from 'vue-currency-input'
 import type { PropType } from 'vue'
+import { useCurrencyInput } from 'vue-currency-input'
 
 const props = defineProps({
     modelValue: {
