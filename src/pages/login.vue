@@ -20,7 +20,7 @@ async function logIn() {
 
     state.isLoading = false
 
-    setToken(res.token)
+    setToken(res.accessToken)
     setUser(res)
 
     router.push('/')
