@@ -54,7 +54,6 @@ declare global {
   const onUnmounted: typeof import('vue')['onUnmounted']
   const piniaConfig: typeof import('./utils/pinia-config')['piniaConfig']
   const reactive: typeof import('vue')['reactive']
-  const readonly: typeof import('typescript')['readonly']
   const ref: typeof import('vue')['ref']
   const requiredNumber: typeof import('./utils/zodValidate')['requiredNumber']
   const requiredString: typeof import('./utils/zodValidate')['requiredString']

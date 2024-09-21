@@ -1,5 +1,4 @@
 export const typescriptConfig = [
-    'readonly',
     'Record',
     'Partial',
     'Pick',
