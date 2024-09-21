@@ -12,6 +12,7 @@
         "antfu.unocss",
         "vue.volar",
         "naumovs.color-highlight",
-        "vscode-icons-team.vscode-icons"
+        "vscode-icons-team.vscode-icons",
+        "simonhe.common-intellisense"
     ]
 }
