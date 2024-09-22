@@ -52,4 +52,4 @@ function requiredNumber(message: string, zodType: z.ZodType<any, any>[] = []) {
     return z.union([z.number(), z.null(), z.undefined(), ...zodType]).refine(val => !!val, { message })
 }
 
-export { useZodValidate, requiredString, requiredNumber }
+export { requiredNumber, requiredString, useZodValidate }

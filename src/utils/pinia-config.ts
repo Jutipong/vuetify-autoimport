@@ -1,6 +1,6 @@
+import ls from 'localstorage-slim'
 import { createPinia } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
-import ls from 'localstorage-slim'
 
 ls.config.storage = sessionStorage
 ls.config.encrypt = true

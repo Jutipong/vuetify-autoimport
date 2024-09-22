@@ -130,17 +130,17 @@ watch(() => modelValue, async (newVal) => {
     <VAutocomplete
         v-model:search="search"
         v-model="vModel"
-        chips
+
         :closable-chips="true"
-        multiple
+
         :dirty="true"
         :items="items"
         :loading="isLoading"
-        no-filter
+
         item-title="text"
         item-value="id"
-        clearable
-        return-object
+
+        no-filter clearable return-object chips multiple
         :placeholder="`minimum ${minimumCharacters} characters`"
         :no-data-text="isLoading ? `${loadingMessage ?? 'Loading...'}` : `${noDataMessage ?? 'No data found'}`"
         :error-messages="isServerError ? `url error: ${baseUrl}${url}` : ''"
