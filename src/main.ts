@@ -1,15 +1,15 @@
+import type { PluginOptions } from 'vue-toastification'
+import vuetify from '@/@core/plugins/vuetify'
+
 import { createApp } from 'vue'
+
+import Toast from 'vue-toastification'
+import App from './App.vue'
+import router from './utils/router-config'
+
 import '@/assets/css/styles/index.scss'
 
-import type { PluginOptions } from 'vue-toastification'
-import Toast from 'vue-toastification'
-
-import App from './App.vue'
-import vuetify from '@/@core/plugins/vuetify'
-import router from '@/@core/router'
-
 import '@/assets/css/main.css'
-
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
 

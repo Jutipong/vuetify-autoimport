@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
-
 import type { AxiosRequestConfig, AxiosRequestTransformer, AxiosResponse } from 'axios'
+import axios from 'axios'
+
+import { buildWebStorage, setupCache } from 'axios-cache-interceptor'
 
 const { token } = useAuthStore()
 
@@ -90,8 +90,10 @@ function handleError(err: any) {
 
     resetLoading()
 
-    if (code === 401)
+    if (code === 401) {
+        const router = useRouter()
         router.push('/login')
+    }
 
     // if (resError.config.returnError) {
     //     const error = {

@@ -18,10 +18,10 @@ export default defineConfig(({ mode }) => {
         plugins: [
             AutoImport({
                 imports: [
-                    VueRouterAutoImports,
                     {
                         'typescript': typescriptConfig,
                         'vue': vueConfig,
+                        'vue-router': ['useRouter'],
                         'pinia': ['defineStore', 'acceptHMRUpdate'],
                         'vuetify': ['useTheme', 'useDisplay'],
                         'zod': ['z'],

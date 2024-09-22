@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const { setToken, setUser } = useAuthStore()
+const router = useRouter()
 
 const state = reactive({
     user: {

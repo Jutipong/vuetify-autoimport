@@ -2,6 +2,7 @@
 const layoutStore = useLayoutStore()
 const theme = useTheme()
 const { mobile } = useDisplay()
+const router = useRouter()
 const appName = import.meta.env.VITE_APP_NAME
 
 theme.global.name.value = layoutStore.state.theme
