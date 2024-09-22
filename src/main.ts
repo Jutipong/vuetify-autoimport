@@ -1,8 +1,6 @@
 import type { PluginOptions } from 'vue-toastification'
 import vuetify from '@/@core/plugins/vuetify'
 
-import router from '@utils/router-config'
-
 import { createApp } from 'vue'
 import Toast from 'vue-toastification'
 import App from './App.vue'
@@ -17,7 +15,7 @@ document.title = import.meta.env.VITE_APP_TITLE
 
 const app = createApp(App)
 app.use(vuetify)
-app.use(router)
+app.use(routerConfig)
 app.use(piniaConfig)
 app.use(Toast, {
     transition: 'Vue-Toastification__bounce',
