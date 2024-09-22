@@ -1,11 +1,11 @@
 import type { PluginOptions } from 'vue-toastification'
 import vuetify from '@/@core/plugins/vuetify'
 
-import { createApp } from 'vue'
+import router from '@utils/router-config'
 
+import { createApp } from 'vue'
 import Toast from 'vue-toastification'
 import App from './App.vue'
-import router from './utils/router-config'
 
 import '@/assets/css/styles/index.scss'
 
