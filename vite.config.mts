@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
                 directoryAsNamespace: true,
             }),
             Layouts({
-                layoutsDirs: 'src/@core/layouts',
+                layoutsDirs: 'src/layouts',
                 defaultLayout: 'default',
             }),
             VueRouter({

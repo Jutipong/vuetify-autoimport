@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Header from './components/header.vue'
+import Navigation from './components/navigation.vue'
+
 const { mobile } = useDisplay()
 const { isProgressLoading } = useAppStore()
 
@@ -19,10 +22,7 @@ const layoutCss = computed(() => {
         <v-main>
             <!-- <v-container> -->
             <router-view v-slot="{ Component }">
-                <transition
-                    name="fade"
-                    mode="out-in"
-                >
+                <transition name="fade" mode="out-in">
                     <!-- <KeepAlive :name="Component"> -->
                     <component :is="Component" />
                     <!-- </KeepAlive> -->

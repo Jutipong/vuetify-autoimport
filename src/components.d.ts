@@ -12,8 +12,6 @@ declare module 'vue' {
     CustomerActionModal03: typeof import('./components/customer/action-modal-03.vue')['default']
     CustomerActionModal04: typeof import('./components/customer/action-modal-04.vue')['default']
     CustomerInquiry: typeof import('./components/customer/Inquiry.vue')['default']
-    Header: typeof import('./@core/layouts/components/header.vue')['default']
-    Navigation: typeof import('./@core/layouts/components/navigation.vue')['default']
     ProductFilterForm: typeof import('./components/product/filter-form.vue')['default']
     ProductModal: typeof import('./components/product/modal.vue')['default']
     ProductTable: typeof import('./components/product/table.vue')['default']
