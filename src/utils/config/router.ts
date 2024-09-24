@@ -2,13 +2,13 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
 
-const router = createRouter({
+const routerConfig = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: setupLayouts(routes),
     scrollBehavior() { return { top: 0 } },
 })
 
-router.beforeEach((to: any, from: any, next: any) => {
+routerConfig.beforeEach((to: any, from: any, next: any) => {
     const { token, clearAuth } = useAuthStore()
     const appStore = useAppStore()
 
@@ -27,9 +27,9 @@ router.beforeEach((to: any, from: any, next: any) => {
     next()
 })
 
-router.afterEach(() => {
+routerConfig.afterEach(() => {
     const appStore = useAppStore()
     appStore.isProgressLoading = false
 })
 
-export default router
+export { routerConfig }

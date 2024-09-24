@@ -10,7 +10,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import vuetify from 'vite-plugin-vuetify'
-import { typescriptConfig, vueConfig } from './src/utils/config/vite-config'
+import { typescriptConfig, vueConfig } from './src/utils/config/vite'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())

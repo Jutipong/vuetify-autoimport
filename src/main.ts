@@ -6,7 +6,6 @@ import Toast from 'vue-toastification'
 import App from './App.vue'
 
 import '@/assets/css/styles/index.scss'
-
 import '@/assets/css/main.css'
 import 'vue-toastification/dist/index.css'
 import 'virtual:uno.css'
