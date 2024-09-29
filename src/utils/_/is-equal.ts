@@ -1,4 +1,4 @@
-export function isEqual(a: any, b: any): boolean {
+export function _isEqual(a: any, b: any): boolean {
     // ถ้าเป็นค่าพื้นฐาน (primitive values) หรือ references เดียวกัน
     if (a === b)
         return true
@@ -35,7 +35,7 @@ export function isEqual(a: any, b: any): boolean {
     for (const key of keysA) {
         if (!keysB.includes(key))
             return false
-        if (!isEqual(a[key], b[key]))
+        if (!_isEqual(a[key], b[key]))
             return false
     }
 

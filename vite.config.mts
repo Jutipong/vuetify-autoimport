@@ -9,7 +9,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import vuetify from 'vite-plugin-vuetify'
-import { typescriptConfig, vueConfig } from './src/utils/config/vite'
+import { vueConfig } from './src/utils/config/vite'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
@@ -18,7 +18,6 @@ export default defineConfig(({ mode }) => {
             AutoImport({
                 imports: [
                     {
-                        'typescript': typescriptConfig,
                         'vue': vueConfig,
                         'vue-router': ['useRouter'],
                         'pinia': ['defineStore', 'acceptHMRUpdate'],

@@ -31,7 +31,7 @@ const func = {
         if (!await _confirm.Save('Confirm Update', `Update brand ${state.product.brand}`))
             return
 
-        const update = _.pick(state.product, ['id', 'title'])
+        const update = _pick(state.product, ['id', 'title'])
 
         appStore.setLoading()
         await api.Put(`/products/${state.product.id}`, { update })

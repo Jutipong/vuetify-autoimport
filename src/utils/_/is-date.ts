@@ -1,4 +1,4 @@
-export function isDate(value: unknown): value is Date {
+export function _isDate(value: unknown): value is Date {
     return (
         value instanceof Date
         && !Number.isNaN(value.getTime())

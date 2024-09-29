@@ -19,7 +19,7 @@ function openModal_02() {
     modalOpen_02.value = true
 }
 function closeModal02(value1: boolean, value2: Customer) {
-    if (_.isEmpty(value2)) {
+    if (_isNull(value2)) {
         customer.value = value2
     }
     else {

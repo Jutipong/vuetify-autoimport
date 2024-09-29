@@ -58,7 +58,7 @@ importers:
         specifier: ^7.25.6
         version: 7.25.6
       '@types/node':
-        specifier: ^22.7.3
+        specifier: ^22.6.1
         version: 22.7.3
       '@unocss/eslint-config':
         specifier: ^0.62.4
