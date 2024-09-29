@@ -5,7 +5,6 @@ import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import ViteFonts from 'unplugin-fonts/vite'
 import Components from 'unplugin-vue-components/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -71,11 +70,12 @@ export default defineConfig(({ mode }) => {
                 },
             },
         },
-        build: {
-            chunkSizeWarningLimit: 5000,
-        },
+        // build: {
+        //     chunkSizeWarningLimit: 5000,
+        //     cssCodeSplit: true,
+        // },
         optimizeDeps: {
-            include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash', 'axios-cache-interceptor'],
+            include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash', 'axios-cache-interceptor', 'dayjs'],
             entries: ['./src/**/*.vue'],
             exclude: ['vuetify'],
         },
