@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const appStore = useAppStore()
+const app = useAppStore()
 </script>
 
 <template>
@@ -10,7 +10,7 @@ const appStore = useAppStore()
     <VConfirm />
     <VValert />
 
-    <v-overlay v-model="appStore.isLoading" class="align-center justify-center" persistent>
+    <v-overlay v-model="app.isLoading" class="align-center justify-center" persistent>
         <v-card>
             <v-card-text class="text-center">
                 <v-progress-circular size="32" color="success" indeterminate />

@@ -13,14 +13,17 @@ function useDataTable<TItems>(headers: DataTableHeader[], sortBy: DataTableSortB
     } as DataTableType<TItems>)
 
     function onPageChange(page: number) {
+        table.options.page = page
         onSubmit({ page })
     }
 
     function onSortByChange(sortBy: any) {
+        table.options.sortBy = sortBy
         onSubmit({ sortBy })
     }
 
     function functionOnSubmit({ page } = { page: 1 }) {
+        table.options.page = page
         onSubmit({ page })
     }
 

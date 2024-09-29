@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const appStore = useAppStore()
+const app = useAppStore()
 
 const state = reactive({
     product: {} as Product,
@@ -19,10 +19,10 @@ const func = {
         }
     },
     Create: async () => {
-        appStore.setLoading()
+        app.setLoading()
         await api.Post(`/products/add`, state.product)
 
-        appStore.unLoading()
+        app.unLoading()
         _notify.Success('Product created successfully')
 
         state.open = false
@@ -33,10 +33,10 @@ const func = {
 
         const update = _pick(state.product, ['id', 'title'])
 
-        appStore.setLoading()
+        app.setLoading()
         await api.Put(`/products/${state.product.id}`, { update })
 
-        appStore.unLoading()
+        app.unLoading()
         _notify.Success('Product updated successfully')
 
         state.open = false
@@ -101,7 +101,7 @@ defineExpose({
 
                     <VCardActions>
                         <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="func.onClose()" />
-                        <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="appStore.isLoading" @click="func.onAction()" />
+                        <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="app.isLoading" @click="func.onAction()" />
                     </VCardActions>
                 </VCard>
             </VDialog>

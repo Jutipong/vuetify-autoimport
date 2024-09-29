@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+
 const modalRef = useTemplateRef('modal')
 
-const { setLoading, unLoading, isLoading } = useAppStore()
+const { isLoading } = storeToRefs(useAppStore())
 
 const state = reactive({ search: {} as Product })
 
@@ -13,18 +15,12 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
     { title: 'STOCK', key: 'stock', align: 'end' },
     { title: 'BRAND', key: 'brand', align: 'end' },
     { title: 'Actions', key: 'actions', sortable: false },
-], [{ key: 'id', order: 'asc' }], async (option?: DataTableOption) => {
-    setLoading()
-
-    Object.assign(table.options, option)
-
+], [{ key: 'id', order: 'asc' }], async () => {
     const { products, total } = await api.Get<{ products: Product[], total: number }>
     (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
     table.result.items = products
     table.result.itemsLength = total
-
-    unLoading()
 })
 
 const func = {

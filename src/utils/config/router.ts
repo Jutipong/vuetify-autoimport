@@ -10,9 +10,9 @@ const routerConfig = createRouter({
 
 routerConfig.beforeEach((to: any, from: any, next: any) => {
     const { token, clearAuth } = useAuthStore()
-    const appStore = useAppStore()
+    const app = useAppStore()
 
-    appStore.isProgressLoading = true
+    app.isProgressLoading = true
 
     if (to.path === '/login') {
         clearAuth()
@@ -28,8 +28,8 @@ routerConfig.beforeEach((to: any, from: any, next: any) => {
 })
 
 routerConfig.afterEach(() => {
-    const appStore = useAppStore()
-    appStore.isProgressLoading = false
+    const app = useAppStore()
+    app.isProgressLoading = false
 })
 
 export { routerConfig }
