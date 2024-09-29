@@ -8,7 +8,7 @@ type Paths<T> = T extends Primitive
                 : `${K}`;
         }[keyof T & string]
 
-function _setFieldBy<T extends object, P extends Paths<T>>(
+export function _setFieldBy<T extends object, P extends Paths<T>>(
     data: T,
     fieldPath: P,
     value: any,
