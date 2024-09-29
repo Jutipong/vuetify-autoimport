@@ -23,6 +23,7 @@ declare global {
   const _notify: typeof import('./utils/notify')['_notify']
   const _omit: typeof import('./utils/_/omit')['_omit']
   const _pick: typeof import('./utils/_/pick')['_pick']
+  const _setFieldByName: typeof import('./utils/_/set-field-by')['_setFieldByName']
   const _sortBy: typeof import('./utils/_/sort-by')['_sortBy']
   const _sum: typeof import('./utils/_/sum')['_sum']
   const _sumBy: typeof import('./utils/_/sum')['_sumBy']
