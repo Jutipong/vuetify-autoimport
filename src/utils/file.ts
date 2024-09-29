@@ -1,5 +1,5 @@
 async function GetBase64<T>(files: T): Promise<T> {
-    if (_.isArray(files)) {
+    if (_isArray(files)) {
         const selectedFiles = files.map((fileItem: any) => {
             return new Promise((resolve) => {
                 const reader = new FileReader()
