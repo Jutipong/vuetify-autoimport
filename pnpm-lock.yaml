@@ -54,12 +54,6 @@ importers:
       '@antfu/eslint-config':
         specifier: ^3.7.3
         version: 3.7.3(@typescript-eslint/utils@8.7.0(eslint@8.57.0)(typescript@5.5.4))(@unocss/eslint-plugin@0.62.4(eslint@8.57.0)(typescript@5.5.4))(@vue/compiler-sfc@3.5.10)(eslint@8.57.0)(typescript@5.5.4)
-      '@babel/types':
-        specifier: ^7.25.6
-        version: 7.25.6
-      '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
       '@unocss/eslint-config':
         specifier: ^0.62.4
         version: 0.62.4(eslint@8.57.0)(typescript@5.5.4)
@@ -3152,6 +3146,7 @@ snapshots:
   '@types/node@22.7.4':
     dependencies:
       undici-types: 6.19.8
+    optional: true
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -5272,7 +5267,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  undici-types@6.19.8: {}
+  undici-types@6.19.8:
+    optional: true
 
   unimport@3.12.0(rollup@4.22.4)(webpack-sources@3.2.3):
     dependencies:

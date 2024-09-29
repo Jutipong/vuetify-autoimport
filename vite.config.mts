@@ -74,7 +74,7 @@ export default defineConfig(({ mode }) => {
         //     cssCodeSplit: true,
         // },
         optimizeDeps: {
-            include: ['vue', 'vue-router', 'pinia', 'axios', 'lodash', 'axios-cache-interceptor', 'dayjs'],
+            include: ['vue', 'vue-router', 'pinia', 'axios', 'axios-cache-interceptor', 'dayjs'],
             entries: ['./src/**/*.vue'],
             exclude: ['vuetify'],
         },
