@@ -11,15 +11,14 @@
 
 $body-font-family: 'Inter';
 
-$typoOptions: display-4, display-3, display-2, display-1, headline, title,
-    subtitle-1, subtitle-2, body-1, body-2, caption, overline;
+// $typoOptions: display-4, display-3, display-2, display-1, headline, title,
+//     subtitle-1, subtitle-2, body-1, body-2, caption, overline;
 
-#app {
+:root {
     font-family: $body-font-family, sans-serif !important;
-
-    @each $typoOption in $typoOptions {
-        .#{$typoOption} {
-            font-family: $body-font-family, sans-serif !important;
-        }
-    }
+    // @each $typoOption in $typoOptions {
+    //     .#{$typoOption} {
+    //         font-family: $body-font-family, sans-serif !important;
+    //     }
+    // }
 }
