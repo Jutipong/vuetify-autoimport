@@ -47,9 +47,9 @@ export default defineConfig(({ mode }) => {
             vue(),
             vuetify({
                 autoImport: true,
-                styles: {
-                    configFile: 'src/assets/sass/style.scss',
-                },
+                // styles: {
+                //     configFile: 'src/assets/sass/style.scss',
+                // },
             }),
             ViteFonts({
                 google: {
@@ -66,6 +66,9 @@ export default defineConfig(({ mode }) => {
             preprocessorOptions: {
                 scss: {
                     api: 'modern-compiler', // or "modern", "legacy"
+                    implements: [
+                        'src/assets/sass/style.scss',
+                    ],
                 },
             },
         },
