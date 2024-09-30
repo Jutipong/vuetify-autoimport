@@ -3,8 +3,10 @@ import vuetify from '@/utils/config/vuetify/vuetify'
 
 import { createApp } from 'vue'
 import Toast from 'vue-toastification'
+import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar'
 import App from './App.vue'
 
+import 'vue3-perfect-scrollbar/style.css'
 import '@/assets/css/styles/index.scss'
 import '@/assets/css/main.css'
 import 'vue-toastification/dist/index.css'
@@ -14,6 +16,7 @@ document.title = import.meta.env.VITE_APP_TITLE
 
 const app = createApp(App)
 app.use(vuetify)
+app.use(PerfectScrollbarPlugin)
 app.use(routerConfig)
 app.use(piniaConfig)
 app.use(Toast, {

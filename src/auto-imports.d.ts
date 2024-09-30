@@ -51,7 +51,6 @@ declare global {
   const shallowRef: typeof import('vue')['shallowRef']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
-  const typescriptConfig: typeof import('./utils/config/vite')['typescriptConfig']
   const useAppStore: typeof import('./stores/app')['useAppStore']
   const useAuthStore: typeof import('./stores/auth')['useAuthStore']
   const useDataTable: typeof import('./utils/data-table')['useDataTable']

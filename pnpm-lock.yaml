@@ -23,6 +23,9 @@ importers:
       localstorage-slim:
         specifier: ^2.7.1
         version: 2.7.1
+      perfect-scrollbar:
+        specifier: ^1.5.5
+        version: 1.5.5
       pinia:
         specifier: ^2.2.2
         version: 2.2.2(typescript@5.5.4)(vue@3.5.10(typescript@5.5.4))
@@ -44,6 +47,9 @@ importers:
       vue-toastification:
         specifier: ^2.0.0-rc.5
         version: 2.0.0-rc.5(vue@3.5.10(typescript@5.5.4))
+      vue3-perfect-scrollbar:
+        specifier: ^2.0.0
+        version: 2.0.0(vue@3.5.10(typescript@5.5.4))
       vuetify:
         specifier: ^3.7.2
         version: 3.7.2(typescript@5.5.4)(vite-plugin-vuetify@2.0.4)(vue@3.5.10(typescript@5.5.4))
@@ -2079,6 +2085,9 @@ packages:
   perfect-debounce@1.0.0:
     resolution: {integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==}
 
+  perfect-scrollbar@1.5.5:
+    resolution: {integrity: sha512-dzalfutyP3e/FOpdlhVryN4AJ5XDVauVWxybSkLZmakFE2sS3y3pc4JnSprw8tGmHvkaG5Edr5T7LBTZ+WWU2g==}
+
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
 
@@ -2621,6 +2630,11 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
+
+  vue3-perfect-scrollbar@2.0.0:
+    resolution: {integrity: sha512-nSWVcRyViCgt0Pe3RhU3w/BllLcFSrEzYOGlRBjSyhVmiZlERHHziffW+9P8L0IMEWouC5t+uYrgNJGSAElqMA==}
+    peerDependencies:
+      vue: ^3.0.0
 
   vue@3.5.10:
     resolution: {integrity: sha512-Vy2kmJwHPlouC/tSnIgXVg03SG+9wSqT1xu1Vehc+ChsXsRd7jLkKgMltVEFOzUdBr3uFwBCG+41LJtfAcBRng==}
@@ -4915,6 +4929,8 @@ snapshots:
 
   perfect-debounce@1.0.0: {}
 
+  perfect-scrollbar@1.5.5: {}
+
   picocolors@1.0.1: {}
 
   picocolors@1.1.0: {}
@@ -5514,6 +5530,11 @@ snapshots:
       '@vue/language-core': 2.1.6(typescript@5.5.4)
       semver: 7.6.3
       typescript: 5.5.4
+
+  vue3-perfect-scrollbar@2.0.0(vue@3.5.10(typescript@5.5.4)):
+    dependencies:
+      perfect-scrollbar: 1.5.5
+      vue: 3.5.10(typescript@5.5.4)
 
   vue@3.5.10(typescript@5.5.4):
     dependencies:
