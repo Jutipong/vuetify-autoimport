@@ -6,12 +6,8 @@ import Toast from 'vue-toastification'
 import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar'
 import App from './App.vue'
 
-import '@/assets/sass/layout.scss'
-import '@/assets/sass/mobile.scss'
-import '@/assets/css/main.css'
-import 'vue-toastification/dist/index.css'
+import './assets/sass/style.scss'
 import 'virtual:uno.css'
-import 'vue3-perfect-scrollbar/style.css'
 
 document.title = import.meta.env.VITE_APP_TITLE
 

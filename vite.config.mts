@@ -66,9 +66,9 @@ export default defineConfig(({ mode }) => {
             preprocessorOptions: {
                 scss: {
                     api: 'modern-compiler', // or "modern", "legacy"
-                    implements: [
-                        'src/assets/sass/style.scss',
-                    ],
+                    // implements: [
+                    //     'src/assets/sass/style.scss',
+                    // ],
                 },
             },
         },
