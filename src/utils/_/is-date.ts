@@ -1,3 +1,4 @@
+// cspell:disable
 export function _isDate(value: unknown): value is Date {
     return (
         value instanceof Date

@@ -1,3 +1,4 @@
+// cspell:disable
 export function _isEqual(a: any, b: any): boolean {
     // ถ้าเป็นค่าพื้นฐาน (primitive values) หรือ references เดียวกัน
     if (a === b)

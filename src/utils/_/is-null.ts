@@ -1,3 +1,4 @@
+// cspell:disable
 export function _isNull(value: any): boolean {
     if (value === null || value === undefined) {
         return true

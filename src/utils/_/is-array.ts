@@ -1,3 +1,4 @@
+// cspell:disable
 export function _isArray<T>(value: unknown): value is T[] {
     return Array.isArray(value)
 }
