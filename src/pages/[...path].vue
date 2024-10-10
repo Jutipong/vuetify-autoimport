@@ -1,5 +1,6 @@
 <script setup lang="ts">
 function backPage() {
+    const router = useRouter()
     router.back()
 }
 </script>
