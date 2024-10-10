@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
                 imports: [
                     {
                         'vue': vueConfig,
-                        'vue-router': ['useRouter'],
+                        'vue-router': ['useRouter', 'useRoute'],
                         'pinia': ['defineStore', 'acceptHMRUpdate'],
                         'vuetify': ['useTheme', 'useDisplay'],
                         'zod': ['z'],

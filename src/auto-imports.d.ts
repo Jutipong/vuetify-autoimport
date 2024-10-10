@@ -57,6 +57,7 @@ declare global {
   const useDisplay: typeof import('vuetify')['useDisplay']
   const useId: typeof import('vue')['useId']
   const useLayoutStore: typeof import('./stores/layout')['useLayoutStore']
+  const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useTheme: typeof import('vuetify')['useTheme']

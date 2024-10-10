@@ -1,9 +1,10 @@
 <script setup lang="ts">
-const route = useRoute('/user/[id]')
+const router = useRoute('/user/[id]')
+const userId = router.params.id
 </script>
 
 <template>
     <div>
-        <h1>User Id: {{ route.params.id }}</h1>
+        <h1>User Id: {{ userId }}</h1>
     </div>
 </template>
