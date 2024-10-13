@@ -6,6 +6,9 @@ import Toast from 'vue-toastification'
 import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar'
 import App from './App.vue'
 
+import { piniaConfig } from './utils/config/pinia'
+import { routerConfig } from './utils/config/router'
+
 import './assets/sass/style.scss'
 import 'virtual:uno.css'
 

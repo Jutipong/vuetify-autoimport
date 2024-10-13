@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
                         '@vueuse/core': ['watchDebounced'],
                     },
                 ],
-                dirs: ['./src/**'],
+                 dirs: ['./src/**', '!./src/utils/config/**'],
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
