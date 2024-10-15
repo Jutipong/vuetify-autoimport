@@ -6,7 +6,6 @@
         "allowSyntheticDefaultImports": true
     },
     "include": [
-        "/src/constants/vite.config.ts",
         "src/typed-router.d.ts"
     ]
 }
