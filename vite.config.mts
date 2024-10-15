@@ -9,7 +9,6 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import vuetify from 'vite-plugin-vuetify'
-import { vueConfig } from './src/utils/config/vite'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
@@ -18,7 +17,25 @@ export default defineConfig(({ mode }) => {
             AutoImport({
                 imports: [
                     {
-                        'vue': vueConfig,
+                        'vue': [
+                            'useId',
+                            'ref',
+                            'reactive',
+                            'watchEffect',
+                            'computed',
+                            'watch',
+                            'defineProps',
+                            'defineEmits',
+                            'defineExpose',
+                            'withDefaults',
+                            'toRefs',
+                            'toRef',
+                            'onMounted',
+                            'onUnmounted',
+                            'shallowRef',
+                            'onBeforeMount',
+                            'useTemplateRef',
+                        ],
                         'vue-router': ['useRouter', 'useRoute'],
                         'pinia': ['defineStore', 'acceptHMRUpdate'],
                         'vuetify': ['useTheme', 'useDisplay'],
@@ -26,7 +43,7 @@ export default defineConfig(({ mode }) => {
                         '@vueuse/core': ['watchDebounced'],
                     },
                 ],
-                dirs: ['./src/**'],
+                dirs: ['./src/**', '!./src/utils/config/**'],
                 dts: './src/auto-imports.d.ts',
             }),
             Components({

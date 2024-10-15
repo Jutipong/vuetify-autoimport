@@ -2,6 +2,9 @@ import type { VuetifyOptions } from 'vuetify'
 import { createVuetify } from 'vuetify'
 
 import * as labsComponents from 'vuetify/labs/components'
+import defaultComponents from './default-components'
+import { lightTheme } from './theme-light'
+import { variables } from './variables'
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 

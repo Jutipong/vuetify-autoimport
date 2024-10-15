@@ -63,7 +63,6 @@ declare global {
   const useTheme: typeof import('vuetify')['useTheme']
   const useZodValidate: typeof import('./utils/zod-validate')['useZodValidate']
   const variables: typeof import('./utils/config/vuetify/variables')['variables']
-  const vueConfig: typeof import('./utils/config/vite')['vueConfig']
   const vuetify: typeof import('./utils/config/vuetify/vuetify')['default']
   const watch: typeof import('vue')['watch']
   const watchDebounced: typeof import('@vueuse/core')['watchDebounced']
