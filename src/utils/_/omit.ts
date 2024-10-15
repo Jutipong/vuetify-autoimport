@@ -1,13 +1,11 @@
 // cspell:disable
-type Pick<T, K extends keyof T> = {
-    [P in K]: T[P];
+type Omit<T, K extends keyof T> = {
+    [P in Exclude<keyof T, K>]: T[P]
 }
-
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 export function _omit<T extends object, K extends keyof T>(
     input: T | T[],
-    keys: K[] | readonly K[],
+    keys: readonly K[],
 ): T extends any[] ? Omit<T[number], K>[] : Omit<T, K> {
     if (Array.isArray(input)) {
         return input.map(obj => omitFromObject(obj, keys)) as any
@@ -17,7 +15,7 @@ export function _omit<T extends object, K extends keyof T>(
     }
 }
 
-function omitFromObject<T extends object, K extends keyof T>(obj: T, keys: K[] | readonly K[]): Omit<T, K> {
+function omitFromObject<T extends object, K extends keyof T>(obj: T, keys: readonly K[]): Omit<T, K> {
     const result = { ...obj }
     for (const key of keys) {
         delete result[key]
@@ -30,4 +28,4 @@ function omitFromObject<T extends object, K extends keyof T>(obj: T, keys: K[] |
 // const result = _omit(obj, ['a', 'b'] as const)
 
 // const arr = [{ a: 1, b: 2, c: 3 }, { a: 4, b: 5, c: 6 }]
-// const arrResult = _omit(arr, ['a', 'b'] as const)
+// const arrResult = _omit(arr, ['b', 'b'] as const)
