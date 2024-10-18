@@ -24,6 +24,7 @@
     "unocss": "^0.62.4",
     "unplugin-fonts": "^1.1.1",
     "vue": "^3.5.12",
+    "vue-iconsax": "^2.0.0",
     "vue-router": "^4.4.5",
     "vue-toastification": "^2.0.0-rc.5",
     "vue3-perfect-scrollbar": "^2.0.0",

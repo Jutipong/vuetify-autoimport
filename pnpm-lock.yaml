@@ -41,6 +41,9 @@ importers:
       vue:
         specifier: ^3.5.12
         version: 3.5.12(typescript@5.5.4)
+      vue-iconsax:
+        specifier: ^2.0.0
+        version: 2.0.0(vue@3.5.12(typescript@5.5.4))
       vue-router:
         specifier: ^4.4.5
         version: 4.4.5(vue@3.5.12(typescript@5.5.4))
@@ -2744,6 +2747,11 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  vue-iconsax@2.0.0:
+    resolution: {integrity: sha512-bitxYu3pCYMOfKAHiDjLWrvo+2YdHWRH+e33sAlS1qMc0Rg4jaVWELhzv3NDxmS1IEA34fPzAmnSqc0+sx2Aeg==}
+    peerDependencies:
+      vue: ^3.0.0
 
   vue-router@4.4.5:
     resolution: {integrity: sha512-4fKZygS8cH1yCyuabAXGUAsyi1b2/o/OKgu/RUb+znIYOxPRxdkytJEx+0wGcpBE1pX6vUgh5jwWOKRGvuA/7Q==}
@@ -5754,6 +5762,10 @@ snapshots:
       semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
+
+  vue-iconsax@2.0.0(vue@3.5.12(typescript@5.5.4)):
+    dependencies:
+      vue: 3.5.12(typescript@5.5.4)
 
   vue-router@4.4.5(vue@3.5.12(typescript@5.5.4)):
     dependencies:

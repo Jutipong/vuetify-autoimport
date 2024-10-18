@@ -41,6 +41,10 @@ function alertError() {
                 <v-countdown />
             </v-card-text>
             <v-card-actions justify-end>
+                <VsxIcon icon-name="BatteryCharging" color="red" />
+                <VsxIcon icon-name="BatteryCharging" color="green" />
+                <VsxIcon icon-name="Chart2" :size="24" color="#5584FF" type="linear" />
+
                 <v-btn color="primary" @click="alertInfo">
                     alert info
                 </v-btn>

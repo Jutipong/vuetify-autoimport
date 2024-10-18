@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+// import { Login1Icon } from '@placetopay/iconsax-vue/bold'
+
 const { setToken, setUser } = useAuthStore()
 const router = useRouter()
 
