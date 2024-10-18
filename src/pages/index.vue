@@ -71,6 +71,8 @@ function alertError() {
                     hover="mdi-emoticon-angry text-red-400"
                 />
 
+                <div class="mdi-emoticon-sad-outline" />
+
                 <v-timeline align="start">
                     <v-timeline-item
                         v-for="(item, i) in items"
