@@ -38,7 +38,7 @@ const card_min_width = computed(() => display.mobile.value ? '0px' : '300px')
                                 v-if="store.state.options.btnCancel"
                                 min-width="116px"
                                 :color="store.state.options.btnCancel?.color ?? 'default'"
-                                :prepend-icon="store.state.options.btnCancel?.icon ?? 'mdi-close'"
+                                :prepend-icon="store.state.options.btnCancel?.icon ?? 'fa-close'"
                                 :text="store.state.options.btnCancel?.text ?? 'Cancel'"
                                 @click="store.onCancel()"
                             />
@@ -46,7 +46,7 @@ const card_min_width = computed(() => display.mobile.value ? '0px' : '300px')
                                 v-if="store.state.options.btnOk"
                                 min-width="116px"
                                 :color="store.state.options.btnOk?.color ?? 'success'"
-                                :prepend-icon="store.state.options.btnOk?.icon ?? 'mdi-check'"
+                                :prepend-icon="store.state.options.btnOk?.icon ?? 'fa-check'"
                                 :text="store.state.options.btnOk?.text ?? 'Yes'"
                                 @click="store.onOk()"
                             />

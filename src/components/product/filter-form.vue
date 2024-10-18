@@ -32,7 +32,7 @@ const func = {
 <template>
     <VCard @keyup.enter="func.onSearch()">
         <VCardTitle>
-            <VChip color="primary" prepend-icon="mdi-magnify" label>
+            <VChip color="primary" prepend-icon="fa-search" label>
                 Filter
             </VChip>
         </VCardTitle>
@@ -98,8 +98,8 @@ const func = {
         </VCardText>
 
         <VCardActions class="justify-end">
-            <VBtn color="warning" prepend-icon="mdi-refresh" text="Clear" @click="func.onClear" />
-            <VBtn color="primary" prepend-icon="mdi-magnify" text="Search" @click="func.onSearch" />
+            <VBtn color="warning" prepend-icon="fa-refresh" text="Clear" @click="func.onClear" />
+            <VBtn color="primary" prepend-icon="fa-search" text="Search" @click="func.onSearch" />
         </VCardActions>
     </VCard>
 

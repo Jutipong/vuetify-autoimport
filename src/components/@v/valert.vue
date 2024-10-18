@@ -33,6 +33,7 @@ const card_min_width = computed(() => display.mobile.value ? '0px' : '460px')
                                 min-width="116px"
                                 :color="store.state.color"
                                 text="Close"
+                                prepend-icon="fa-close"
                                 @click="store.onClose()"
                             />
                         </VCardActions>

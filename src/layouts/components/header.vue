@@ -14,18 +14,18 @@ function toggleTheme() {
 
 async function logOut() {
     if (!await _confirm.Info('Logout!', '<div style="font-size: 60px; display: flex; justify-content: space-around; color:#FF4C51" '
-        + 'class="mdi mdi-logout animate-tada animate-count-infinite animate-duration-3s">'
+        + 'class="fa fa-sign-out animate-tada animate-count-infinite animate-duration-3s">'
         + '</div> <h3>Are you sure you want to log out?</h3>', {
         iconTitle: false,
         btnOk: {
             color: 'error',
             text: 'Yes',
-            icon: 'mdi-logout',
+            icon: 'fa-sign-out',
         },
         btnCancel: {
             color: 'secondary',
             text: 'No',
-            icon: 'mdi-close',
+            icon: 'fa-close',
         },
     })) {
         return
@@ -34,14 +34,14 @@ async function logOut() {
     router.replace('/login')
 }
 
-const iconTheme = computed(() => theme.global.name.value === 'light' ? 'mdi-white-balance-sunny' : 'mdi-weather-night')
+const iconTheme = computed(() => theme.global.name.value === 'light' ? 'fa-sun-o' : 'fa-moon-o')
 const colorTheme = computed(() => theme.global.name.value === 'light' ? 'white' : 'black')
 const iconDrawer = computed(() => {
     if (!mobile.value) {
-        return layoutStore.state.rail ? 'mdi-menu-close' : 'mdi-menu-open'
+        return layoutStore.state.rail ? 'fa-angle-double-right' : 'fa-angle-double-left'
     }
     else {
-        return layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'
+        return layoutStore.state.drawer ? 'fa-angle-double-left' : 'fa-angle-double-right'
     }
 })
 </script>
@@ -82,7 +82,7 @@ const iconDrawer = computed(() => {
                     hover="animate-head-shake animate-count-infinite animate-duration-4s"
                     :ripple="false"
                     variant="plain"
-                    prepend-icon="mdi-logout"
+                    prepend-icon="fa-sign-out"
                     @click="logOut()"
                 >
                     Logout

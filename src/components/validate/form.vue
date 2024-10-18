@@ -23,7 +23,7 @@ function onSubmit() {
     <VForm @submit.prevent="onSubmit()">
         <VCard>
             <VCardTitle>
-                <VChip color="success" prepend-icon="mdi mdi-plus">
+                <VChip color="success" prepend-icon="fa-plus">
                     Create Product
                 </VChip>
             </VCardTitle>
@@ -54,8 +54,8 @@ function onSubmit() {
             </VCardText>
 
             <VCardActions class="justify-end">
-                <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="resetForm()" />
-                <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" type="submit" />
+                <VBtn color="warning" prepend-icon="fa-close" text="Close" @click="resetForm()" />
+                <VBtn color="primary" prepend-icon="fa-save" text="Save" type="submit" />
             </VCardActions>
         </VCard>
     </VForm>

@@ -7,7 +7,7 @@ const state = reactive({
 })
 
 const title = computed(() => state.product.id ? 'Update' : 'Create')
-const titleIcon = computed(() => state.product.id ? 'mdi-pencil' : 'mdi-plus')
+const titleIcon = computed(() => state.product.id ? 'fa-pencil' : 'fa-plus')
 
 const func = {
     onAction: async () => {
@@ -100,8 +100,8 @@ defineExpose({
                     </VCardText>
 
                     <VCardActions>
-                        <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="func.onClose()" />
-                        <VBtn color="primary" prepend-icon="mdi-content-save" text="Save" :loading="app.isLoading" @click="func.onAction()" />
+                        <VBtn color="warning" prepend-icon="fa-close" text="Close" @click="func.onClose()" />
+                        <VBtn color="primary" prepend-icon="fa-save" text="Save" :loading="app.isLoading" @click="func.onAction()" />
                     </VCardActions>
                 </VCard>
             </VDialog>

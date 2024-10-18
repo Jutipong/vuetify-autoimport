@@ -60,7 +60,7 @@ function closeModal() {
                     </VCardText>
 
                     <VCardActions>
-                        <VBtn color="warning" prepend-icon="mdi-close" text="Close" @click="closeModal()" />
+                        <VBtn color="warning" prepend-icon="fa-close" text="Close" @click="closeModal()" />
                     </VCardActions>
                 </VCard>
             </VDialog>

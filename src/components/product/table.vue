@@ -56,12 +56,12 @@ defineExpose({
         <VCardTitle>
             <VRow>
                 <VCol md="6">
-                    <VChip color="success" prepend-icon="mdi-package-variant-closed" label>
+                    <VChip color="success" prepend-icon="fa-inbox" label>
                         Product
                     </VChip>
                 </VCol>
                 <VCol class="text-right" md="6">
-                    <VBtn color="success" prepend-icon="mdi-plus" text="Add" @click="func.onAdd" />
+                    <VBtn color="success" prepend-icon="fa-plus" text="Add" @click="func.onAdd" />
                 </VCol>
             </VRow>
         </VCardTitle>
@@ -78,10 +78,10 @@ defineExpose({
             >
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
-                        mdi-pencil
+                        fa-pencil
                     </VIcon>
                     <VIcon color="error" @click="func.onDelete(item)">
-                        mdi-delete
+                        fa-trash
                     </VIcon>
                 </template>
 
