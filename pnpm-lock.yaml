@@ -21,7 +21,7 @@ importers:
         specifier: ^1.11.13
         version: 1.11.13
       eslint:
-        specifier: ^9.10.0
+        specifier: ^9.12.0
         version: 9.12.0(jiti@2.3.3)
       localstorage-slim:
         specifier: ^2.7.1
