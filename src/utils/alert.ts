@@ -47,7 +47,7 @@ export const _alert = {
         openAlert(title, subTitle, 'mdi-alert-circle-outline', 'info')
     },
     Success: (title: string, subTitle: string) => {
-        openAlert(title, subTitle, 'mdi-checkbox-marked-circle-outlineq', 'success')
+        openAlert(title, subTitle, 'mdi-checkbox-marked-circle-outline', 'success')
     },
     Warning: (title: string, subTitle: string) => {
         openAlert(title, subTitle, 'mdi-alert-circle-outline', 'warning')

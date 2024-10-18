@@ -72,6 +72,7 @@ function alertError() {
                 />
 
                 <div class="mdi-emoticon-sad-outline" />
+                <div class="mdi:checkbox-marked-circle-outline" />
 
                 <v-timeline align="start">
                     <v-timeline-item

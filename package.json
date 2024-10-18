@@ -33,7 +33,6 @@
     "@antfu/eslint-config": "^3.8.0",
     "@iconify-json/mdi": "^1.2.1",
     "@unocss/eslint-config": "^0.62.4",
-    "@unocss/preset-uno": "^0.63.4",
     "@vitejs/plugin-vue": "^5.1.4",
     "axios": "^1.7.7",
     "sass": "^1.80.2",
