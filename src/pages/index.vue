@@ -1,4 +1,6 @@
 <script setup lang="ts">
+// import { Icon } from '@iconify/vue'
+
 const items = [
     {
         color: 'red-lighten-2',
@@ -61,6 +63,14 @@ function alertError() {
 
         <v-card>
             <v-card-text>
+                <div class="mdi-airplane-edit text-pink-400" />
+
+                <div
+                    cursor-pointer
+                    class="mdi-emoticon text-green-400"
+                    hover="mdi-emoticon-angry text-red-400"
+                />
+
                 <v-timeline align="start">
                     <v-timeline-item
                         v-for="(item, i) in items"
