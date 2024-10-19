@@ -61,7 +61,7 @@ export default defineConfig(({ mode }) => {
                 routesFolder: 'src/pages',
                 dts: 'src/typed-router.d.ts',
             }),
-            UnoCSS(),
+            UnoCSS({ }),
             vue(),
             vuetify({ autoImport: true }),
             ViteFonts({
@@ -78,7 +78,7 @@ export default defineConfig(({ mode }) => {
         css: {
             preprocessorOptions: {
                 scss: {
-                    api: 'modern-compiler', // or "modern", "legacy"
+                    api: 'modern-compiler',
                 },
             },
         },
