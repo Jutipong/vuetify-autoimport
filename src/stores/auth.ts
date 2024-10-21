@@ -25,7 +25,7 @@ export const useAuthStore = defineStore('auth', () => {
 }, {
     persist: {
         key: 'auth',
-        paths: ['token', 'user'],
+        pick: ['token', 'user'],
     },
 })
 

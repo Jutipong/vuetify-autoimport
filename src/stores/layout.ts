@@ -30,7 +30,7 @@ export const useLayoutStore = defineStore('layout', () => {
 }, {
     persist: {
         storage: localStorage,
-        paths: ['state'],
+        pick: ['state'],
     },
 })
 
