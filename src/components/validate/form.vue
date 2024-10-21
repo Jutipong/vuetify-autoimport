@@ -23,7 +23,7 @@ function onSubmit() {
     <VForm @submit.prevent="onSubmit()">
         <VCard>
             <VCardTitle>
-                <VChip color="success" prepend-icon="mdi mdi-plus">
+                <VChip color="success" prepend-icon="mdi-plus">
                     Create Product
                 </VChip>
             </VCardTitle>
