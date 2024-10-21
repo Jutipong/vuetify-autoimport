@@ -44,15 +44,15 @@ export default {
 // ===========================================
 export const _alert = {
     Info: (title: string, subTitle: string) => {
-        openAlert(title, subTitle, 'mdi mdi-alert-circle-outline', 'info')
+        openAlert(title, subTitle, 'mdi-alert-circle-outline', 'info')
     },
     Success: (title: string, subTitle: string) => {
-        openAlert(title, subTitle, 'mdi mdi-check-circle-outline', 'success')
+        openAlert(title, subTitle, 'mdi-check-circle-outline', 'success')
     },
     Warning: (title: string, subTitle: string) => {
-        openAlert(title, subTitle, 'mdi mdi-alert-circle-outline', 'warning')
+        openAlert(title, subTitle, 'mdi-alert-circle-outline', 'warning')
     },
     Err: (title: string, subTitle: string) => {
-        openAlert(title, subTitle, 'mdi mdi-emoticon-sad-outline', 'error')
+        openAlert(title, subTitle, 'mdi-emoticon-sad-outline', 'error')
     },
 }

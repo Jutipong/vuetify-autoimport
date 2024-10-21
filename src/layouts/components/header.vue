@@ -34,14 +34,14 @@ async function logOut() {
     router.replace('/login')
 }
 
-const iconTheme = computed(() => theme.global.name.value === 'light' ? 'i-solar:sun-2-broken' : 'i-solar:moon-sleep-broken')
+const iconTheme = computed(() => theme.global.name.value === 'light' ? 'mdi-white-balance-sunny' : 'mdi-weather-night')
 const colorTheme = computed(() => theme.global.name.value === 'light' ? 'white' : 'black')
 const iconDrawer = computed(() => {
     if (!mobile.value) {
-        return layoutStore.state.rail ? 'i-solar:round-double-alt-arrow-left-linear' : 'i-solar:round-double-alt-arrow-right-linear'
+        return layoutStore.state.rail ? 'mdi-menu-close' : 'mdi-menu-open'
     }
     else {
-        return layoutStore.state.drawer ? 'i-solar:round-double-alt-arrow-left-linear' : 'i-solar:round-double-alt-arrow-right-linear'
+        return layoutStore.state.drawer ? 'mdi-menu-open' : 'mdi-menu-close'
     }
 })
 </script>
@@ -82,7 +82,7 @@ const iconDrawer = computed(() => {
                     hover="animate-head-shake animate-count-infinite animate-duration-4s"
                     :ripple="false"
                     variant="plain"
-                    prepend-icon="i-solar:stretching-round-bold-duotone"
+                    prepend-icon="mdi-logout"
                     @click="logOut()"
                 >
                     Logout
