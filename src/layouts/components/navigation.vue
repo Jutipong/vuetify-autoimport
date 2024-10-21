@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { l } from 'node_modules/vite/dist/node/types.d-aGj9QkWt'
+
 const { mobile } = useDisplay()
 const layoutStore = useLayoutStore()
 const open = ref(['Users'])
@@ -7,7 +9,8 @@ const cruds = [
     { title: 'Validate [zod.dev]', icon: 'mdi-format-underline-wavy', to: '/validate' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
-const isExpand = ref(true)
+const isExpand = ref(layoutStore.state.rail)
+
 function getLogoImage(expandEvent: boolean) {
     if (!layoutStore.state.rail)
         return isExpand.value = false
@@ -15,15 +18,17 @@ function getLogoImage(expandEvent: boolean) {
     isExpand.value = expandEvent
 }
 
-watch(() => layoutStore.state.rail, (newValue) => {
-    isExpand.value = newValue
-})
+onMounted(() => {
+    watch(() => layoutStore.state.rail, (newValue) => {
+        isExpand.value = newValue
+    })
 
-watch(() => layoutStore.state.drawer, (newValue) => {
-    if (!mobile.value)
-        return
+    watch(() => layoutStore.state.drawer, (newValue) => {
+        if (!mobile.value)
+            return
 
-    isExpand.value = !newValue
+        isExpand.value = !newValue
+    })
 })
 </script>
 
