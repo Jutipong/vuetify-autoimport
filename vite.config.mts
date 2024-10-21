@@ -44,7 +44,7 @@ export default defineConfig(({ mode }) => {
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
-                dirs: ['src/components', 'src/@core/layouts/components'],
+                dirs: ['src/components'],
                 dts: 'src/components.d.ts',
                 deep: true,
                 directoryAsNamespace: true,

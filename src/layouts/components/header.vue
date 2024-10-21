@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { getIcon } from '@iconify/vue/dist/iconify.js'
-
 const layoutStore = useLayoutStore()
 const theme = useTheme()
 const { mobile } = useDisplay()
