@@ -13,11 +13,10 @@
     "gen-type-mac": "npx swagger-typescript-api -p http://localhost:5224/swagger/v1/swagger.json --no-client -o ./src/types -n api-type.d.ts && sed -i '' 's/export //g' ./src/types/api-type.d.ts"
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47",
     "@vueuse/core": "^11.1.0",
     "axios-cache-interceptor": "^1.6.1",
     "dayjs": "^1.11.13",
-    "eslint": "^9.12.0",
+    "eslint": "^9.13.0",
     "localstorage-slim": "^2.7.1",
     "perfect-scrollbar": "^1.5.5",
     "pinia": "^2.2.4",
@@ -38,7 +37,7 @@
     "@unocss/eslint-config": "^0.63.4",
     "@vitejs/plugin-vue": "^5.1.4",
     "axios": "^1.7.7",
-    "sass": "^1.80.2",
+    "sass": "^1.80.3",
     "swagger-typescript-api": "^13.0.22",
     "unplugin-auto-import": "^0.18.3",
     "unplugin-vue-components": "^0.27.4",
