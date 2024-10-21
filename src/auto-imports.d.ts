@@ -37,6 +37,7 @@ declare global {
   const defineExpose: typeof import('vue')['defineExpose']
   const defineProps: typeof import('vue')['defineProps']
   const defineStore: typeof import('pinia')['defineStore']
+  const header: typeof import('./layouts/components/header.vue')['default']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
   const onMounted: typeof import('vue')['onMounted']
   const onUnmounted: typeof import('vue')['onUnmounted']

@@ -43,6 +43,12 @@ function alertError() {
                 <v-countdown />
             </v-card-text>
             <v-card-actions justify-end>
+                <!-- <div class="i-mdi-logout" /> -->
+                <v-icon icon="mdi-logout" />
+
+                <span class="i-mdi:home" />
+                <span class="i-mdi:uber" />
+
                 <v-btn color="primary" @click="alertInfo">
                     alert info
                 </v-btn>
