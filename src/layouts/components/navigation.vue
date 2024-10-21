@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const { mobile } = useDisplay()
 const layoutStore = useLayoutStore()
 const open = ref(['Users'])
 const cruds = [
@@ -6,6 +7,24 @@ const cruds = [
     { title: 'Validate [zod.dev]', icon: 'mdi-format-underline-wavy', to: '/validate' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
+const isExpand = ref(true)
+function getLogoImage(expandEvent: boolean) {
+    if (!layoutStore.state.rail)
+        return isExpand.value = false
+
+    isExpand.value = expandEvent
+}
+
+watch(() => layoutStore.state.rail, (newValue) => {
+    isExpand.value = newValue
+})
+
+watch(() => layoutStore.state.drawer, (newValue) => {
+    if (!mobile.value)
+        return
+
+    isExpand.value = !newValue
+})
 </script>
 
 <template>
@@ -15,10 +34,12 @@ const cruds = [
         elevation="2"
         expand-on-hover
         :rail="layoutStore.state.rail"
+        @update:rail="getLogoImage"
     >
         <PerfectScrollbar class="drawer-content">
             <v-list>
-                <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com" />
+                <v-list-item v-if="isExpand" prepend-icon="mdi-dog" />
+                <v-list-item v-else prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com" />
             </v-list>
             <v-divider />
             <v-list v-model:opened="open" color="primary" density="compact" nav>
