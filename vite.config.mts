@@ -1,7 +1,6 @@
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
-// import presetIcons from '@unocss/preset-icons'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import ViteFonts from 'unplugin-fonts/vite'
@@ -9,7 +8,7 @@ import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
-import vuetify from 'vite-plugin-vuetify'
+import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
@@ -28,13 +27,10 @@ export default defineConfig(({ mode }) => {
                             'defineProps',
                             'defineEmits',
                             'defineExpose',
-                            'withDefaults',
                             'toRefs',
                             'toRef',
-                            'onMounted',
-                            'onUnmounted',
-                            'shallowRef',
                             'onBeforeMount',
+                            'onMounted',
                             'useTemplateRef',
                         ],
                         'vue-router': ['useRouter', 'useRoute'],
@@ -68,8 +64,14 @@ export default defineConfig(({ mode }) => {
                     },
                 },
             }),
-            vue(),
-            vuetify({ autoImport: true }),
+            Vue({
+                template: {
+                    transformAssetUrls,
+                },
+            }),
+            Vuetify({
+                autoImport: true,
+            }),
             ViteFonts({
                 google: {
                     families: [
@@ -88,10 +90,10 @@ export default defineConfig(({ mode }) => {
                 },
             },
         },
-        // build: {
-        //     chunkSizeWarningLimit: 5000,
-        //     cssCodeSplit: true,
-        // },
+        build: {
+            chunkSizeWarningLimit: 1024 * 1024, // Set the limit to 1 MB
+            cssCodeSplit: true,
+        },
         optimizeDeps: {
             include: ['vue', 'vue-router', 'pinia', 'axios', 'axios-cache-interceptor', 'dayjs'],
             entries: ['./src/**/*.vue'],

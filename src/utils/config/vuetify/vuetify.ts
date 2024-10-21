@@ -30,9 +30,18 @@ const iconifyMdi: IconSet = {
 
 export default createVuetify({
     ssr: false,
-    locale: { locale: 'en' },
-    date: { locale: { en: 'en-GB' } },
-    components: { ...labsComponents },
+    locale: {
+        locale: 'en',
+    },
+    date: {
+        locale: {
+            en: 'en-GB',
+        },
+    },
+    components: {
+        VNumberInput: labsComponents.VNumberInput,
+        VDateInput: labsComponents.VDateInput,
+    },
     defaults: defaultComponents,
     theme: {
         defaultTheme: 'light',
