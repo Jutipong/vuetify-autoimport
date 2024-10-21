@@ -61,7 +61,13 @@ export default defineConfig(({ mode }) => {
                 routesFolder: 'src/pages',
                 dts: 'src/typed-router.d.ts',
             }),
-            UnoCSS({ }),
+            UnoCSS({
+                content: {
+                    pipeline: {
+                        include: ['**/*.vue', '**/*.ts'],
+                    },
+                },
+            }),
             vue(),
             vuetify({ autoImport: true }),
             ViteFonts({
