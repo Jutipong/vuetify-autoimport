@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",
-    "axios-cache-interceptor": "^1.6.1",
+    "axios-cache-interceptor": "^1.6.2",
     "dayjs": "^1.11.13",
     "eslint": "^9.13.0",
     "localstorage-slim": "^2.7.1",

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { l } from 'node_modules/vite/dist/node/types.d-aGj9QkWt'
-
 const { mobile } = useDisplay()
 const layoutStore = useLayoutStore()
 const open = ref(['Users'])
