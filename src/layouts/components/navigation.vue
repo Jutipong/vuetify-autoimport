@@ -9,25 +9,25 @@ const cruds = [
     { title: 'Validate [zod.dev]', icon: 'mdi-format-underline-wavy', to: '/validate' },
     { title: 'Customer[test]', icon: 'mdi-package', to: '/customer' },
 ]
-const isExpand = ref(layoutStore.state.rail)
+const logoMini = ref(layoutStore.state.rail)
 
-function getLogoImage(expandEvent: boolean) {
+function onRailUpdate(val: boolean) {
     if (!layoutStore.state.rail)
-        return isExpand.value = false
+        return logoMini.value = false
 
-    isExpand.value = expandEvent
+    logoMini.value = val
 }
 
 onMounted(() => {
-    watch(() => layoutStore.state.rail, (newValue) => {
-        isExpand.value = newValue
+    watch(() => layoutStore.state.rail, (newVal) => {
+        logoMini.value = newVal
     })
 
-    watch(() => layoutStore.state.drawer, (newValue) => {
+    watch(() => layoutStore.state.drawer, (newVal) => {
         if (!mobile.value)
             return
 
-        isExpand.value = !newValue
+        logoMini.value = !newVal
     })
 })
 </script>
@@ -39,11 +39,11 @@ onMounted(() => {
         elevation="2"
         expand-on-hover
         :rail="layoutStore.state.rail"
-        @update:rail="getLogoImage"
+        @update:rail="onRailUpdate"
     >
         <PerfectScrollbar class="drawer-content">
             <v-list>
-                <v-list-item v-if="isExpand" prepend-icon="mdi-dog" />
+                <v-list-item v-if="logoMini" prepend-icon="mdi-dog" />
                 <v-list-item v-else prepend-avatar="https://randomuser.me/api/portraits/women/44.jpg" subtitle="abc@gmail.com" />
             </v-list>
             <v-divider />
