@@ -17,7 +17,8 @@ const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>(
     { title: 'Actions', key: 'actions', sortable: false },
 ], [{ key: 'id', order: 'asc' }], async () => {
     const { products, total } = await api.Get<{ products: Product[], total: number }>
-    (`/products/search?q=${state.search.brand ?? ''}&limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
+    (`/products/search?q=${state.search.brand ?? ''}
+    &limit=${table.options.itemsPerPage}&skip=${table.options.itemsPerPage * (table.options.page - 1)}`)
 
     table.result.items = products
     table.result.itemsLength = total
