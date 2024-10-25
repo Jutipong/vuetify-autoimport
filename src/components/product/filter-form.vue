@@ -32,7 +32,7 @@ const func = {
 <template>
     <VCard @keyup.enter="func.onSearch()">
         <VCardTitle>
-            <VChip color="primary" prepend-icon="i-mdi-" label>
+            <VChip color="primary" prepend-icon="mdi-magnify" label>
                 Filter
             </VChip>
         </VCardTitle>
