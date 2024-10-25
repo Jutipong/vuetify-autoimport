@@ -40,6 +40,7 @@ const vChip = {
     density: 'compact',
     size: 'large',
     elevation: 0,
+    class: 'rounded-xl pl-4 pr-4',
 }
 export default {
     VContainer: {
