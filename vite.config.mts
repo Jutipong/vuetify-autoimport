@@ -44,13 +44,13 @@ export default defineConfig(({ mode }) => {
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
-                dirs: ['src/components'],
+                dirs: ['src/components', '!./src/components/@layouts/**'],
                 dts: 'src/components.d.ts',
                 deep: true,
                 directoryAsNamespace: true,
             }),
             Layouts({
-                layoutsDirs: 'src/layouts',
+                layoutsDirs: 'src/components/@layouts',
                 defaultLayout: 'default',
             }),
             VueRouter({
