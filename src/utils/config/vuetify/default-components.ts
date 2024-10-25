@@ -1,6 +1,7 @@
 const vBtn = {
     variant: 'flat',
-    class: 'text-none font-500 pr-3 pl-3 rounded-3xl',
+    class: 'text-none font-500 pr-3 pl-3',
+    rounded: 'xl',
 }
 
 const vSelect = {
@@ -12,6 +13,7 @@ const vSelect = {
     dirty: true,
     itemTitle: 'text',
     itemValue: 'id',
+    rounded: 'lg',
 }
 
 const vNumber = {
@@ -20,7 +22,7 @@ const vNumber = {
     color: 'primary',
     variant: 'outlined',
     dirty: true,
-
+    rounded: 'lg',
 }
 
 const vDate = {
@@ -33,6 +35,7 @@ const vDate = {
     prependIcon: '',
     appendInnerIcon: 'mdi-calendar',
     hideActions: 'true',
+    rounded: 'lg',
 }
 
 const vChip = {
@@ -40,7 +43,8 @@ const vChip = {
     density: 'compact',
     size: 'large',
     elevation: 0,
-    class: 'rounded-xl pl-4 pr-4',
+    rounded: 'lg',
+    class: 'pl-4 pr-4',
 }
 export default {
     VContainer: {
@@ -49,7 +53,8 @@ export default {
     VBtn: vBtn,
     VCard: {
         variant: 'flat',
-        class: 'mb-3 pa-1 rounded-lg',
+        rounded: 'lg',
+        class: 'mb-2 pa-1',
         VBtn: vBtn,
         VDateInput: vDate,
         VCardTitle: {
@@ -73,6 +78,7 @@ export default {
         color: 'primary',
         dirty: true,
         variant: 'outlined',
+        rounded: 'lg',
     },
     VAutocomplete: {
         variant: 'outlined',
