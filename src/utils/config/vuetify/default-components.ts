@@ -1,6 +1,6 @@
 const vBtn = {
     variant: 'flat',
-    class: 'text-none font-500 pr-3 pl-3 font-semibold',
+    class: 'text-none font-500 pr-3 pl-3 rounded-3xl',
 }
 
 const vSelect = {
@@ -48,7 +48,7 @@ export default {
     VBtn: vBtn,
     VCard: {
         variant: 'flat',
-        class: 'mb-3 pa-1',
+        class: 'mb-3 pa-1 rounded-lg',
         VBtn: vBtn,
         VDateInput: vDate,
         VCardTitle: {
