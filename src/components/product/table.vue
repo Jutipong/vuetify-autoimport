@@ -7,7 +7,7 @@ const { isLoading } = storeToRefs(useAppStore())
 
 const state = reactive({ search: {} as Product })
 
-const { table, onSubmit, onPageChange, onSortByChange } = useDataTable<Product>([
+const { table, onSubmit, onPageChange, onSortByChange, onPageLengthChange } = useDataTable<Product>([
     { title: 'ID', key: 'id', align: 'center' },
     { title: 'Title', key: 'title' },
     { title: 'PRICE', key: 'price', align: 'end' },
@@ -76,6 +76,7 @@ defineExpose({
                 :loading="isLoading"
                 @update:page="onPageChange"
                 @update:sort-by="onSortByChange"
+                @update:items-per-page="onPageLengthChange"
             >
                 <template #item.actions="{ item }">
                     <VIcon color="primary" class="me-2" @click="func.onEdit(item)">

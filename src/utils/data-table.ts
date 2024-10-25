@@ -22,6 +22,11 @@ function useDataTable<TItems>(headers: DataTableHeader[], sortBy: DataTableSortB
         onSubmit({ sortBy })
     }
 
+    function onPageLengthChange(itemsPerPage: number) {
+        table.options.itemsPerPage = itemsPerPage
+        onSubmit({ itemsPerPage })
+    }
+
     function functionOnSubmit({ page } = { page: 1 }) {
         table.options.page = page
         onSubmit({ page })
@@ -32,6 +37,7 @@ function useDataTable<TItems>(headers: DataTableHeader[], sortBy: DataTableSortB
         onSubmit: functionOnSubmit,
         onPageChange,
         onSortByChange,
+        onPageLengthChange
     }
 }
 
