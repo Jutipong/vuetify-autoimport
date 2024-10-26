@@ -79,12 +79,8 @@ defineExpose({
                 @update:items-per-page="onPageLengthChange"
             >
                 <template #item.actions="{ item }">
-                    <VIcon color="primary" class="me-2" @click="func.onEdit(item)">
-                        mdi-pencil
-                    </VIcon>
-                    <VIcon color="error" @click="func.onDelete(item)">
-                        mdi-delete
-                    </VIcon>
+                    <VIcon color="primary" icon="mdi-pencil" class="me-2" @click="func.onEdit(item)" />
+                    <VIcon color="error" icon="mdi-delete" @click="func.onDelete(item)" />
                 </template>
 
                 <template #loading>
