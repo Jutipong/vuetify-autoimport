@@ -1,7 +1,7 @@
 const vBtn = {
     variant: 'flat',
     class: 'text-none font-500 pr-3 pl-3',
-    rounded: 'xl',
+    rounded: 'lg',
 }
 
 const vSelect = {
@@ -65,6 +65,15 @@ export default {
             class: 'mr-4 ml-4',
             VSelect: vSelect,
             VNumberInput: vNumber,
+            VFileInput: {
+                clearable: true,
+                hideDetails: 'auto',
+                density: 'compact',
+                color: 'primary',
+                dirty: true,
+                variant: 'outlined',
+                rounded: 'lg',
+            },
         },
         VCardActions: {
             class: 'mr-4 ml-4 mb-2',
