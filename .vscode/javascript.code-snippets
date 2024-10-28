@@ -63,6 +63,22 @@
 			"import $2 from '$1';"
 		],
 	},
+	"const-useXXX": {
+		"scope": "javascript,typescript",
+		"prefix": "v-const-use",
+		"description": "const useXXX",
+		"body": [
+			"const $2 = $1;"
+		],
+	},
+	"const-{xxx}-useXXX": {
+		"scope": "javascript,typescript",
+		"prefix": "v-const-use",
+		"description": "const {xxx} = useXXX",
+		"body": [
+			"const { $2 } = $1;"
+		],
+	},
 	"vue-reactive": {
 		"scope": "javascript,typescript,vue",
 		"prefix": "v-reactive",

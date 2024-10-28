@@ -20,7 +20,7 @@ export default antfu(
                 shallowOnly: true,
             }],
             'vue/prop-name-casing': ['off'],
-            'vue/no-unused-refs': ['off'], // fix for vue 3.5
+            // 'vue/no-unused-refs': ['off'], // fix for vue 3.5
             'ts/no-unsafe-function-type': ['off'],
         },
         jsonc: false,
