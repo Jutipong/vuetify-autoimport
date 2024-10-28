@@ -42,7 +42,6 @@
     "editor.cursorBlinking": "expand",
     "editor.semanticHighlighting.enabled": true,
     "editor.cursorSmoothCaretAnimation": "on",
-    "gotoAlias.closeDts": true,
     "vue.server.hybridMode": false,
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -89,6 +88,8 @@
     "editor.fontFamily": "'Jetbrains Mono Light', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
     "workbench.tree.indent": 12,
     "debug.toolBarLocation": "commandCenter",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "gotoAlias.closeDts": true,
     // -----------------------------------
     // ---------- File Nesting -----------
     // -----------------------------------
