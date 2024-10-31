@@ -1,9 +1,9 @@
-// interface AutoComplateServer<TId> {
+// interface AutoCompleteServer<TId> {
 //     id: TId
 //     text: string
 // }
 
-interface AutoComplateServer {
+interface AutoCompleteServer {
     id: string
     text: string
 }

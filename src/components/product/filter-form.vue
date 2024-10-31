@@ -9,8 +9,8 @@ const state = reactive({
         ],
     },
     search: {
-        // autoComplateServer: '0d464588-56a6-4831-b085-f26cb65ee7fd',
-        // autoComplateMultipleServer: ['0d464588-56a6-4831-b085-f26cb65ee7fd', 'd85f5eb3-4b9c-4483-9b77-29010b0a93a3', 'dc79347f-90b2-4ffb-9140-69e54648e180'],
+        // autoCompleteServer: '0d464588-56a6-4831-b085-f26cb65ee7fd',
+        // autoCompleteMultipleServer: ['0d464588-56a6-4831-b085-f26cb65ee7fd', 'd85f5eb3-4b9c-4483-9b77-29010b0a93a3', 'dc79347f-90b2-4ffb-9140-69e54648e180'],
     } as Product,
 })
 
@@ -73,7 +73,7 @@ const func = {
             <VRow>
                 <VCol cols="12" md="4">
                     <VAutocompleteServer
-                        v-model="state.search.autoComplateServer"
+                        v-model="state.search.autoCompleteServer"
                         label="Autocomplete server side"
                         base-url="http://localhost:7213"
                         url="/customer/AutocompleteServer"
@@ -82,7 +82,7 @@ const func = {
 
                 <VCol cols="12" md="6">
                     <VAutocompleteMultipleServer
-                        v-model="state.search.autoComplateMultipleServer"
+                        v-model="state.search.autoCompleteMultipleServer"
                         label="Autocomplete Multiple server side"
                         base-url="http://localhost:5224"
                         url="/customer/AutocompleteServer"

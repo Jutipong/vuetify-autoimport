@@ -11,8 +11,8 @@ interface Product {
     status?: string
     start?: Date
     end?: Date
-    autoComplateServer: string | null
-    autoComplateMultipleServer: string[] | null
+    autoCompleteServer: string | null
+    autoCompleteMultipleServer: string[] | null
     files: File
 }
 

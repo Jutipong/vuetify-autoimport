@@ -13,13 +13,13 @@
     "gen-type-mac": "npx swagger-typescript-api -p http://localhost:5224/swagger/v1/swagger.json --no-client -o ./src/types -n api-type.d.ts && sed -i '' 's/export //g' ./src/types/api-type.d.ts"
   },
   "dependencies": {
-    "@vueuse/core": "^11.1.0",
+    "@vueuse/core": "^11.2.0",
     "axios-cache-interceptor": "^1.6.2",
     "dayjs": "^1.11.13",
     "eslint": "^9.13.0",
     "localstorage-slim": "^2.7.1",
-    "perfect-scrollbar": "^1.5.5",
-    "pinia": "^2.2.4",
+    "perfect-scrollbar": "^1.5.6",
+    "pinia": "^2.2.5",
     "pinia-plugin-persistedstate": "^4.1.2",
     "unocss": "^0.63.6",
     "unplugin-fonts": "^1.1.1",
@@ -37,7 +37,7 @@
     "@unocss/eslint-config": "^0.63.6",
     "@vitejs/plugin-vue": "^5.1.4",
     "axios": "^1.7.7",
-    "sass": "^1.80.4",
+    "sass": "^1.80.5",
     "swagger-typescript-api": "^13.0.22",
     "unplugin-auto-import": "^0.18.3",
     "unplugin-vue-components": "^0.27.4",
@@ -46,6 +46,6 @@
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-vuetify": "^2.0.4",
     "vue-currency-input": "^3.1.0",
-    "vue-tsc": "^2.1.8"
+    "vue-tsc": "^2.1.10"
   }
 }

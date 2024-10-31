@@ -25,9 +25,9 @@ const {
 
 const emit = defineEmits<{ 'update:modelValue': [value: string[] | null] }>()
 
-const vModel = ref<AutoComplateServer[] | null>(null)
+const vModel = ref<AutoCompleteServer[] | null>(null)
 const search = ref('')
-const items = ref([] as AutoComplateServer[])
+const items = ref([] as AutoCompleteServer[])
 const isServerError = ref(false)
 
 const isLoading = ref(false)
@@ -43,7 +43,7 @@ const func = {
         try {
             isServerError.value = false
 
-            const res = await api.Post<AutoComplateServer[]>(url, {
+            const res = await api.Post<AutoCompleteServer[]>(url, {
                 textSearch: text,
                 idInit: idsInit?.length ? idsInit : null,
                 pageSize,
