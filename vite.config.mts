@@ -1,3 +1,5 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import Vue from '@vitejs/plugin-vue'
@@ -10,8 +12,15 @@ import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
     const env = loadEnv(mode, process.cwd())
+    if (command === 'serve') {
+        const componentsDtsPath = path.resolve(__dirname, 'src/components.d.ts')
+        if (fs.existsSync(componentsDtsPath)) {
+            fs.unlinkSync(componentsDtsPath)
+            console.log('Deleted components.d.ts')
+        }
+    }
     return {
         plugins: [
             AutoImport({
