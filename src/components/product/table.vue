@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia'
-
 const modalRef = useTemplateRef('modal')
 
 const { isLoading } = storeToRefs(useAppStore())
