@@ -37,7 +37,7 @@ function useDataTable<TItems>(headers: DataTableHeader[], sortBy: DataTableSortB
         onSubmit: functionOnSubmit,
         onPageChange,
         onSortByChange,
-        onPageLengthChange
+        onPageLengthChange,
     }
 }
 

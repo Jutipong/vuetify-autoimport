@@ -2,8 +2,8 @@ import type { PluginOptions } from 'vue-toastification'
 import vuetify from '@/utils/config/vuetify/vuetify'
 
 import { createApp } from 'vue'
-import Toast from 'vue-toastification'
 import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar'
+import Toast from 'vue-toastification'
 
 import App from './App.vue'
 import { piniaConfig } from './utils/config/pinia'
