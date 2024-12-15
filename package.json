@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "rm -f ./src/auto-imports.d.ts && rm -f ./src/components.d.ts && rm -f ./src/typed-router.d.ts && vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
