@@ -41,6 +41,7 @@ export default defineConfig(({ mode, command }) => {
                             'onBeforeMount',
                             'onMounted',
                             'useTemplateRef',
+                            'Ref',
                         ],
                         'vue-router': ['useRouter', 'useRoute'],
                         'pinia': ['defineStore', 'acceptHMRUpdate', 'storeToRefs'],
