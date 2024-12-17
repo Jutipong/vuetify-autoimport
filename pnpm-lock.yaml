@@ -14,15 +14,27 @@ importers:
       '@vueuse/core':
         specifier: ^12.0.0
         version: 12.0.0(typescript@5.5.4)
-      unocss:
-        specifier: ^0.65.1
-        version: 0.65.1(postcss@8.4.49)(rollup@4.26.0)(vite@6.0.3(@types/node@22.7.4)(jiti@2.4.1)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.5.4))
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
+      localstorage-slim:
+        specifier: ^2.7.1
+        version: 2.7.1
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.5.4)
+      vue-toastification:
+        specifier: ^2.0.0-rc.5
+        version: 2.0.0-rc.5(vue@3.5.13(typescript@5.5.4))
+      vue3-perfect-scrollbar:
+        specifier: ^2.0.0
+        version: 2.0.0(vue@3.5.13(typescript@5.5.4))
       vuetify:
         specifier: ^3.7.5
         version: 3.7.5(typescript@5.5.4)(vite-plugin-vuetify@2.0.4)(vue@3.5.13(typescript@5.5.4))
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.12.0
@@ -42,15 +54,9 @@ importers:
       axios-cache-interceptor:
         specifier: ^1.6.2
         version: 1.6.2(axios@1.7.9)
-      dayjs:
-        specifier: ^1.11.13
-        version: 1.11.13
       eslint:
         specifier: ^9.17.0
         version: 9.17.0(jiti@2.4.1)
-      localstorage-slim:
-        specifier: ^2.7.1
-        version: 2.7.1
       pinia:
         specifier: ^2.3.0
         version: 2.3.0(typescript@5.5.4)(vue@3.5.13(typescript@5.5.4))
@@ -63,6 +69,9 @@ importers:
       swagger-typescript-api:
         specifier: ^13.0.23
         version: 13.0.23
+      unocss:
+        specifier: ^0.65.1
+        version: 0.65.1(postcss@8.4.49)(rollup@4.26.0)(vite@6.0.3(@types/node@22.7.4)(jiti@2.4.1)(sass@1.83.0)(tsx@4.19.2)(yaml@2.6.1))(vue@3.5.13(typescript@5.5.4))
       unplugin-auto-import:
         specifier: ^0.19.0
         version: 0.19.0(@nuxt/kit@3.14.1592(rollup@4.26.0))(@vueuse/core@12.0.0(typescript@5.5.4))(rollup@4.26.0)
@@ -90,18 +99,9 @@ importers:
       vue-router:
         specifier: ^4.5.0
         version: 4.5.0(vue@3.5.13(typescript@5.5.4))
-      vue-toastification:
-        specifier: ^2.0.0-rc.5
-        version: 2.0.0-rc.5(vue@3.5.13(typescript@5.5.4))
       vue-tsc:
         specifier: ^2.1.10
         version: 2.1.10(typescript@5.5.4)
-      vue3-perfect-scrollbar:
-        specifier: ^2.0.0
-        version: 2.0.0(vue@3.5.13(typescript@5.5.4))
-      zod:
-        specifier: ^3.24.1
-        version: 3.24.1
 
 packages:
 
