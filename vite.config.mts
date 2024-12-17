@@ -12,15 +12,15 @@ import { defineConfig, loadEnv } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
-export default defineConfig(({ mode, command }) => {
+export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
-    if (command === 'serve') {
-        const componentsDtsPath = path.resolve(__dirname, 'src/components.d.ts')
-        if (fs.existsSync(componentsDtsPath)) {
-            fs.unlinkSync(componentsDtsPath)
-            console.log('Deleted components.d.ts')
-        }
-    }
+    // if (command === 'serve') {
+    //     const componentsDtsPath = path.resolve(__dirname, 'src/components.d.ts')
+    //     if (fs.existsSync(componentsDtsPath)) {
+    //         fs.unlinkSync(componentsDtsPath)
+    //         console.log('Deleted components.d.ts')
+    //     }
+    // }
     return {
         plugins: [
             AutoImport({
@@ -50,13 +50,12 @@ export default defineConfig(({ mode, command }) => {
                         '@vueuse/core': ['watchDebounced'],
                     },
                 ],
-                dirs: ['./src/**', '!./src/utils/config/**'],
+                dirs: ['./src/utils/**', './src/stores', '!./src/utils/config/**'],
                 dts: './src/auto-imports.d.ts',
             }),
             Components({
                 dirs: ['src/components', '!./src/components/@layouts/**'],
                 dts: 'src/components.d.ts',
-                deep: true,
                 directoryAsNamespace: true,
             }),
             Layouts({

@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const Ref: typeof import('vue')['Ref']
   const _alert: typeof import('./utils/alert')['_alert']
   const _confirm: typeof import('./utils/confirm')['_confirm']
   const _dateTime: typeof import('./utils/date-time')['_dateTime']
