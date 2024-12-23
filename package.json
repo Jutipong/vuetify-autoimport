@@ -12,7 +12,6 @@
     "gen-type-mac": "npx swagger-typescript-api -p http://localhost:5224/swagger/v1/swagger.json --no-client -o ./src/types -n api-type.d.ts && sed -i '' 's/export //g' ./src/types/api-type.d.ts"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
     "@vueuse/core": "^12.1.0",
     "dayjs": "^1.11.13",
     "localstorage-slim": "^2.7.1",
@@ -20,7 +19,9 @@
     "vue-toastification": "^2.0.0-rc.5",
     "vue3-perfect-scrollbar": "^2.0.0",
     "vuetify": "^3.7.6",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "pinia": "^2.3.0",
+    "pinia-plugin-persistedstate": "^4.2.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.12.0",
@@ -30,8 +31,6 @@
     "axios": "^1.7.9",
     "axios-cache-interceptor": "^1.6.2",
     "eslint": "^9.17.0",
-    "pinia": "^2.3.0",
-    "pinia-plugin-persistedstate": "^4.2.0",
     "sass": "^1.83.0",
     "swagger-typescript-api": "^13.0.23",
     "unocss": "^0.65.2",
@@ -39,6 +38,7 @@
     "unplugin-fonts": "^1.3.1",
     "unplugin-vue-components": "^0.28.0",
     "unplugin-vue-router": "^0.10.9",
+    "@vitejs/plugin-vue": "^5.2.1",
     "vite": "^6.0.5",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vite-plugin-vuetify": "^2.0.4",
